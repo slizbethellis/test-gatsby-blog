@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Content, { HTMLContent } from '../components/Content'
+import Helmet from 'react-helmet'
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+export const AboutPageTemplate = ({ title, content, contentComponent, helmet }) => {
   const PageContent = contentComponent || Content
 
   return (
     <section className="section section--gradient">
+      {helmet || ''}
       <div className="container">
         <div className="columns">
           <div className="column is-10 is-offset-1">
@@ -27,6 +29,7 @@ AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
+  helmet: PropTypes.object
 }
 
 const AboutPage = ({ data }) => {
@@ -37,6 +40,7 @@ const AboutPage = ({ data }) => {
       contentComponent={HTMLContent}
       title={post.frontmatter.title}
       content={post.html}
+      helmet={<Helmet title={`About | ${data.site.siteMetadata.title}`} />}
     />
   )
 }
@@ -49,6 +53,11 @@ export default AboutPage
 
 export const aboutPageQuery = graphql`
   query AboutPage($id: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    },
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {

@@ -51,6 +51,7 @@ BlogPostTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.instanceOf(Helmet),
+  image: PropTypes.object
 }
 
 const BlogPost = ({ data }) => {
@@ -61,9 +62,10 @@ const BlogPost = ({ data }) => {
       content={post.html}
       contentComponent={HTMLContent}
       description={post.frontmatter.description}
-      helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
+      helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
+      image={post.frontmatter.image}
     />
   )
 }
@@ -78,6 +80,11 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    },
     markdownRemark(id: { eq: $id }) {
       id
       html
@@ -86,6 +93,7 @@ export const pageQuery = graphql`
         title
         description
         tags
+        image
       }
     }
   }

@@ -1,11 +1,75 @@
 @import "~bulma/sass/utilities/initial-variables"
 
 // Config vars
-$kaldi-red: #FD461E
-$kaldi-red-invert: #fff
+$white-smoke: #f6f7f8
+$smoky-black: #0f0a0a
+$light-gray: #d3d2d2
+$light-sea-green: #2292a4
+$light-sea-green-rgba: rgba(34,146,164,0.9)
+$acid-green: #bdbf09
+$acid-green-rgba: rgba(189,191,9,0.9)
+$spanish-orange: #d96c06
 
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
+$header-font: 'Prompt'
+$body-font: 'Rubik'
+$console-font: 'Cousine'
+
+$primary: $spanish-orange
+
+$navbar-background-color: $light-sea-green
+$navbar-item-color: $white-smoke
+$navbar-item-hover-color: $light-gray
+$navbar-item-hover-background-color: none
+
+body
+  color: $smoky-black
+  background-color: $white-smoke
+
+nav
+  font-family: $body-font
+  font-weight: 400
+  font-size: 1.1em
+  .button.is-text
+    background: none
+    color: $white-smoke
+    font-size: 1.2em
+    height: 1.3em
+    padding: 0 0.3em
+    &:hover
+      background: none
+      color: $light-gray
+  .navbar-burger
+    color: $white-smoke
+    background: none
+    border: none
+    &:hover
+      color: $white-smoke
+    &:focus
+      color: $light-gray
+  .button.is-active
+    color: $light-gray
+
+
+h1, h2, h3, h4, h5, h6, .header-link
+  font-family: $header-font
+  font-weight: 600
+
+code
+  font-family: Cousine
+
+p, li
+  font-family: $body-font
+
+.read-more
+  color: $acid-green
+  &:hover
+    color: $light-sea-green
+
+.content
+  a
+    color: $spanish-orange
+    &:hover
+      color: $acid-green
 
 .content .taglist
   list-style: none
@@ -23,6 +87,24 @@ $primary-invert: $kaldi-red-invert
     margin-top: 0
 
 // Helper Classes
+.display-font
+  font-family: $header-font
+  font-weight: 800
+
+.header-link
+  font-size: 1.2em
+
+.hero-foo
+  background-image: url('../img/diamondkite.jpg')
+  background-size: cover
+  background-position: center
+
+.hero-foot
+  color: $white-smoke
+  background-color: $acid-green-rgba
+  width: 100%
+  padding: 0.7em 0
+
 .full-width-image-container
   width: 100vw
   height: 400px
@@ -38,5 +120,11 @@ $primary-invert: $kaldi-red-invert
 
 .margin-top-0
   margin-top: 0 !important
+
+.preview-image
+  width: 200px
+  height: 200px
+  background-size: auto 200px
+  background-position: center
 
 @import "~bulma"

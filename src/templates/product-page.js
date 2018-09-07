@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Features from '../components/Features'
 import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
+import Helmet from 'react-helmet'
 
 export const ProductPageTemplate = ({
   image,
@@ -14,8 +15,10 @@ export const ProductPageTemplate = ({
   testimonials,
   fullImage,
   pricing,
+  helmet
 }) => (
   <section className="section section--gradient">
+    {helmet || ''}
     <div className="container">
       <div className="section">
         <div className="columns">
@@ -127,6 +130,7 @@ ProductPageTemplate.propTypes = {
     description: PropTypes.string,
     plans: PropTypes.array,
   }),
+  helmet: PropTypes.object
 }
 
 const ProductPage = ({ data }) => {
@@ -143,6 +147,7 @@ const ProductPage = ({ data }) => {
       testimonials={frontmatter.testimonials}
       fullImage={frontmatter.full_image}
       pricing={frontmatter.pricing}
+      helmet={<Helmet title={`Products | ${data.site.siteMetadata.title}`} />}
     />
   )
 }
@@ -152,6 +157,7 @@ ProductPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
     }),
+    site: PropTypes.object
   }),
 }
 
@@ -159,6 +165,11 @@ export default ProductPage
 
 export const productPageQuery = graphql`
   query ProductPage($id: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    },
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
