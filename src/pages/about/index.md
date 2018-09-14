@@ -1,19 +1,15 @@
 ---
 templateKey: 'about-page'
 path: /about
-title: About our values
+title: About me
 ---
-### Shade-grown coffee
-Coffee is a small tree or shrub that grows in the forest understory in its wild form, and traditionally was grown commercially under other trees that provided shade. The forest-like structure of shade coffee farms provides habitat for a great number of migratory and resident species.
 
-### Single origin
-Single-origin coffee is coffee grown within a single known geographic origin. Sometimes, this is a single farm or a specific collection of beans from a single country. The name of the coffee is then usually the place it was grown to whatever degree available.
+My first knitting lesson was just before I turned ten (i.e. sometime in the fall of 1994), and I’ve scarcely spent a day without knitting since then. Although I learned the most basic of basics from my mother (casting on and off, knit/purl, possibly basic decreases), most of what I know came from reading a book or article and experimenting on my own. I also happen to be a decent crocheter (I think my first lesson was roughly a year after I learned to knit), but I’m definitely nowhere near as skilled at crochet as I am with knitting. My first published design, the [Awry Hat](http://www.ravelry.com/patterns/library/awry-hat) [and Mitts](https://www.ravelry.com/patterns/library/awry-mitts), appeared in [*Knitscene*, Accessories 2015](http://www.knittingdaily.com/magazines/knitscene-accessories-2015/). I have also had four patterns featured so far in *Knitty*, the latest of which is [Alfarería](http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php), which is also one of the two covers for the Deep Fall 2018 issue.
 
-### Sustainable farming
-Sustainable agriculture is farming in sustainable ways based on an understanding of ecosystem services, the study of relationships between organisms and their environment. What grows where and how it is grown are a matter of choice and careful consideration for nature and communities.
+As for other interests, I've recently finished a coding boot camp in full stack development, specifically the MERN stack. I also collect music in physical formats, although I do not have my turntable even set up at the moment (lack speakers, and my current dac/headphone amp has no analog inputs). As for TV, I'm very much into sci-fi and British comedies. Speaking of Brit-coms, I really need to do something with mylovely.horse. Yes, I do own that domain. Although I do aspire to be a polyglot, I've let my foreign language skills lapse...in the past I've studied German, Spanish, and French.
 
-### Direct sourcing
-Direct trade is a form of sourcing practiced by some coffee roasters. Advocates of direct trade practices promote direct communication and price negotiation between buyer and farmer, along with systems that encourage and incentivize quality.
+### So why 'haloroundmyhead'?
+The name refers to the Porcupine Tree song "Halo", which isn't my favorite song of theirs (probably not even on my top ten list, if I could bring myself to create one). So why did that name get connected with me? I finally got an invite to the Ravelry beta a few days after the two Porcupine Tree concerts I attended in October 2007. A couple near the front at the concert in Houston brought a bunch of glowsticks with them, intended for fellow audience members to make haloes to wear when "Halo" got played during the encore. It was a fun moment for all, and even the band got in on the glowstick action a bit. And the following night I brought out my halo during the encore again. So when I was trying to decide on a username for Ravelry, I looked at the halo sitting in a position of honor on my desk, and decided to honor that memory with my username. And the handle stuck with me through other social media accounts related to my crafty identity.
 
-### Reinvest profits
-We want to truly empower the communities that bring amazing coffee to you. That’s why we reinvest 20% of our profits into farms, local businesses and schools everywhere our coffee is grown. You can see the communities grow and learn more about coffee farming on our blog.
+### What'd you build this page with?
+This website is built in Gatsby, which is a static site generator using React.js. Yes, that's right, this blog is React-based and uses GraphQL to grab data. Is this the first knitting blog built in React? Possibly. I'm using Netlify for CMS, CDN, and deployment of this site. Right now I'm using Bulma for the layout, although I'm considering a redesign with a different framework. And a patterns page will come as soon as I sort out the GraphQL queries to pull them from the Ravelry API and generate a page.

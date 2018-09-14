@@ -8,6 +8,7 @@ It follows the [JAMstack architecture](https://jamstack.org) by using Git as a s
 * create a separate page for the blog posts with sidebar
 * make a pattern page that either pulls patterns from Ravelry's API or add a category in the CMS
 * remove products page once pattern page is ready
+* add RSS feed
 * add blog post search
 * add comments to blog posts
 * make a working carousel for the home page (stretch goal)

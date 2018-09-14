@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Content, { HTMLContent } from '../components/Content'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
+import Layout from '../components/Layout'
+import Content, { HTMLContent } from '../components/Content'
 
 export const AboutPageTemplate = ({ title, content, contentComponent, helmet }) => {
   const PageContent = contentComponent || Content
@@ -16,6 +18,13 @@ export const AboutPageTemplate = ({ title, content, contentComponent, helmet }) 
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {title}
               </h2>
+              <div className="columns">
+                <div className="column is-5">
+                  <figure className="image is-square">
+                    <img src="/img/headshot.jpg" alt="Sarah Ellis - headshot" />
+                  </figure>
+                </div>
+              </div>
               <PageContent className="content" content={content} />
             </div>
           </div>
@@ -36,12 +45,14 @@ const AboutPage = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
-    <AboutPageTemplate
-      contentComponent={HTMLContent}
-      title={post.frontmatter.title}
-      content={post.html}
-      helmet={<Helmet title={`About | ${data.site.siteMetadata.title}`} />}
-    />
+    <Layout>
+      <AboutPageTemplate
+        contentComponent={HTMLContent}
+        title={post.frontmatter.title}
+        content={post.html}
+        helmet={<Helmet title={`About | ${data.site.siteMetadata.title}`} />}
+      />
+    </Layout>
   )
 }
 

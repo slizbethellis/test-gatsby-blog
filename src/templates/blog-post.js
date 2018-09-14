@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
+import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
 export const BlogPostTemplate = ({
@@ -50,23 +51,23 @@ BlogPostTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
-  helmet: PropTypes.instanceOf(Helmet),
-  image: PropTypes.object
+  helmet: PropTypes.instanceOf(Helmet)
 }
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
-    <BlogPostTemplate
-      content={post.html}
-      contentComponent={HTMLContent}
-      description={post.frontmatter.description}
-      helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
-      tags={post.frontmatter.tags}
-      title={post.frontmatter.title}
-      image={post.frontmatter.image}
-    />
+    <Layout>
+      <BlogPostTemplate
+        content={post.html}
+        contentComponent={HTMLContent}
+        description={post.frontmatter.description}
+        helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
+        tags={post.frontmatter.tags}
+        title={post.frontmatter.title}
+      />
+    </Layout>
   )
 }
 
@@ -93,7 +94,6 @@ export const pageQuery = graphql`
         title
         description
         tags
-        image
       }
     }
   }

@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
+import { Link, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
+import Layout from '../components/Layout'
 
 export default class IndexPage extends React.Component {
   render() {
@@ -9,29 +10,31 @@ export default class IndexPage extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <div>
+      <Layout>
         <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
-        <section className="hero hero-foo is-large is-dark">
-          <div className="hero-head">
-            <div className="container">
-              <span></span>
+        <a href="http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php" target="_blank" rel="noopener noreferrer">
+          <section className="hero hero-foo is-large is-dark">
+            <div className="hero-head">
+              <div className="container">
+                <span></span>
+              </div>
             </div>
-          </div>
-          <div className="hero-body">
-            <div className="container">
-              <span></span>
+            <div className="hero-body">
+              <div className="container">
+                <span></span>
+              </div>
             </div>
-          </div>
-          <div className="hero-foot">
-            <div className="container has-text-centered">
-              <p className="">
-                <span className="is-size-5 display-font">Diamond Kite</span>
-                <span> &bull; </span>
-                <span className="is-size-6">pattern coming soon!</span>
-              </p>
+            <div className="hero-foot">
+              <div className="container has-text-centered">
+                <p className="">
+                  <span className="is-size-5 display-font">Alfarería</span>
+                  <span> &bull; </span>
+                  <span className="is-size-6">featured in <i>Knitty</i>, Deep Fall 2018</span>
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </a>
         <section className="section">
           <div className="container">
             <div className="content">
@@ -43,39 +46,39 @@ export default class IndexPage extends React.Component {
                   className="box"
                   key={post.id}
                 >
-                  <article className="media">
-                    <figure className="media-content">
-                      <p>
-                        <Link className="has-text-primary" to={post.fields.slug}>
-                          <span className="header-link">{post.frontmatter.title}</span>
-                        </Link>
-                        <span> &bull; </span>
-                        <small>{post.frontmatter.date}</small>
-                      </p>
-                      <p>
+                <div className="columns is-multiline">
+                  <div className="column is">
+                    <p>
+                      <Link className="has-text-primary" to={post.fields.slug}>
+                        <span className="header-link">{post.frontmatter.title}</span>
+                      </Link>
+                      <span> &bull; </span>
+                      <small>{post.frontmatter.date}</small>
+                    </p>
+                    <p>
+                    <br />
+                      {post.excerpt}
                       <br />
-                        {post.excerpt}
-                        <br />
-                        <br />
-                        <Link className="is-small read-more" to={post.fields.slug}>
-                          Keep Reading →
-                        </Link>
-                      </p>
-                    </figure>
-                    <figure className="media-right">
-                      {post.frontmatter.image &&
-                        <div
-                          className="preview-image"
-                          style={{ backgroundImage: `url(${post.frontmatter.image})` }}
-                        />
-                      }
-                    </figure>
-                  </article>
+                      <br />
+                      <Link className="is-small read-more" to={post.fields.slug}>
+                        Keep Reading →
+                      </Link>
+                    </p>
+                  </div>
+                  <div className="column is-narrow">
+                    {post.frontmatter.image &&
+                      <div
+                        className="preview-image"
+                        style={{ backgroundImage: `url(${post.frontmatter.image})` }}
+                      />
+                    }
+                  </div>
                 </div>
+              </div>
               ))}
           </div>
         </section>
-      </div>
+      </Layout>
     )
   }
 }
@@ -97,6 +100,7 @@ export const pageQuery = graphql`
       }
     },
     allMarkdownRemark(
+      limit: 5,
       sort: { order: DESC, fields: [frontmatter___date] },
       filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
     ) {
