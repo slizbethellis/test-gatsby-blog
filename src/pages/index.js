@@ -5,16 +5,6 @@ import Helmet from 'react-helmet'
 import Navbar from '../components/Navbar'
 
 export default class IndexPage extends React.Component {
-  state = {
-    isActive: false,
-  }
-
-  toggleNav = () => {
-    this.setState(prevState => ({
-      isActive: !prevState.isActive
-    }))
-  }
-
   render() {
     const { data } = this.props
 
