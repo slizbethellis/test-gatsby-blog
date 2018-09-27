@@ -2,6 +2,7 @@
 
 // Config vars
 $white-smoke: #f6f7f8
+$white-smoke-rgba: rgba(246,247,248,0.1)
 $smoky-black: #0f0a0a
 $light-gray: #d3d2d2
 $light-sea-green: #2292a4
@@ -18,7 +19,7 @@ $primary: $spanish-orange
 
 $navbar-background-color: $light-sea-green
 $navbar-item-color: $white-smoke
-$navbar-item-hover-color: $light-gray
+$navbar-item-hover-color: $acid-green
 $navbar-item-hover-background-color: none
 
 body
@@ -37,7 +38,7 @@ nav
     padding: 0 0.3em
     &:hover
       background: none
-      color: $light-gray
+      color: $acid-green
   .navbar-burger
     color: $white-smoke
     background: none
@@ -45,9 +46,9 @@ nav
     &:hover
       color: $white-smoke
     &:focus
-      color: $light-gray
+      color: $acid-green
   .button.is-active
-    color: $light-gray
+    color: $acid-green
 
 h1, h2, h3, h4, h5, h6, .header-link
   font-family: $header-font
@@ -89,20 +90,31 @@ p, li
 .display-font
   font-family: $header-font
   font-weight: 800
+  &:hover
+    color: $spanish-orange
 
 .header-link
   font-size: 1.2em
 
 .hero-foo
-  background-image: url('../img/alfareria.jpg')
+  background-image: url('../img/IMG_2734.jpg')
   background-size: cover
-  background-position: center bottom
+  background-position: right center
 
 .hero-foot
   color: $white-smoke
   background-color: $acid-green-rgba
   width: 100%
   padding: 0.7em 0
+
+.hr-custom
+  border: 0
+  height: 0
+  border-top: 1px solid $white-smoke-rgba
+  border-bottom: 1px solid $acid-green-rgba
+
+.input-search
+  font-family: $body-font
 
 .full-width-image-container
   width: 100vw
@@ -125,5 +137,26 @@ p, li
   height: 200px
   background-size: auto 200px
   background-position: center
+
+.taglist-sidebar
+  list-style: none
+  margin: 0.4rem 0 0 0
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  align-items: center
+  li
+    padding: 0 0.5rem 0.2rem 0
+    margin-bottom: 0
+    margin-top: 0
+    font-size: 0.9rem
+    a
+      color: $spanish-orange
+
+.tag-link
+  display: flex
+  justify-content: center
+  font-size: 1rem
+  margin-top: 0.4rem
 
 @import "~bulma"

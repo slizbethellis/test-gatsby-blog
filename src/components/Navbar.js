@@ -17,8 +17,8 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar is-fixed-top">
-        <div className="container">
+      <nav className={window.location.pathname === "/" || window.location.pathname === "/home" ? "navbar is-transparent" : "navbar is-fixed-top"}>
+        {/* <div className="container"> */}
           <div className="navbar-brand">
             <Link to="/" className="navbar-item">
               <figure className="image">
@@ -36,8 +36,8 @@ class Navbar extends React.Component {
               <Link className="navbar-item" to="/about">
                 About
               </Link>
-              <Link className="navbar-item" to="/tags">
-                Tags
+              <Link className="navbar-item" to="/blog">
+                Blog
               </Link>
             </div>
             <div className="navbar-end">
@@ -65,7 +65,7 @@ class Navbar extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </nav>
     )
   }

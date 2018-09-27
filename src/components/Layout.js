@@ -7,10 +7,10 @@ import Navbar from '../components/Navbar'
 import './all.sass'
 
 const TemplateWrapper = ({ children }) => (
-  <div>
+  <body className="has-navbar-fixed-top">
     <Navbar />
     <div>{children}</div>
-  </div>
+  </body>
 )
 
 export default TemplateWrapper
