@@ -21,7 +21,7 @@ class Navbar extends React.Component {
   render() {
     return (
       // use color prop to toggle between 'is-transparent' and 'is-fixed-top'
-      <nav className={`navbar ${this.props.color}`}>
+      <nav className="navbar is-fixed-top">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
             <figure className="image">
