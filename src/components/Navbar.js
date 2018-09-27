@@ -1,9 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../img/haloroundmyhead-logo.svg'
 
@@ -73,5 +70,3 @@ class Navbar extends React.Component {
 }
 
 export default Navbar
-
-library.add(fab, faSearch)

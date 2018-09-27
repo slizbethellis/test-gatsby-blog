@@ -2,36 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import Navbar from '../components/Navbar'
+import Layout from '../components/Layout'
+import cover from '../img/alfareria.jpg'
 
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props
 
     return (
-      <div>
+      <Layout>
         <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
-        <Navbar />
-        <section className="hero hero-foo is-fullheight is-dark">
-          <div className="hero-head">
-            <span></span>
-          </div>
-          <div className="hero-body">
-            <div className="container">
-              <span></span>
-            </div>
-          </div>
-          <div className="hero-foot">
-            <div className="container has-text-centered">
-              <p>
-                <span className="is-size-5 display-font"><a href="http://knitty.com/ISSUEdf18/index.php" className="hero-link" target="_blank" rel='noopener noreferrer'>Alfarería</a></span>
-                <span> &bull; </span>
-                <span className="is-size-6">featured in <i>Knitty</i>, Deep Fall 2018</span>
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
+        <div
+          className="full-width-image-container"
+          style={{ backgroundImage: `url(${cover})` }}
+        >
+          <p className="display-box has-text-centered">
+            <span className="is-size-5 display-font"><a href="http://knitty.com/ISSUEdf18/index.php" className="hero-link" target="_blank" rel='noopener noreferrer'>Alfarería</a></span>
+            <span> &bull; </span>
+            <span className="is-size-6">featured in <i>Knitty</i>, Deep Fall 2018</span>
+          </p>
+        </div>
+      </Layout>
     )
   }
 }

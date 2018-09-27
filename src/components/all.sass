@@ -90,11 +90,18 @@ p, li
     margin-top: 0
 
 // Helper Classes
-.display-font
-  font-family: $header-font
-  font-weight: 800
-  &:hover
-    color: $spanish-orange
+.display-box
+  color: $white-smoke
+  background-color: $acid-green-rgba
+  width: 100%
+  padding: 0.7em 0
+  .display-font
+      font-family: $header-font
+      font-weight: 800
+  a
+    color: $white-smoke
+    &:hover
+      color: $spanish-orange
 
 .header-link
   font-size: 1.2em
@@ -130,7 +137,7 @@ p, li
   background-position: right center
   display: flex
   justify-content: center
-  align-items: center
+  align-items: flex-end
 
 .margin-top-0
   margin-top: 0 !important
