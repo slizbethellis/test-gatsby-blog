@@ -2,15 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import Layout from '../components/Layout'
+import Navbar from '../components/Navbar'
 
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props
 
     return (
-      <Layout>
+      <div>
         <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
+        <Navbar />
         <section className="hero hero-foo is-fullheight is-dark">
           <div className="hero-head">
             <span></span>
@@ -30,7 +31,7 @@ export default class IndexPage extends React.Component {
             </div>
           </div>
         </section>
-      </Layout>
+      </div>
     )
   }
 }
