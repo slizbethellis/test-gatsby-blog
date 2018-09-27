@@ -5,7 +5,7 @@ import TagBlock from '../components/TagBlock'
 const Sidebar = () => (
   <section>
     <div className="columns is-centered">
-      <div className="column is-narrow">
+      <div className="column is-four-fifths">
         <div className="field has-addons">
           <p className="control">
             <input className="input is-primary is-rounded" type="text" placeholder="Search" />

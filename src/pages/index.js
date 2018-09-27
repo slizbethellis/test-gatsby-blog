@@ -22,7 +22,7 @@ export default class IndexPage extends React.Component {
       <section className="hero hero-foo is-fullheight is-dark">
         <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
         <div className="hero-head">
-          <Navbar />
+          <Navbar color="is-transparent" />
         </div>
         <div className="hero-body">
           <div className="container">

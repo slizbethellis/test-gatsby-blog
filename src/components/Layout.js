@@ -8,7 +8,7 @@ import './all.sass'
 
 const TemplateWrapper = ({ children }) => (
   <body className="has-navbar-fixed-top">
-    <Navbar />
+    <Navbar color="is-fixed-top" />
     <div>{children}</div>
   </body>
 )
