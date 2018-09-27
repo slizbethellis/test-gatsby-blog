@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../img/haloroundmyhead-logo.svg'
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state ={
-      isActive: false,
-    };
+  state = {
+    isActive: false,
   }
 
   toggleNav = () => {
@@ -20,7 +20,6 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      // use color prop to toggle between 'is-transparent' and 'is-fixed-top'
       <nav className="navbar is-fixed-top">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
@@ -74,3 +73,5 @@ class Navbar extends React.Component {
 }
 
 export default Navbar
+
+library.add(fab, faSearch)
