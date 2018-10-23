@@ -22,6 +22,13 @@ $navbar-item-color: $white-smoke
 $navbar-item-hover-color: $acid-green
 $navbar-item-hover-background-color: none
 
+// Extend properties
+%link-color
+  color: $spanish-orange
+  &:hover
+    color: $acid-green
+
+// Main elements
 body
   color: $smoky-black
   background-color: $white-smoke
@@ -70,9 +77,7 @@ p, li
 
 .content
   a
-    color: $spanish-orange
-    &:hover
-      color: $acid-green
+    @extend %link-color
 
 .content .taglist
   list-style: none
@@ -103,6 +108,9 @@ p, li
     &:hover
       color: $spanish-orange
 
+.dropdown-item
+  font-family: $body-font
+
 .header-link
   font-size: 1.2em
 
@@ -122,7 +130,7 @@ p, li
   border: 0
   height: 0
   border-top: 1px solid $white-smoke-rgba
-  border-bottom: 1px solid $acid-green-rgba
+  border-bottom: 1px solid $light-sea-green-rgba
 
 .input-search
   font-family: $body-font
@@ -148,6 +156,13 @@ p, li
   background-size: auto 200px
   background-position: center
 
+.search-footer
+  font-size: 0.7em
+
+.search-link
+  font-family: $header-font
+  @extend %link-color
+
 .taglist-sidebar
   list-style: none
   margin: 0.4rem 0 0 0
@@ -161,7 +176,7 @@ p, li
     margin-top: 0
     font-size: 0.9rem
     a
-      color: $spanish-orange
+      @extend %link-color
 
 .tag-link
   display: flex

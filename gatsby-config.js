@@ -32,6 +32,26 @@ module.exports = {
         name: 'images',
       },
     },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [
+          'title',
+          'path',
+          'tags'
+        ],
+        // How to resolve each field's value for a supported node type
+        resolvers: {
+          // For any node of type MarkdownRemark, list how to resolve the fields' values
+          MarkdownRemark: {
+            title: node => node.frontmatter.title,
+            path: node => node.fields.slug,
+            tags: node => node.frontmatter.tags
+          },
+        },
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
