@@ -73,8 +73,7 @@ BlogPage.propTypes = {
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
     }),
-    site: PropTypes.object,
-    siteSearchIndex: PropTypes.object
+    site: PropTypes.object
   }),
 }
 

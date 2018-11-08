@@ -9,7 +9,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Cousine', 'Rubik', 'Prompt:600,600i,800,800i']
+          families: ['Cousine', 'Rubik', 'Prompt:500,500i,600,600i,800,800i']
         }
       }
     },
@@ -50,6 +50,12 @@ module.exports = {
             tags: node => node.frontmatter.tags
           },
         },
+      },
+    },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `haloroundmyhead`,
       },
     },
     'gatsby-plugin-sharp',

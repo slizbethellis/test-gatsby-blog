@@ -1,5 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import Instagram from '../components/Instagram'
 import Search from '../components/Search'
 import TagBlock from '../components/TagBlock'
 
@@ -19,6 +20,8 @@ const Sidebar = () => (
             <Search searchIndex={data.siteSearchIndex.index}/>
           </div>
         </div>
+        <hr className="hr-custom" />
+        <Instagram />
         <hr className="hr-custom" />
         <TagBlock />
         <hr className="hr-custom" />
