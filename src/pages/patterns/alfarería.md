@@ -2,6 +2,8 @@
 templateKey: pattern-item
 title: Alfarería
 publicationDate: September 2018
+originalPublication: 'Knitty, Deep Fall 2018'
+price: free
 image: /img/alfareria_sq.jpg
 categories:
   - shawl/shawlette
