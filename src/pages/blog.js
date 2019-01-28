@@ -46,12 +46,11 @@ export default class BlogPage extends React.Component {
                           </Link>
                         </p>
                       </div>
-                      <div className="column is-narrow">
+                      <div className="column is-narrow is-1-mobile">
                         {post.frontmatter.image &&
-                          <div
-                            className="preview-image"
-                            style={{ backgroundImage: `url(${post.frontmatter.image})` }}
-                          />
+                          <figure className="image is-square blog-preview-image">
+                            <img src={post.frontmatter.image} alt={post.frontmatter.title} />
+                          </figure>
                         }
                       </div>
                     </div>

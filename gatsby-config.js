@@ -52,12 +52,6 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-source-instagram`,
-      options: {
-        username: `haloroundmyhead`,
-      },
-    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
