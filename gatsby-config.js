@@ -19,10 +19,9 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-plugin-netlify-cms-paths`,
       options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
+        cmsConfig: `/static/admin/config.yml`,
       },
     },
     {
@@ -30,6 +29,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/img`,
         name: 'images',
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
       },
     },
     {
@@ -57,7 +63,19 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: [],
+        plugins: [
+          'gatsby-plugin-netlify-cms-paths',
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 930,
+              backgroundColor: 'transparent', // required to display blurred image first
+            },
+          }
+        ],
       },
     },
     {

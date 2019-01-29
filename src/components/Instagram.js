@@ -29,7 +29,6 @@ class Instagram extends React.Component {
           }
         })
         this.setState({ items: photos.slice(0,9) });
-        console.log(this.state.items);
       })
       .catch(
         (error) => {

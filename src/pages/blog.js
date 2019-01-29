@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import Sidebar from '../components/Sidebar'
@@ -48,9 +49,7 @@ export default class BlogPage extends React.Component {
                       </div>
                       <div className="column is-narrow is-1-mobile">
                         {post.frontmatter.image &&
-                          <figure className="image is-square blog-preview-image">
-                            <img src={post.frontmatter.image} alt={post.frontmatter.title} />
-                          </figure>
+                          <Img fixed={post.frontmatter.image.childImageSharp.fixed} alt={post.frontmatter.title} />
                         }
                       </div>
                     </div>
@@ -98,7 +97,13 @@ export const pageQuery = graphql`
             title
             templateKey
             date(formatString: "MMMM DD, YYYY")
-            image
+            image {
+              childImageSharp {
+                fixed(width: 200, height: 200) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
           }
         }
       }
