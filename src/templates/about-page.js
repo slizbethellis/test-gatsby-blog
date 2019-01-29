@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const AboutPageTemplate = ({ title, content, contentComponent, helmet }) => {
+export const AboutPageTemplate = ({ title, content, contentComponent, image, helmet }) => {
   const PageContent = contentComponent || Content
 
   return (
@@ -20,9 +21,7 @@ export const AboutPageTemplate = ({ title, content, contentComponent, helmet }) 
               </h2>
               <div className="columns">
                 <div className="column is-5">
-                  <figure className="image is-square">
-                    <img src="/img/headshot.jpg" alt="Sarah Ellis - headshot" />
-                  </figure>
+                  {image}
                 </div>
               </div>
               <PageContent className="content" content={content} />
@@ -50,6 +49,7 @@ const AboutPage = ({ data }) => {
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
         content={post.html}
+        image={<Img fluid={data.fluidImages.childImageSharp.fluid} alt="Sarah Ellis - headshot" />}
         helmet={<Helmet title={`About | ${data.site.siteMetadata.title}`} />}
       />
     </Layout>
@@ -73,6 +73,15 @@ export const aboutPageQuery = graphql`
       html
       frontmatter {
         title
+      }
+    },
+    fluidImages: file(
+      relativePath: { regex: "/headshot.jpg/" }
+    ) {
+      childImageSharp {
+        fluid (maxWidth: 700) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
   }
