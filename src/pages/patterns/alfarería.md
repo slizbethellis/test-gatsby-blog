@@ -15,9 +15,10 @@ gauge: >-
 needles: US 5 (3.75mm) or US 6 (4.00mm)
 sizes: shawlette (shawl)
 patternSource:
-  Link: 'http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php'
-  source: free
+  link: 'http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php'
+  price: free
 ravelryLink: 'https://www.ravelry.com/patterns/library/alfareria'
+itemType: shawl/shawlette
 description: >-
   Faroese shawl shaping is a simple, but elegant solution to the age-old problem
   of keeping a shawl on your shoulders. But why limit this shaping to lace
@@ -64,8 +65,6 @@ pictures:
       altText: Alfarería shawlette - wingspan
       photo: /img/alfareria-shawlette-wingspan.jpg
 tags:
-  - shawl
-  - shawlette
   - mosaic colorwork
   - Faroese shaping
 ---
