@@ -15,11 +15,9 @@ export default class BlogPage extends React.Component {
       <Layout>
         <Helmet title={`Blog | ${data.site.siteMetadata.title}`} />
         <section className="section">
-          <div className="columns is-multiline">
-            <div className="column is-three-quarters">
-              <div className="content">
-                <h1 className="has-text-weight-bold has-text-centered is-size-3">Latest Blog Posts</h1>
-              </div>
+          <div className="columns is-multiline is-centered">
+            <div className="column is-10">
+              <h1 className="has-text-weight-bold is-size-2">Blog Posts</h1>
             </div>
             <div className="column is-three-quarters">
               {posts

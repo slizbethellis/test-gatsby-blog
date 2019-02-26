@@ -17,7 +17,9 @@ export default class IndexPage extends React.Component {
           style={{ width: `100vw`, height: `100vh`, marginTop: `-3.25rem` }}
           alt="Alfarería shawl in front of Battle Hall at UT-Austin" />
         <p className="display-box has-text-centered">
-          <span className="is-size-5 display-font"><a href="http://knitty.com/ISSUEdf18/index.php" className="hero-link" target="_blank" rel='noopener noreferrer'>Alfarería</a></span>
+          <span className="is-size-5 display-font">
+            <a href="http://knitty.com/ISSUEdf18/index.php" className="hero-link" target="_blank" rel='noopener noreferrer'>Alfarería</a>
+          </span>
           <span> &bull; </span>
           <span className="is-size-6">featured in <i>Knitty</i>, Deep Fall 2018</span>
         </p>

@@ -30,3 +30,40 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "patterns"
+    label: "Patterns"
+    folder: "src/pages/patterns"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "pattern-item"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Published", name: "published", widget: "date"}
+      - {label: "Original Publication", name: "originalPub", widget: "string"}
+      - {label: "Yarn(s)", name: "yarn", widget: "list"}
+      - {label: "Yarn Weight", name: "yarnWeight", widget: "list"}
+      - {label: "Gauge", name: "gauge", widget: "string"}
+      - {label: "Needles", name: "needles", widget: "string"}
+      - {label: "Sizes", name: "sizes", widget: "string"}
+      - label: "Pattern Source"
+        name: "patternSource"
+        widget: "object"
+        fields:
+          - {label: "Link", name: "link", widget: "string"}
+          - {label: "Price", name: "price", widget: "string"}
+      - {label: "Ravelry Link", name: "ravelryLink", widget: "string"}
+      - {label: "Item Type", name: "itemType", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Image", name: "image", widget: "image"}
+      - label: "Pictures"
+        name: "pictures"
+        widget: "list"
+        fields:
+          - label: "Pattern Photo"
+            name: "patternPhoto"
+            widget: "object"
+            fields:
+              - {label: "Photo", name: "photo", widget: "image"}
+              - {label: "Alt Text", name: "altText", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}

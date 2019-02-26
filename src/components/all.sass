@@ -17,6 +17,7 @@ $body-font: 'Rubik'
 $console-font: 'Cousine'
 
 $primary: $spanish-orange
+$success: $acid-green
 
 $navbar-background-color: $light-sea-green
 $navbar-item-color: $white-smoke
@@ -33,6 +34,7 @@ $navbar-item-hover-background-color: none
 body
   color: $smoky-black
   background-color: $white-smoke
+  min-height: 100vh
 
 nav
   font-family: $body-font
@@ -58,21 +60,20 @@ nav
   .button.is-active
     color: $acid-green
 
-h1, h2, h3, h4, h5, h6, .header-link
+h1, h2, h3, h4, h5, h6, th, .header-link
   font-family: $header-font
   font-weight: 600
 
 code
   font-family: Cousine
 
-p, li
+p, li, td
   font-family: $body-font
 
-.read-more
-  color: $acid-green
-  &:hover
-    color: $light-sea-green
+th
+  width: 25%
 
+// Helper Classes
 .content
   hr
     border: 0
@@ -101,7 +102,6 @@ p, li
     margin-bottom: 1.5rem
     margin-top: 0
 
-// Helper Classes
 .display-box
   position: fixed
   bottom: 0
@@ -167,6 +167,14 @@ p, li
       font-size: 0.9em
       color: $white-smoke
 
+.pattern-btn
+  margin-right: 0.4rem
+
+.read-more
+  color: $acid-green
+  &:hover
+    color: $light-sea-green
+
 .search-footer
   font-size: 0.7em
 
@@ -194,5 +202,8 @@ p, li
   justify-content: center
   font-size: 1em
   margin-top: 0.4rem
+
+.title-padding
+  padding-bottom: 1rem
 
 @import "~bulma"

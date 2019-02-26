@@ -10,23 +10,19 @@ export const AboutPageTemplate = ({ title, content, contentComponent, image, hel
   const PageContent = contentComponent || Content
 
   return (
-    <section className="section section--gradient">
+    <section className="section">
       {helmet || ''}
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <div className="columns">
-                <div className="column is-5">
-                  {image}
-                </div>
-              </div>
-              <PageContent className="content" content={content} />
+      <div className="columns is-centered">
+        <div className="column is-10">
+          <h1 className="has-text-weight-bold is-size-2 title-padding">
+            {title}
+          </h1>
+          <div className="columns">
+            <div className="column is-5">
+              {image}
             </div>
           </div>
+          <PageContent className="content" content={content} />
         </div>
       </div>
     </section>
