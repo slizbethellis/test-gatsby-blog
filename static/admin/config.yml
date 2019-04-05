@@ -66,4 +66,6 @@ collections:
             fields:
               - {label: "Photo", name: "photo", widget: "image"}
               - {label: "Alt Text", name: "altText", widget: "string"}
+              - {label: "Width", name: "width", widget: "number"}
+              - {label: "Height", name: "height", widget: "number"}
       - {label: "Tags", name: "tags", widget: "list"}

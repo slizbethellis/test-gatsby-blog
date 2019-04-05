@@ -6,7 +6,10 @@ const TagBlock = () => (
   <StaticQuery
     query={graphql`
       query TagBlockQuery {
-        allMarkdownRemark(limit: 20) {
+        allMarkdownRemark(
+          limit: 20,
+          filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+        ) {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount

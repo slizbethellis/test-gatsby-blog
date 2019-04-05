@@ -24,24 +24,38 @@ pictures:
   - patternPhoto:
       altText: Alfarería shawl - back view
       photo: /img/alfareria-shawl-back.jpg
+      width: 3
+      height: 4
   - patternPhoto:
       altText: Alfarería shawl - detail view
       photo: /img/alfareria-shawl-detail.jpg
-  - patternPhoto:
-      altText: Alfarería shawl - front view
-      photo: /img/alfareria-shawl-front.jpg
+      width: 3
+      height: 4
   - patternPhoto:
       altText: Alfarería shawl - wingspan
       photo: /img/alfareria-shawl-wingspan.jpg
+      width: 4
+      height: 3
+  - patternPhoto:
+      altText: Alfarería shawl - front view
+      photo: /img/alfareria-shawl-front.jpg
+      width: 3
+      height: 4
   - patternPhoto:
       altText: Alfarería shawlette - front view
       photo: /img/alfareria-shawlette-front.jpg
+      width: 4
+      height: 3
   - patternPhoto:
       altText: Alfarería shawlette - detail view
       photo: /img/alfareria-shawlette-detail.jpg
+      width: 4
+      height: 3
   - patternPhoto:
       altText: Alfarería shawlette - wingspan
       photo: /img/alfareria-shawlette-wingspan.jpg
+      width: 4
+      height: 3
 tags:
   - mosaic colorwork
   - Faroese shaping
