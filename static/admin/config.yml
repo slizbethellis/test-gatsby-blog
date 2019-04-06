@@ -54,7 +54,6 @@ collections:
           - {label: "Price", name: "price", widget: "string"}
       - {label: "Ravelry Link", name: "ravelryLink", widget: "string"}
       - {label: "Item Type", name: "itemType", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Image", name: "image", widget: "image"}
       - label: "Pictures"
         name: "pictures"
@@ -69,3 +68,4 @@ collections:
               - {label: "Width", name: "width", widget: "number"}
               - {label: "Height", name: "height", widget: "number"}
       - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}

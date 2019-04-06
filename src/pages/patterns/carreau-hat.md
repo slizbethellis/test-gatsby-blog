@@ -15,7 +15,7 @@ patternSource:
   price: free
 ravelryLink: 'https://www.ravelry.com/patterns/library/carreau-hat'
 itemType: hat
-image: /img/carreau-hat-berroco-back.jpg
+image: /img/carreau-hat-berroco-back-sq.jpg
 pictures:
   - patternPhoto:
       altText: Carreau hat and cowl (Berroco version) - set
