@@ -31,6 +31,21 @@ pictures:
       height: 4
       photo: /img/carreau-cowl-small-side.jpg
       width: 3
+  - patternPhoto:
+      altText: Carreau cowl (large) - side
+      height: 3
+      photo: /img/carreau-cowl-large-side.jpg
+      width: 4
+  - patternPhoto:
+      altText: Carreau cowl (large) - front
+      height: 4
+      photo: /img/carreau-cowl-large-front.jpg
+      width: 3
+  - patternPhoto:
+      altText: Carreau cowls - sitting on driftwood
+      height: 3
+      photo: /img/carreau-cowls-flat.jpg
+      width: 4
 tags:
   - mosaic colorwork
   - circular knit
