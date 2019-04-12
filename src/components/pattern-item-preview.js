@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
 import Content, { HTMLContent } from '../components/Content'
 
 export const PatternItemTemplate = ({
   content,
-  frontmatter,
-  title
+  frontmatter
 }) => {
   const PostContent = HTMLContent || Content
 
@@ -14,7 +14,7 @@ export const PatternItemTemplate = ({
       <div className="columns is-centered">
         <div className="column is-10">
           <h1 className="has-text-weight-bold is-size-2 title-padding">
-            {title}
+            {frontmatter.title}
           </h1>
           <table className="table is-fullwidth">
             <tbody>
@@ -63,5 +63,29 @@ PatternItemTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   frontmatter: PropTypes.object,
-  title: PropTypes.string,
 }
+
+export const pattPreQuery = graphql`
+  query PattPreviewByID($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      id
+      html
+      frontmatter {
+        published(formatString: "MMMM YYYY")
+        title
+        originalPub
+        itemType
+        yarn
+        yarnWeight
+        gauge
+        needles
+        sizes
+        ravelryLink
+        patternSource {
+          link
+          price
+        }
+      }
+    }
+  }
+`
