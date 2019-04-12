@@ -63,7 +63,7 @@ export const PageQuery = graphql`
       }
     },
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
+      sort: { order: DESC, fields: [frontmatter___published] },
       filter: { frontmatter: { templateKey: { eq: "pattern-item" } }}
     ) {
       edges {
@@ -76,7 +76,7 @@ export const PageQuery = graphql`
           frontmatter {
             title
             templateKey
-            date(formatString: "MMMM DD, YYYY")
+            published(formatString: "MMMM DD, YYYY")
             image {
               childImageSharp {
                 fluid(maxWidth: 600, maxHeight: 600) {

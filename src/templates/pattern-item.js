@@ -10,7 +10,7 @@ import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import ImageButton from '../components/ImageButton'
 
-export class PatternItemTemplate extends React.Component {
+export class PatternItemLayout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,8 +63,6 @@ export class PatternItemTemplate extends React.Component {
   render () {
     const PostContent = this.props.contentComponent || Content
     const details = this.props.frontmatter
-    // This variable passes image array minus first image to gallery component
-    const slicedImages = this.props.images.slice(1)
 
     return (
       <section className="section">
@@ -90,17 +88,17 @@ export class PatternItemTemplate extends React.Component {
                 <button className="button-photo main-photo"
                   onClick={e => this.openLightbox(e, {index: 0})} >
                   <Img
-                    fluid={details.pictures[0].patternPhoto.photo.childImageSharp.fluid}
-                    alt={details.pictures[0].patternPhoto.altText}
+                    fluid={this.props.firstImage.patternPhoto.photo.childImageSharp.fluid}
+                    alt={this.props.firstImage.patternPhoto.altText}
                   />
                 </button>
-                <Gallery photos={slicedImages} direction={'column'} columns={4} ImageComponent={ImageButton} onClick={this.openLightbox} />
+                <Gallery photos={this.props.slicedImages} direction={'column'} columns={4} ImageComponent={ImageButton} onClick={this.openLightbox} />
                 <h5 className="has-text-centered lightbox-instructions top-padding">
                   (click or tap to enlarge thumbnails)
                 </h5>
               </div>
               <div className="column is-7">
-                <table className="table">
+                <table className="table is-fullwidth">
                   <tbody>
                     <tr>
                       <th>Published in</th>
@@ -161,11 +159,13 @@ export class PatternItemTemplate extends React.Component {
   }
 }
 
-PatternItemTemplate.propTypes = {
-  content: PropTypes.string.isRequired,
+PatternItemLayout.propTypes = {
+  content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   frontmatter: PropTypes.object,
+  firstImage: PropTypes.object,
   images: PropTypes.array,
+  slicedImages: PropTypes.array,
   title: PropTypes.string,
   helmet: PropTypes.object
 }
@@ -173,6 +173,7 @@ PatternItemTemplate.propTypes = {
 const PatternItem = ({ data }) => {
   const { markdownRemark: post } = data
   const photos = post.frontmatter.pictures
+  const firstImage = photos[0]
 
   const lightboxSet = photos.map(photo => ({
     src: photo.patternPhoto.photo.childImageSharp.fluid.src,
@@ -183,15 +184,19 @@ const PatternItem = ({ data }) => {
     caption: photo.patternPhoto.altText,
     alt: photo.patternPhoto.altText
   }))
+  // This variable passes image array minus first image to gallery component
+  const slicedImages = lightboxSet.slice(1)
 
   return (
     <Layout>
-      <PatternItemTemplate
+      <PatternItemLayout
         content={post.html}
         contentComponent={HTMLContent}
         frontmatter={post.frontmatter}
         helmet={<Helmet title={`${post.frontmatter.title} | ${data.site.siteMetadata.title}`} />}
+        firstImage={firstImage}
         images={lightboxSet}
+        slicedImages={slicedImages}
         title={post.frontmatter.title}
       />
     </Layout>
