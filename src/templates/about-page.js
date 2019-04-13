@@ -31,7 +31,7 @@ export const AboutPageTemplate = ({ title, content, contentComponent, image, hel
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  content: PropTypes.node,
   contentComponent: PropTypes.func,
   helmet: PropTypes.object
 }

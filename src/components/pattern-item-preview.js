@@ -1,11 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 import Content, { HTMLContent } from '../components/Content'
 
 export const PatternItemTemplate = ({
   content,
-  frontmatter
+  gauge,
+  itemType,
+  needles,
+  originalPub,
+  published,
+  sizes,
+  title,
+  yarn,
+  yarnWeight
 }) => {
   const PostContent = HTMLContent || Content
 
@@ -14,41 +21,41 @@ export const PatternItemTemplate = ({
       <div className="columns is-centered">
         <div className="column is-10">
           <h1 className="has-text-weight-bold is-size-2 title-padding">
-            {frontmatter.title}
+            {title}
           </h1>
           <table className="table is-fullwidth">
             <tbody>
               <tr>
                 <th>Published in</th>
-                <td>{frontmatter.originalPub}</td>
+                <td>{originalPub}</td>
               </tr>
               <tr>
                 <th>Category</th>
-                <td>{frontmatter.itemType}</td>
+                <td>{itemType}</td>
               </tr>
               <tr>
                 <th>Published</th>
-                <td>{frontmatter.published}</td>
+                <td>{published}</td>
               </tr>
               <tr>
                 <th>Yarn(s)</th>
-                <td>{frontmatter.yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (frontmatter.yarn.length - 1) && ', '}</span> ))}</td>
+                <td>{yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (yarn.length - 1) && ', '}</span> ))}</td>
               </tr>
               <tr>
                 <th>Yarn Weight</th>
-                <td>{frontmatter.yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (frontmatter.yarnWeight.length - 1) && ', '}</span> ))}</td>
+                <td>{yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (yarnWeight.length - 1) && ', '}</span> ))}</td>
               </tr>
               <tr>
                 <th>Gauge</th>
-                <td>{frontmatter.gauge}</td>
+                <td>{gauge}</td>
               </tr>
               <tr>
                 <th>Needles</th>
-                <td>{frontmatter.needles}</td>
+                <td>{needles}</td>
               </tr>
               <tr>
                 <th>Sizes</th>
-                <td>{frontmatter.sizes}</td>
+                <td>{sizes}</td>
               </tr>
             </tbody>
           </table>
@@ -60,32 +67,14 @@ export const PatternItemTemplate = ({
 }
 
 PatternItemTemplate.propTypes = {
-  content: PropTypes.node.isRequired,
-  contentComponent: PropTypes.func,
-  frontmatter: PropTypes.object,
+  content: PropTypes.node,
+  gauge: PropTypes.string,
+  itemType: PropTypes.string,
+  needles: PropTypes.string,
+  originalPub: PropTypes.string,
+  published: PropTypes.number,
+  sizes: PropTypes.string,
+  title: PropTypes.string,
+  yarn: PropTypes.array,
+  yarnWeight: PropTypes.array
 }
-
-export const pattPreQuery = graphql`
-  query PattPreviewByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      id
-      html
-      frontmatter {
-        published(formatString: "MMMM YYYY")
-        title
-        originalPub
-        itemType
-        yarn
-        yarnWeight
-        gauge
-        needles
-        sizes
-        ravelryLink
-        patternSource {
-          link
-          price
-        }
-      }
-    }
-  }
-`

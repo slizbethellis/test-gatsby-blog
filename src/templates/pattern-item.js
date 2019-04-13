@@ -160,7 +160,7 @@ export class PatternItemLayout extends React.Component {
 }
 
 PatternItemLayout.propTypes = {
-  content: PropTypes.node.isRequired,
+  content: PropTypes.node,
   contentComponent: PropTypes.func,
   frontmatter: PropTypes.object,
   firstImage: PropTypes.object,

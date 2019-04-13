@@ -4,13 +4,19 @@ import { PatternItemTemplate } from '../../components/pattern-item-preview'
 
 const PattItemPreview = ({ entry, widgetFor }) => {
   const data = entry.get('data').toJS()
-  const { content, contentComponent, frontmatter, title } = data
+  const { content, gauge, itemType, needles, originalPub, published, sizes, title, yarn, yarnWeight } = data
 
   return <PatternItemTemplate
     content={content}
-    contentComponent={contentComponent}
-    frontmatter={frontmatter}
+    gauge={gauge}
+    itemType={itemType}
+    needles={needles}
+    originalPub={originalPub}
+    published={published}
+    sizes={sizes}
     title={title}
+    yarn={yarn}
+    yarnWeight={yarnWeight}
   />
 }
 
