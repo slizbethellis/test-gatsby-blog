@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { PatternItemTemplate } from '../../components/pattern-item-preview'
 
 const PattItemPreview = ({ entry, widgetFor }) => {
@@ -12,7 +13,7 @@ const PattItemPreview = ({ entry, widgetFor }) => {
     itemType={itemType}
     needles={needles}
     originalPub={originalPub}
-    published={published}
+    published={moment(published).format("MMMM YYYY")}
     sizes={sizes}
     title={title}
     yarn={yarn}
