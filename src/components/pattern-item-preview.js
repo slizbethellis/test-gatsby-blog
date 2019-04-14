@@ -72,7 +72,7 @@ PatternItemTemplate.propTypes = {
   itemType: PropTypes.string,
   needles: PropTypes.string,
   originalPub: PropTypes.string,
-  published: PropTypes.number,
+  published: PropTypes.string,
   sizes: PropTypes.string,
   title: PropTypes.string,
   yarn: PropTypes.array,
