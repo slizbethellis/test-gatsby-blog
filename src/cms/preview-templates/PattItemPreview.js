@@ -4,10 +4,8 @@ import moment from 'moment'
 import { PatternItemTemplate } from '../../components/pattern-item-preview'
 
 const PattItemPreview = ({ entry, widgetFor }) => {
-  const body = widgetFor('body')
   const data = entry.get('data').toJS()
-  console.log(body)
-  const { gauge, itemType, needles, originalPub, published, sizes, title, yarn, yarnWeight } = data
+  const { body, gauge, itemType, needles, originalPub, published, sizes, title, yarn, yarnWeight } = data
 
   return <PatternItemTemplate
     content={body}
