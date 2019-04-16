@@ -45,8 +45,14 @@ export const pageQuery = graphql`
       relativePath: { regex: "/alfareria.jpg/" }
     ) {
       childImageSharp {
-        fluid (maxWidth: 2560) {
-          ...GatsbyImageSharpFluid
+        fluid (maxWidth: 1440
+          traceSVG: {
+            color: "#bdbf09"
+            turnPolicy: TURNPOLICY_MINORITY
+            blackOnWhite: true
+          }
+        ) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
