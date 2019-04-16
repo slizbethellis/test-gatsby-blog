@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 import Content, { HTMLContent } from '../components/Content'
 
 export const PatternItemTemplate = ({
-  data,
   content,
   gauge,
   itemType,
@@ -17,7 +15,6 @@ export const PatternItemTemplate = ({
   yarnWeight
 }) => {
   const PostContent = HTMLContent || Content
-  const { markdownRemark: post } = data
 
   return (
     <section className="section">
@@ -62,7 +59,7 @@ export const PatternItemTemplate = ({
               </tr>
             </tbody>
           </table>
-          <PostContent className="content" content={post.html || content} />
+          <PostContent className="content" content={content} />
         </div>
       </div>
     </section>
@@ -81,11 +78,3 @@ PatternItemTemplate.propTypes = {
   yarn: PropTypes.array,
   yarnWeight: PropTypes.array
 }
-
-export const pattPreviewQuery = graphql`
-  query PattPreviewByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-    }
-  }
-`
