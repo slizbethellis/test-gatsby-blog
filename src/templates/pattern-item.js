@@ -92,7 +92,7 @@ export class PatternItemLayout extends React.Component {
                     alt={this.props.firstImage.patternPhoto.altText}
                   />
                 </button>
-                <Gallery photos={this.props.slicedImages} direction={'column'} columns={4} ImageComponent={ImageButton} onClick={this.openLightbox} />
+                {this.props.slicedImages.length > 0 && <Gallery photos={this.props.slicedImages} direction={'column'} columns={4} ImageComponent={ImageButton} onClick={this.openLightbox} />}
                 <h5 className="has-text-centered lightbox-instructions top-padding">
                   (click or tap to enlarge thumbnails)
                 </h5>
