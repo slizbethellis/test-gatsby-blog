@@ -45,6 +45,7 @@ module.exports = {
               {
                 allMarkdownRemark(
                   sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
                 ) {
                   edges {
                     node {
@@ -61,12 +62,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Feed for Haloroundmyhead Knits",
-            // optional configuration to insert feed reference in pages:
-            // if `string` is used, it will be used to create RegExp and then test if pathname of
-            // current page satisfied this regular expression;
-            // if not provided or `undefined`, all pages will have feed reference inserted
-            match: "^/blog/",
+            title: "Haloroundmyhead Knits",
           },
         ],
       },
