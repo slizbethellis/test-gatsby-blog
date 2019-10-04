@@ -10,7 +10,7 @@ export default class IndexPage extends React.Component {
     const { data } = this.props
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
         <Img
           fluid={data.fluidImages.childImageSharp.fluid}
@@ -18,10 +18,10 @@ export default class IndexPage extends React.Component {
           alt="Alfarería shawl in front of Battle Hall at UT-Austin" />
         <p className="display-box has-text-centered">
           <span className="is-size-5 display-font">
-            <a href="http://knitty.com/ISSUEdf18/index.php" className="hero-link" target="_blank" rel='noopener noreferrer'>Alfarería</a>
+            <a href="https://www.ravelry.com/patterns/library/feuille-morte" className="hero-link" target="_blank" rel='noopener noreferrer'>Feuille-morte</a>
           </span>
           <span> &bull; </span>
-          <span className="is-size-6">featured in <i>Knitty</i>, Deep Fall 2018</span>
+          <span className="is-size-6">featured in <a href="http://knitty.com/ISSUEdf19/PATTfeuillemorte/PATTfeuillemorte.php" className="hero-link" target="_blank" rel='noopener noreferrer'><i>Knitty</i>, Deep Fall 2019</a></span>
         </p>
       </Layout>
     )
@@ -42,17 +42,11 @@ export const pageQuery = graphql`
       }
     },
     fluidImages: file(
-      relativePath: { regex: "/alfareria.jpg/" }
+      relativePath: { regex: "/feuille-morte.jpg/" }
     ) {
       childImageSharp {
-        fluid (maxWidth: 1440
-          traceSVG: {
-            color: "#bdbf09"
-            turnPolicy: TURNPOLICY_MINORITY
-            blackOnWhite: true
-          }
-        ) {
-          ...GatsbyImageSharpFluid_tracedSVG
+        fluid (maxWidth: 1440) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

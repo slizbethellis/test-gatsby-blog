@@ -11,7 +11,7 @@ export default class PatternPage extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
     
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Helmet title={`Patterns | ${data.site.siteMetadata.title}`} />
         <section className="section">
           <div className="columns is-centered">

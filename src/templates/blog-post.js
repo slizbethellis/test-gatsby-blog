@@ -54,11 +54,11 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.instanceOf(Helmet)
 }
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, props }) => {
   const { markdownRemark: post } = data
 
   return (
-    <Layout>
+    <Layout location={post.fields.slug}>
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
@@ -88,6 +88,9 @@ export const pageQuery = graphql`
     },
     markdownRemark(id: { eq: $id }) {
       id
+      fields {
+        slug
+      }
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

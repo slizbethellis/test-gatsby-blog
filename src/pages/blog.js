@@ -12,7 +12,7 @@ export default class BlogPage extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Helmet title={`Blog | ${data.site.siteMetadata.title}`} />
         <section className="section">
           <div className="columns is-multiline is-centered">
@@ -37,7 +37,7 @@ export default class BlogPage extends React.Component {
                         </p>
                         <p>
                           <br />
-                          {post.excerpt}
+                          <span>{post.excerpt}</span>
                           <br />
                           <br />
                           <Link className="is-small read-more" to={post.fields.slug}>

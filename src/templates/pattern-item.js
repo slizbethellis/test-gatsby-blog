@@ -1,165 +1,160 @@
-import React from 'react'
+// @jsx glam
+// eslint-disable-next-line
+import glam from 'glam'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import Lightbox from 'react-images'
+import Carousel, { Modal, ModalGateway } from 'react-images'
 import Gallery from 'react-photo-gallery'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
-import ImageButton from '../components/ImageButton'
 
-export class PatternItemLayout extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-			lightboxIsOpen: false,
-			currentImage: 0,
-    };
-    this.handleClickImage = this.handleClickImage.bind(this)
-    this.openLightbox = this.openLightbox.bind(this)
-  }
+export const PatternItemTemplate = ({
+  content,
+  contentComponent,
+  frontmatter,
+  firstImage,
+  images,
+  slicedImages,
+  title,
+  helmet,
+}) => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const PostContent = contentComponent || Content
+  const details = frontmatter
 
-  openLightbox = (e, obj) => {
-    e.preventDefault()
-		this.setState({
-			currentImage: obj.index,
-			lightboxIsOpen: true,
-		})
-  }
+  const openLightbox = useCallback((event, { photo, index }) => {
+    setCurrentImage(index+1);
+    setViewerIsOpen(true);
+  }, []);
 
-  closeLightbox = () => {
-		this.setState({
-			currentImage: 0,
-			lightboxIsOpen: false,
-		})
-  }
-  
-  gotoPrevious = () => {
-		this.setState({
-			currentImage: this.state.currentImage - 1,
-		})
-  }
-  
-	gotoNext = () => {
-		this.setState({
-			currentImage: this.state.currentImage + 1,
-		})
-  }
-  
-  gotoImage = (index) => {
-		this.setState({
-			currentImage: index,
-		});
-  }
-  
-	handleClickImage = () => {
-		if (this.state.currentImage === this.props.images.length - 1) return;
+  const closeLightbox = () => {
+    setCurrentImage(0);
+    setViewerIsOpen(false);
+  };
 
-		this.gotoNext();
-	}
-  
-  render () {
-    const PostContent = this.props.contentComponent || Content
-    const details = this.props.frontmatter
-
-    return (
-      <section className="section">
-        {this.props.helmet || ''}
-        <Lightbox
-          currentImage={this.state.currentImage}
-          images={this.props.images}
-          isOpen={this.state.lightboxIsOpen}
-          onClickImage={this.handleClickImage}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
-          onClickThumbnail={this.gotoImage}
-          onClose={this.closeLightbox}
-          showThumbnails={true}
-        />
-        <div className="columns is-centered">
-          <div className="column is-10">
-            <h1 className="is-size-2 has-text-weight-bold">
-              {this.props.title}
-            </h1>
-            <div className="columns">
-              <div className="column is-5">
-                <button className="button-photo main-photo"
-                  onClick={e => this.openLightbox(e, {index: 0})} >
-                  <Img
-                    fluid={this.props.firstImage.patternPhoto.photo.childImageSharp.fluid}
-                    alt={this.props.firstImage.patternPhoto.altText}
-                  />
-                </button>
-                {this.props.slicedImages.length > 0 && <Gallery photos={this.props.slicedImages} direction={'column'} columns={4} ImageComponent={ImageButton} onClick={this.openLightbox} />}
-                <h5 className="has-text-centered lightbox-instructions top-padding">
-                  (click or tap to enlarge thumbnails)
-                </h5>
+  return (
+    <section className="section">
+      {helmet || ''}
+      <ModalGateway>
+        {viewerIsOpen ? (
+          <Modal onClose={closeLightbox}
+            allowFullscreen={true}
+            closeOnBackdropClick={true}
+            className="is-overlay"
+            styles={{
+              blanket: base => ({
+                ...base,
+                zIndex: 40,
+              }),
+              positioner: base => ({
+                ...base,
+                zIndex: 40,
+              }),
+            }}
+          >
+            <Carousel
+              currentIndex={currentImage}
+              views={images}
+              styles={{
+              footerCaption: base => ({
+                ...base,
+                fontFamily: 'Montserrat',
+              }),
+              footerCount: base => ({
+                ...base,
+                fontFamily: 'Montserrat',
+              }),
+            }}
+            />
+          </Modal>
+        ) : null}
+      </ModalGateway>
+      <div className="columns is-centered">
+        <div className="column is-10">
+          <h1 className="is-size-2 has-text-weight-bold">
+            {title}
+          </h1>
+          <div className="columns">
+            <div className="column is-5">
+              <button className="button-photo main-photo"
+                onClick={e => openLightbox(e, {index: -1})} >
+                <Img
+                  fluid={firstImage.patternPhoto.photo.childImageSharp.fluid}
+                  alt={firstImage.patternPhoto.altText}
+                />
+              </button>
+              {slicedImages.length > 0 && <Gallery photos={slicedImages} direction={'column'} columns={4} onClick={openLightbox} />}
+              <h5 className="has-text-centered lightbox-instructions top-padding">
+                (click or tap to enlarge thumbnails)
+              </h5>
+            </div>
+            <div className="column is-7">
+              <table className="table is-fullwidth">
+                <tbody>
+                  <tr>
+                    <th>Published in</th>
+                    <td>{details.originalPub}</td>
+                  </tr>
+                  <tr>
+                    <th>Category</th>
+                    <td>{details.itemType}</td>
+                  </tr>
+                  <tr>
+                    <th>Published</th>
+                    <td>{details.published}</td>
+                  </tr>
+                  <tr>
+                    <th>Yarn(s)</th>
+                    <td>{details.yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}</td>
+                  </tr>
+                  <tr>
+                    <th>Yarn Weight</th>
+                    <td>{details.yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarnWeight.length - 1) && ', '}</span> ))}</td>
+                  </tr>
+                  <tr>
+                    <th>Gauge</th>
+                    <td>{details.gauge}</td>
+                  </tr>
+                  <tr>
+                    <th>Needles</th>
+                    <td>{details.needles}</td>
+                  </tr>
+                  <tr>
+                    <th>Sizes</th>
+                    <td>{details.sizes}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="buttons is-centered">
+                <a className="button is-rounded is-primary"
+                href={details.patternSource.link}
+                target="_blank"
+                rel="noopener noreferrer">
+                  Pattern ({details.patternSource.price})
+                </a>
+                <a className="button is-rounded is-success"
+                href={details.ravelryLink}
+                target="_blank"
+                rel="noopener noreferrer">
+                  <FontAwesomeIcon className="pattern-btn" icon={['fab', 'ravelry']} />
+                  Ravelry
+                </a>
               </div>
-              <div className="column is-7">
-                <table className="table is-fullwidth">
-                  <tbody>
-                    <tr>
-                      <th>Published in</th>
-                      <td>{details.originalPub}</td>
-                    </tr>
-                    <tr>
-                      <th>Category</th>
-                      <td>{details.itemType}</td>
-                    </tr>
-                    <tr>
-                      <th>Published</th>
-                      <td>{details.published}</td>
-                    </tr>
-                    <tr>
-                      <th>Yarn(s)</th>
-                      <td>{details.yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}</td>
-                    </tr>
-                    <tr>
-                      <th>Yarn Weight</th>
-                      <td>{details.yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarnWeight.length - 1) && ', '}</span> ))}</td>
-                    </tr>
-                    <tr>
-                      <th>Gauge</th>
-                      <td>{details.gauge}</td>
-                    </tr>
-                    <tr>
-                      <th>Needles</th>
-                      <td>{details.needles}</td>
-                    </tr>
-                    <tr>
-                      <th>Sizes</th>
-                      <td>{details.sizes}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div className="buttons is-centered">
-                  <a className="button is-rounded is-primary"
-                  href={details.patternSource.link}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                    Pattern ({details.patternSource.price})
-                  </a>
-                  <a className="button is-rounded is-success"
-                  href={details.ravelryLink}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                    <FontAwesomeIcon className="pattern-btn" icon={['fab', 'ravelry']} />
-                    Ravelry
-                  </a>
-                </div>
-                <PostContent className="content" content={this.props.content} />
-              </div>
+              <PostContent className="content" content={content} />
             </div>
           </div>
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )
 }
 
-PatternItemLayout.propTypes = {
+PatternItemTemplate.propTypes = {
   content: PropTypes.node,
   contentComponent: PropTypes.func,
   frontmatter: PropTypes.object,
@@ -188,8 +183,8 @@ const PatternItem = ({ data }) => {
   const slicedImages = lightboxSet.slice(1)
 
   return (
-    <Layout>
-      <PatternItemLayout
+    <Layout location={post.fields.slug}>
+      <PatternItemTemplate
         content={post.html}
         contentComponent={HTMLContent}
         frontmatter={post.frontmatter}
@@ -220,6 +215,9 @@ export const pattQuery = graphql`
     },
     markdownRemark(id: { eq: $id }) {
       id
+      fields {
+        slug
+      }
       html
       frontmatter {
         published(formatString: "MMMM YYYY")
