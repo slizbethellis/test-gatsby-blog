@@ -20,7 +20,7 @@ export const PatternItemTemplate = ({
   images,
   slicedImages,
   title,
-  helmet,
+  helmet
 }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
@@ -137,8 +137,9 @@ export const PatternItemTemplate = ({
                 rel="noopener noreferrer">
                   Pattern ({details.patternSource.price})
                 </a>
+                {/* Ravelry's redesign has some major accessibility issues, and the string added to the following href is a temporary workaround to link to the old look */}
                 <a className="button is-rounded is-success"
-                href={details.ravelryLink}
+                href={details.ravelryLink + "?newlook=0"}
                 target="_blank"
                 rel="noopener noreferrer">
                   <FontAwesomeIcon className="pattern-btn" icon={['fab', 'ravelry']} />

@@ -11,7 +11,7 @@ gauge: 8.5 sts/18 rows = 4 inches/10cm in garter stitch
 needles: US 13 (9.0 mm)
 sizes: one size
 patternSource:
-  link: 'https://www.ravelry.com/patterns/library/carreau-hat'
+  link: 'https://www.ravelry.com/dls/sarah-ellis-designs/453395?filename=Carreau__hat__rev_1.1.pdf'
   price: free
 ravelryLink: 'https://www.ravelry.com/patterns/library/carreau-hat'
 itemType: hat
