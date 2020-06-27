@@ -15,7 +15,7 @@ export default class IndexPage extends React.Component {
         <Img
           fluid={data.fluidImages.childImageSharp.fluid}
           style={{ width: `100vw`, height: `100vh`, marginTop: `-3.25rem` }}
-          alt="Alfarería shawl in front of Battle Hall at UT-Austin" />
+          alt="woman wearing dark red crescent-shaped shawl standing in front of railing at Austin Public Library" />
         <p className="display-box has-text-centered">
           <span className="is-size-5 display-font">
             <a href="https://www.ravelry.com/patterns/library/feuille-morte" className="hero-link" target="_blank" rel='noopener noreferrer'>Feuille-morte</a>
