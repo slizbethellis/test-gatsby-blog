@@ -17,44 +17,53 @@ patternSource:
 ravelryLink: 'https://www.ravelry.com/patterns/library/rosita-5'
 itemType: shawl/shawlette
 image: /img/rosita-shawl-detail-front.jpg
+altText: closeup of larger Rosita shawl to illustrate twisted stitch closed lace texture, also features copper shawl pin with large hand-blown glass beads
 pictures:
   - patternPhoto:
-      altText: Rosita shawlette - front view
+      altText: Rosita shawlette wrapped around shoulders kerchief style
+      caption: Rosita shawlette - front view
       height: 4
       photo: /img/rosita-shawlette-front.jpg
       width: 3
   - patternPhoto:
-      altText: Rosita shawlette - detail
+      altText: closer view of Rosita shawlette wrapped around shoulders to detail the twisted stitch texture
+      caption: Rosita shawlette - detail
       height: 3
       photo: /img/rosita-shawlette-detail.jpg
       width: 4
   - patternPhoto:
-      altText: Rosita shawlette - front view 2
+      altText: another angle of Rosita shawlette wrapped around shoulders kerchief style, with model sitting on edge of rock wall with feet positioned to show off sneakers
+      caption: Rosita shawlette - front view 2
       height: 4
       photo: /img/rosita-shawlette-front-2.jpg
       width: 3
   - patternPhoto:
-      altText: Rosita shawlette - wingspan
+      altText: model holding Rosita shawlette suspended between her hands to demonstrate flat shape 
+      caption: Rosita shawlette - wingspan
       height: 3
       photo: /img/rosita-shawlette-wingspan.jpg
       width: 4
   - patternPhoto:
-      altText: Rosita shawl - front view
+      altText: larger Rosita shawl wrapped around model's shoulders and held in place with beaded shawl pin
+      caption: Rosita shawl - front view
       height: 4
       photo: /img/rosita-shawl-front.jpg
       width: 3
   - patternPhoto:
-      altText: Rosita shawl - front detail
+      altText: closeup of larger Rosita shawl to illustrate twisted stitch closed lace texture, also features copper shawl pin with large hand-blown glass beads
+      caption: Rosita shawl - front detail
       height: 3
       photo: /img/rosita-shawl-detail-front.jpg
       width: 4
   - patternPhoto:
-      altText: Rosita shawl - back detail
+      altText: detail of larger Rosita shawl wrapped around shoulders to show off the wavy stripes, with model's back facing camera
+      caption: Rosita shawl - back detail
       height: 3
       photo: /img/rosita-shawl-detail-back.jpg
       width: 4
   - patternPhoto:
-      altText: Rosita shawl - wingspan
+      altText: Rosita shawl pressed against rustic wooden fence to illustrate flat shape
+      caption: Rosita shawl - wingspan
       height: 3
       photo: /img/rosita-shawl-wingspan.jpg
       width: 4

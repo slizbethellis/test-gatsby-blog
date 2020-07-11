@@ -20,39 +20,47 @@ patternSource:
 ravelryLink: 'https://www.ravelry.com/patterns/library/alfareria'
 itemType: shawl/shawlette
 image: /img/alfareria-shawl-detail.jpg
+altText: detail of mosaic stitches on large Alfarería shawl
 pictures:
   - patternPhoto:
-      altText: Alfarería shawl - back view
+      altText: large Alfarería shawl draped over shoulders, with model's back towards camera
+      caption: Alfarería shawl - back view
       photo: /img/alfareria-shawl-back.jpg
       width: 3
       height: 4
   - patternPhoto:
-      altText: Alfarería shawl - detail view
+      altText: detail of mosaic stitches on large Alfarería shawl
+      caption: Alfarería shawl - detail view
       photo: /img/alfareria-shawl-detail.jpg
       width: 3
       height: 4
   - patternPhoto:
-      altText: Alfarería shawl - wingspan
+      altText: large Alfarería shawl suspended between finial and model's hand, to show flat shape
+      caption: Alfarería shawl - wingspan
       photo: /img/alfareria-shawl-wingspan.jpg
       width: 4
       height: 3
   - patternPhoto:
-      altText: Alfarería shawl - front view
+      altText: large Alfarería shawl wrapped around woman's shoulders
+      caption: Alfarería shawl - front view
       photo: /img/alfareria-shawl-front.jpg
       width: 3
       height: 4
   - patternPhoto:
-      altText: Alfarería shawlette - front view
+      altText: Alfarería shawlette tied like kerchief around model's neck and shoulders
+      caption: Alfarería shawlette - front view
       photo: /img/alfareria-shawlette-front.jpg
       width: 4
       height: 3
   - patternPhoto:
-      altText: Alfarería shawlette - detail view
+      altText: closeup of Alfarería shawlette wrapped around shoulders
+      caption: Alfarería shawlette - detail view
       photo: /img/alfareria-shawlette-detail.jpg
       width: 4
       height: 3
   - patternPhoto:
-      altText: Alfarería shawlette - wingspan
+      altText: woman holding Alfarería shawlette between her hands to demonstrate flat shape
+      caption: Alfarería shawlette - wingspan
       photo: /img/alfareria-shawlette-wingspan.jpg
       width: 4
       height: 3

@@ -130,6 +130,11 @@ export const PatternItemTemplate = ({
                   </tr>
                 </tbody>
               </table>
+              <article class="message is-primary">
+                <div class="message-body">
+                  The Ravelry button links to the classic look version of the pattern page, but this workaround won't help if you're not logged in. It pains me to have to say this, but if you have any medical conditions triggered by visual stimuli (i.e. epilepsy and migraine) and don't know if the Ravelry redesign causes problems for you, DO NOT click any Ravelry links. The pattern button next to it is still safe.
+                </div>
+              </article>
               <div className="buttons is-centered">
                 <a className="button is-rounded is-primary"
                 href={details.patternSource.link}
@@ -177,7 +182,7 @@ const PatternItem = ({ data }) => {
     sizes: photo.patternPhoto.photo.childImageSharp.fluid.sizes,
     width: photo.patternPhoto.width,
     height: photo.patternPhoto.height,
-    caption: photo.patternPhoto.altText,
+    caption: photo.patternPhoto.caption,
     alt: photo.patternPhoto.altText
   }))
   // This variable passes image array minus first image to gallery component
@@ -247,6 +252,7 @@ export const pattQuery = graphql`
               }
             }
             altText
+            caption
             width
             height
           }

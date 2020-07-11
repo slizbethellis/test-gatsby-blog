@@ -6,6 +6,7 @@ description: >-
   The Coffee Taster’s Flavor Wheel, the official resource used by coffee
   tasters, has been revised for the first time this year.
 image: /img/flavor_wheel.jpg
+altText: many baristas involved in various kinds of coffee preparation, with many different cups of coffee on countertop 
 tags:
   - flavor
   - tasting

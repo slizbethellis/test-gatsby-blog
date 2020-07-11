@@ -28,7 +28,7 @@ export default class PatternPage extends React.Component {
                   <div className="card">
                     <Link to={post.fields.slug}>
                       <div className="card-image">
-                        <Img fluid={post.frontmatter.image.childImageSharp.fluid} alt={post.frontmatter.title} />
+                        <Img fluid={post.frontmatter.image.childImageSharp.fluid} alt={post.frontmatter.altText} />
                       </div>
                     </Link>
                     <div className="card-content has-text-centered">
@@ -84,6 +84,7 @@ export const PageQuery = graphql`
                 }
               }
             }
+            altText
           }
         }
       }

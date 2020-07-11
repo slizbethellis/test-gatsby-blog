@@ -19,39 +19,47 @@ patternSource:
 ravelryLink: 'https://www.ravelry.com/patterns/library/electricity-3'
 itemType: hat
 image: /img/electricity-orange-side.jpg
+altText: side view of orange Electricity hat detailing the drape and subtle stitch definition 
 pictures:
   - patternPhoto:
-      altText: Electricity hat (orange version) - back view
+      altText: orange Electricity viewed from back with pompom slung to back, also showcases the model's mid-back length coppery red hair
+      caption: Electricity hat (orange version) - back view
       height: 4
       photo: /img/electricity-orange-back.jpg
       width: 3
   - patternPhoto:
-      altText: Electricity hat (orange version) - front view
+      altText: orange Electricity hat shown from front, with top of hat twisted to sling pompom to front
+      caption: Electricity hat (orange version) - front view
       height: 3
       photo: /img/electricity-orange-front.jpg
       width: 4
   - patternPhoto:
-      altText: Electricity hat (orange version) - side view
+      altText: side view of orange Electricity hat detailing the drape and subtle stitch definition
+      caption: Electricity hat (orange version) - side view
       height: 3
       photo: /img/electricity-orange-side.jpg
       width: 4
   - patternPhoto:
-      altText: Electricity hat (rainbow version) - front view
+      altText: rainbow Electricity hat shown from front, with pompom slung to back
+      caption: Electricity hat (rainbow version) - front view
       height: 3
       photo: /img/electricity-rainbow-front.jpg
       width: 4
   - patternPhoto:
-      altText: Electricity hat (rainbow version) - side view
+      altText: side view of rainbow Electricity hat to show how hat drapes and detail of the marled colors used
+      caption: Electricity hat (rainbow version) - side view
       height: 3
       photo: /img/electricity-rainbow-side.jpg
       width: 4
   - patternPhoto:
-      altText: Electricity hat (rainbow version) - back view
+      altText: rainbow Electricity hat shown from back, showing how the pompom hangs in back
+      caption: Electricity hat (rainbow version) - back view
       height: 3
       photo: /img/electricity-rainbow-back.jpg
       width: 4
   - patternPhoto:
-      altText: Electricity hats - flat lay
+      altText: flat lay of both Electricity hats on gray wood table; orange hat on left, rainbow hat on right
+      caption: Electricity hats - flat lay
       height: 3
       photo: /img/electricity-hats-flat.jpg
       width: 4

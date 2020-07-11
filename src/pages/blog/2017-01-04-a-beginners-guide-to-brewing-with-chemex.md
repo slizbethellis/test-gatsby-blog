@@ -7,6 +7,7 @@ description: >-
   ordeal, but once you get used to the process, it becomes a soothing ritual
   that's worth the effort every time.
 image: /img/chemex.jpg
+altText: Chemex coffee maker on sparse countertop with gooseneck kettle on gas range in background
 tags:
   - brewing
   - chemex

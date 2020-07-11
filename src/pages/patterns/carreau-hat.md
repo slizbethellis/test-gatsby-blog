@@ -16,39 +16,47 @@ patternSource:
 ravelryLink: 'https://www.ravelry.com/patterns/library/carreau-hat'
 itemType: hat
 image: /img/carreau-hat-berroco-back-sq.jpg
+altText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
 pictures:
   - patternPhoto:
-      altText: Carreau hat and cowl (Berroco version) - set
+      altText: woman wearing the matching Carreau hat and cowl set
+      caption: Carreau hat and cowl (Berroco version) - set
       height: 4
       photo: /img/carreau-set.jpg
       width: 3
   - patternPhoto:
-      altText: Carreau hat (Berroco version) - side
+      altText: side angle showing the lighter texture of the wool version of Carreau hat
+      caption: Carreau hat (Berroco version) - side
       height: 3
       photo: /img/carreau-hat-berroco-side.jpg
       width: 4
   - patternPhoto:
-      altText: Carreau hat (Berroco version) - crown detail
+      altText: detail of wool Carreau hat's crown, with model reaching towards cat standing on fence
+      caption: Carreau hat (Berroco version) - crown detail
       height: 7
       photo: /img/carreau-hat-berroco-crown.jpg
       width: 8
   - patternPhoto:
-      altText: Carreau hat (Berroco version) - back
+      altText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
+      caption: Carreau hat (Berroco version) - back
       height: 3
       photo: /img/carreau-hat-berroco-back.jpg
       width: 4
   - patternPhoto:
-      altText: Carreau hat (alpaca version) - side
+      altText: detail showing the sharper stitch definition and heavier drape of alpaca Carreau hat
+      caption: Carreau hat (alpaca version) - side
       height: 3
       photo: /img/carreau-hat-alpaca-side.jpg
       width: 4
   - patternPhoto:
-      altText: Carreau hat (alpaca version) - back
+      altText: crown of alpaca Carreau hat showing the denser texture
+      caption: Carreau hat (alpaca version) - back
       height: 3
       photo: /img/carreau-hat-alpaca-back.jpg
-      width: 3
+      width: 4
   - patternPhoto:
-      altText: Carreau hats - flat lay
+      altText: flat lay of both Carreau hats; lighter, loftier wool version on left; thicker alpaca version on right
+      caption: Carreau hats - flat lay
       height: 3
       photo: /img/carreau-hats-flat.jpg
       width: 4

@@ -47,7 +47,7 @@ export default class BlogPage extends React.Component {
                       </div>
                       <div className="column is-narrow is-1-mobile">
                         {post.frontmatter.image &&
-                          <Img fixed={post.frontmatter.image.childImageSharp.fixed} alt={post.frontmatter.title} />
+                          <Img fixed={post.frontmatter.image.childImageSharp.fixed} alt={post.frontmatter.altText} />
                         }
                       </div>
                     </div>
@@ -102,6 +102,7 @@ export const pageQuery = graphql`
                 }
               }
             }
+            altText
           }
         }
       }

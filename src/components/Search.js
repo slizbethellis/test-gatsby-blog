@@ -21,7 +21,8 @@ export default class Search extends Component {
             <p className="control has-icons-left has-icons-right">
               <input
                 className="input input-search is-primary is-rounded"
-                type="text"
+                type="search"
+                aria-label="Search"
                 placeholder="Search"
                 value={this.state.query}
                 onChange={this.search}
@@ -43,7 +44,7 @@ export default class Search extends Component {
                   {this.state.results.map(page => (
                     <div key={page.id}>
                       <div className="dropdown-item">
-                        <Link className="search-link" to={"/" + page.path}>{page.title}</Link>
+                        <Link className="search-link" to={page.path}>{page.title}</Link>
                         {": " + page.tags.join(`, `)}
                       </div>
                       <hr className="dropdown-divider hr-custom" />

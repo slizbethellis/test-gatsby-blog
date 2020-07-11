@@ -16,9 +16,11 @@ patternSource:
 ravelryLink: 'https://www.ravelry.com/patterns/library/red-chevron-scarf'
 itemType: scarf
 image: /img/red-chevron-scarf.jpg
+altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
 pictures:
   - patternPhoto:
-      altText: Red Chevron Scarf
+      altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
+      caption: Red Chevron Scarf
       height: 3
       photo: /img/red-chevron-scarf.jpg
       width: 4
