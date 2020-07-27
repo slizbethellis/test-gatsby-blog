@@ -45,8 +45,8 @@ export const pageQuery = graphql`
       relativePath: { regex: "/feuille-morte.jpg/" }
     ) {
       childImageSharp {
-        fluid (maxWidth: 1440) {
-          ...GatsbyImageSharpFluid
+        fluid (maxWidth: 1440, quality: 70) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

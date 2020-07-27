@@ -6,12 +6,21 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        google: {
-          families: ['Cousine', 'Montserrat', 'Montserrat+Alternates:500,500i,600,600i,800,800i']
-        }
-      }
+        fonts: {
+          google: [
+            {
+              family: "Cousine",
+              variants: ["400"],
+            },
+            {
+              family: "Raleway",
+              variants: ["400", "400i", "500", "500i", "600", "600i", "800", "800i"],
+            },
+          ],
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -124,6 +133,7 @@ module.exports = {
               // base for generating different widths of each image.
               maxWidth: 930,
               backgroundColor: 'transparent', // required to display blurred image first
+              withWebp: 'true', // to serve images in WebP format where supported
             },
           }
         ],
