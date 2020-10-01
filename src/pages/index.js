@@ -14,7 +14,7 @@ export default class IndexPage extends React.Component {
         <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
         <Img
           fluid={data.fluidImages.childImageSharp.fluid}
-          style={{ width: `100vw`, height: `100vh`, marginTop: `-3.25rem` }}
+          style={{ width: `100vw`, height: `100vh` }}
           alt="woman wearing dark red crescent-shaped shawl standing in front of railing at Austin Public Library" />
         <p className="display-box has-text-centered">
           <span className="is-size-5 display-font">

@@ -15,8 +15,8 @@ module.exports = {
               variants: ["400"],
             },
             {
-              family: "Raleway",
-              variants: ["400", "400i", "500", "500i", "600", "600i", "800", "800i"],
+              family: "Source Sans Pro",
+              variants: ["300", "300i", "400", "400i", "600", "600i"],
             },
           ],
         },
