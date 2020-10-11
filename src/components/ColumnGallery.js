@@ -2,7 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 import { SRLWrapper } from "simple-react-lightbox"
 import Gallery from 'react-photo-gallery'
-import GalleryImage from '../components/GalleryImage'
+import GalleryImage from './GalleryImage'
 
 const imageRenderer = ({ index, left, top, key, photo }) => (
   <GalleryImage 

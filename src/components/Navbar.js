@@ -1,86 +1,129 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { navigate } from "gatsby"
+import {
+  Anchor,
+  Box,
+  DropButton,
+  Header,
+  Nav,
+  ResponsiveContext,
+  Text
+} from 'grommet'
+import { Menu as MenuIcon } from 'grommet-icons'
 
-import logo from '../img/haloroundmyhead-logo.svg'
+import Link from './Link'
+import SocialMedia from './SocialMedia'
 
-class Navbar extends React.Component {
-  state = {
-    isActive: false,
-  }
-
-  toggleNav = () => {
-    this.setState(prevState => ({
-      isActive: !prevState.isActive
-    }))
-  }
-
-  render() {
-    return (
-      <nav className="navbar is-fixed-top">
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item">
-            <figure className="image">
-              <img src={logo} alt="Haloroundmyhead Knits" style={{ width: '275px' }} />
-            </figure>
-          </Link>
-          <button aria-label="menu" aria-expanded="false" className={this.state.isActive ? 'button navbar-burger is-active' : 'button navbar-burger'} data-target="navbarMenu" onClick={this.toggleNav}>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </button>
-        </div>
-        <div id="navbarMenu" className={ this.state.isActive ? 'navbar-menu is-active' : 'navbar-menu'}>
-          <div className="navbar-start">
-            <Link className="navbar-item" to="/about">
-              About
-            </Link>
-            <Link className="navbar-item" to="/blog">
-              Blog
-            </Link>
-            <Link className="navbar-item" to="/patterns">
-              Patterns
-            </Link>
-          </div>
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="field is-grouped">
-                {/* Disabling Ravelry link at least temporarily
-                <a className="button is-text"
-                href="https://www.ravelry.com/people/haloroundmyhead"
-                target="_blank"
-                rel="noopener noreferrer">
-                  <FontAwesomeIcon icon={['fab', 'ravelry']} />
-                  <span className="is-sr-only">Ravelry</span>
-                </a> */}
-                <a className="button is-text"
-                href="https://www.instagram.com/haloroundmyhead/"
-                target="_blank"
-                rel="noopener noreferrer">
-                  <FontAwesomeIcon icon={['fab', 'instagram']} />
-                  <span className="is-sr-only">Instagram</span>
-                </a>
-                <a className="button is-text"
-                href="https://www.facebook.com/Haloroundmyhead-Knits-1814095122152544/"
-                target="_blank"
-                rel="noopener noreferrer">
-                  <FontAwesomeIcon icon={['fab', 'facebook']} />
-                  <span className="is-sr-only">Facebook</span>
-                </a>
-                <a className="button is-text"
-                href="https://twitter.com/haloroundmyhead"
-                target="_blank"
-                rel="noopener noreferrer">
-                  <FontAwesomeIcon icon={['fab', 'twitter']} />
-                  <span className="is-sr-only">Twitter</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    )
-  }
-}
+const Navbar = () => (
+  <Header
+    background="light-2"
+    pad="medium"
+    height="xsmall"
+    border={{
+      "color": "neutral-3",
+      "size": "small",
+      "side": "bottom"
+    }}
+    style={{
+      position: 'fixed',
+      zIndex: '10',
+      width: '100%',
+      top: '0'
+    }}
+  >
+    <Box direction="row" align="center" gap="small">
+      <Anchor
+        href="/"
+        label={<Text size="large">haloroundmyhead knits</Text>}
+      />
+    </Box>
+    {/* <ResponsiveContext.Consumer>
+      {size => (
+        <Box direction="row" align="center" gap="small">
+          <Anchor
+            href="/"
+            label={
+              size !== "xsmall" &&
+              size !== "small" && <Text size="large">haloroundmyhead knits</Text>
+            }
+            a11yTitle={
+              size === "xsmall" &&
+              size === "small" && "haloroundmyhead knits"
+            }
+          />
+        </Box>
+      )}
+    </ResponsiveContext.Consumer> */}
+    <ResponsiveContext.Consumer>
+      {responsive =>
+        responsive === 'small' ? (
+          <Nav>
+            <DropButton
+              a11yTitle="Navigation Menu"
+              dropProps={{ align: { top: 'bottom', right: 'right' } }}
+              icon={<MenuIcon color="brand" />}
+              dropContent={
+                <Box
+                  pad={{"top": "medium", "bottom": "none", "left": "medium", "right": "medium"}}
+                  gap="xsmall" justify="stretch">
+                  <Box
+                    hoverIndicator="light-3"
+                    pad="small"
+                    onClick={(ev) => {
+                      navigate("/about")
+                      ev.preventDefault()
+                    }}
+                  >
+                    About
+                  </Box>
+                  <Box
+                    hoverIndicator="light-3"
+                    pad="small"
+                    onClick={(ev) => {
+                      navigate("/blog")
+                      ev.preventDefault()
+                    }}
+                  >
+                    Blog
+                  </Box>
+                  <Box 
+                    hoverIndicator="light-3"
+                    pad="small"
+                    onClick={(ev) => {
+                      navigate("/patterns")
+                      ev.preventDefault()
+                    }}
+                  >
+                    Patterns
+                  </Box>
+                  <Box
+                    margin={{"top": "medium"}}
+                    border="top">
+                    <SocialMedia />
+                  </Box>
+                </Box>
+              }
+            />
+          </Nav>
+        ) : (
+          <Box direction="row" align="center" gap="medium" pad="none">
+            <Nav direction="row">
+              <Link to="/about" hoverIndicator>
+                About
+              </Link>
+              <Link to="/blog" hoverIndicator>
+                Blog
+              </Link>
+              <Link to="/patterns" hoverIndicator>
+                Patterns
+              </Link>
+            </Nav>
+            <SocialMedia />
+          </Box>
+        )
+      }
+    </ResponsiveContext.Consumer>
+  </Header>
+)
 
 export default Navbar

@@ -1,28 +1,52 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
+import { Box, Heading } from 'grommet'
+
+import FeatureBox from '../components/FeatureBox'
+import HomeGallery from '../components/HomeGallery'
 import Layout from '../components/Layout'
+import Link from '../components/Link'
 
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props
+    const { edges: posts } = data.patterns
+    const smallPosts = posts.slice(0,3)
 
     return (
-      <Layout location={this.props.location}>
+      <Layout>
         <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
-        <Img
-          fluid={data.fluidImages.childImageSharp.fluid}
-          style={{ width: `100vw`, height: `100vh` }}
-          alt="woman wearing dark red crescent-shaped shawl standing in front of railing at Austin Public Library" />
-        <p className="display-box has-text-centered">
-          <span className="is-size-5 display-font">
-            <a href="https://www.ravelry.com/patterns/library/feuille-morte" className="hero-link" target="_blank" rel='noopener noreferrer'>Feuille-morte</a>
-          </span>
-          <span> &bull; </span>
-          <span className="is-size-6">featured in <a href="http://knitty.com/ISSUEdf19/PATTfeuillemorte/PATTfeuillemorte.php" className="hero-link" target="_blank" rel='noopener noreferrer'><i>Knitty</i>, Deep Fall 2019</a></span>
-        </p>
+        <HomeGallery posts={posts} smallPosts={smallPosts} />
+        <Box
+          as="section"
+          direction="column"
+          align="center"
+          alignSelf="center"
+          justify="center"
+          width="xlarge"
+          pad={{ "top": "xsmall", "bottom": "large", "horizontal": "small" }}
+        >
+          <Heading
+            level={1}
+            alignSelf="center"
+            margin={{ "bottom": "small" }}
+            size="small"
+            textAlign="center"
+          >
+            (Adjective) Patterns for the (Adjective) Knitter
+          </Heading>
+          <Link to="/patterns" alignSelf="center" size="large">Browse all patterns</Link>
+        </Box>
+        {/* Blog feature */}
+        <FeatureBox
+          altText={data.blog.frontmatter.altText}
+          excerpt={data.blog.excerpt}
+          image={data.blog.frontmatter.image.childImageSharp.fixed}
+          slug={data.blog.fields.slug}
+          title={data.blog.frontmatter.title}
+        />
       </Layout>
     )
   }
@@ -34,20 +58,55 @@ IndexPage.propTypes = {
   }),
 }
 
-export const pageQuery = graphql`
+export const IndexQuery = graphql`
   query IndexQuery {
     site {
       siteMetadata {
         title
       }
     },
-    fluidImages: file(
-      relativePath: { regex: "/feuille-morte.jpg/" }
+    patterns:allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___published] },
+      limit: 4,
+      filter: { frontmatter: { templateKey: { eq: "pattern-item" } }}
     ) {
-      childImageSharp {
-        fluid (maxWidth: 1440, quality: 70) {
-          ...GatsbyImageSharpFluid_withWebp
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                fixed(height: 550) {
+                  ...GatsbyImageSharpFixed_withWebp
+                }
+              }
+            }
+            altText
+          }
         }
+      }
+    },
+    blog:markdownRemark(frontmatter: {title: {eq: "A beginners’ guide to brewing with Chemex"}}) {
+      excerpt(pruneLength: 400)
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        templateKey
+        date(formatString: "MMMM DD, YYYY")
+        image {
+          childImageSharp {
+            fixed(width: 200, height: 200) {
+              ...GatsbyImageSharpFixed_withWebp
+            }
+          }
+        }
+        altText
       }
     }
   }

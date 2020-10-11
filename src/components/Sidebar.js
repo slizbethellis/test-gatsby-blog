@@ -1,8 +1,8 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-// import Instagram from '../components/Instagram'
-import Search from '../components/Search'
-import TagBlock from '../components/TagBlock'
+// import Instagram from './Instagram'
+import Search from './Search'
+import TagBlock from './TagBlock'
 
 const Sidebar = () => (
   <StaticQuery
