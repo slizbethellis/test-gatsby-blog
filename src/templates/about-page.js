@@ -3,36 +3,52 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import { Box, Heading, Markdown } from 'grommet'
 
-export const AboutPageTemplate = ({ title, content, contentComponent, image, helmet }) => {
-  const PageContent = contentComponent || Content
+import Layout from '../components/Layout'
+
+export const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
 
   return (
-    <section className="section">
+    <Box
+      as="section"
+      alignSelf="center"
+      justify="center"
+      width="xlarge"
+      margin={{"horizontal": "large" }}
+    >
       {helmet || ''}
-      <div className="columns is-centered">
-        <div className="column is-10">
-          <h1 className="has-text-weight-bold is-size-2 title-padding">
-            {title}
-          </h1>
-          <div className="columns">
-            <div className="column is-5">
-              {image}
-            </div>
-          </div>
-          <PageContent className="content" content={content} />
-        </div>
-      </div>
-    </section>
+      <Heading level={1} textAlign="center">{title}</Heading>
+      <Box
+        as="figure"
+        alignSelf="center"
+        justify="center"
+        margin="none"
+        round="full"
+        overflow="auto"
+        width="medium"
+        height="medium"
+      >
+        {image}
+      </Box>
+      <Box width="xlarge" alignSelf="center" pad={{"top": "small", "bottom": "medium", "horizontal": "large"}}>
+        <Markdown
+          components={{
+            "p": {
+              "props": {"fill": true}
+            }
+          }}
+        >
+          {markdown}
+        </Markdown>
+      </Box>
+    </Box>
   )
 }
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.node,
-  contentComponent: PropTypes.func,
+  markdown: PropTypes.node,
   helmet: PropTypes.object
 }
 
@@ -40,12 +56,11 @@ const AboutPage = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
-    <Layout location={'/about'}>
+    <Layout>
       <AboutPageTemplate
-        contentComponent={HTMLContent}
         title={post.frontmatter.title}
-        content={post.html}
-        image={<Img fluid={data.fluidImages.childImageSharp.fluid} alt="Sarah Ellis - headshot" />}
+        markdown={post.rawMarkdownBody}
+        image={<Img fixed={data.fluidImages.childImageSharp.fixed} alt="Sarah Ellis - headshot" />}
         helmet={<Helmet title={`About | ${data.site.siteMetadata.title}`} />}
       />
     </Layout>
@@ -66,17 +81,17 @@ export const aboutPageQuery = graphql`
       }
     },
     markdownRemark(id: { eq: $id }) {
-      html
       frontmatter {
         title
       }
+      rawMarkdownBody
     },
     fluidImages: file(
       relativePath: { regex: "/headshot.jpg/" }
     ) {
       childImageSharp {
-        fluid (maxWidth: 700) {
-          ...GatsbyImageSharpFluid_withWebp
+        fixed(width: 400, height: 400) {
+          ...GatsbyImageSharpFixed_withWebp
         }
       }
     }

@@ -27,8 +27,8 @@ const FeatureBox = ({ altText, excerpt, image, slug, title}) => (
       direction="row-responsive"
       align="center"
       alignSelf="center"
-      gap="medium">
-      
+      gap="medium"
+    >
       <Box as="article" width="large" pad="medium">
         <Link to={slug} size="large">{title}</Link>
         <Paragraph alignSelf="stretch" fill>{excerpt}</Paragraph>

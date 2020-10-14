@@ -1,12 +1,13 @@
 import React from 'react'
+import { Box, Heading, Paragraph } from 'grommet'
 import Layout from '../components/Layout'
 
 const NotFoundPage = () => (
-  <Layout location='/404'>
-    <div>
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </div>
+  <Layout>
+    <Box as="section" pad={{top: "small", bottom: "large", horizontal: "xlarge"}}>
+      <Heading level={1}>NOT FOUND</Heading>
+      <Paragraph>Why were you looking for something that doesn't exist?</Paragraph>
+    </Box>
   </Layout>
 )
 

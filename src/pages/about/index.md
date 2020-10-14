@@ -10,5 +10,5 @@ My mission is to create patterns that will inspire you to try new techniques and
 
 As for other interests, I've recently finished a coding boot camp in full stack development, specifically the MERN stack. I also collect music in physical formats, although I do not have my turntable even set up at the moment (lack speakers, and my current dac/headphone amp has no analog inputs). As for TV, I'm very much into sci-fi and British comedies. Although I do aspire to be a polyglot, I've let my foreign language skills lapse...in the past I've studied German, Spanish, and French.
 
-### What'd you build this page with?
+## What'd you use to build this website?
 This website is built in Gatsby, which is a static site generator using React.js. Yes, that's right, this blog is React-based and uses GraphQL to grab data. Is this the first knitting blog built in React? Possibly. I'm using Netlify for CMS, CDN, and deployment of this site. I'm using Bulma (and Sass) for the layout.
