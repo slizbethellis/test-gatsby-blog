@@ -10,6 +10,7 @@ const BlogThumbnail = ({ altText, image }) => (
     align="center"
     alignSelf="center"
     width="200px"
+    margin={{"top": "xsmall", "bottom": "large", "horizontal": "xsmall"}}
   >
     <Img 
       fixed={image}

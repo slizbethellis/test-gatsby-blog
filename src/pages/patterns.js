@@ -1,50 +1,58 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
-import Layout from '../components/Layout'
+import { Box, Card, CardBody, CardHeader, Grid, Heading, ResponsiveContext } from 'grommet'
 
-export default class PatternPage extends React.Component {
-  render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
-    
-    return (
-      <Layout location={this.props.location}>
-        <Helmet title={`Patterns | ${data.site.siteMetadata.title}`} />
-        <section className="section">
-          <div className="columns is-centered">
-            <div className="column is-10">
-              <h1 className="has-text-weight-bold is-size-2">
-                Patterns
-              </h1>
-            </div>
-          </div>
-          <div className="columns is-multiline">
-            {posts
-              .map(({ node: post }) => (
-                <div className="column is-one-quarter" key={post.id}>
-                  <div className="card">
+import Layout from '../components/Layout'
+import Link from '../components/Link'
+
+export const PatternPage = ({ data }) => {
+  const { edges: posts } = data.allMarkdownRemark
+  const size = useContext(ResponsiveContext)
+  
+  return (
+    <Layout>
+      <Helmet title={`Patterns | ${data.site.siteMetadata.title}`} />
+      <Box
+        as="section"
+        alignSelf="center"
+        justify="center"
+        width="full"
+      >
+        <Heading level={1} alignSelf="center" textAlign="center">Patterns</Heading>
+        <Grid
+          columns={size !== 'small' ? '300px' : '100%'}
+          gap="small"
+          margin={{ "bottom": "large", "horizontal": "medium" }}
+        >
+          {posts
+            .map(({ node: post }) => (
+              <Card
+                as="article"
+                key={post.id}
+                hoverIndicator="light-3"
+              >
+                <CardHeader justify="center">
+                  <Heading level={2} size="small">
                     <Link to={post.fields.slug}>
-                      <div className="card-image">
-                        <Img fluid={post.frontmatter.image.childImageSharp.fluid}
-                          alt={post.frontmatter.altText} />
-                      </div>
+                      {post.frontmatter.title}
                     </Link>
-                    <div className="card-content has-text-centered">
-                      <Link className="title is-6" to={post.fields.slug}>
-                        <span className="header-link search-link">{post.frontmatter.title}</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </section>
-      </Layout>
-    )
-  }
+                  </Heading> 
+                </CardHeader>
+                <CardBody style={{ order: "-1"}}>
+                  <Img
+                    fluid={post.frontmatter.image.childImageSharp.fluid}
+                    alt={post.frontmatter.altText}
+                  />
+                </CardBody>
+              </Card>
+            ))}
+        </Grid>
+      </Box>
+    </Layout>
+  )
 }
 
 PatternPage.propTypes = {
@@ -92,3 +100,5 @@ export const PageQuery = graphql`
     }
   }
 `
+
+export default PatternPage

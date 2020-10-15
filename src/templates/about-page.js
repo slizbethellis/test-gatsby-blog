@@ -8,7 +8,6 @@ import { Box, Heading, Markdown } from 'grommet'
 import Layout from '../components/Layout'
 
 export const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
-
   return (
     <Box
       as="section"

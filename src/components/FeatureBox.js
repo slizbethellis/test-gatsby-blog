@@ -4,7 +4,7 @@ import { Box, Heading, Paragraph } from 'grommet'
 import Link from './Link'
 import BlogThumbnail from './BlogThumbnail'
 
-const FeatureBox = ({ altText, excerpt, image, slug, title}) => (
+const FeatureBox = ({ altText, boxTitle, excerpt, image, slug, postTitle}) => (
   <Box
     as="section"
     background="brand"
@@ -17,11 +17,11 @@ const FeatureBox = ({ altText, excerpt, image, slug, title}) => (
     <Heading
       level={2}
       alignSelf="center"
-      margin="small"
+      margin="medium"
       size="medium"
       textAlign="center"
     >
-      Featured Blog Post
+      {boxTitle}
     </Heading>
     <Box
       direction="row-responsive"
@@ -30,7 +30,11 @@ const FeatureBox = ({ altText, excerpt, image, slug, title}) => (
       gap="medium"
     >
       <Box as="article" width="large" pad="medium">
-        <Link to={slug} size="large">{title}</Link>
+        <Link to={slug}>
+          <Heading level={3} margin={{ "vertical": "none"}}>
+            {postTitle}
+          </Heading>
+        </Link>
         <Paragraph alignSelf="stretch" fill>{excerpt}</Paragraph>
       </Box>
       <BlogThumbnail altText={altText} image={image} />

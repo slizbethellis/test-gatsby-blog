@@ -9,47 +9,45 @@ import HomeGallery from '../components/HomeGallery'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 
-export default class IndexPage extends React.Component {
-  render() {
-    const { data } = this.props
-    const { edges: posts } = data.patterns
-    const smallPosts = posts.slice(0,3)
+export const IndexPage = ({ data }) => {
+  const { edges: posts } = data.patterns
+  const smallPosts = posts.slice(0,3)
 
-    return (
-      <Layout>
-        <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
-        <HomeGallery posts={posts} smallPosts={smallPosts} />
-        <Box
-          as="section"
-          direction="column"
-          align="center"
+  return (
+    <Layout>
+      <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
+      <HomeGallery posts={posts} smallPosts={smallPosts} />
+      <Box
+        as="section"
+        direction="column"
+        align="center"
+        alignSelf="center"
+        justify="center"
+        width="xlarge"
+        pad={{ "top": "xsmall", "bottom": "large", "horizontal": "small" }}
+      >
+        <Heading
+          level={1}
           alignSelf="center"
-          justify="center"
-          width="xlarge"
-          pad={{ "top": "xsmall", "bottom": "large", "horizontal": "small" }}
+          margin={{ "bottom": "medium" }}
+          size="44px"
+          textAlign="center"
         >
-          <Heading
-            level={1}
-            alignSelf="center"
-            margin={{ "bottom": "small" }}
-            size="small"
-            textAlign="center"
-          >
-            (Adjective) Patterns for the (Adjective) Knitter
-          </Heading>
-          <Link to="/patterns" alignSelf="center" size="large">Browse all patterns</Link>
-        </Box>
-        {/* Blog feature */}
-        <FeatureBox
-          altText={data.blog.frontmatter.altText}
-          excerpt={data.blog.excerpt}
-          image={data.blog.frontmatter.image.childImageSharp.fixed}
-          slug={data.blog.fields.slug}
-          title={data.blog.frontmatter.title}
-        />
-      </Layout>
-    )
-  }
+          (Adjective) Patterns for the (Adjective) Knitter
+        </Heading>
+        <Link to="/patterns" alignSelf="center" size="large">Browse all patterns</Link>
+      </Box>
+      {/* Blog feature */}
+      <FeatureBox
+        altText={data.blog.frontmatter.altText}
+        boxTitle="Featured Blog Post"
+        excerpt={data.blog.excerpt}
+        image={data.blog.frontmatter.image.childImageSharp.fixed}
+        slug={data.blog.fields.slug}
+        postTitle={data.blog.frontmatter.title}
+      />
+    </Layout>
+  )
 }
 
 IndexPage.propTypes = {
@@ -85,7 +83,6 @@ export const IndexQuery = graphql`
                 }
               }
             }
-            altText
           }
         }
       }
@@ -111,3 +108,5 @@ export const IndexQuery = graphql`
     }
   }
 `
+
+export default IndexPage
