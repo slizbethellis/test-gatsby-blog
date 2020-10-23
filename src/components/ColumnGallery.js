@@ -38,7 +38,7 @@ const ColumnGallery = (images) => {
           key="0"
         />
       </button>
-      {imageArray.length > 0 &&
+      {slicedImages.length > 0 &&
         <Gallery
           photos={slicedImages}
           direction={'column'}

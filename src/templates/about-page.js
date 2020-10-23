@@ -30,7 +30,14 @@ export const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
       >
         {image}
       </Box>
-      <Box width="xlarge" alignSelf="center" pad={{"top": "small", "bottom": "medium", "horizontal": "large"}}>
+      <Box width="xlarge"
+        alignSelf="center"
+        pad={{
+          "top": "small",
+          "bottom": "medium",
+          "horizontal": "xlarge"
+        }}
+      >
         <Markdown
           components={{
             "p": {

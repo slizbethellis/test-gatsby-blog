@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { graphql, navigate } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import { Box, Card, CardBody, CardHeader, Grid, Heading, ResponsiveContext } from 'grommet'
+import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
 
 import Layout from '../components/Layout'
-import Link from '../components/Link'
+import PatternCard from '../components/PatternCard'
 
 export const PatternPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
@@ -29,25 +28,13 @@ export const PatternPage = ({ data }) => {
         >
           {posts
             .map(({ node: post }) => (
-              <Card
-                as="article"
+              <PatternCard
                 key={post.id}
-                hoverIndicator="light-3"
-              >
-                <CardHeader justify="center">
-                  <Heading level={2} size="small">
-                    <Link to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                  </Heading> 
-                </CardHeader>
-                <CardBody style={{ order: "-1"}}>
-                  <Img
-                    fluid={post.frontmatter.image.childImageSharp.fluid}
-                    alt={post.frontmatter.altText}
-                  />
-                </CardBody>
-              </Card>
+                slug={post.fields.slug}
+                title={post.frontmatter.title}
+                image={post.frontmatter.image}
+                altText={post.frontmatter.altText}
+              />
             ))}
         </Grid>
       </Box>
