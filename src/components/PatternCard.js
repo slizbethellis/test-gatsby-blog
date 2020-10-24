@@ -1,14 +1,14 @@
 import React from 'react'
-import { navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import { Card, CardBody, CardHeader, Heading } from 'grommet'
 
 import Link from './Link'
 
 const PatternCard = ({ slug, title, image, altText }) => (
-  <Link to={slug} a11ytitle="Pattern info">
+  <Link to={slug}>
     <Card
       as="article"
+      round="medium"
     >
       <CardHeader justify="center">
         <Heading level={2} size="small">

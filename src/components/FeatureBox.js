@@ -1,8 +1,7 @@
 import React from 'react'
-import { Box, Heading, Paragraph } from 'grommet'
+import { Box, Heading } from 'grommet'
 
-import Link from './Link'
-import BlogThumbnail from './BlogThumbnail'
+import BlogPreview from './BlogPreview'
 
 const FeatureBox = ({ altText, boxTitle, excerpt, image, slug, postTitle}) => (
   <Box
@@ -10,9 +9,8 @@ const FeatureBox = ({ altText, boxTitle, excerpt, image, slug, postTitle}) => (
     background="brand"
     alignSelf="center"
     justify="center"
-    width="xlarge"
-    pad={{ "vertical": "medium" }}
-    fill
+    pad={{ "horizontal": "xlarge", "vertical": "medium" }}
+    fill="horizontal"
   >
     <Heading
       level={2}
@@ -23,22 +21,14 @@ const FeatureBox = ({ altText, boxTitle, excerpt, image, slug, postTitle}) => (
     >
       {boxTitle}
     </Heading>
-    <Box
-      direction="row-responsive"
-      align="center"
-      alignSelf="center"
-      gap="medium"
-    >
-      <Box as="article" width="large" pad="medium">
-        <Link to={slug}>
-          <Heading level={3} margin={{ "vertical": "none"}}>
-            {postTitle}
-          </Heading>
-        </Link>
-        <Paragraph alignSelf="stretch" fill>{excerpt}</Paragraph>
-      </Box>
-      <BlogThumbnail altText={altText} image={image} />
-    </Box>
+    <BlogPreview
+      slug={slug}
+      hLevel={3}
+      postTitle={postTitle}
+      excerpt={excerpt}
+      altText={altText}
+      image={image}
+    />
   </Box>
 )
 

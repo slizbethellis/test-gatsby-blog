@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Img from 'gatsby-image'
-import { Box } from 'grommet'
+import { Box, ResponsiveContext } from 'grommet'
 
-const BlogThumbnail = ({ altText, image }) => (
+const BlogThumbnail = ({ altText, image }) => {
+  const size = useContext(ResponsiveContext)
+
+  return (
   <Box
     as="figure"
     round="xlarge"
     overflow="hidden"
     align="center"
     alignSelf="center"
-    width="200px"
-    margin={{"top": "xsmall", "bottom": "large", "horizontal": "xsmall"}}
+    width={{min: "200px"}}
+    margin={size !== "small" ? "xsmall" : {"top": "none", "bottom": "large", "horizontal": "xsmall"}}
   >
     <Img 
       fixed={image}
@@ -18,5 +21,6 @@ const BlogThumbnail = ({ altText, image }) => (
     />
   </Box>
 )
+}
 
 export default BlogThumbnail

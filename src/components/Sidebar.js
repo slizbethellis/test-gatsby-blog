@@ -1,5 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import { Box } from 'grommet'
 // import Instagram from './Instagram'
 import Search from './Search'
 import TagBlock from './TagBlock'
@@ -14,18 +15,13 @@ const Sidebar = () => (
       }
     `}
     render={data => (
-      <section>
-        <div className="columns is-centered">
-          <div className="column is-four-fifths">
-            <Search searchIndex={data.siteSearchIndex.index}/>
-          </div>
-        </div>
-        {/* <hr className="hr-custom" />
-        <Instagram /> */}
-        <hr className="hr-custom" />
+      <Box as="section" border="between" gap="small">
+        <Box justify="center">
+          <Search searchIndex={data.siteSearchIndex.index}/>
+        </Box>
+        {/* <Instagram /> */}
         <TagBlock />
-        <hr className="hr-custom" />
-      </section>
+      </Box>
     )}
   />
 )

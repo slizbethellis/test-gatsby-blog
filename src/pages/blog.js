@@ -1,67 +1,56 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
+import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
+
+import BlogPreview from '../components/BlogPreview'
 import Layout from '../components/Layout'
 import Sidebar from '../components/Sidebar'
 
-export default class BlogPage extends React.Component {
-  render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+export const BlogPage = ({ data }) => {
+  const { edges: posts } = data.allMarkdownRemark
+  const size = useContext(ResponsiveContext)
 
-    return (
-      <Layout location={this.props.location}>
-        <Helmet title={`Blog | ${data.site.siteMetadata.title}`} />
-        <section className="section">
-          <div className="columns is-multiline is-centered">
-            <div className="column is-10">
-              <h1 className="has-text-weight-bold is-size-2">Blog Posts</h1>
-            </div>
-            <div className="column is-three-quarters">
-              {posts
-                .map(({ node: post }) => (
-                  <div
-                    className="box"
-                    key={post.id}
-                  >
-                    <div className="columns is-multiline">
-                      <div className="column">
-                        <p>
-                          <Link className="has-text-primary" to={post.fields.slug}>
-                            <span className="header-link">{post.frontmatter.title}</span>
-                          </Link>
-                          <span> &bull; </span>
-                          <small>{post.frontmatter.date}</small>
-                        </p>
-                        <p>
-                          <br />
-                          <span>{post.excerpt}</span>
-                          <br />
-                          <br />
-                          <Link className="is-small read-more" to={post.fields.slug}>
-                            Keep Reading →
-                          </Link>
-                        </p>
-                      </div>
-                      <div className="column is-narrow is-1-mobile">
-                        {post.frontmatter.image &&
-                          <Img fixed={post.frontmatter.image.childImageSharp.fixed} alt={post.frontmatter.altText} />
-                        }
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-            <div className="column is-one-quarter">
-              <Sidebar />
-            </div>
-          </div>
-        </section>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <Helmet title={`Blog | ${data.site.siteMetadata.title}`} />
+      <Box
+        as="section"
+        alignSelf="center"
+        justify="center"
+        width="full"
+      >
+        <Heading level={1} alignSelf="center" textAlign="center">Blog Posts</Heading>
+        <Grid
+          columns={size !== 'small' ? ['3/4', '1/4'] : ['auto']}
+          rows={size !== 'small' ? ['auto'] : ['auto', 'auto']}
+          gap="small"
+          margin={{ "bottom": "large", "horizontal": "medium" }}
+        >
+          <Box as="section" gap="small" pad={{ "horizontal": "medium" }}>
+            {posts
+              .map(({ node: post }) => (
+                <BlogPreview
+                  slug={post.fields.slug}
+                  hLevel={2}
+                  hSize="small"
+                  postTitle={post.frontmatter.title}
+                  excerpt={post.excerpt}
+                  altText={post.frontmatter.altText}
+                  image={post.frontmatter.image && post.frontmatter.image.childImageSharp.fixed}
+                  key={post.id}
+                  background="light-1"
+                  elevation="small"
+                  round="medium"
+                />
+              ))}
+          </Box>
+          <Sidebar />
+        </Grid>
+      </Box>
+    </Layout>
+  )
 }
 
 BlogPage.propTypes = {
@@ -109,3 +98,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default BlogPage

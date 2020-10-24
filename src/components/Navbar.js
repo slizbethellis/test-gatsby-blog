@@ -16,7 +16,7 @@ import SocialMedia from './SocialMedia'
 
 const Navbar = () => (
   <Header
-    background="light-2"
+    background="light-3"
     pad="medium"
     height="xsmall"
     border={{
