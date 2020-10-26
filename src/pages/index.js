@@ -8,6 +8,7 @@ import FeatureBox from '../components/FeatureBox'
 import HomeGallery from '../components/HomeGallery'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
+import RoutedButton from '../components/RoutedButton'
 
 export const IndexPage = ({ data }) => {
   const { edges: posts } = data.patterns
@@ -35,7 +36,8 @@ export const IndexPage = ({ data }) => {
         >
           (Adjective) Patterns for the (Adjective) Knitter
         </Heading>
-        <Link to="/patterns" alignSelf="center" size="large">Browse all patterns</Link>
+        <RoutedButton primary to="/patterns" alignSelf="center" label="Browse all patterns"/>
+        {/* <Link to="/patterns" alignSelf="center" size="large">Browse all patterns</Link> */}
       </Box>
       {/* Blog feature */}
       <FeatureBox

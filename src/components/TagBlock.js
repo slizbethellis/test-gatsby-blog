@@ -1,6 +1,10 @@
 import React from 'react'
 import { kebabCase } from 'lodash'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
+import { Box, Heading } from 'grommet'
+
+import Link from './Link'
+import RoutedButton from './RoutedButton'
 
 const TagBlock = () => (
   <StaticQuery
@@ -18,23 +22,35 @@ const TagBlock = () => (
       }
     `}
     render={data => (
-      <div className="columns">
-        <div className="column is-12">
-          <h2 className="has-text-weight-bold has-text-centered is-size-4">Tags</h2>
-          <ul className="taglist-sidebar">
-            {data.allMarkdownRemark.group.map(tag => (
-              <li key={tag.fieldValue}>
-                <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                  {tag.fieldValue} ({tag.totalCount})
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link className="is-small read-more tag-link has-text-centered" to="/tags">
-            all tags →
-          </Link>
-        </div>
-      </div>
+      <Box alignSelf="center" border="bottom">
+        <Heading level={2} size="small" textAlign="center">Tags</Heading>
+        <ul
+          className="tag-list"
+          style={{
+            listStyle: "none",
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "center",
+            margin: "0 auto 0.5rem",
+            paddingLeft: "0"
+          }}
+        >
+          {data.allMarkdownRemark.group.map((tag, index) => (
+            <li>
+              <RoutedButton
+                to={`/tags/${kebabCase(tag.fieldValue)}/`}
+                margin="xxsmall"
+                size="small" key={index}
+                label={`${tag.fieldValue} (${tag.totalCount})`}
+              />
+            </li>
+            
+          ))}
+        </ul>
+        <Link alignSelf="center" margin={{"bottom": "1.5rem"}} to="/tags">
+          all tags →
+        </Link>
+      </Box>
     )}
   />
 )

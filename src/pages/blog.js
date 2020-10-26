@@ -21,7 +21,7 @@ export const BlogPage = ({ data }) => {
         justify="center"
         width="full"
       >
-        <Heading level={1} alignSelf="center" textAlign="center">Blog Posts</Heading>
+        <Heading level={1} alignSelf="center" textAlign="center">Blog</Heading>
         <Grid
           columns={size !== 'small' ? ['3/4', '1/4'] : ['auto']}
           rows={size !== 'small' ? ['auto'] : ['auto', 'auto']}

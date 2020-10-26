@@ -4,6 +4,7 @@ import { Card, CardBody, CardHeader, Heading } from 'grommet'
 
 import Link from './Link'
 
+// simple image and pattern title component without redundant link
 const PatternCard = ({ slug, title, image, altText }) => (
   <Link to={slug}>
     <Card

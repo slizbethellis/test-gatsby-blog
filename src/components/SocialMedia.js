@@ -2,6 +2,7 @@ import React from "react"
 import { Anchor, Box } from "grommet"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+// a tiny box of social media icon links
 const SocialMedia = () => (
   <Box direction="row" gap="none" justify="center" pad="none" >
     <Anchor

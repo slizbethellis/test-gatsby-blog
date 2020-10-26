@@ -4,6 +4,7 @@ import { Box } from 'grommet'
 
 import Link from './Link'
 
+// large image buttons for featured items on home page
 const HomeImage = ({ fixed, altText, slug }) => (
   <Link to={slug}>
     <Box

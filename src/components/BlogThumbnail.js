@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Img from 'gatsby-image'
 import { Box, ResponsiveContext } from 'grommet'
 
+// round fixed size image thumbnail
 const BlogThumbnail = ({ altText, image }) => {
   const size = useContext(ResponsiveContext)
 

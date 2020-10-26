@@ -3,6 +3,7 @@ import { Box, Heading } from 'grommet'
 
 import BlogPreview from './BlogPreview'
 
+// styled box for featured blog post on home page
 const FeatureBox = ({ altText, boxTitle, excerpt, image, slug, postTitle}) => (
   <Box
     as="section"
