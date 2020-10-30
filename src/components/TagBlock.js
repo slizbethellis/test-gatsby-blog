@@ -1,11 +1,11 @@
 import React from 'react'
-import { kebabCase } from 'lodash'
 import { StaticQuery, graphql } from 'gatsby'
-import { Box, Heading } from 'grommet'
+import { Accordion, AccordionPanel, Box, Heading, ResponsiveContext, ThemeContext } from 'grommet'
 
 import Link from './Link'
-import RoutedButton from './RoutedButton'
+import TagButtons from './TagButtons'
 
+// group of featured tags for top level blog sidebar
 const TagBlock = () => (
   <StaticQuery
     query={graphql`
@@ -22,35 +22,55 @@ const TagBlock = () => (
       }
     `}
     render={data => (
-      <Box alignSelf="center" border="bottom">
-        <Heading level={2} size="small" textAlign="center">Tags</Heading>
-        <ul
-          className="tag-list"
-          style={{
-            listStyle: "none",
-            display: "flex",
-            flexFlow: "row wrap",
-            justifyContent: "center",
-            margin: "0 auto 0.5rem",
-            paddingLeft: "0"
-          }}
-        >
-          {data.allMarkdownRemark.group.map((tag, index) => (
-            <li>
-              <RoutedButton
-                to={`/tags/${kebabCase(tag.fieldValue)}/`}
+      <ResponsiveContext>
+        {responsive =>
+          responsive === 'small' ? (
+            <ThemeContext.Extend
+              value={{
+                accordion: {
+                  heading : {
+                    level: 2,
+                    size: "small",
+                    margin: {
+                      horizontal: "large",
+                    },
+                  },
+                },
+              }}
+            >
+              <Box alignSelf="center">
+                <Accordion>
+                  <AccordionPanel label="Tags">
+                    <Box pad="medium">
+                      <TagButtons
+                        group={data.allMarkdownRemark.group}
+                        margin="xxsmall"
+                        size="small"
+                      />
+                      <Link alignSelf="center" to="/tags">
+                        all tags →
+                      </Link>
+                    </Box>
+                    
+                  </AccordionPanel>
+                </Accordion>
+              </Box>
+            </ThemeContext.Extend>
+          ) : (
+            <Box alignSelf="center" border="bottom">
+              <Heading level={2} size="small" textAlign="center">Tags</Heading>
+              <TagButtons
+                group={data.allMarkdownRemark.group}
                 margin="xxsmall"
-                size="small" key={index}
-                label={`${tag.fieldValue} (${tag.totalCount})`}
+                size="small"
               />
-            </li>
-            
-          ))}
-        </ul>
-        <Link alignSelf="center" margin={{"bottom": "1.5rem"}} to="/tags">
-          all tags →
-        </Link>
-      </Box>
+              <Link alignSelf="center" margin={{"bottom": "1.5rem"}} to="/tags">
+                all tags →
+              </Link>
+            </Box>
+          )
+        }
+      </ResponsiveContext>
     )}
   />
 )

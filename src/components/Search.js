@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Index } from 'elasticlunr'
-import { Link } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Search as FormSearch } from 'grommet-icons'
+import { Box, TextInput } from 'grommet'
 
 // Search component
 export default class Search extends Component {
@@ -15,7 +15,24 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div className="field">
+      <Fragment>
+      <Box
+        direction="row"
+        align="center"
+        round="large"
+        background="light-1"
+        border={{ "color": "neutral-3" }}
+        pad={{ "horizontal": "small" }}
+        margin={{ "top": "none", "horizontal": "medium", "bottom": "medium" }}
+      >
+        <FormSearch color="brand" />
+        <TextInput
+          type="search"
+          plain
+          placeholder="Search..."
+        />
+      </Box>
+      {/* <div className="field">
         <div className={this.state.query !== '' ? 'dropdown dropdown-search is-active' : 'dropdown dropdown-search'}>
           <div className="dropdown-trigger">
             <p className="control has-icons-left has-icons-right">
@@ -58,7 +75,8 @@ export default class Search extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      </Fragment>
     );
   }
 

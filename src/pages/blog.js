@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
@@ -8,9 +8,29 @@ import BlogPreview from '../components/BlogPreview'
 import Layout from '../components/Layout'
 import Sidebar from '../components/Sidebar'
 
+const BlogPosts = ({ posts }) => (
+  <Box as="section" gap="small" pad={{ "horizontal": "medium" }}>
+    {posts
+      .map(({ node: post }) => (
+        <BlogPreview
+          slug={post.fields.slug}
+          hLevel={2}
+          hSize="small"
+          postTitle={post.frontmatter.title}
+          excerpt={post.excerpt}
+          altText={post.frontmatter.altText}
+          image={post.frontmatter.image && post.frontmatter.image.childImageSharp.fixed}
+          key={post.id}
+          background="light-1"
+          elevation="small"
+          round="medium"
+        />
+      ))}
+  </Box>
+)
+
 export const BlogPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
-  const size = useContext(ResponsiveContext)
 
   return (
     <Layout>
@@ -22,32 +42,25 @@ export const BlogPage = ({ data }) => {
         width="full"
       >
         <Heading level={1} alignSelf="center" textAlign="center">Blog</Heading>
-        <Grid
-          columns={size !== 'small' ? ['3/4', '1/4'] : ['auto']}
-          rows={size !== 'small' ? ['auto'] : ['auto', 'auto']}
-          gap="small"
-          margin={{ "bottom": "large", "horizontal": "medium" }}
-        >
-          <Box as="section" gap="small" pad={{ "horizontal": "medium" }}>
-            {posts
-              .map(({ node: post }) => (
-                <BlogPreview
-                  slug={post.fields.slug}
-                  hLevel={2}
-                  hSize="small"
-                  postTitle={post.frontmatter.title}
-                  excerpt={post.excerpt}
-                  altText={post.frontmatter.altText}
-                  image={post.frontmatter.image && post.frontmatter.image.childImageSharp.fixed}
-                  key={post.id}
-                  background="light-1"
-                  elevation="small"
-                  round="medium"
-                />
-              ))}
-          </Box>
-          <Sidebar />
-        </Grid>
+        <ResponsiveContext.Consumer>
+          {responsive =>
+            responsive === 'small' ? (
+              <Box margin={{ "bottom": "large" }}>
+                <Sidebar />
+                <BlogPosts posts={posts}/>
+              </Box>
+            ) : (
+              <Grid
+                columns={['3/4', '1/4']}
+                gap="small"
+                margin={{ "bottom": "large", "horizontal": "medium" }}
+              >
+                <BlogPosts posts={posts} />
+                <Sidebar />
+              </Grid>
+            )
+          }
+        </ResponsiveContext.Consumer>
       </Box>
     </Layout>
   )

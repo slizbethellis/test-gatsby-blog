@@ -39,6 +39,7 @@
     "react-dom": "^16.6.0",
     "react-helmet": "^6.1.0",
     "react-photo-gallery": "^8.0.0",
+    "rehype-react": "^6.1.0",
     "simple-react-lightbox": "^3.2.3-3",
     "styled-components": "^5.2.0",
     "uuid": "^8.2.0"

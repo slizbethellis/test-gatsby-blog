@@ -2,8 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import { Box, Heading, Markdown, Paragraph } from 'grommet'
+
 import Layout from '../components/Layout'
+import RoutedButton from '../components/RoutedButton'
 import Content, { HTMLContent } from '../components/Content'
 
 export const BlogPostTemplate = ({
@@ -13,36 +16,62 @@ export const BlogPostTemplate = ({
   tags,
   title,
   helmet,
+  markdown
 }) => {
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
+    <Box
+      as="section"
+      alignSelf="center"
+      justify="center"
+      width="xlarge"
+      margin={{"horizontal": "large" }}
+    >
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    </section>
+      <Box width="xlarge"
+        alignSelf="center"
+        pad={{
+          "top": "small",
+          "bottom": "medium",
+          "horizontal": "xlarge"
+        }}
+      >
+        <Heading level={1} textAlign="center">{title}</Heading>
+        <Paragraph fill>{description}</Paragraph>
+        <Markdown
+          components={{
+            "p": {
+              "props": {"fill": true}
+            }
+          }}
+        >
+          {markdown}
+        </Markdown>
+        {tags && tags.length ? (
+          <Box as="section" pad={{ "top": "small"}}>
+            <Heading level={2} size="small">Tags</Heading>
+            <ul
+              className="tag=list"
+              style={{
+                listStyle: "none",
+                display: "flex",
+                flexFlow: "row wrap",
+                paddingLeft: "0"
+              }}
+            >
+              {tags.map(tag => (
+                <RoutedButton
+                  to={`/tags/${kebabCase(tag)}/`}
+                  margin="xsmall"
+                  label={tag}
+                />
+              ))}
+            </ul>
+          </Box>
+        ) : null}
+      </Box>
+    </Box>
   )
 }
 
@@ -64,6 +93,7 @@ const BlogPost = ({ data, props }) => {
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
         helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
+        markdown={post.rawMarkdownBody}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
       />
@@ -91,7 +121,8 @@ export const pageQuery = graphql`
       fields {
         slug
       }
-      html
+      htmlAst
+      rawMarkdownBody
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

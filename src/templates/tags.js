@@ -1,47 +1,49 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import { Box, Heading, List } from 'grommet'
+
 import Layout from '../components/Layout'
+import Link from '../components/Link'
+import RoutedButton from '../components/RoutedButton'
 
-class TagRoute extends React.Component {
-  render() {
-    const posts = this.props.data.allMarkdownRemark.edges
-    const postLinks = posts.map(post => (
-      <li key={post.node.fields.slug}>
-        <Link to={post.node.fields.slug}>
-          <h2 className="is-size-5 post-link">{post.node.frontmatter.title}</h2>
-        </Link>
-      </li>
-    ))
-    const tag = this.props.pageContext.tag
-    const title = this.props.data.site.siteMetadata.title
-    const totalCount = this.props.data.allMarkdownRemark.totalCount
-    const tagHeader = `${totalCount} post${
-      totalCount === 1 ? '' : 's'
-    } tagged with “${tag}”`
+const TagRoute = ({
+  data,
+  pageContext
+}) => {
+  const { edges: posts } = data.allMarkdownRemark
+  const totalCount = data.allMarkdownRemark.totalCount
+  const tag = pageContext.tag
+  const tagHeader = `${totalCount} post${
+    totalCount === 1 ? '' : 's'
+  } tagged with “${tag}”`
+  
 
-    return (
-      <Layout location={this.props.location}>
-        <section className="section">
-          <Helmet title={`${tag} | ${title}`} />
-          <div className="container content">
-            <div className="columns">
-              <div
-                className="column is-10 is-offset-1"
-                style={{ marginBottom: '6rem' }}
-              >
-                <h3 className="title is-size-3 has-text-weight-bold">{tagHeader}</h3>
-                <ul className="taglist-page">{postLinks}</ul>
-                <p>
-                  <Link to="/tags/">Browse all tags</Link>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <Helmet title={`${tag} | ${data.site.siteMetadata.title}`} />
+      <Box
+        as="section"
+        alignSelf="center"
+        justify="center"
+        width="full"
+      >
+        <Heading level={1} alignSelf="center" textAlign="center">{tagHeader}</Heading>
+        <Box alignSelf="center" alignContent="center" margin={{"horizontal": "large" }}>
+          <List data={posts}>
+            {(datum, index) => (
+              <Link key={index} to={datum.node.fields.slug} pad="xsmall">
+                <Heading level={2} size="small">{datum.node.frontmatter.title}</Heading>
+              </Link>
+            )}
+          </List>
+          <Box align="center">
+            <RoutedButton primary to="/tags/" margin="medium" label="Browse all tags" />
+          </Box>
+        </Box>
+      </Box>
+    </Layout>
+  )
 }
 
 export default TagRoute

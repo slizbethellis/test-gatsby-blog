@@ -7,7 +7,7 @@ import BlogPreview from './BlogPreview'
 const FeatureBox = ({ altText, boxTitle, excerpt, image, slug, postTitle}) => (
   <Box
     as="section"
-    background="brand"
+    background="neutral-2"
     alignSelf="center"
     justify="center"
     pad={{ "horizontal": "xlarge", "vertical": "medium" }}

@@ -7,7 +7,6 @@ import { Box, Heading } from 'grommet'
 import FeatureBox from '../components/FeatureBox'
 import HomeGallery from '../components/HomeGallery'
 import Layout from '../components/Layout'
-import Link from '../components/Link'
 import RoutedButton from '../components/RoutedButton'
 
 export const IndexPage = ({ data }) => {

@@ -15,8 +15,8 @@ const Sidebar = () => (
       }
     `}
     render={data => (
-      <Box as="section" border="between" gap="small">
-        <Box justify="center">
+      <Box as="section" border="between" gap="small" margin={{ "bottom": "large" }}>
+        <Box alignContent="center">
           <Search searchIndex={data.siteSearchIndex.index}/>
         </Box>
         {/* <Instagram /> */}
