@@ -3,22 +3,19 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import { Box, Heading, Markdown, Paragraph } from 'grommet'
+import { Box, Heading, Paragraph } from 'grommet'
 
 import Layout from '../components/Layout'
 import RoutedButton from '../components/RoutedButton'
-import Content, { HTMLContent } from '../components/Content'
+import Content from '../components/Content'
 
 export const BlogPostTemplate = ({
   content,
-  contentComponent,
   description,
   tags,
   title,
-  helmet,
-  markdown
+  helmet
 }) => {
-  const PostContent = contentComponent || Content
 
   return (
     <Box
@@ -38,16 +35,10 @@ export const BlogPostTemplate = ({
         }}
       >
         <Heading level={1} textAlign="center">{title}</Heading>
-        <Paragraph fill>{description}</Paragraph>
-        <Markdown
-          components={{
-            "p": {
-              "props": {"fill": true}
-            }
-          }}
-        >
-          {markdown}
-        </Markdown>
+        <Box border="bottom">
+          <Paragraph fill>{description}</Paragraph>
+          <Content contentAst={content} fill/>
+        </Box>
         {tags && tags.length ? (
           <Box as="section" pad={{ "top": "small"}}>
             <Heading level={2} size="small">Tags</Heading>
@@ -89,11 +80,9 @@ const BlogPost = ({ data, props }) => {
   return (
     <Layout location={post.fields.slug}>
       <BlogPostTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
+        content={post.htmlAst}
         description={post.frontmatter.description}
         helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
-        markdown={post.rawMarkdownBody}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
       />
@@ -122,7 +111,6 @@ export const pageQuery = graphql`
         slug
       }
       htmlAst
-      rawMarkdownBody
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

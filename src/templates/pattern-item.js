@@ -3,19 +3,18 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import SimpleReactLightbox from 'simple-react-lightbox'
+import { Markdown } from 'grommet'
+
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
 import ColumnGallery from '../components/ColumnGallery'
 
 export const PatternItemTemplate = ({
   content,
-  contentComponent,
   frontmatter,
   images,
   title,
   helmet
 }) => {
-  const PostContent = contentComponent || Content
   const details = frontmatter
 
   return (
@@ -94,7 +93,15 @@ export const PatternItemTemplate = ({
                     Ravelry
                   </a> */}
                 </div>
-                <PostContent className="content" content={content} />
+                <Markdown
+                  components={{
+                    "p": {
+                      "props": {"fill": true}
+                    }
+                  }}
+                >
+                  {content}
+                </Markdown>
               </div>
             </div>
           </div>
@@ -106,7 +113,6 @@ export const PatternItemTemplate = ({
 
 PatternItemTemplate.propTypes = {
   content: PropTypes.node,
-  contentComponent: PropTypes.func,
   frontmatter: PropTypes.object,
   title: PropTypes.string,
   helmet: PropTypes.object
@@ -128,8 +134,7 @@ const PatternItem = ({ data }) => {
   return (
     <Layout location={post.fields.slug}>
       <PatternItemTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
+        content={post.rawMarkdownBody}
         frontmatter={post.frontmatter}
         helmet={<Helmet title={`${post.frontmatter.title} | ${data.site.siteMetadata.title}`} />}
         images={images}
@@ -160,6 +165,7 @@ export const pattQuery = graphql`
         slug
       }
       html
+      rawMarkdownBody
       frontmatter {
         published(formatString: "MMMM YYYY")
         title
