@@ -7,4 +7,13 @@ export const customTheme = deepMerge(grommet, {
       family: 'Sarabun',
     },
   },
+  table: {
+    body: {
+      border: {
+        color: 'neutral-3',
+        side: 'horizontal',
+      },
+      pad: { vertical: 'xsmall' }
+    }
+  },
 });

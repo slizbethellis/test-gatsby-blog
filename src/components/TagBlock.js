@@ -22,7 +22,7 @@ const TagBlock = () => (
       }
     `}
     render={data => (
-      <ResponsiveContext>
+      <ResponsiveContext.Consumer>
         {responsive =>
           responsive === 'small' ? (
             <ThemeContext.Extend
@@ -70,7 +70,7 @@ const TagBlock = () => (
             </Box>
           )
         }
-      </ResponsiveContext>
+      </ResponsiveContext.Consumer>
     )}
   />
 )

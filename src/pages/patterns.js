@@ -18,7 +18,7 @@ export const PatternPage = ({ data }) => {
         as="section"
         alignSelf="center"
         justify="center"
-        width="full"
+        fill
       >
         <Heading level={1} alignSelf="center" textAlign="center">Patterns</Heading>
         <Grid

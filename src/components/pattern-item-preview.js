@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Content, { HTMLContent } from '../components/Content'
 
 export const PatternItemTemplate = ({
   content,
@@ -14,7 +13,6 @@ export const PatternItemTemplate = ({
   yarn,
   yarnWeight
 }) => {
-  const PostContent = HTMLContent || Content
 
   return (
     <section className="section">
@@ -59,7 +57,7 @@ export const PatternItemTemplate = ({
               </tr>
             </tbody>
           </table>
-          <PostContent className="content" content={content} />
+          <div className="content">{content}</div>
         </div>
       </div>
     </section>

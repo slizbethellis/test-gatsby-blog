@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
-import { Box, Heading, Markdown } from 'grommet'
+import { Box, Heading, Markdown, ResponsiveContext } from 'grommet'
 
 import Layout from '../components/Layout'
 
 export const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
+  const size = useContext(ResponsiveContext)
+  const boxPad = (size !== 'small' ? "xlarge" : "large")
+
   return (
     <Box
       as="section"
       alignSelf="center"
       justify="center"
       width="xlarge"
-      margin={{"horizontal": "large" }}
+      pad={{
+        "top": "small",
+        "bottom": "medium",
+        "horizontal": boxPad
+      }}
     >
       {helmet || ''}
       <Heading level={1} textAlign="center">{title}</Heading>
@@ -30,24 +37,15 @@ export const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
       >
         {image}
       </Box>
-      <Box width="xlarge"
-        alignSelf="center"
-        pad={{
-          "top": "small",
-          "bottom": "medium",
-          "horizontal": "xlarge"
+      <Markdown
+        components={{
+          "p": {
+            "props": {"fill": true}
+          }
         }}
       >
-        <Markdown
-          components={{
-            "p": {
-              "props": {"fill": true}
-            }
-          }}
-        >
-          {markdown}
-        </Markdown>
-      </Box>
+        {markdown}
+      </Markdown>
     </Box>
   )
 }

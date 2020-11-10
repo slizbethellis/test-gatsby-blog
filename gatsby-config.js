@@ -11,10 +11,6 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: "Cousine",
-              variants: ["400"],
-            },
-            {
               family: "Sarabun",
               variants: ["300", "300i", "400", "400i", "600", "600i"],
             },
@@ -134,6 +130,7 @@ module.exports = {
               maxWidth: 930,
               backgroundColor: 'transparent', // required to display blurred image first
               withWebp: 'true', // to serve images in WebP format where supported
+              wrapperStyle: 'width: 90%; margin: 0 5%;',
             },
           }
         ],

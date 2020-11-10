@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import SimpleReactLightbox from 'simple-react-lightbox'
-import { Markdown } from 'grommet'
+import {
+  Box,
+  Button,
+  Grid,
+  Heading,
+  Markdown,
+  ResponsiveContext,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  Text
+} from 'grommet'
 
 import Layout from '../components/Layout'
 import ColumnGallery from '../components/ColumnGallery'
@@ -16,97 +28,132 @@ export const PatternItemTemplate = ({
   helmet
 }) => {
   const details = frontmatter
+  const size = useContext(ResponsiveContext)
+  const boxPad = (size !== 'small' ? "large" : "medium")
 
   return (
     <SimpleReactLightbox>
-      <section className="section">
+      <Box
+        as="section"
+        alignSelf="center"
+        justify="center"
+        width="xlarge"
+        pad={{
+          "horizontal": boxPad
+        }}      
+      >
         {helmet || ''}
-        <div className="columns is-centered">
-          <div className="column is-10">
-            <h1 className="is-size-2 has-text-weight-bold">
-              {title}
-            </h1>
-            <div className="columns">
-              <div className="column is-5">
-                {/* Gallery grid of pattern photos goes here */}
-                <ColumnGallery photos={images} />
-                <h2 className="has-text-centered lightbox-instructions top-padding is-5">
-                  (click or tap to enlarge thumbnails)
-                </h2>
-              </div>
-              <div className="column is-7">
-                <table className="table is-fullwidth">
-                  <tbody>
-                    <tr>
-                      <th>Published in</th>
-                      <td>{details.originalPub}</td>
-                    </tr>
-                    <tr>
-                      <th>Category</th>
-                      <td>{details.itemType}</td>
-                    </tr>
-                    <tr>
-                      <th>Published</th>
-                      <td>{details.published}</td>
-                    </tr>
-                    <tr>
-                      <th>Yarn(s)</th>
-                      <td>{details.yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}</td>
-                    </tr>
-                    <tr>
-                      <th>Yarn Weight</th>
-                      <td>{details.yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarnWeight.length - 1) && ', '}</span> ))}</td>
-                    </tr>
-                    <tr>
-                      <th>Gauge</th>
-                      <td>{details.gauge}</td>
-                    </tr>
-                    <tr>
-                      <th>Needles</th>
-                      <td>{details.needles}</td>
-                    </tr>
-                    <tr>
-                      <th>Sizes</th>
-                      <td>{details.sizes}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                {/* I'm leaving Ravelry stuff commented out until they do more to fix their accessibility issues.
-                <article class="message is-primary">
-                  <div class="message-body">
-                    The Ravelry button links to the classic look version of the pattern page, but this workaround won't help if you're not logged in. It pains me to have to say this, but if you have any medical conditions triggered by visual stimuli (i.e. epilepsy and migraine) and don't know if the Ravelry redesign causes problems for you, DO NOT click any Ravelry links. The pattern button next to it is still safe.
-                  </div>
-                </article> */}
-                <div className="buttons is-centered">
-                  <a className="button pattern-btn is-rounded is-primary"
-                  href={details.patternSource.link}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                    Pattern ({details.patternSource.price})
-                  </a>
-                  {/* Ravelry's redesign has some major accessibility issues, and the string added to the following href is a temporary workaround to link to the old look. I'm leaving Ravelry stuff commented out for now. */}
-                  {/* <a className="button is-rounded is-success"
-                  href={details.ravelryLink + "?newlook=0"}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                    <FontAwesomeIcon className="pattern-btn" icon={['fab', 'ravelry']} />
-                    Ravelry
-                  </a> */}
-                </div>
-                <Markdown
-                  components={{
-                    "p": {
-                      "props": {"fill": true}
-                    }
-                  }}
-                >
-                  {content}
-                </Markdown>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <Heading level={1} textAlign="center">{title}</Heading>
+        <Grid
+          columns={size !== 'small' ? ['42%', 'auto'] : ['auto']}
+          rows={size !== 'small' ? ['auto'] : ['auto', 'auto']}
+          gap="medium"
+        >
+          <Box
+            pad={{
+              "top": "none",
+              "bottom": "medium"
+            }}
+          >
+            <ColumnGallery photos={images} />
+            <Text textAlign="center" margin={{ "top": "small" }}>(click or tap to enlarge thumbnails)</Text>
+          </Box>
+          <Box
+            pad={{
+              "top": "none",
+              "bottom": "medium"
+            }}
+          >
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableCell scope="row" size="1/4">
+                    <strong>Published in</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.originalPub}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Category</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.itemType}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Release Date</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.published}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Yarn(s)</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Yarn Weight</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Gauge</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.gauge}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Needles</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.needles}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Sizes</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.sizes}
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <Box pad={{ top: "medium", bottom: "none" }}>
+              <Button
+                as="a"
+                href={details.patternSource.link}
+                alignSelf="center"
+                margin={size === 'small' ? {top: 'small', bottom: 'xxsmall'} : 'none'}
+                primary
+                label={`Pattern (${details.patternSource.price})`}
+              />
+            </Box>
+            <Markdown
+              components={{
+                "p": {
+                  "props": {"fill": true}
+                }
+              }}
+            >
+              {content}
+            </Markdown>
+          </Box>
+        </Grid>
+      </Box>
     </SimpleReactLightbox>
   )
 }
@@ -124,6 +171,7 @@ const PatternItem = ({ data }) => {
 
   const images = photos.map(photo => ({
     src: photo.patternPhoto.photo.childImageSharp.fluid.src,
+    srcSet: photo.patternPhoto.photo.childImageSharp.fluid.srcSet,
     fluid: photo.patternPhoto.photo.childImageSharp.fluid,
     width: photo.patternPhoto.width,
     height: photo.patternPhoto.height,
@@ -132,7 +180,7 @@ const PatternItem = ({ data }) => {
   }))
 
   return (
-    <Layout location={post.fields.slug}>
+    <Layout>
       <PatternItemTemplate
         content={post.rawMarkdownBody}
         frontmatter={post.frontmatter}

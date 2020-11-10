@@ -1,5 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
+import { Button } from 'grommet'
 
 const GalleryImage = ({ index, left, top, photo }) => {
   const imgStyle = {
@@ -12,14 +13,14 @@ const GalleryImage = ({ index, left, top, photo }) => {
   };
   
   return (
-    <button className="button-photo main-photo" data-attribute="SRL" id={index+1}>
+    <Button plain data-attribute="SRL" id={index+1}>
       <Img
         fluid={photo.fluid}
         alt={photo.alt}
         caption={photo.caption}
         style={imgStyle}
       />
-    </button>
+    </Button>
   )
 };
 
