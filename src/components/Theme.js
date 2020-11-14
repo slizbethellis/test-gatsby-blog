@@ -4,7 +4,7 @@ import { deepMerge } from "grommet/utils"
 export const customTheme = deepMerge(grommet, {
   global: {
     font: {
-      family: 'Sarabun',
+      family: 'DM Sans',
     },
   },
   table: {

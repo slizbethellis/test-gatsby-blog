@@ -11,8 +11,8 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: "Sarabun",
-              variants: ["300", "300i", "400", "400i", "600", "600i"],
+              family: "DM Sans",
+              variants: ["400", "400i", "700", "700i"],
             },
           ],
         },
@@ -73,7 +73,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
     {
       resolve: `gatsby-plugin-netlify-cms-paths`,
       options: {
@@ -101,7 +100,8 @@ module.exports = {
         fields: [
           'title',
           'path',
-          'tags'
+          'tags',
+          'itemType'
         ],
         // How to resolve each field's value for a supported node type
         resolvers: {
@@ -109,7 +109,8 @@ module.exports = {
           MarkdownRemark: {
             title: node => node.frontmatter.title,
             path: node => node.fields.slug,
-            tags: node => node.frontmatter.tags
+            tags: node => node.frontmatter.tags,
+            itemType: node => node.frontmatter.itemType
           },
         },
       },

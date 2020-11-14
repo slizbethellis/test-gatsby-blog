@@ -22,7 +22,7 @@ const ColumnGallery = (images) => {
   // Creates captions array
   const customCaptions = imageArray.map((photo, index) => ({
     id: (index*2)+1,
-    caption: <div className="SRLCustomCaption" style={{ fontFamily: "Sarabun, sans-serif"}}>{photo.caption}</div>
+    caption: <div className="SRLCustomCaption" style={{ fontFamily: "DM Sans, sans-serif"}}>{photo.caption}</div>
   }))
 
   // First photo is handled differently than rest of image array

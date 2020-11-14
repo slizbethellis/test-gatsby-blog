@@ -5,7 +5,7 @@ import { Box } from 'grommet'
 import Search from './Search'
 import TagBlock from './TagBlock'
 
-const Sidebar = () => (
+const Sidebar = ({size}) => (
   <StaticQuery
     query={graphql`
       query SearchIndexQuery {
@@ -17,7 +17,7 @@ const Sidebar = () => (
     render={data => (
       <Box as="section" border="between" gap="small" margin={{ "bottom": "large" }}>
         <Box alignContent="center">
-          <Search searchIndex={data.siteSearchIndex.index}/>
+          <Search searchIndex={data.siteSearchIndex.index} size={size} />
         </Box>
         {/* <Instagram /> */}
         <TagBlock />

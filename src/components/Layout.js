@@ -7,7 +7,6 @@ import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons'
 import Navbar from './Navbar'
 import SiteFooter from './Footer'
 import { customTheme } from './Theme'
-// import './all.sass'
 
 const TemplateWrapper = ({ children }) => {
 return(

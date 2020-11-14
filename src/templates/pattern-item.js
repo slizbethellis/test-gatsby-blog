@@ -13,8 +13,7 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableRow,
-  Text
+  TableRow
 } from 'grommet'
 
 import Layout from '../components/Layout'
@@ -29,7 +28,7 @@ export const PatternItemTemplate = ({
 }) => {
   const details = frontmatter
   const size = useContext(ResponsiveContext)
-  const boxPad = (size !== 'small' ? "large" : "medium")
+  const cellSize = (size === 'small' ? '1/3' : '1/4')
 
   return (
     <SimpleReactLightbox>
@@ -39,7 +38,7 @@ export const PatternItemTemplate = ({
         justify="center"
         width="xlarge"
         pad={{
-          "horizontal": boxPad
+          "horizontal": "medium"
         }}      
       >
         {helmet || ''}
@@ -56,7 +55,6 @@ export const PatternItemTemplate = ({
             }}
           >
             <ColumnGallery photos={images} />
-            <Text textAlign="center" margin={{ "top": "small" }}>(click or tap to enlarge thumbnails)</Text>
           </Box>
           <Box
             pad={{
@@ -67,7 +65,7 @@ export const PatternItemTemplate = ({
             <Table>
               <TableBody>
                 <TableRow>
-                  <TableCell scope="row" size="1/4">
+                  <TableCell scope="row" size={cellSize}>
                     <strong>Published in</strong>
                   </TableCell>
                   <TableCell>
@@ -212,7 +210,6 @@ export const pattQuery = graphql`
       fields {
         slug
       }
-      html
       rawMarkdownBody
       frontmatter {
         published(formatString: "MMMM YYYY")

@@ -46,7 +46,7 @@ export const BlogPage = ({ data }) => {
           {responsive =>
             responsive === 'small' ? (
               <Box margin={{ "bottom": "large" }}>
-                <Sidebar />
+                <Sidebar size={responsive}/>
                 <BlogPosts posts={posts}/>
               </Box>
             ) : (
@@ -56,7 +56,7 @@ export const BlogPage = ({ data }) => {
                 margin={{ "bottom": "large", "horizontal": "medium" }}
               >
                 <BlogPosts posts={posts} />
-                <Sidebar />
+                <Sidebar size={responsive}/>
               </Grid>
             )
           }
