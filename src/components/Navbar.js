@@ -12,9 +12,9 @@ import {
 import { Menu as MenuIcon } from 'grommet-icons'
 
 import Link from './Link'
-import SocialMedia from './SocialMedia'
+import Toggle from './Toggle'
 
-const Navbar = () => (
+const Navbar = ({ theme, toggleTheme }) => (
   <Header
     background="light-3"
     pad="medium"
@@ -97,9 +97,11 @@ const Navbar = () => (
                     Patterns
                   </Box>
                   <Box
-                    margin={{"top": "medium"}}
-                    border="top">
-                    <SocialMedia />
+                    margin={{ "top": "medium" }}
+                    border="top"
+                    pad="medium"
+                  >
+                    <Toggle theme={theme} toggleTheme={toggleTheme} />
                   </Box>
                 </Box>
               }
@@ -118,7 +120,7 @@ const Navbar = () => (
                 Patterns
               </Link>
             </Nav>
-            <SocialMedia />
+            <Toggle theme={theme} toggleTheme={toggleTheme} />
           </Box>
         )
       }

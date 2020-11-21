@@ -21,8 +21,8 @@ const BlogPosts = ({ posts }) => (
           altText={post.frontmatter.altText}
           image={post.frontmatter.image && post.frontmatter.image.childImageSharp.fixed}
           key={post.id}
-          background="light-1"
-          elevation="small"
+          background={{dark: "dark-1", light: "light-1"}}
+          elevation="xsmall"
           round="medium"
         />
       ))}
