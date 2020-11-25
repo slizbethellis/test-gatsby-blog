@@ -6,11 +6,26 @@ export const customTheme = deepMerge(grommet, {
     font: {
       family: 'DM Sans',
     },
+    drop: {
+      background: { dark: 'dark-1', light: '#ffffff' },
+      border: {
+        color: {
+          dark: 'light-6',
+          light: 'dark-6'
+        },
+        size: 'small',
+        side: 'all',
+      },
+      elevation: 'none',
+    },
   },
   table: {
     body: {
       border: {
-        color: 'neutral-3',
+        color: {
+          dark: 'dark-6',
+          light: 'light-6'
+        },
         side: 'horizontal',
       },
       pad: { vertical: 'xsmall' }

@@ -35,6 +35,7 @@ const ColumnGallery = (images) => {
       <Button plain style={{ width: 'calc(100% - 5px)', margin: '0 2px' }} data-attribute="SRL" key="0">
         <Img
           fluid={firstImage.fluid}
+          src={firstImage.src}
           alt={firstImage.alt}
           caption={firstImage.caption}
         />

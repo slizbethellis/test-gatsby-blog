@@ -10,11 +10,12 @@ const PatternCard = ({ slug, title, image, altText }) => (
     <Link to={slug} a11yTitle={title}>
       <Card
         round="medium"
-        background={{dark: "dark-1", light: "light-1"}}
-        elevation="xsmall"
+        background={{ dark: "dark-1", light: "light-1" }}
+        border={{ "color": {dark: "dark-3", light: "light-6" }}}
+        elevation="none"
       >
         <CardHeader justify="center">
-          <Heading level={2} size="small" color={{dark: "accent-1", light: "brand"}}>
+          <Heading level={2} size="small" color={{ dark: "accent-1", light: "brand" }}>
             {title}
           </Heading> 
         </CardHeader>

@@ -5,7 +5,7 @@ import SocialMedia from "./SocialMedia"
 
 const SiteFooter = () => {
   return (
-    <Footer background="light-4" justify="center" pad="small">
+    <Footer background={{ dark: "dark-2", light: "light-4" }} justify="center" pad="small">
       <Text textAlign="center" size="small">&copy; 2018-2020 Haloroundmyhead Knits</Text>
       <SocialMedia />
     </Footer>

@@ -10,15 +10,15 @@ const SocialMedia = () => (
       rel="noopener"
       a11yTitle="Follow me on Instagram"
       href="https://www.instagram.com/haloroundmyhead/"
-      icon={<FontAwesomeIcon icon={['fab', 'instagram']} style={{ fontSize: "1.5em"}} />}
-      hoverIndicator="false"
+      icon={<FontAwesomeIcon icon={['fab', 'instagram']} style={{ fontSize: "1.5em" }} />}
+      hoverIndicator
     />
     <Anchor
       target="_blank"
       rel="noopener"
       a11yTitle="Visit my Facebook page"
       href="https://www.facebook.com/haloroundmyhead"
-      icon={<FontAwesomeIcon icon={['fab', 'facebook-square']} style={{ fontSize: "1.5em"}} />}
+      icon={<FontAwesomeIcon icon={['fab', 'facebook-square']} style={{ fontSize: "1.5em" }} />}
       hoverIndicator
     />
     <Anchor
@@ -26,7 +26,7 @@ const SocialMedia = () => (
       rel="noopener"
       a11yTitle="Follow me on Twitter"
       href="https://twitter.com/haloroundmyhead"
-      icon={<FontAwesomeIcon icon={['fab', 'twitter']} style={{ fontSize: "1.5em"}} />}
+      icon={<FontAwesomeIcon icon={['fab', 'twitter']} style={{ fontSize: "1.5em" }} />}
       hoverIndicator
     />
   </Box>

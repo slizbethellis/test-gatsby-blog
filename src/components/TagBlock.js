@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { Accordion, AccordionPanel, Box, Heading, ResponsiveContext, ThemeContext } from 'grommet'
+import { Accordion, AccordionPanel, Box, Heading, ThemeContext } from 'grommet'
 
 import Link from './Link'
 import TagButtons from './TagButtons'
 
 // group of featured tags for top level blog sidebar
-const TagBlock = () => (
+const TagBlock = ({ size }) => (
   <StaticQuery
     query={graphql`
       query TagBlockQuery {
@@ -22,9 +22,8 @@ const TagBlock = () => (
       }
     `}
     render={data => (
-      <ResponsiveContext.Consumer>
-        {responsive =>
-          responsive === 'small' ? (
+      <Fragment>
+        {size === 'small' ? (
             <ThemeContext.Extend
               value={{
                 accordion: {
@@ -38,7 +37,7 @@ const TagBlock = () => (
                 },
               }}
             >
-              <Box alignSelf="center">
+              <Box alignSelf="center" border="top">
                 <Accordion>
                   <AccordionPanel label="Tags">
                     <Box pad="medium">
@@ -51,7 +50,6 @@ const TagBlock = () => (
                         all tags →
                       </Link>
                     </Box>
-                    
                   </AccordionPanel>
                 </Accordion>
               </Box>
@@ -70,7 +68,7 @@ const TagBlock = () => (
             </Box>
           )
         }
-      </ResponsiveContext.Consumer>
+      </Fragment>
     )}
   />
 )

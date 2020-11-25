@@ -8,7 +8,6 @@ import BlogThumbnail from './BlogThumbnail'
 right or bottom depending on media size; also takes custom heading level to comply with proper heading order */
 const BlogPreview = ({
   background,
-  elevation,
   round,
   slug,
   hLevel,
@@ -28,7 +27,6 @@ const BlogPreview = ({
       justify="center"
       gap="small"
       background={!background ? "none" : background}
-      elevation={!elevation ? "none" : elevation}
       round={!round ? "none" : round}
       pad={size !== "small" ? {"right": "small"} : "none"}
     >

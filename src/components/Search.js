@@ -46,29 +46,35 @@ const Search = ({ searchIndex, size }) => {
   
   return (
     <Box
-      ref={boxRef}
-      direction="row"
-      align="center"
-      round="large"
-      background="light-1"
-      border={{ "color": "neutral-3" }}
-      pad={{ "horizontal": "small" }}
-      margin={{ "top": "none", "horizontal": "medium", "bottom": "medium" }}
+      alignContent="center"
+      margin={{ "top": "medium" }}
+      border={size !== 'small' ? false : "bottom"}
     >
-      <FormSearch color="brand" />
-      <TextInput
-        type="search"
-        dropTarget={boxRef.current}
-        plain
-        onChange={(event) => {
-          const searchQuery = event.target.value;
-          setQuery(searchQuery);
-          searchResults(searchQuery);
-        }}
-        placeholder="Search..."
-        value={query}
-        suggestions={renderSuggestions()}
-      />
+      <Box
+        ref={boxRef}
+        direction="row"
+        align="center"
+        round="large"
+        background={{ dark: "dark-2", light: "#ffffff" }}
+        border={{ "color": {dark: "accent-4", light: "neutral-3"} }}
+        pad={{ "horizontal": "small" }}
+        margin={{ "top": "none", "horizontal": "medium", "bottom": "medium" }}
+      >
+        <FormSearch color={{ dark: "accent-1", light: "brand" }} />
+        <TextInput
+          type="search"
+          dropTarget={boxRef.current}
+          plain
+          onChange={(event) => {
+            const searchQuery = event.target.value;
+            setQuery(searchQuery);
+            searchResults(searchQuery);
+          }}
+          placeholder="Search..."
+          value={query}
+          suggestions={renderSuggestions()}
+        />
+      </Box>
     </Box>
   );
 }

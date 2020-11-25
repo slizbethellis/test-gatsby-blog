@@ -17,6 +17,7 @@ const GalleryImage = ({ index, left, top, photo }) => {
     <Button plain data-attribute="SRL" id={index+1}>
       <Img
         fluid={photo.fluid}
+        src={photo.src}
         alt={photo.alt}
         caption={photo.caption}
         style={imgStyle}

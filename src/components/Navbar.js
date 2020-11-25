@@ -16,11 +16,11 @@ import Toggle from './Toggle'
 
 const Navbar = ({ theme, toggleTheme }) => (
   <Header
-    background="light-3"
+    background={{ dark: "#222222", light: "light-3" }}
     pad="medium"
     height="xsmall"
     border={{
-      "color": "neutral-3",
+      "color": { dark: "accent-3", light: "neutral-3" },
       "size": "small",
       "side": "bottom"
     }}
@@ -61,13 +61,13 @@ const Navbar = ({ theme, toggleTheme }) => (
             <DropButton
               a11yTitle="Navigation Menu"
               dropProps={{ align: { top: 'bottom', right: 'right' } }}
-              icon={<MenuIcon color="brand" />}
+              icon={<MenuIcon color={{ dark: "accent-1", light: "brand" }} />}
               dropContent={
                 <Box
                   pad={{"top": "medium", "bottom": "none", "left": "medium", "right": "medium"}}
                   gap="xsmall" justify="stretch">
                   <Box
-                    hoverIndicator="light-3"
+                    hoverIndicator={{ dark: "dark-3", light: "light-3" }}
                     pad="small"
                     onClick={(ev) => {
                       navigate("/about")
@@ -77,7 +77,7 @@ const Navbar = ({ theme, toggleTheme }) => (
                     About
                   </Box>
                   <Box
-                    hoverIndicator="light-3"
+                    hoverIndicator={{ dark: "dark-3", light: "light-3" }}
                     pad="small"
                     onClick={(ev) => {
                       navigate("/blog")
@@ -87,7 +87,7 @@ const Navbar = ({ theme, toggleTheme }) => (
                     Blog
                   </Box>
                   <Box 
-                    hoverIndicator="light-3"
+                    hoverIndicator={{ dark: "dark-3", light: "light-3" }}
                     pad="small"
                     onClick={(ev) => {
                       navigate("/patterns")

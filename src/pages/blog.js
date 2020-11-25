@@ -7,9 +7,16 @@ import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
 import BlogPreview from '../components/BlogPreview'
 import Layout from '../components/Layout'
 import Sidebar from '../components/Sidebar'
+import Search from '../components/Search'
+import TagBlock from '../components/TagBlock'
 
 const BlogPosts = ({ posts }) => (
-  <Box as="section" gap="small" pad={{ "horizontal": "medium" }}>
+  <Box
+    as="section"
+    gap="small"
+    pad={{ "horizontal": "medium" }}
+    border={{ "color": { dark: "light-6", light: "dark-6" }, "side": "between" }}
+  >
     {posts
       .map(({ node: post }) => (
         <BlogPreview
@@ -21,9 +28,6 @@ const BlogPosts = ({ posts }) => (
           altText={post.frontmatter.altText}
           image={post.frontmatter.image && post.frontmatter.image.childImageSharp.fixed}
           key={post.id}
-          background={{dark: "dark-1", light: "light-1"}}
-          elevation="xsmall"
-          round="medium"
         />
       ))}
   </Box>
@@ -46,8 +50,9 @@ export const BlogPage = ({ data }) => {
           {responsive =>
             responsive === 'small' ? (
               <Box margin={{ "bottom": "large" }}>
-                <Sidebar size={responsive}/>
+                <Search searchIndex={data.siteSearchIndex.index} size={responsive} />
                 <BlogPosts posts={posts}/>
+                <TagBlock size={responsive} />
               </Box>
             ) : (
               <Grid
@@ -56,7 +61,7 @@ export const BlogPage = ({ data }) => {
                 margin={{ "bottom": "large", "horizontal": "medium" }}
               >
                 <BlogPosts posts={posts} />
-                <Sidebar size={responsive}/>
+                <Sidebar searchIndex={data.siteSearchIndex.index} size={responsive} />
               </Grid>
             )
           }
@@ -81,6 +86,9 @@ export const pageQuery = graphql`
       siteMetadata {
         title
       }
+    },
+    siteSearchIndex {
+      index
     },
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] },
