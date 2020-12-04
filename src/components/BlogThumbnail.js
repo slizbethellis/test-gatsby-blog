@@ -1,12 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Img from 'gatsby-image'
-import { Box, ResponsiveContext } from 'grommet'
+import { Box } from 'grommet'
 
 // round fixed size image thumbnail
-const BlogThumbnail = ({ altText, image }) => {
-  const size = useContext(ResponsiveContext)
-
-  return (
+const BlogThumbnail = ({ altText, image, size }) => (
   <Box
     as="figure"
     round="xlarge"
@@ -22,6 +19,5 @@ const BlogThumbnail = ({ altText, image }) => {
     />
   </Box>
 )
-}
 
 export default BlogThumbnail

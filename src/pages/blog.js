@@ -15,7 +15,7 @@ const BlogPosts = ({ posts }) => (
     as="section"
     gap="small"
     pad={{ "horizontal": "medium" }}
-    border={{ "color": { dark: "light-6", light: "dark-6" }, "side": "between" }}
+    border={{ "color": { dark: "light-4", light: "dark-4" }, "side": "between" }}
   >
     {posts
       .map(({ node: post }) => (
@@ -24,6 +24,7 @@ const BlogPosts = ({ posts }) => (
           hLevel={2}
           hSize="small"
           postTitle={post.frontmatter.title}
+          date={post.frontmatter.date}
           excerpt={post.excerpt}
           altText={post.frontmatter.altText}
           image={post.frontmatter.image && post.frontmatter.image.childImageSharp.fixed}

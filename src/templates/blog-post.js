@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import { Box, Heading, Paragraph, ResponsiveContext } from 'grommet'
+import { Box, Heading, Paragraph, ResponsiveContext, Text } from 'grommet'
 
 import Layout from '../components/Layout'
 import RoutedButton from '../components/RoutedButton'
@@ -14,6 +14,7 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
+  date,
   helmet
 }) => {
   const size = useContext(ResponsiveContext)
@@ -33,6 +34,7 @@ export const BlogPostTemplate = ({
     >
       {helmet || ''}
       <Heading level={1} textAlign="center">{title}</Heading>
+      <Text size="large" textAlign="center">{date}</Text>
       <Box border="bottom">
         <Paragraph fill>{description}</Paragraph>
         <Content contentAst={content} fill/>
@@ -84,6 +86,7 @@ const BlogPost = ({ data, props }) => {
         helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        date={post.frontmatter.date}
       />
     </Layout>
   )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Grommet, Main, ResponsiveContext } from 'grommet'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -8,6 +8,7 @@ import Navbar from './Navbar'
 import SiteFooter from './Footer'
 import { customTheme } from './Theme'
 import { useDarkMode } from './useDarkMode'
+
 
 const TemplateWrapper = ({ children }) => {
   const [theme, toggleTheme] = useDarkMode();

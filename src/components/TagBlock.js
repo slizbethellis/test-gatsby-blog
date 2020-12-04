@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { Accordion, AccordionPanel, Box, Heading, ThemeContext } from 'grommet'
+import { Box, Heading } from 'grommet'
 
 import Link from './Link'
 import TagButtons from './TagButtons'
@@ -22,53 +22,23 @@ const TagBlock = ({ size }) => (
       }
     `}
     render={data => (
-      <Fragment>
-        {size === 'small' ? (
-            <ThemeContext.Extend
-              value={{
-                accordion: {
-                  heading : {
-                    level: 2,
-                    size: "small",
-                    margin: {
-                      horizontal: "large",
-                    },
-                  },
-                },
-              }}
-            >
-              <Box alignSelf="center" border="top">
-                <Accordion>
-                  <AccordionPanel label="Tags">
-                    <Box pad="medium">
-                      <TagButtons
-                        group={data.allMarkdownRemark.group}
-                        margin="xxsmall"
-                        size="small"
-                      />
-                      <Link alignSelf="center" to="/tags">
-                        all tags →
-                      </Link>
-                    </Box>
-                  </AccordionPanel>
-                </Accordion>
-              </Box>
-            </ThemeContext.Extend>
-          ) : (
-            <Box alignSelf="center" border="bottom">
-              <Heading level={2} size="small" textAlign="center">Tags</Heading>
-              <TagButtons
-                group={data.allMarkdownRemark.group}
-                margin="xxsmall"
-                size="small"
-              />
-              <Link alignSelf="center" margin={{"bottom": "1.5rem"}} to="/tags">
-                all tags →
-              </Link>
-            </Box>
-          )
-        }
-      </Fragment>
+      <Box 
+        alignSelf="center"
+        border={{ 
+          "side": (size !== "small" ? "bottom" : "horizontal"),
+          "color": (size !== "small" ? "border" : { dark: "light-4", light: "dark-4" }) }}
+        pad={size !== "small" ? "none" : "medium"}
+      >
+        <Heading level={2} size="small" textAlign="center">Tags</Heading>
+        <TagButtons
+          group={data.allMarkdownRemark.group}
+          margin="xxsmall"
+          size="small"
+        />
+        <Link alignSelf="center" margin={{"bottom": "1.5rem"}} to="/tags">
+          all tags →
+        </Link>
+      </Box>
     )}
   />
 )

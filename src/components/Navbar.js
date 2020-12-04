@@ -16,7 +16,7 @@ import Toggle from './Toggle'
 
 const Navbar = ({ theme, toggleTheme }) => (
   <Header
-    background={{ dark: "#222222", light: "light-3" }}
+    background={{ dark: "#101F1C", light: "light-3" }}
     pad="medium"
     height="xsmall"
     border={{
@@ -67,7 +67,7 @@ const Navbar = ({ theme, toggleTheme }) => (
                   pad={{"top": "medium", "bottom": "none", "left": "medium", "right": "medium"}}
                   gap="xsmall" justify="stretch">
                   <Box
-                    hoverIndicator={{ dark: "dark-3", light: "light-3" }}
+                    hoverIndicator={{ dark: "dark-3", light: "light-4" }}
                     pad="small"
                     onClick={(ev) => {
                       navigate("/about")
@@ -77,7 +77,7 @@ const Navbar = ({ theme, toggleTheme }) => (
                     About
                   </Box>
                   <Box
-                    hoverIndicator={{ dark: "dark-3", light: "light-3" }}
+                    hoverIndicator={{ dark: "dark-3", light: "light-4" }}
                     pad="small"
                     onClick={(ev) => {
                       navigate("/blog")
@@ -87,7 +87,7 @@ const Navbar = ({ theme, toggleTheme }) => (
                     Blog
                   </Box>
                   <Box 
-                    hoverIndicator={{ dark: "dark-3", light: "light-3" }}
+                    hoverIndicator={{ dark: "dark-3", light: "light-4" }}
                     pad="small"
                     onClick={(ev) => {
                       navigate("/patterns")

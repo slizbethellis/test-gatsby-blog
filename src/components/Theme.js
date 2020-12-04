@@ -6,12 +6,37 @@ export const customTheme = deepMerge(grommet, {
     font: {
       family: 'DM Sans',
     },
+    colors: {
+      background: {
+        dark: '#00100d',
+        light: '#f8fbfa',
+      },
+      'background-back': {
+        dark: '#00100d',
+        light: '#f8fbfa',
+      },
+      
+      'brand': '#791089',
+      'accent-1': '#fdab7c',
+      'accent-3': '#39a78e',
+      'accent-4': '#a3cd74',
+      'dark-1': '#202e2b',
+      'dark-2': '#404c4a',
+      'dark-3': '#606a68',
+      'dark-4': '#808886',
+      'light-1': '#f2f7f6',
+      'light-2': '#ebf3f1',
+      'light-3': '#e4eeed',
+      'light-4': '#d7e6e3',
+      'neutral-2': '#074646',
+      'neutral-3': '#FF5154',
+    },
     drop: {
-      background: { dark: 'dark-1', light: '#ffffff' },
+      background: { dark: 'dark-1', light: 'light-1' },
       border: {
         color: {
-          dark: 'light-6',
-          light: 'dark-6'
+          dark: 'light-4',
+          light: 'dark-4'
         },
         size: 'small',
         side: 'all',
@@ -23,8 +48,8 @@ export const customTheme = deepMerge(grommet, {
     body: {
       border: {
         color: {
-          dark: 'dark-6',
-          light: 'light-6'
+          dark: 'light-4',
+          light: 'dark-4'
         },
         side: 'horizontal',
       },
