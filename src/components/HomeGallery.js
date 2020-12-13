@@ -4,8 +4,9 @@ import { Grid, ResponsiveContext } from 'grommet'
 import HomeImage from './HomeImage'
 
 // a responsive grid of image buttons for the home page
-const HomeGallery = ({ posts, smallPosts }) => {
+const HomeGallery = ({ posts }) => {
   const size = useContext(ResponsiveContext)
+  const smallPosts = posts.slice(0,3)
   const homePosts = (size !== 'small' ? posts : smallPosts)
 
   return (

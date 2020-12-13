@@ -11,12 +11,11 @@ import RoutedButton from '../components/RoutedButton'
 
 export const IndexPage = ({ data }) => {
   const { edges: posts } = data.patterns
-  const smallPosts = posts.slice(0,3)
 
   return (
     <Layout>
       <Helmet title={`Home | ${data.site.siteMetadata.title}`} />
-      <HomeGallery posts={posts} smallPosts={smallPosts} />
+      <HomeGallery posts={posts} />
       <Box
         as="section"
         direction="column"

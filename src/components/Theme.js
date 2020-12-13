@@ -7,6 +7,7 @@ export const customTheme = deepMerge(grommet, {
       family: 'DM Sans',
     },
     colors: {
+      active: 'rgba(215,230,227, 0.5)',
       background: {
         dark: '#00100d',
         light: '#f8fbfa',
@@ -29,10 +30,10 @@ export const customTheme = deepMerge(grommet, {
       'light-3': '#e4eeed',
       'light-4': '#d7e6e3',
       'neutral-2': '#074646',
-      'neutral-3': '#FF5154',
+      'neutral-3': '#ff7073',
     },
     drop: {
-      background: { dark: 'dark-1', light: 'light-1' },
+      background: { dark: 'dark-1', light: '#ffffff' },
       border: {
         color: {
           dark: 'light-4',
