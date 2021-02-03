@@ -9,7 +9,7 @@ import HomeGallery from '../components/HomeGallery'
 import Layout from '../components/Layout'
 import RoutedButton from '../components/RoutedButton'
 
-export const IndexPage = ({ data }) => {
+export default function IndexPage ({ data }) {
   const { edges: posts } = data.patterns
 
   return (
@@ -108,5 +108,3 @@ export const IndexQuery = graphql`
     }
   }
 `
-
-export default IndexPage

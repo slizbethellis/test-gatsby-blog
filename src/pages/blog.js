@@ -34,7 +34,7 @@ const BlogPosts = ({ posts }) => (
   </Box>
 )
 
-export const BlogPage = ({ data }) => {
+export default function BlogPage ({ data }) {
   const { edges: posts } = data.allMarkdownRemark
 
   return (
@@ -120,5 +120,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-export default BlogPage

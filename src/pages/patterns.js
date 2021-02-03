@@ -7,7 +7,7 @@ import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
 import Layout from '../components/Layout'
 import PatternCard from '../components/PatternCard'
 
-export const PatternPage = ({ data }) => {
+export default function PatternPage ({ data }) {
   const { edges: posts } = data.allMarkdownRemark
   const size = useContext(ResponsiveContext)
   
@@ -87,5 +87,3 @@ export const PageQuery = graphql`
     }
   }
 `
-
-export default PatternPage

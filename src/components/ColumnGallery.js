@@ -1,8 +1,6 @@
 import React from 'react'
-import Img from 'gatsby-image'
 import { SRLWrapper } from 'simple-react-lightbox'
 import Gallery from 'react-photo-gallery'
-import { Button } from 'grommet'
 
 import GalleryImage from './GalleryImage'
 
@@ -25,29 +23,19 @@ const ColumnGallery = (images) => {
     caption: <div className="SRLCustomCaption" style={{ fontFamily: "DM Sans, sans-serif"}}>{photo.caption}</div>
   }))
 
-  // First photo is handled differently than rest of image array
-  const firstImage = imageArray[0]
-  // This variable passes image array minus first image to gallery component
-  const slicedImages = imageArray.slice(1)
-
   return (
+    <React.Fragment>
     <SRLWrapper customCaptions={customCaptions}>
-      <Button plain style={{ width: 'calc(100% - 5px)', margin: '0 2px' }} data-attribute="SRL" key="0">
-        <Img
-          fluid={firstImage.fluid}
-          src={firstImage.src}
-          alt={firstImage.alt}
-          caption={firstImage.caption}
-        />
-      </Button>
-      {slicedImages.length > 0 &&
+      {imageArray.length > 0 &&
         <Gallery
-          photos={slicedImages}
+          photos={imageArray}
           direction={'column'}
-          columns={4}
+          columns={2}
           renderImage={imageRenderer}
         />}
     </SRLWrapper>
+    </React.Fragment>
+    
   )
 };
 

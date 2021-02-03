@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import SimpleReactLightbox from 'simple-react-lightbox'
+
 import {
   Box,
   Button,
@@ -31,128 +31,126 @@ export const PatternItemTemplate = ({
   const cellSize = (size === 'small' ? '1/3' : '1/4')
 
   return (
-    <SimpleReactLightbox>
-      <Box
-        as="section"
-        alignSelf="center"
-        justify="center"
-        width="xlarge"
-        pad={{
-          "horizontal": "medium"
-        }}      
+    <Box
+      as="section"
+      alignSelf="center"
+      justify="center"
+      width="xlarge"
+      pad={{
+        "horizontal": "medium"
+      }}      
+    >
+      {helmet || ''}
+      <Heading level={1} textAlign="center">{title}</Heading>
+      <Grid
+        columns={size !== 'small' ? ['42%', 'auto'] : ['auto']}
+        rows={size !== 'small' ? ['auto'] : ['auto', 'auto']}
+        gap="medium"
       >
-        {helmet || ''}
-        <Heading level={1} textAlign="center">{title}</Heading>
-        <Grid
-          columns={size !== 'small' ? ['42%', 'auto'] : ['auto']}
-          rows={size !== 'small' ? ['auto'] : ['auto', 'auto']}
-          gap="medium"
+        <Box
+          pad={{
+            "top": "none",
+            "bottom": "medium"
+          }}
         >
-          <Box
-            pad={{
-              "top": "none",
-              "bottom": "medium"
+          <ColumnGallery photos={images} />
+        </Box>
+        <Box
+          pad={{
+            "top": "none",
+            "bottom": "medium"
+          }}
+        >
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell scope="row" size={cellSize}>
+                  <strong>Published in</strong>
+                </TableCell>
+                <TableCell>
+                  {details.originalPub}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Category</strong>
+                </TableCell>
+                <TableCell>
+                  {details.itemType}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Release Date</strong>
+                </TableCell>
+                <TableCell>
+                  {details.published}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Yarn(s)</strong>
+                </TableCell>
+                <TableCell>
+                  {details.yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Yarn Weight</strong>
+                </TableCell>
+                <TableCell>
+                  {details.yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Gauge</strong>
+                </TableCell>
+                <TableCell>
+                  {details.gauge}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Needles</strong>
+                </TableCell>
+                <TableCell>
+                  {details.needles}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Sizes</strong>
+                </TableCell>
+                <TableCell>
+                  {details.sizes}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Box pad={{ top: "medium", bottom: "none" }}>
+            <Button
+              as="a"
+              href={details.patternSource.link}
+              alignSelf="center"
+              margin={size === 'small' ? {top: 'small', bottom: 'xxsmall'} : 'none'}
+              primary
+              label={`Pattern (${details.patternSource.price})`}
+            />
+          </Box>
+          <Markdown
+            components={{
+              "p": {
+                "props": {"fill": true}
+              }
             }}
           >
-            <ColumnGallery photos={images} />
-          </Box>
-          <Box
-            pad={{
-              "top": "none",
-              "bottom": "medium"
-            }}
-          >
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableCell scope="row" size={cellSize}>
-                    <strong>Published in</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.originalPub}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell scope="row">
-                    <strong>Category</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.itemType}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell scope="row">
-                    <strong>Release Date</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.published}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell scope="row">
-                    <strong>Yarn(s)</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell scope="row">
-                    <strong>Yarn Weight</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell scope="row">
-                    <strong>Gauge</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.gauge}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell scope="row">
-                    <strong>Needles</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.needles}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell scope="row">
-                    <strong>Sizes</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.sizes}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-            <Box pad={{ top: "medium", bottom: "none" }}>
-              <Button
-                as="a"
-                href={details.patternSource.link}
-                alignSelf="center"
-                margin={size === 'small' ? {top: 'small', bottom: 'xxsmall'} : 'none'}
-                primary
-                label={`Pattern (${details.patternSource.price})`}
-              />
-            </Box>
-            <Markdown
-              components={{
-                "p": {
-                  "props": {"fill": true}
-                }
-              }}
-            >
-              {content}
-            </Markdown>
-          </Box>
-        </Grid>
-      </Box>
-    </SimpleReactLightbox>
+            {content}
+          </Markdown>
+        </Box>
+      </Grid>
+    </Box>
   )
 }
 

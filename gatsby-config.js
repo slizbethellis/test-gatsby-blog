@@ -128,7 +128,7 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 930,
+              maxWidth: 1152,
               backgroundColor: 'transparent', // required to display blurred image first
               withWebp: 'true', // to serve images in WebP format where supported
               wrapperStyle: 'width: 90%; margin: 0 5%;',
