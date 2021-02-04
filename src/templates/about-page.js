@@ -7,7 +7,7 @@ import { Box, Heading, Markdown, ResponsiveContext } from 'grommet'
 
 import Layout from '../components/Layout'
 
-export const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
+const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
   const size = useContext(ResponsiveContext)
   const boxPad = (size !== 'small' ? "xlarge" : "large")
 

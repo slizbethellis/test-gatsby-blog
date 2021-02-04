@@ -37,11 +37,11 @@ export const PatternItemTemplate = ({
               </tr>
               <tr>
                 <th>Yarn(s)</th>
-                <td>{yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (yarn.length - 1) && ', '}</span> ))}</td>
+                <td>{yarn.join(', ')}</td>
               </tr>
               <tr>
                 <th>Yarn Weight</th>
-                <td>{yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (yarnWeight.length - 1) && ', '}</span> ))}</td>
+                <td>{yarnWeight.join(', ')}</td>
               </tr>
               <tr>
                 <th>Gauge</th>

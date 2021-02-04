@@ -19,7 +19,7 @@ import {
 import Layout from '../components/Layout'
 import ColumnGallery from '../components/ColumnGallery'
 
-export const PatternItemTemplate = ({
+const PatternItemTemplate = ({
   content,
   frontmatter,
   images,
@@ -92,7 +92,7 @@ export const PatternItemTemplate = ({
                   <strong>Yarn(s)</strong>
                 </TableCell>
                 <TableCell>
-                  {details.yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}
+                  {details.yarn.join(', ')}
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -100,7 +100,7 @@ export const PatternItemTemplate = ({
                   <strong>Yarn Weight</strong>
                 </TableCell>
                 <TableCell>
-                  {details.yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (details.yarn.length - 1) && ', '}</span> ))}
+                  {details.yarnWeight.join(', ')}
                 </TableCell>
               </TableRow>
               <TableRow>

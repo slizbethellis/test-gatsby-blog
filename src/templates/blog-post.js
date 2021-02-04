@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 import RoutedButton from '../components/RoutedButton'
 import Content from '../components/Content'
 
-export const BlogPostTemplate = ({
+const BlogPostTemplate = ({
   content,
   description,
   tags,
