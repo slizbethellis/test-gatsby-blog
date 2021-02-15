@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 export const PatternItemTemplate = ({
   content,
+  currentSrc,
   gauge,
   itemType,
   needles,
@@ -11,7 +12,8 @@ export const PatternItemTemplate = ({
   sizes,
   title,
   yarn,
-  yarnWeight
+  yarnWeight,
+  yardage
 }) => {
 
   return (
@@ -24,9 +26,15 @@ export const PatternItemTemplate = ({
           <table className="table is-fullwidth">
             <tbody>
               <tr>
-                <th>Published in</th>
+                <th>Original source</th>
                 <td>{originalPub}</td>
               </tr>
+              {currentSrc && (
+                <tr>
+                  <th>Current source</th>
+                  <td>{currentSrc}</td>
+                </tr>
+              )}
               <tr>
                 <th>Category</th>
                 <td>{itemType}</td>
@@ -44,8 +52,20 @@ export const PatternItemTemplate = ({
                 <td>{yarnWeight.join(', ')}</td>
               </tr>
               <tr>
+                <th>Yardage</th>
+                <td>
+                  {yardage.map((yard,index)=>(
+                    <span key={index}>{yard.variant}: {yard.yards} yds / {yard.meters} m</span>
+                  ))}
+                </td>
+              </tr>
+              <tr>
                 <th>Gauge</th>
-                <td>{gauge}</td>
+                <td>
+                  {gauge.map((gauge,index)=>(
+                    <span key={index}>{gauge}</span>
+                  ))}
+                </td>
               </tr>
               <tr>
                 <th>Needles</th>
@@ -66,7 +86,8 @@ export const PatternItemTemplate = ({
 
 PatternItemTemplate.propTypes = {
   content: PropTypes.node,
-  gauge: PropTypes.string,
+  currentSrc: PropTypes.string,
+  gauge: PropTypes.array,
   itemType: PropTypes.string,
   needles: PropTypes.string,
   originalPub: PropTypes.string,
@@ -74,5 +95,6 @@ PatternItemTemplate.propTypes = {
   sizes: PropTypes.string,
   title: PropTypes.string,
   yarn: PropTypes.array,
-  yarnWeight: PropTypes.array
+  yarnWeight: PropTypes.array,
+  yardage: PropTypes.array
 }

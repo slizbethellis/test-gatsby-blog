@@ -3,22 +3,27 @@ templateKey: pattern-item
 title: Carreau (cowl)
 published: 2017-12-08T02:10:48.193Z
 originalPub: 'Knitty, Winter 2017'
+currentSrc: null
+itemType: cowl
 yarn:
   - Berroco Noble
   - Rowan Big Wool
   - Freia Handpaints Ombré Super Bulky
 yarnWeight:
   - super bulky
-gauge: >-
-  small cowl: 9 sts/14 rows = 4 inches/10 cm in stockinette stitch; large cowl:
-  8 sts/12 rows = 4 inches/10 cm
+yardage:
+  - variantYardage:
+      variant: none
+      yards: 90-100 (160-170)
+      meters: 82-91 (146-155)
+gauge: 
+  - 'small cowl: 9 sts/14 rows = 4 inches/10 cm in stockinette stitch'
+  - 'large cowl: 8 sts/12 rows = 4 inches/10 cm'
 needles: US 13 (9.0 mm) or US 15 (10.0mm)
 sizes: small (large)
 patternSource:
   link: 'http://knitty.com/ISSUEw17/PATTcarreau/PATTcarreau.php'
   price: free
-ravelryLink: 'https://www.ravelry.com/patterns/library/carreau-cowl'
-itemType: cowl
 image: /img/carreau-cowl-large-side-sq.jpg
 altText: woman holding top edge of larger Carreau cowl to illustrate the larger circumference and show off the gradient colors of the bulky mosaic pattern
 pictures:

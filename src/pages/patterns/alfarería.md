@@ -3,22 +3,27 @@ templateKey: pattern-item
 title: Alfarería
 published: 2018-09-14T04:34:35.231Z
 originalPub: 'Knitty, Deep Fall 2018'
+currentSrc: null
+itemType: shawl/shawlette
 yarn:
   - Araucania Nuble
   - Malabrigo Yarn Mechita
 yarnWeight:
   - light fingering
   - fingering
-gauge: >-
-  shawlette: 25 sts/34 rows = 4 inches/10 cm in stockinette stitch; shawl: 22
-  sts/32 rows = 4 inches/10 cm
+yardage:
+  - variantYardage:
+      variant: null
+      yards: 530-550 (820-840)
+      meters: 485-503 (750-768)
+gauge: 
+  - 'shawlette: 25 sts/34 rows = 4 inches/10 cm in stockinette stitch'
+  - 'shawl: 22 sts/32 rows = 4 inches/10 cm'
 needles: US 5 (3.75mm) or US 6 (4.00mm)
 sizes: shawlette (shawl)
 patternSource:
   link: 'http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php'
   price: free
-ravelryLink: 'https://www.ravelry.com/patterns/library/alfareria'
-itemType: shawl/shawlette
 image: /img/alfareria-shawl-detail.jpg
 altText: detail of mosaic stitches on large Alfarería shawl
 pictures:

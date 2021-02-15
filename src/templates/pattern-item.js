@@ -13,7 +13,8 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableRow
+  TableRow,
+  Text
 } from 'grommet'
 
 import Layout from '../components/Layout'
@@ -28,7 +29,7 @@ const PatternItemTemplate = ({
 }) => {
   const details = frontmatter
   const size = useContext(ResponsiveContext)
-  const cellSize = (size === 'small' ? '1/3' : '1/4')
+  const cellSize = (size === 'small' ? '1/3' : '30%')
 
   return (
     <Box
@@ -63,14 +64,35 @@ const PatternItemTemplate = ({
         >
           <Table>
             <TableBody>
-              <TableRow>
-                <TableCell scope="row" size={cellSize}>
-                  <strong>Published in</strong>
-                </TableCell>
-                <TableCell>
-                  {details.originalPub}
-                </TableCell>
-              </TableRow>
+              {details.currentSrc ? (
+                <React.Fragment>
+                  <TableRow>
+                    <TableCell scope="row" size={cellSize}>
+                      <strong>Original source</strong>
+                    </TableCell>
+                    <TableCell>
+                      {details.originalPub}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell scope="row" size={cellSize}>
+                      <strong>Current source</strong>
+                    </TableCell>
+                    <TableCell>
+                      {details.currentSrc}
+                    </TableCell>
+                  </TableRow>
+                </React.Fragment>  
+              ) : (
+                <TableRow>
+                  <TableCell scope="row" size={cellSize}>
+                    <strong>Published in</strong>
+                  </TableCell>
+                  <TableCell>
+                    {details.originalPub}
+                  </TableCell>
+                </TableRow>
+              )}
               <TableRow>
                 <TableCell scope="row">
                   <strong>Category</strong>
@@ -105,10 +127,26 @@ const PatternItemTemplate = ({
               </TableRow>
               <TableRow>
                 <TableCell scope="row">
+                  <strong>Yardage</strong>
+                </TableCell>
+                <TableCell>
+                  <Box gap="xxsmall" border={{"side": "between"}}>
+                    {details.yardage.map((yard,index)=>(
+                      <Text key={index}>{details.yardage.length > 1 && (`${yard.variantYardage.variant}:`)}{yard.variantYardage.yards} yds / {yard.variantYardage.meters} m</Text>
+                    ))}
+                  </Box>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
                   <strong>Gauge</strong>
                 </TableCell>
                 <TableCell>
-                  {details.gauge}
+                  <Box gap="xxsmall" border={{"side": "between"}}>
+                    {details.gauge.map((gauge,index)=>(
+                      <Text key={index}>{gauge}</Text>
+                    ))}
+                  </Box>
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -213,13 +251,19 @@ export const pattQuery = graphql`
         published(formatString: "MMMM YYYY")
         title
         originalPub
+        currentSrc
         itemType
         yarn
         yarnWeight
+        yardage {
+          variantYardage {
+            yards
+            meters
+          }
+        }
         gauge
         needles
         sizes
-        ravelryLink
         patternSource {
           link
           price

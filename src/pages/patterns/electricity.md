@@ -3,21 +3,26 @@ templateKey: pattern-item
 title: Electricity
 published: 2015-12-08T07:18:19.551Z
 originalPub: 'Knitty, Winter 2015'
+currentSrc: null
+itemType: hat
 yarn:
   - Jojoland Rhythm Superwash
   - Wool Tree Yarn DK Weight
 yarnWeight:
   - DK
-gauge: >-
-  22 sts/32 rows = 4 inches in stockinette worked flat; 24 sts/28 rounds = 4
-  inches in charted pattern using larger needles
+yardage:
+  - variantYardage:
+      variant: none
+      yards: 240-250
+      meters: 219-229
+gauge: 
+  - 22 sts/32 rows = 4 inches/10 cm in stockinette worked flat
+  - 24 sts/28 rounds = 4 inches/10 cm in charted pattern using larger needles
 needles: US 4 (3.5mm) and US 5 (3.75mm)
 sizes: 'child (adult S, adult L)'
 patternSource:
   link: 'http://knitty.com/ISSUEw15/PATTelectricity/PATTelectricity.php'
   price: free
-ravelryLink: 'https://www.ravelry.com/patterns/library/electricity-3'
-itemType: hat
 image: /img/electricity-orange-side.jpg
 altText: side view of orange Electricity hat detailing the drape and subtle stitch definition 
 pictures:

@@ -3,19 +3,25 @@ templateKey: pattern-item
 title: Rosita
 published: 2017-11-09T02:10:48.193Z
 originalPub: 'Knitty, Deep Fall Surprise 2017'
+currentSrc: null
+itemType: shawl/shawlette
 yarn:
   - Noro Kirameki
   - Noro Taiyo Lace
 yarnWeight:
   - lace
-gauge: 24 sts/38 rows= 4 inches/10 cm in stockinette stitch
+yardage:
+  - variantYardage:
+      variant: none
+      yards: 480-495 (900-920)
+      meters: 439-453 (823-841)
+gauge:
+  - 24 sts/38 rows= 4 inches/10 cm in stockinette stitch
 needles: US 4 (3.5 mm)
 sizes: shawlette (shawl)
 patternSource:
   link: 'http://knitty.com/ISSUEdf17/PATTrosita/PATTrosita.php'
   price: free
-ravelryLink: 'https://www.ravelry.com/patterns/library/rosita-5'
-itemType: shawl/shawlette
 image: /img/rosita-shawl-detail-front.jpg
 altText: closeup of larger Rosita shawl to illustrate twisted stitch closed lace texture, also features copper shawl pin with large hand-blown glass beads
 pictures:
