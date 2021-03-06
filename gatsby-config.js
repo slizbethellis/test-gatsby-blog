@@ -11,7 +11,7 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: "DM Sans",
+              family: "Nunito",
               variants: ["400", "400i", "700", "700i"],
             },
           ],

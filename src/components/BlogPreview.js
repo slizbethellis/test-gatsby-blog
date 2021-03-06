@@ -23,6 +23,7 @@ const BlogPreview = ({
   return (
     <Box
       direction="row-responsive"
+      as="article"
       align="stretch"
       alignSelf="center"
       justify="center"
@@ -31,7 +32,7 @@ const BlogPreview = ({
       round={!round ? "none" : round}
       pad={size !== "small" ? {"right": "small"} : "none"}
     >
-      <Box as="article" pad="medium">
+      <Box pad="medium">
         <Link to={slug}>
           <Heading
             level={hLevel}

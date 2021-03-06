@@ -5,7 +5,6 @@ import { Box } from 'grommet'
 // round fixed size image thumbnail
 const BlogThumbnail = ({ altText, image, size }) => (
   <Box
-    as="figure"
     round="xlarge"
     overflow="hidden"
     align="center"

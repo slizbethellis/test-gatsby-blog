@@ -11,21 +11,27 @@ const HomeGallery = ({ posts }) => {
 
   return (
     <Grid
-      as="section"
+      as="ul"
       align="center"
       columns={size !== 'small' ? ['1/4', '1/4', '1/4', '1/4'] : ['1/3', '1/3', '1/3']}
       gap="none"
+      style={{
+        listStyle: "none",
+        paddingLeft: "0",
+        margin: "0"
+      }}
     >
       {/* Breakpoints larger than "small" get 4 pattern photo buttons, smaller breakpoints get only 3. */}
       {homePosts
         .map(({ node: post }) => (
-          <HomeImage
-            fixed={post.frontmatter.image.childImageSharp.fixed}
-            altText={`Pattern info for ${post.frontmatter.title}`}
-            patternName={post.frontmatter.title}
-            key={post.id}
-            slug={post.fields.slug}
-          />
+          <li key={post.id}>
+            <HomeImage
+              fixed={post.frontmatter.image.childImageSharp.fixed}
+              altText={`Pattern info for ${post.frontmatter.title}`}
+              patternName={post.frontmatter.title}
+              slug={post.fields.slug}
+            />
+          </li>
         ))}
     </Grid>
   )

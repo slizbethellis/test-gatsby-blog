@@ -6,7 +6,7 @@ import Link from './Link'
 
 // simple image and pattern title component without redundant link
 const PatternCard = ({ slug, title, image, altText }) => (
-  <Box as="article">
+  <Box as="li">
     <Link to={slug} a11yTitle={title}>
       <Card
         round="medium"

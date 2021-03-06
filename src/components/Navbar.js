@@ -3,16 +3,24 @@ import { navigate } from 'gatsby'
 import {
   Anchor,
   Box,
-  DropButton,
   Header,
+  Menu,
   Nav,
   ResponsiveContext,
   Text
 } from 'grommet'
 import { Menu as MenuIcon } from 'grommet-icons'
+import styled from 'styled-components'
 
 import Link from './Link'
 import Toggle from './Toggle'
+
+export const StyledAnchor = styled(Anchor)`
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  text-align: center;
+`
 
 const Navbar = ({ theme, toggleTheme }) => {
   const size = useContext(ResponsiveContext)
@@ -21,7 +29,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     <Header
       background={{ dark: "#101F1C", light: "light-3" }}
       pad="medium"
-      height={size !== 'small' ? "xsmall" : "4.125rem"}
+      height={size !== 'small' ? "4.875rem" : "4.125rem"}
       border={{
         "color": { dark: "accent-3", light: "neutral-3" },
         "size": "small",
@@ -35,10 +43,51 @@ const Navbar = ({ theme, toggleTheme }) => {
       }}
     >
       <Box direction="row" align="center" gap="small">
-        <Anchor
-          href="/"
-          label={<Text size="large">haloroundmyhead knits</Text>}
-        />
+        {size === "small" ? (
+          <React.Fragment>
+            <Nav>
+              <Menu
+                a11yTitle="Navigation Menu"
+                dropProps={{ align: { top: 'bottom', right: 'right' }, margin: {left: "xsmall"} }}
+                elevation="xxsmall"
+                icon={<MenuIcon color={{ dark: "accent-1", light: "brand" }} />}
+                size="large"
+                items={[
+                  {
+                    label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}}>About</Box>,
+                    onClick: (ev) => {
+                      navigate("/about")
+                      ev.preventDefault()
+                    }
+                  },
+                  {
+                    label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}}>Blog</Box>,
+                    onClick: (ev) => {
+                      navigate("/blog")
+                      ev.preventDefault()
+                    }
+                  },
+                  {
+                    label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}} style={{textAlign: "right"}}>Patterns</Box>,
+                    onClick: (ev) => {
+                      navigate("/patterns")
+                      ev.preventDefault()
+                    }
+                  },
+                ]}
+              />
+            </Nav>
+            <StyledAnchor
+              href="/"
+              label={<Text size="large">haloroundmyhead knits</Text>}
+            />
+          </React.Fragment>
+        ) : (
+          <Anchor
+            href="/"
+            label={<Text size="large">haloroundmyhead knits</Text>}
+          />
+        )}
       </Box>
       {/* {size => (
         <Box direction="row" align="center" gap="small">
@@ -55,59 +104,8 @@ const Navbar = ({ theme, toggleTheme }) => {
           />
         </Box>
       )} */}
-      {size === 'small' ? (
-        <Nav>
-          <DropButton
-            a11yTitle="Navigation Menu"
-            dropProps={{ align: { top: 'bottom', right: 'right' } }}
-            icon={<MenuIcon color={{ dark: "accent-1", light: "brand" }} />}
-            dropContent={
-              <Box
-                pad={{"top": "medium", "bottom": "none", "left": "medium", "right": "medium"}}
-                gap="xsmall" justify="stretch">
-                <Box
-                  hoverIndicator={{ dark: "dark-3", light: "light-4" }}
-                  pad="small"
-                  onClick={(ev) => {
-                    navigate("/about")
-                    ev.preventDefault()
-                  }}
-                >
-                  About
-                </Box>
-                <Box
-                  hoverIndicator={{ dark: "dark-3", light: "light-4" }}
-                  pad="small"
-                  onClick={(ev) => {
-                    navigate("/blog")
-                    ev.preventDefault()
-                  }}
-                >
-                  Blog
-                </Box>
-                <Box 
-                  hoverIndicator={{ dark: "dark-3", light: "light-4" }}
-                  pad="small"
-                  onClick={(ev) => {
-                    navigate("/patterns")
-                    ev.preventDefault()
-                  }}
-                >
-                  Patterns
-                </Box>
-                <Box
-                  margin={{ "top": "medium" }}
-                  border="top"
-                  pad="medium"
-                >
-                  <Toggle theme={theme} toggleTheme={toggleTheme} />
-                </Box>
-              </Box>
-            }
-          />
-        </Nav>
-      ) : (
-        <Box direction="row" align="center" gap="medium" pad="none">
+      <Box direction="row" align="center" gap="medium" pad="none">
+        {size !== 'small' && (
           <Nav direction="row">
             <Link to="/about" hoverIndicator>
               About
@@ -119,9 +117,9 @@ const Navbar = ({ theme, toggleTheme }) => {
               Patterns
             </Link>
           </Nav>
-          <Toggle theme={theme} toggleTheme={toggleTheme} />
-        </Box>
-      )}
+        )}
+        <Toggle theme={theme} toggleTheme={toggleTheme} />
+      </Box>
     </Header>
   )
 }

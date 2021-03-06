@@ -22,9 +22,15 @@ export default function PatternPage ({ data }) {
       >
         <Heading level={1} alignSelf="center" textAlign="center">Patterns</Heading>
         <Grid
+          as="ul"
           columns={size !== 'small' ? '300px' : '100%'}
           gap="small"
           margin={{ "bottom": "large", "horizontal": "medium" }}
+          style={{
+            listStyle: "none",
+            paddingLeft: "0",
+            marginTop: "0"
+          }}
         >
           {posts
             .map(({ node: post }) => (

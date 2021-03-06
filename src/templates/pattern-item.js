@@ -64,6 +64,8 @@ const PatternItemTemplate = ({
         >
           <Table>
             <TableBody>
+              {/* If pattern is no longer available from original source and there is a new source
+                (i.e. a non-null value for currentSrc), it will conditionally render as "Original source" and "Current source", but if currentSrc is null, then originalPub will show as "Published in". */}
               {details.currentSrc ? (
                 <React.Fragment>
                   <TableRow>
@@ -111,6 +113,14 @@ const PatternItemTemplate = ({
               </TableRow>
               <TableRow>
                 <TableCell scope="row">
+                  <strong>Sizes</strong>
+                </TableCell>
+                <TableCell>
+                  {details.sizes}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
                   <strong>Yarn(s)</strong>
                 </TableCell>
                 <TableCell>
@@ -139,6 +149,14 @@ const PatternItemTemplate = ({
               </TableRow>
               <TableRow>
                 <TableCell scope="row">
+                  <strong>Needles</strong>
+                </TableCell>
+                <TableCell>
+                  {details.needles}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
                   <strong>Gauge</strong>
                 </TableCell>
                 <TableCell>
@@ -149,22 +167,7 @@ const PatternItemTemplate = ({
                   </Box>
                 </TableCell>
               </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Needles</strong>
-                </TableCell>
-                <TableCell>
-                  {details.needles}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Sizes</strong>
-                </TableCell>
-                <TableCell>
-                  {details.sizes}
-                </TableCell>
-              </TableRow>
+              
             </TableBody>
           </Table>
           <Box pad={{ top: "medium", bottom: "none" }}>

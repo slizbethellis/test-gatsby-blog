@@ -20,7 +20,7 @@ const TemplateWrapper = ({ children }) => {
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <ResponsiveContext.Consumer>
           {/*
-            Non-small navbar height: 5.875rem
+            Non-small navbar height: 4.875rem
             Non-small footer height: 4.875rem
             Small navbar height: 4.125rem
             Small footer height: 4.125rem
@@ -31,7 +31,7 @@ const TemplateWrapper = ({ children }) => {
                 {children}
               </Main>
             ) : (
-              <Main style={{ minHeight: 'calc(100vh - 10.75rem)'}}>
+              <Main style={{ minHeight: 'calc(100vh - 9.75rem)'}}>
                 {children}
               </Main>
             )
