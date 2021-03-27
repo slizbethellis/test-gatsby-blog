@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: src/img
+media_folder: static/img
 public_folder: /img
 
 collections:
@@ -60,6 +60,17 @@ collections:
       - {label: "Gauge", name: "gauge", widget: "list"}
       - {label: "Needles", name: "needles", widget: "string"}
       - {label: "Sizes", name: "sizes", widget: "string"}
+      - label: "Finished Measurements"
+        name: "finalMeasure"
+        widget: "list"
+        fields:
+          - label: "Dimension Group",
+            name: "dimGroup",
+            widget: "object",
+            fields:
+              - {label: "Dimension Name", name: "dimName", widget: "string"}
+              - {label: "Inches", name: "inches", widget: "string"}
+              - {label: "Centimeters", name: "cm", widget: "string"}
       - label: "Pattern Source"
         name: "patternSource"
         widget: "object"

@@ -6,7 +6,7 @@ originalPub: 'Knitty, Deep Fall 2018'
 currentSrc: null
 itemType: shawl/shawlette
 yarn:
-  - Araucania Nuble
+  - Araucanía Ñuble
   - Malabrigo Yarn Mechita
 yarnWeight:
   - light fingering
@@ -21,6 +21,15 @@ gauge:
   - 'shawl: 22 sts/32 rows = 4 inches/10 cm'
 needles: US 5 (3.75mm) or US 6 (4.00mm)
 sizes: shawlette (shawl)
+finalMeasure:
+  - dimGroup:
+      dimName: Width at top
+      inches: 50 (75)
+      cm: 127 (191)
+  - dimGroup:
+      dimName: Depth
+      inches: 16 (24)
+      cm: 41 (61)
 patternSource:
   link: 'http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php'
   price: free

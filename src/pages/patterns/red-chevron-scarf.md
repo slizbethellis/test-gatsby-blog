@@ -18,6 +18,15 @@ gauge:
   - n/a
 needles: US 2.5 (3.00mm)
 sizes: recipe
+finalMeasure:
+  - dimGroup:
+      dimName: Width
+      inches: n/a
+      cm: n/a
+  - dimGroup:
+      dimName: Length
+      inches: n/a
+      cm: n/a
 patternSource:
   link: 'https://www.haloroundmyhead.studio/blog/2009-11-26-the-red-chevron-scarf/'
   price: free

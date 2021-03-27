@@ -12,14 +12,27 @@ yarnWeight:
   - DK
 yardage:
   - variantYardage:
-      variant: none
+      variant: null
       yards: 240-250
       meters: 219-229
 gauge: 
   - 22 sts/32 rows = 4 inches/10 cm in stockinette worked flat
   - 24 sts/28 rounds = 4 inches/10 cm in charted pattern using larger needles
 needles: US 4 (3.5mm) and US 5 (3.75mm)
-sizes: 'child (adult S, adult L)'
+sizes: child (adult S, adult L)
+finalMeasure:
+  - dimGroup:
+      dimName: Brim Circumference
+      inches: 17.5 (18.5, 20)
+      cm: 44.5 (47, 51)
+  - dimGroup:
+      dimName: Body Circumference
+      inches: 19 (22, 22)
+      cm: 48 (56, 56)
+  - dimGroup:
+      dimName: Length
+      inches: '11.5'
+      cm: '29'
 patternSource:
   link: 'http://knitty.com/ISSUEw15/PATTelectricity/PATTelectricity.php'
   price: free

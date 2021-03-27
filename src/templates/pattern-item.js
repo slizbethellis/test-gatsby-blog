@@ -167,7 +167,18 @@ const PatternItemTemplate = ({
                   </Box>
                 </TableCell>
               </TableRow>
-              
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Measurements</strong>
+                </TableCell>
+                <TableCell>
+                  <Box gap="xxsmall" border={{"side": "between"}}>
+                    {details.finalMeasure.map((measure,index)=>(
+                      <Text key={index}>{measure.dimGroup.dimName}: {measure.dimGroup.inches} inches / {measure.dimGroup.cm} cm</Text>
+                    ))}
+                  </Box>
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
           <Box pad={{ top: "medium", bottom: "none" }}>
@@ -267,6 +278,13 @@ export const pattQuery = graphql`
         gauge
         needles
         sizes
+        finalMeasure {
+          dimGroup {
+            dimName
+            inches
+            cm
+          }
+        }
         patternSource {
           link
           price

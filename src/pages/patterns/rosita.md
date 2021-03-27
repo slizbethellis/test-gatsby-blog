@@ -12,13 +12,22 @@ yarnWeight:
   - lace
 yardage:
   - variantYardage:
-      variant: none
+      variant: null
       yards: 480-495 (900-920)
       meters: 439-453 (823-841)
 gauge:
   - 24 sts/38 rows= 4 inches/10 cm in stockinette stitch
 needles: US 4 (3.5 mm)
 sizes: shawlette (shawl)
+finalMeasure:
+  - dimGroup:
+      dimName: Width at top
+      inches: 48 (66)
+      cm: 122 (167)
+  - dimGroup:
+      dimName: Depth
+      inches: 21.5 (28.5)
+      cm: 55 (72)
 patternSource:
   link: 'http://knitty.com/ISSUEdf17/PATTrosita/PATTrosita.php'
   price: free

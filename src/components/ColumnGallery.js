@@ -14,6 +14,13 @@ const imageRenderer = ({ index, left, top, photo }) => (
   />
 );
 
+const options = {
+  caption: {
+    captionFontFamily: "Nunito, sans-serif",
+    captionFontWeight: "400",
+  }
+}
+
 const ColumnGallery = (images) => {
   // Extracts image array from object
   const imageArray = images.photos
@@ -25,7 +32,7 @@ const ColumnGallery = (images) => {
 
   return (
     <React.Fragment>
-    <SRLWrapper customCaptions={customCaptions}>
+    <SRLWrapper customCaptions={customCaptions} options={options}>
       {imageArray.length > 0 &&
         <Gallery
           photos={imageArray}

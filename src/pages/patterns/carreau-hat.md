@@ -11,13 +11,26 @@ yarnWeight:
   - super bulky
 yardage:
   - variantYardage:
-      variant: none
+      variant: null
       yards: 95-100
       meters: 87-91
 gauge:
   - 8.5 sts/18 rows = 4 inches/10cm in garter stitch
 needles: US 13 (9.0 mm)
 sizes: one size
+finalMeasure:
+  - dimGroup:
+      dimName: Brim Circumference
+      inches: '20'
+      cm: '51'
+  - dimGroup:
+      dimName: Body Circumference
+      inches: '21'
+      cm: '53'
+  - dimGroup:
+      dimName: Height
+      inches: '10'
+      cm: '25.5'
 patternSource:
   link: 'https://drive.google.com/file/d/1bt-UtKyJt2KbDTcRilOI9HIiHaYVrevj/view?usp=sharin'
   price: free

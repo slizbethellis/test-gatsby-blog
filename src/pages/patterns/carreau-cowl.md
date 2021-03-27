@@ -13,7 +13,7 @@ yarnWeight:
   - super bulky
 yardage:
   - variantYardage:
-      variant: none
+      variant: null
       yards: 90-100 (160-170)
       meters: 82-91 (146-155)
 gauge: 
@@ -21,6 +21,15 @@ gauge:
   - 'large cowl: 8 sts/12 rows = 4 inches/10 cm'
 needles: US 13 (9.0 mm) or US 15 (10.0mm)
 sizes: small (large)
+finalMeasure:
+  - dimGroup:
+      dimName: Circumference
+      inches: 25 (32)
+      cm: 64 (81)
+  - dimGroup:
+      dimName: Length
+      inches: 7.75 (8.5)
+      cm: 20 (22)
 patternSource:
   link: 'http://knitty.com/ISSUEw17/PATTcarreau/PATTcarreau.php'
   price: free

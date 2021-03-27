@@ -74,9 +74,18 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-netlify-cms-paths`,
+      // keep as first gatsby-source-filesystem plugin for gatsby image support
+      resolve: 'gatsby-source-filesystem',
       options: {
-        cmsConfig: `/static/admin/config.yml`,
+        path: `${__dirname}/static/img`,
+        name: 'uploads',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
       },
     },
     {
@@ -85,13 +94,6 @@ module.exports = {
         path: `${__dirname}/src/img`,
         name: 'images',
       }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
-      },
     },
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
@@ -121,7 +123,12 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          'gatsby-plugin-netlify-cms-paths',
+          {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'uploads',
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -133,7 +140,13 @@ module.exports = {
               withWebp: 'true', // to serve images in WebP format where supported
               wrapperStyle: 'width: 90%; margin: 0 5%;',
             },
-          }
+          },
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+            },
+          },
         ],
       },
     },
