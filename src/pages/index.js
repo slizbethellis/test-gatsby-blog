@@ -42,12 +42,12 @@ export default function IndexPage ({ data }) {
         altText={data.blog.frontmatter.altText}
         boxTitle="Featured Blog Post"
         excerpt={data.blog.excerpt}
-        image={data.blog.frontmatter.image.childImageSharp.fixed}
+        image={data.blog.frontmatter.image.childImageSharp.gatsbyImageData}
         slug={data.blog.fields.slug}
         postTitle={data.blog.frontmatter.title}
       />
     </Layout>
-  )
+  );
 }
 
 IndexPage.propTypes = {
@@ -56,55 +56,52 @@ IndexPage.propTypes = {
   }),
 }
 
-export const IndexQuery = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    },
-    patterns:allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___published] },
-      limit: 4,
-      filter: { frontmatter: { templateKey: { eq: "pattern-item" } }}
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            image {
-              childImageSharp {
-                fixed(height: 550) {
-                  ...GatsbyImageSharpFixed_withWebp
-                }
-              }
+export const IndexQuery = graphql`query IndexQuery {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+  patterns: allMarkdownRemark(
+    sort: {order: DESC, fields: [frontmatter___published]}
+    limit: 4
+    filter: {frontmatter: {templateKey: {eq: "pattern-item"}}}
+  ) {
+    edges {
+      node {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          image {
+            childImageSharp {
+              gatsbyImageData(height: 550, layout: FIXED)
             }
           }
         }
-      }
-    },
-    blog:markdownRemark(frontmatter: {title: {eq: "A beginners’ guide to brewing with Chemex"}}) {
-      excerpt(pruneLength: 400)
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        templateKey
-        date(formatString: "MMMM DD, YYYY")
-        image {
-          childImageSharp {
-            fixed(width: 200, height: 200) {
-              ...GatsbyImageSharpFixed_withWebp
-            }
-          }
-        }
-        altText
       }
     }
   }
+  blog: markdownRemark(
+    frontmatter: {title: {eq: "A beginners’ guide to brewing with Chemex"}}
+  ) {
+    excerpt(pruneLength: 400)
+    fields {
+      slug
+    }
+    frontmatter {
+      title
+      templateKey
+      date(formatString: "MMMM DD, YYYY")
+      image {
+        childImageSharp {
+          gatsbyImageData(width: 200, height: 200, layout: FIXED)
+        }
+      }
+      altText
+    }
+  }
+}
 `

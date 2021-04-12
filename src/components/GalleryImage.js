@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { Button } from 'grommet'
 import { useLightbox } from 'simple-react-lightbox'
 
@@ -23,15 +23,16 @@ const GalleryImage = ({ index, left, top, photo }) => {
       id={index+1}
       onClick={() => openLightbox(index)}
       style={imgStyle}
+      href={photo.src}
     >
-      <Img
-        fluid={photo.fluid}
+      <GatsbyImage
+        image={photo.fluid}
         src={photo.src}
         alt={photo.alt}
         caption={photo.caption}
       />
-    </Button>   
-  )
+    </Button>
+  );
 };
 
 export default GalleryImage

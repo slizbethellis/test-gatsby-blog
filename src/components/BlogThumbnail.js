@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Box } from 'grommet'
 
 // round fixed size image thumbnail
@@ -12,10 +12,7 @@ const BlogThumbnail = ({ altText, image, size }) => (
     width={{min: "200px"}}
     margin={size !== "small" ? "xsmall" : {"top": "none", "bottom": "large", "horizontal": "xsmall"}}
   >
-    <Img 
-      fixed={image}
-      alt={altText}
-    />
+    <GatsbyImage image={image} alt={altText} />
   </Box>
 )
 

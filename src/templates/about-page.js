@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import Helmet from 'react-helmet'
 import { Box, Heading, Markdown, ResponsiveContext } from 'grommet'
 
@@ -64,11 +64,13 @@ const AboutPage = ({ data }) => {
       <AboutPageTemplate
         title={post.frontmatter.title}
         markdown={post.rawMarkdownBody}
-        image={<Img fixed={data.fluidImages.childImageSharp.fixed} alt="Sarah Ellis - headshot" />}
+        image={<GatsbyImage
+          image={data.fluidImages.childImageSharp.gatsbyImageData}
+          alt="Sarah Ellis - headshot" />}
         helmet={<Helmet title={`About | ${data.site.siteMetadata.title}`} />}
       />
     </Layout>
-  )
+  );
 }
 
 AboutPage.propTypes = {
@@ -77,27 +79,22 @@ AboutPage.propTypes = {
 
 export default AboutPage
 
-export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    },
-    markdownRemark(id: { eq: $id }) {
-      frontmatter {
-        title
-      }
-      rawMarkdownBody
-    },
-    fluidImages: file(
-      relativePath: { regex: "/headshot.jpg/" }
-    ) {
-      childImageSharp {
-        fixed(width: 400, height: 400) {
-          ...GatsbyImageSharpFixed_withWebp
-        }
-      }
+export const aboutPageQuery = graphql`query AboutPage($id: String!) {
+  site {
+    siteMetadata {
+      title
     }
   }
+  markdownRemark(id: {eq: $id}) {
+    frontmatter {
+      title
+    }
+    rawMarkdownBody
+  }
+  fluidImages: file(relativePath: {regex: "/headshot.jpg/"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 400, layout: FIXED)
+    }
+  }
+}
 `

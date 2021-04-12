@@ -27,7 +27,7 @@ const BlogPosts = ({ posts }) => (
           date={post.frontmatter.date}
           excerpt={post.excerpt}
           altText={post.frontmatter.altText}
-          image={post.frontmatter.image && post.frontmatter.image.childImageSharp.fixed}
+          image={post.frontmatter.image && post.frontmatter.image.childImageSharp.gatsbyImageData}
           key={post.id}
         />
       ))}
@@ -81,42 +81,39 @@ BlogPage.propTypes = {
   }),
 }
 
-export const pageQuery = graphql`
-  query BlogQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    },
-    siteSearchIndex {
-      index
-    },
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-            image {
-              childImageSharp {
-                fixed(width: 200, height: 200) {
-                  ...GatsbyImageSharpFixed_withWebp
-                }
-              }
+export const pageQuery = graphql`query BlogQuery {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+  siteSearchIndex {
+    index
+  }
+  allMarkdownRemark(
+    sort: {order: DESC, fields: [frontmatter___date]}
+    filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+  ) {
+    edges {
+      node {
+        excerpt(pruneLength: 400)
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          templateKey
+          date(formatString: "MMMM DD, YYYY")
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 200, height: 200, layout: FIXED)
             }
-            altText
           }
+          altText
         }
       }
     }
   }
+}
 `

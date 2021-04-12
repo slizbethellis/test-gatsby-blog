@@ -57,39 +57,36 @@ PatternPage.propTypes = {
   }),
 }
 
-export const PageQuery = graphql`
-  query PatternPage {
-    site {
-      siteMetadata {
-        title
-      }
-    },
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___published] },
-      filter: { frontmatter: { templateKey: { eq: "pattern-item" } }}
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            published(formatString: "MMMM DD, YYYY")
-            image {
-              childImageSharp {
-                fluid(maxWidth: 600, maxHeight: 600) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
+export const PageQuery = graphql`query PatternPage {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+  allMarkdownRemark(
+    sort: {order: DESC, fields: [frontmatter___published]}
+    filter: {frontmatter: {templateKey: {eq: "pattern-item"}}}
+  ) {
+    edges {
+      node {
+        excerpt(pruneLength: 400)
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          templateKey
+          published(formatString: "MMMM DD, YYYY")
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 400, height: 400, layout: CONSTRAINED)
             }
-            altText
           }
+          altText
         }
       }
     }
   }
+}
 `

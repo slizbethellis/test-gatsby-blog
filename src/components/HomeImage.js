@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Box } from 'grommet'
 
 import Link from './Link'
@@ -14,10 +14,7 @@ const HomeImage = ({ fixed, altText, slug }) => (
       align="center"
       margin="small"
     >
-      <Img 
-        fixed={fixed}
-        alt={altText}
-      />
+      <GatsbyImage image={fixed} alt={altText} />
     </Box>
   </Link> 
 )

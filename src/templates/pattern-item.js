@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import { getSrc } from 'gatsby-plugin-image'
 
 import {
   Box,
@@ -214,18 +215,19 @@ PatternItemTemplate.propTypes = {
 }
 
 const PatternItem = ({ data }) => {
-  const { markdownRemark: post } = data
+  const post = data.pattern
   const photos = post.frontmatter.pictures
 
-  const images = photos.map(photo => ({
-    src: photo.patternPhoto.photo.childImageSharp.fluid.src,
-    srcSet: photo.patternPhoto.photo.childImageSharp.fluid.srcSet,
-    fluid: photo.patternPhoto.photo.childImageSharp.fluid,
-    width: photo.patternPhoto.width,
-    height: photo.patternPhoto.height,
+  const images = photos.map((photo, index) => ({
+    src: getSrc(photo.patternPhoto.photo.childImageSharp.gatsbyImageData),
+    fluid: data.thumbnails.frontmatter.pictures[index].patternPhoto.photo.childImageSharp.gatsbyImageData,
+    width: photo.patternPhoto.photo.childImageSharp.gatsbyImageData.width,
+    height: photo.patternPhoto.photo.childImageSharp.gatsbyImageData.height,
     caption: photo.patternPhoto.caption,
     alt: photo.patternPhoto.altText
   }))
+
+  console.log(images)
 
   return (
     <Layout>
@@ -242,69 +244,79 @@ const PatternItem = ({ data }) => {
 
 PatternItem.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
+    pattern: PropTypes.shape({
+      markdownRemark: PropTypes.object,
+    })
   }),
 }
 
 export default PatternItem
 
-export const pattQuery = graphql`
-  query PattItemByID($id: String!) {
-    site {
-      siteMetadata {
-        title
+export const pattQuery = graphql`query PattItemByID($id: String!) {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+  pattern: markdownRemark(id: {eq: $id}) {
+    id
+    fields {
+      slug
+    }
+    rawMarkdownBody
+    frontmatter {
+      published(formatString: "MMMM YYYY")
+      title
+      originalPub
+      currentSrc
+      itemType
+      yarn
+      yarnWeight
+      yardage {
+        variantYardage {
+          yards
+          meters
+        }
       }
-    },
-    markdownRemark(id: { eq: $id }) {
-      id
-      fields {
-        slug
+      gauge
+      needles
+      sizes
+      finalMeasure {
+        dimGroup {
+          dimName
+          inches
+          cm
+        }
       }
-      rawMarkdownBody
-      frontmatter {
-        published(formatString: "MMMM YYYY")
-        title
-        originalPub
-        currentSrc
-        itemType
-        yarn
-        yarnWeight
-        yardage {
-          variantYardage {
-            yards
-            meters
-          }
-        }
-        gauge
-        needles
-        sizes
-        finalMeasure {
-          dimGroup {
-            dimName
-            inches
-            cm
-          }
-        }
-        patternSource {
-          link
-          price
-        }
-        pictures {
-          patternPhoto {
-            photo {
-              childImageSharp {
-                fluid(maxWidth: 1000) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
+      patternSource {
+        link
+        price
+      }
+      pictures {
+        patternPhoto {
+          photo {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
-            altText
-            caption
-            width
-            height
+          }
+          altText
+          caption
+        }
+      }
+    }
+  }
+  thumbnails: markdownRemark(id: {eq: $id}) {
+    frontmatter {
+      pictures {
+        patternPhoto {
+          photo {
+            childImageSharp {
+              gatsbyImageData(width: 370, layout: CONSTRAINED)
+            }
           }
         }
       }
     }
   }
+}
 `

@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Box, Card, CardBody, CardHeader, Heading } from 'grommet'
 
 import Link from './Link'
@@ -20,10 +20,7 @@ const PatternCard = ({ slug, title, image, altText }) => (
           </Heading> 
         </CardHeader>
         <CardBody style={{ order: "-1"}}>
-          <Img
-            fluid={image.childImageSharp.fluid}
-            alt={altText}
-          />
+          <GatsbyImage image={image.childImageSharp.gatsbyImageData} alt={altText} />
         </CardBody>
       </Card>
     </Link>
