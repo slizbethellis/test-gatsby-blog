@@ -35,7 +35,7 @@ const BlogPosts = ({ posts }) => (
 )
 
 export default function BlogPage ({ data }) {
-  const { edges: posts } = data.allMarkdownRemark
+  const posts = data.posts.edges
 
   return (
     <Layout>
@@ -53,7 +53,7 @@ export default function BlogPage ({ data }) {
               <Box margin={{ "bottom": "large" }}>
                 <Search searchIndex={data.siteSearchIndex.index} size={responsive} />
                 <BlogPosts posts={posts}/>
-                <TagBlock size={responsive} />
+                <TagBlock size={responsive} tags={data.tags} />
               </Box>
             ) : (
               <Grid
@@ -62,7 +62,7 @@ export default function BlogPage ({ data }) {
                 margin={{ "bottom": "large", "horizontal": "medium" }}
               >
                 <BlogPosts posts={posts} />
-                <Sidebar searchIndex={data.siteSearchIndex.index} size={responsive} />
+                <Sidebar searchIndex={data.siteSearchIndex.index} size={responsive} tags={data.tags} />
               </Grid>
             )
           }
@@ -74,8 +74,15 @@ export default function BlogPage ({ data }) {
 
 BlogPage.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
+    posts: PropTypes.shape({
+      allMarkdownRemark: PropTypes.shape({
+        edges: PropTypes.array,
+      }),
+    }),
+    tags: PropTypes.shape({
+      allMarkdownRemark: PropTypes.shape({
+        edges: PropTypes.array,
+      }),
     }),
     site: PropTypes.object
   }),
@@ -90,7 +97,7 @@ export const pageQuery = graphql`query BlogQuery {
   siteSearchIndex {
     index
   }
-  allMarkdownRemark(
+  posts: allMarkdownRemark(
     sort: {order: DESC, fields: [frontmatter___date]}
     filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
   ) {
@@ -113,6 +120,15 @@ export const pageQuery = graphql`query BlogQuery {
           altText
         }
       }
+    }
+  }
+  tags: allMarkdownRemark(
+    limit: 20,
+    filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+  ) {
+    group(field: frontmatter___tags) {
+      fieldValue
+      totalCount
     }
   }
 }

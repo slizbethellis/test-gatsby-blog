@@ -1,25 +1,14 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+// import { graphql, useStaticQuery } from 'gatsby'
 import { Box, Heading } from 'grommet'
 
 import Link from './Link'
 import TagButtons from './TagButtons'
 
 // group of featured tags for top level blog sidebar
-const TagBlock = ({ size }) => {
-  const data = useStaticQuery(graphql`
-    query TagBlockQuery {
-      allMarkdownRemark(
-        limit: 20,
-        filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-      ) {
-        group(field: frontmatter___tags) {
-          fieldValue
-          totalCount
-        }
-      }
-    }
-  `)
+const TagBlock = ({ size, tags }) => {
+  const data = tags
+  console.log(tags)
 
   return (
     <Box 
@@ -31,7 +20,7 @@ const TagBlock = ({ size }) => {
     >
       <Heading level={2} size="small" textAlign="center">Tags</Heading>
       <TagButtons
-        group={data.allMarkdownRemark.group}
+        group={data.group}
         margin="xxsmall"
         size="small"
       />

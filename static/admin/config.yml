@@ -90,7 +90,5 @@ collections:
               - {label: "Photo", name: "photo", widget: "image"}
               - {label: "Alt Text", name: "altText", widget: "string"}
               - {label: "Caption", name: "caption", widget: "string"}
-              - {label: "Width", name: "width", widget: "number"}
-              - {label: "Height", name: "height", widget: "number"}
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Body", name: "body", widget: "markdown"}
