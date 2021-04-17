@@ -31,6 +31,7 @@ const BlogPreview = ({
       background={!background ? "none" : background}
       round={!round ? "none" : round}
       pad={size !== "small" ? {"right": "small"} : "none"}
+      width="xlarge"
     >
       <Box pad="medium">
         <Link to={slug}>

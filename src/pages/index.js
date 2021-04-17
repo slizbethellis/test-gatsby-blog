@@ -64,7 +64,7 @@ export const IndexQuery = graphql`query IndexQuery {
   }
   patterns: allMarkdownRemark(
     sort: {order: DESC, fields: [frontmatter___published]}
-    limit: 4
+    limit: 5
     filter: {frontmatter: {templateKey: {eq: "pattern-item"}}}
   ) {
     edges {

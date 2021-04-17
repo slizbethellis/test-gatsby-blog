@@ -33,8 +33,8 @@ finalMeasure:
 patternSource:
   link: 'http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php'
   price: free
-image: /img/alfareria-shawl-detail.jpg
-altText: detail of mosaic stitches on large Alfarería shawl
+image: /img/alfareria-shawlette-detail.jpg
+altText: closeup of Alfarería shawlette wrapped around shoulders
 pictures:
   - patternPhoto:
       altText: large Alfarería shawl draped over shoulders, with model's back towards camera

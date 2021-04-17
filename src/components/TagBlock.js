@@ -8,7 +8,6 @@ import TagButtons from './TagButtons'
 // group of featured tags for top level blog sidebar
 const TagBlock = ({ size, tags }) => {
   const data = tags
-  console.log(tags)
 
   return (
     <Box 

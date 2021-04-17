@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "babel-preset-gatsby": "^1.1.0",
     "cheerio": "^1.0.0-rc.2",
+    "dotenv": "^8.2.0",
     "gatsby": "^3.1.2",
     "gatsby-plugin-feed": "^3.1.0",
     "gatsby-plugin-image": "^1.2.0",

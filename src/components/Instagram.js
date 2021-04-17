@@ -13,7 +13,7 @@ class Instagram extends React.Component {
   }
   
   componentDidMount() {
-    axios.get(`https://www.instagram.com/haloroundmyhead/`)
+    axios.get(`https://graph.facebook.com/v7.0/${instagram_id}/media?fields=media_url,thumbnail_url,caption,media_type,like_count,shortcode,timestamp,comments_count,username,children{media_url},permalink&limit=${paginate}&access_token=${access_token}`)
       .then(res => {
         const $ = cheerio.load(res.data)
         const jsonData = $(`html > body > script`)
@@ -29,6 +29,7 @@ class Instagram extends React.Component {
           }
         })
         this.setState({ items: photos.slice(0,9) });
+        console.log(this.items)
       })
       .catch(
         (error) => {
