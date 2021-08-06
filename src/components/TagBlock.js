@@ -13,7 +13,7 @@ const TagBlock = ({ size, tags }) => {
     <Box 
       alignSelf="center"
       border={{ 
-        "side": (size !== "small" ? "bottom" : "horizontal"),
+        "side": (size !== "small" ? "bottom" : "top"),
         "color": (size !== "small" ? "border" : { dark: "light-4", light: "dark-4" }) }}
       pad={size !== "small" ? "none" : "medium"}
     >

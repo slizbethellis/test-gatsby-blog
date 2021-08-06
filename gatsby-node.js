@@ -68,6 +68,23 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+
+    // Create blog-list pages, posts per page on test set lower than value for production, because any higher value would generate a single page
+    const postsPerPage = 2
+    const blogPosts = posts.filter(edge => edge.node.frontmatter.templateKey === "blog-post")
+    const numBlogPages = Math.ceil(blogPosts.length / postsPerPage)
+    Array.from({ length: numBlogPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+        component: path.resolve("./src/templates/blog-list.js"),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numBlogPages,
+          currentPage: i + 1,
+        },
+      })
+    })
   })
 }
 

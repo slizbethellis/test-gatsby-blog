@@ -6,11 +6,12 @@ import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
 
 import BlogPreview from '../components/BlogPreview'
 import Layout from '../components/Layout'
+import ListPagination from '../components/ListPagination'
 import Sidebar from '../components/Sidebar'
 import Search from '../components/Search'
 import TagBlock from '../components/TagBlock'
 
-const BlogPosts = ({ posts }) => (
+const BlogPosts = ({ posts, pageContext }) => (
   <Box
     as="section"
     gap="small"
@@ -31,45 +32,50 @@ const BlogPosts = ({ posts }) => (
           key={post.id}
         />
       ))}
+      <ListPagination pageContext={pageContext} />
   </Box>
 )
 
-export default function BlogPage ({ data }) {
-  const posts = data.posts.edges
+export default class BlogPage extends React.Component {
+  render() {
+    const data = this.props.data
+    const posts = data.posts.edges
+    const pageContext = this.props.pageContext
 
-  return (
-    <Layout>
-      <Helmet title={`Blog | ${data.site.siteMetadata.title}`} />
-      <Box
-        as="section"
-        alignSelf="center"
-        justify="center"
-        width="full"
-      >
-        <Heading level={1} alignSelf="center" textAlign="center">Blog</Heading>
-        <ResponsiveContext.Consumer>
-          {responsive =>
-            responsive === 'small' ? (
-              <Box margin={{ "bottom": "large" }}>
-                <Search searchIndex={data.siteSearchIndex.index} size={responsive} />
-                <BlogPosts posts={posts}/>
-                <TagBlock size={responsive} tags={data.tags} />
-              </Box>
-            ) : (
-              <Grid
-                columns={['3/4', '1/4']}
-                gap="small"
-                margin={{ "bottom": "large", "horizontal": "medium" }}
-              >
-                <BlogPosts posts={posts} />
-                <Sidebar searchIndex={data.siteSearchIndex.index} size={responsive} tags={data.tags} />
-              </Grid>
-            )
-          }
-        </ResponsiveContext.Consumer>
-      </Box>
-    </Layout>
-  )
+    return (
+      <Layout>
+        <Helmet title={`Blog | ${data.site.siteMetadata.title}`} />
+        <Box
+          as="section"
+          alignSelf="center"
+          justify="center"
+          width="full"
+        >
+          <Heading level={1} alignSelf="center" textAlign="center">Blog</Heading>
+          <ResponsiveContext.Consumer>
+            {responsive =>
+              responsive === 'small' ? (
+                <Box margin={{ "bottom": "large" }}>
+                  <Search searchIndex={data.siteSearchIndex.index} size={responsive} />
+                  <BlogPosts posts={posts} pageContext={pageContext} />
+                  <TagBlock size={responsive} tags={data.tags} />
+                </Box>
+              ) : (
+                <Grid
+                  columns={['3/4', '1/4']}
+                  gap="small"
+                  margin={{ "bottom": "large", "horizontal": "medium" }}
+                >
+                  <BlogPosts posts={posts} pageContext={pageContext} />
+                  <Sidebar searchIndex={data.siteSearchIndex.index} size={responsive} tags={data.tags} />
+                </Grid>
+              )
+            }
+          </ResponsiveContext.Consumer>
+        </Box>
+      </Layout>
+    )
+  }
 }
 
 BlogPage.propTypes = {
@@ -88,7 +94,7 @@ BlogPage.propTypes = {
   }),
 }
 
-export const pageQuery = graphql`query BlogQuery {
+export const pageQuery = graphql`query BlogQuery ($skip: Int!, $limit: Int!) {
   site {
     siteMetadata {
       title
@@ -100,6 +106,8 @@ export const pageQuery = graphql`query BlogQuery {
   posts: allMarkdownRemark(
     sort: {order: DESC, fields: [frontmatter___date]}
     filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+    limit: $limit
+    skip: $skip
   ) {
     edges {
       node {

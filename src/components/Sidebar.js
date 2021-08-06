@@ -12,6 +12,7 @@ const Sidebar = ({ searchIndex, size, tags }) => (
     flex="shrink"
     gap="small"
     margin={{ "bottom": "small" }}
+    pad={{ "bottom": "medium" }}
     round="medium"
   >
     <Search searchIndex={searchIndex} size={size} />

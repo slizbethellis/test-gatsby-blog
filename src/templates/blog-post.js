@@ -75,7 +75,7 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object
 }
 
-const BlogPost = ({ data, props }) => {
+const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
