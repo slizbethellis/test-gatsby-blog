@@ -10,14 +10,14 @@ import { customTheme } from './Theme'
 import { useDarkMode } from './useDarkMode'
 
 const TemplateWrapper = ({ children }) => {
-  const [theme, toggleTheme] = useDarkMode();
+  const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? 'light' : 'dark';
 
   return (
     <Grommet theme={customTheme} themeMode={themeMode} full>
       {/* Wrapper-div might seem useless, but removing it messes up styling of Grommet components. */}
       <div className="wrapper-div">
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <Navbar theme={theme} toggleTheme={toggleTheme} componentMounted={componentMounted} />
         <ResponsiveContext.Consumer>
           {/*
             Non-small navbar height: 4.875rem

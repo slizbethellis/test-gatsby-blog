@@ -1,14 +1,11 @@
-// Import React so that you can use JSX in HeadComponents
-const React = require("react")
-const { SimpleReactLightbox } = require("simple-react-lightbox")
+import React from 'react'
+import SimpleReactLightbox from 'simple-react-lightbox'
+// USE THE IMPORT BELOW INSTEAD IF YOU ARE USING THE PRO VERSION
+// import SimpleReactLightbox from 'simple-react-lightbox-pro'
 
-exports.wrapRootElement = ({ element }) => {
-  return (
-    <SimpleReactLightbox>
-      {element}
-    </SimpleReactLightbox>
-  )
-}
+export const wrapRootElement = ({ element }) => (
+  <SimpleReactLightbox>{element}</SimpleReactLightbox>
+)
 
 const HtmlAttributes = {
   lang: "en"
@@ -18,7 +15,7 @@ const BodyAttributes = {
 
 }
 
-exports.onRenderBody = ({
+export const onRenderBody = ({
   setHtmlAttributes,
   setBodyAttributes
 }, pluginOptions) => {

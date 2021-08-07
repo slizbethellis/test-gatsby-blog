@@ -22,7 +22,7 @@ export const StyledAnchor = styled(Anchor)`
   text-align: center;
 `
 
-const Navbar = ({ theme, toggleTheme }) => {
+const Navbar = ({ theme, toggleTheme, componentMounted }) => {
   const size = useContext(ResponsiveContext)
 
   return (
@@ -118,7 +118,9 @@ const Navbar = ({ theme, toggleTheme }) => {
             </Link>
           </Nav>
         )}
-        <Toggle theme={theme} toggleTheme={toggleTheme} />
+        {componentMounted && (
+          <Toggle theme={theme} toggleTheme={toggleTheme} />
+        )}
       </Box>
     </Header>
   )
