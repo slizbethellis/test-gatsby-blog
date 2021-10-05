@@ -40,6 +40,8 @@ const HomeGallery = ({ posts }) => {
         listStyle: "none",
         paddingLeft: "0",
       }}
+      height="574px"
+      width="100%"
       margin={{
         vertical: "0"
       }}

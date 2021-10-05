@@ -1,7 +1,7 @@
 ---
 templateKey: pattern-item
 title: Carreau (cowl)
-published: 2017-12-08T02:10:48.193Z
+date: 2017-12-08T02:10:48.193Z
 originalPub: 'Knitty, Winter 2017'
 currentSrc: null
 itemType: cowl

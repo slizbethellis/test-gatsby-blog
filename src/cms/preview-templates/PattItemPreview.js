@@ -5,7 +5,7 @@ import { PatternItemTemplate } from '../../components/pattern-item-preview'
 
 const PattItemPreview = ({ entry, widgetFor }) => {
   const data = entry.get('data').toJS()
-  const { body, currentSrc, finalMeasure, gauge, itemType, needles, originalPub, published, sizes, title, yarn, yarnWeight, yardage } = data
+  const { body, currentSrc, finalMeasure, gauge, itemType, needles, originalPub, date, sizes, title, yarn, yarnWeight, yardage } = data
 
   return <PatternItemTemplate
     content={body}
@@ -15,7 +15,7 @@ const PattItemPreview = ({ entry, widgetFor }) => {
     needles={needles}
     originalPub={originalPub}
     currentSrc={currentSrc}
-    published={moment(published).format("MMMM YYYY")}
+    published={moment(date).format("MMMM YYYY")}
     sizes={sizes}
     title={title}
     yarn={yarn}

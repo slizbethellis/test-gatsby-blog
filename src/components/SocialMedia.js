@@ -1,6 +1,6 @@
 import React from "react"
 import { Anchor, Box } from "grommet"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Facebook, Instagram, Twitter } from "grommet-icons"
 
 // a tiny box of social media icon links
 const SocialMedia = () => (
@@ -10,7 +10,7 @@ const SocialMedia = () => (
       rel="noopener"
       a11yTitle="Follow me on Instagram"
       href="https://www.instagram.com/haloroundmyhead/"
-      icon={<FontAwesomeIcon icon={['fab', 'instagram']} style={{ fontSize: "1.5em" }} />}
+      icon={<Instagram />}
       hoverIndicator
     />
     <Anchor
@@ -18,7 +18,7 @@ const SocialMedia = () => (
       rel="noopener"
       a11yTitle="Visit my Facebook page"
       href="https://www.facebook.com/haloroundmyhead"
-      icon={<FontAwesomeIcon icon={['fab', 'facebook-square']} style={{ fontSize: "1.5em" }} />}
+      icon={<Facebook />}
       hoverIndicator
     />
     <Anchor
@@ -26,7 +26,7 @@ const SocialMedia = () => (
       rel="noopener"
       a11yTitle="Follow me on Twitter"
       href="https://twitter.com/haloroundmyhead"
-      icon={<FontAwesomeIcon icon={['fab', 'twitter']} style={{ fontSize: "1.5em" }} />}
+      icon={<Twitter />}
       hoverIndicator
     />
   </Box>

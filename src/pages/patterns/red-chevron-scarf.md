@@ -1,7 +1,7 @@
 ---
 templateKey: pattern-item
 title: Red Chevron Scarf
-published: 2009-11-26T07:39:09.402Z
+date: 2009-11-26T07:39:09.402Z
 originalPub: Haloroundmyhead Knits website
 currentSrc: null
 itemType: scarf

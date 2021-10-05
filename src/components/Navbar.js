@@ -10,17 +10,9 @@ import {
   Text
 } from 'grommet'
 import { Menu as MenuIcon } from 'grommet-icons'
-import styled from 'styled-components'
 
 import Link from './Link'
 import Toggle from './Toggle'
-
-export const StyledAnchor = styled(Anchor)`
-  position: absolute;
-  left: 25%;
-  right: 25%;
-  text-align: center;
-`
 
 const Navbar = ({ theme, toggleTheme, componentMounted }) => {
   const size = useContext(ResponsiveContext)
@@ -77,9 +69,10 @@ const Navbar = ({ theme, toggleTheme, componentMounted }) => {
                 ]}
               />
             </Nav>
-            <StyledAnchor
+            <Anchor
               href="/"
               label={<Text size="large">haloroundmyhead knits</Text>}
+              style={{ position: "absolute", left: '25%', right: '25%', textAlign: 'center' }}
             />
           </React.Fragment>
         ) : (

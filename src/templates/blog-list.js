@@ -32,7 +32,10 @@ const BlogPosts = ({ posts, pageContext }) => (
           key={post.id}
         />
       ))}
-      <ListPagination pageContext={pageContext} />
+      {/* Pagination component will not render if there's only one page */}
+      {pageContext.numPages > 1 && (
+        <ListPagination pageContext={pageContext} path="/blog"/>
+      )}
   </Box>
 )
 
@@ -41,6 +44,7 @@ export default class BlogPage extends React.Component {
     const data = this.props.data
     const posts = data.posts.edges
     const pageContext = this.props.pageContext
+    console.log(pageContext)
 
     return (
       <Layout>

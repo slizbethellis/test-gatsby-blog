@@ -1,5 +1,6 @@
 ---
 templateKey: 'about-page'
+date: 2021-08-09T02:10:48.193Z
 path: /about
 title: About me
 ---

@@ -1,7 +1,7 @@
 ---
 templateKey: pattern-item
 title: Carreau (hat)
-published: 2018-03-28T22:34:05.231Z
+date: 2018-03-28T22:34:05.231Z
 originalPub: Sarah Ellis's Ravelry Store
 currentSrc: Haloroundmyhead Knits website
 itemType: hat

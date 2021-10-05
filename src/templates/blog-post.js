@@ -8,6 +8,7 @@ import { Box, Heading, Paragraph, ResponsiveContext, Text } from 'grommet'
 import Layout from '../components/Layout'
 import RoutedButton from '../components/RoutedButton'
 import Content from '../components/Content'
+import PostPagination from '../components/PostPagination'
 
 const BlogPostTemplate = ({
   content,
@@ -15,7 +16,8 @@ const BlogPostTemplate = ({
   tags,
   title,
   date,
-  helmet
+  helmet,
+  pageContext
 }) => {
   const size = useContext(ResponsiveContext)
   const boxPad = (size !== 'small' ? "xlarge" : "large")
@@ -38,6 +40,7 @@ const BlogPostTemplate = ({
       <Box border="bottom">
         <Paragraph fill>{description}</Paragraph>
         <Content contentAst={content} fill/>
+        <PostPagination pageContext={pageContext} />
       </Box>
       {tags && tags.length ? (
         <Box as="section" pad={{ "top": "small"}}>
@@ -75,21 +78,26 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object
 }
 
-const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
+export default class BlogPost extends React.Component {
+  render () {
+    const data = this.props.data
+    const { markdownRemark: post } = data
+    const pageContext = this.props.pageContext
 
-  return (
-    <Layout>
-      <BlogPostTemplate
-        content={post.htmlAst}
-        description={post.frontmatter.description}
-        helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-        date={post.frontmatter.date}
-      />
-    </Layout>
-  )
+    return (
+      <Layout>
+        <BlogPostTemplate
+          content={post.htmlAst}
+          description={post.frontmatter.description}
+          helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
+          tags={post.frontmatter.tags}
+          title={post.frontmatter.title}
+          date={post.frontmatter.date}
+          pageContext={pageContext}
+        />
+      </Layout>
+    )
+  }
 }
 
 BlogPost.propTypes = {
@@ -97,8 +105,6 @@ BlogPost.propTypes = {
     markdownRemark: PropTypes.object,
   }),
 }
-
-export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {

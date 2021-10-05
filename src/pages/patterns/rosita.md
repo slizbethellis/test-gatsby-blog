@@ -1,7 +1,7 @@
 ---
 templateKey: pattern-item
 title: Rosita
-published: 2017-11-09T02:10:48.193Z
+date: 2017-11-09T02:10:48.193Z
 originalPub: 'Knitty, Deep Fall Surprise 2017'
 currentSrc: null
 itemType: shawl/shawlette

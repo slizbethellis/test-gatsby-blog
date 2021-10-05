@@ -20,13 +20,15 @@ import {
 
 import Layout from '../components/Layout'
 import ColumnGallery from '../components/ColumnGallery'
+import PostPagination from '../components/PostPagination'
 
 const PatternItemTemplate = ({
   content,
   frontmatter,
   images,
   title,
-  helmet
+  helmet,
+  pageContext
 }) => {
   const details = frontmatter
   const size = useContext(ResponsiveContext)
@@ -109,7 +111,7 @@ const PatternItemTemplate = ({
                   <strong>Release Date</strong>
                 </TableCell>
                 <TableCell>
-                  {details.published}
+                  {details.date}
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -201,6 +203,7 @@ const PatternItemTemplate = ({
           >
             {content}
           </Markdown>
+          <PostPagination pageContext={pageContext} />
         </Box>
       </Grid>
     </Box>
@@ -214,32 +217,35 @@ PatternItemTemplate.propTypes = {
   helmet: PropTypes.object
 }
 
-const PatternItem = ({ data }) => {
-  const post = data.pattern
-  const photos = post.frontmatter.pictures
+export default class PatternItem extends React.Component {
+  render () {
+    const data = this.props.data
+    const pageContext = this.props.pageContext
+    const post = data.pattern
+    const photos = post.frontmatter.pictures
 
-  const images = photos.map((photo, index) => ({
-    src: getSrc(photo.patternPhoto.photo.childImageSharp.gatsbyImageData),
-    fluid: data.thumbnails.frontmatter.pictures[index].patternPhoto.photo.childImageSharp.gatsbyImageData,
-    width: photo.patternPhoto.photo.childImageSharp.gatsbyImageData.width,
-    height: photo.patternPhoto.photo.childImageSharp.gatsbyImageData.height,
-    caption: photo.patternPhoto.caption,
-    alt: photo.patternPhoto.altText
-  }))
+    const images = photos.map((photo, index) => ({
+      src: getSrc(photo.patternPhoto.photo.childImageSharp.gatsbyImageData),
+      fluid: data.thumbnails.frontmatter.pictures[index].patternPhoto.photo.childImageSharp.gatsbyImageData,
+      width: photo.patternPhoto.photo.childImageSharp.gatsbyImageData.width,
+      height: photo.patternPhoto.photo.childImageSharp.gatsbyImageData.height,
+      caption: photo.patternPhoto.caption,
+      alt: photo.patternPhoto.altText
+    }))
 
-  console.log(images)
-
-  return (
-    <Layout>
-      <PatternItemTemplate
-        content={post.rawMarkdownBody}
-        frontmatter={post.frontmatter}
-        helmet={<Helmet title={`${post.frontmatter.title} | ${data.site.siteMetadata.title}`} />}
-        images={images}
-        title={post.frontmatter.title}
-      />
-    </Layout>
-  )
+    return (
+      <Layout>
+        <PatternItemTemplate
+          content={post.rawMarkdownBody}
+          frontmatter={post.frontmatter}
+          helmet={<Helmet title={`${post.frontmatter.title} | ${data.site.siteMetadata.title}`} />}
+          images={images}
+          title={post.frontmatter.title}
+          pageContext={pageContext}
+        />
+      </Layout>
+    )
+  }
 }
 
 PatternItem.propTypes = {
@@ -249,8 +255,6 @@ PatternItem.propTypes = {
     })
   }),
 }
-
-export default PatternItem
 
 export const pattQuery = graphql`query PattItemByID($id: String!) {
   site {
@@ -265,7 +269,7 @@ export const pattQuery = graphql`query PattItemByID($id: String!) {
     }
     rawMarkdownBody
     frontmatter {
-      published(formatString: "MMMM YYYY")
+      date(formatString: "MMMM YYYY")
       title
       originalPub
       currentSrc

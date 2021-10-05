@@ -7,7 +7,10 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC },
+        limit: 1000
+      ) {
         edges {
           node {
             id
@@ -17,6 +20,7 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               tags
               templateKey
+              title
             }
           }
         }
@@ -29,19 +33,31 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     const posts = result.data.allMarkdownRemark.edges
+    // filter by template category so pagination doesn't mix blog posts and pattern pages
+    const aboutPage = posts.filter(edge => edge.node.frontmatter.templateKey === "about-page")
+    const blogPosts = posts.filter(edge => edge.node.frontmatter.templateKey === "blog-post")
+    const patternItems = posts.filter(edge => edge.node.frontmatter.templateKey === "pattern-item")
+    const postsArray = [ aboutPage, blogPosts, patternItems ]
 
-    posts.forEach(edge => {
-      const id = edge.node.id
-      createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
-        ),
-        // additional data can be passed via context
-        context: {
-          id,
-        },
+    // turns all queried items into pages
+    postsArray.forEach(arr => {
+      arr.forEach((edge, index) => {
+        const id = edge.node.id
+        const previous = index === arr.length - 1 ? null : arr[index + 1].node
+        const next = index === 0 ? null : arr[index - 1].node
+        createPage({
+          path: edge.node.fields.slug,
+          tags: edge.node.frontmatter.tags,
+          component: path.resolve(
+            `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          ),
+          // additional data can be passed via context
+          context: {
+            id,
+            previous,
+            next
+          },
+        })
       })
     })
 
@@ -69,20 +85,35 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    // Create blog-list pages, posts per page on test set lower than value for production, because any higher value would generate a single page
-    const postsPerPage = 2
-    const blogPosts = posts.filter(edge => edge.node.frontmatter.templateKey === "blog-post")
-    const numBlogPages = Math.ceil(blogPosts.length / postsPerPage)
-    Array.from({ length: numBlogPages }).forEach((_, i) => {
-      createPage({
-        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-        component: path.resolve("./src/templates/blog-list.js"),
-        context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          numBlogPages,
-          currentPage: i + 1,
-        },
+    // Array to set up data needed to generate pagination for list of blog posts and patterns
+    const postListArray = [
+      {
+        path: "/blog",
+        template: "blog-list",
+        postsPerPage: 2,
+        numPages: Math.ceil(blogPosts.length / 2)
+      },
+      {
+        path: "/patterns",
+        template: "patterns-list",
+        postsPerPage: 24,
+        numPages: Math.ceil(patternItems.length / 24)
+      }
+    ]
+
+    // Create paginated list pages for blog and patterns, posts per blog page on test set lower than value for production, because any higher value would generate a single page
+    postListArray.forEach(edge => {
+      Array.from({ length: edge.numPages }).forEach((_, i) => {
+        createPage({
+          path: i === 0 ? `${edge.path}` : `${edge.path}/${i + 1}`,
+          component: path.resolve(`./src/templates/${edge.template}.js`),
+          context: {
+            limit: edge.postsPerPage,
+            skip: i * edge.postsPerPage,
+            numPages: edge.numPages,
+            currentPage: i + 1,
+          },
+        })
       })
     })
   })

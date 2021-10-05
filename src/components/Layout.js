@@ -1,9 +1,5 @@
 import React from 'react'
 import { Grommet, Main, ResponsiveContext } from 'grommet'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons'
-
 import Navbar from './Navbar'
 import SiteFooter from './Footer'
 import { customTheme } from './Theme'
@@ -44,5 +40,3 @@ const TemplateWrapper = ({ children }) => {
 }
 
 export default TemplateWrapper
-
-library.add(fab, faComment, faHeart)

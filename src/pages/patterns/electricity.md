@@ -1,7 +1,7 @@
 ---
 templateKey: pattern-item
 title: Electricity
-published: 2015-12-08T07:18:19.551Z
+date: 2015-12-08T07:18:19.551Z
 originalPub: 'Knitty, Winter 2015'
 currentSrc: null
 itemType: hat
