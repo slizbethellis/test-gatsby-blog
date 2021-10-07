@@ -21,7 +21,13 @@ const NotFoundPage = () => (
       <Paragraph fill>
         Were you hoping to find a secret yarn stash large enough to help you achieve SABLE? I'm supposed to be helping you figure out how to <em>use</em> your stash! But at least you found this secret Henry pic.
       </Paragraph>
-      <Box as="figure" alignSelf="center" round="large" overflow="auto">
+      <Box 
+        as="figure"
+        alignSelf="center"
+        round="large"
+        overflow="hidden"
+        style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
+      >
         <StaticImage
           width={400}
           height={400}

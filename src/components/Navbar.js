@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { navigate } from 'gatsby'
 import {
   Anchor,
@@ -16,6 +16,7 @@ import Toggle from './Toggle'
 
 const Navbar = ({ theme, toggleTheme, componentMounted }) => {
   const size = useContext(ResponsiveContext)
+  const targetRef = useRef()
 
   return (
     <Header
@@ -33,6 +34,7 @@ const Navbar = ({ theme, toggleTheme, componentMounted }) => {
         width: '100%',
         top: '0'
       }}
+      ref={targetRef}
     >
       <Box direction="row" align="center" gap="small">
         {size === "small" ? (
@@ -40,10 +42,10 @@ const Navbar = ({ theme, toggleTheme, componentMounted }) => {
             <Nav>
               <Menu
                 a11yTitle="Navigation Menu"
-                dropProps={{ align: { top: 'bottom', right: 'right' }, margin: {left: "xsmall"} }}
+                dropProps={{ align: { top: 'bottom', right: 'right' }, target: targetRef.current }}
                 elevation="xxsmall"
                 icon={<MenuIcon color={{ dark: "accent-1", light: "brand" }} />}
-                size="large"
+                size="medium"
                 items={[
                   {
                     label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}}>About</Box>,
@@ -60,7 +62,7 @@ const Navbar = ({ theme, toggleTheme, componentMounted }) => {
                     }
                   },
                   {
-                    label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}} style={{textAlign: "right"}}>Patterns</Box>,
+                    label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}} >Patterns</Box>,
                     onClick: (ev) => {
                       navigate("/patterns")
                       ev.preventDefault()

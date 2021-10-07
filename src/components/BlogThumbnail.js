@@ -11,6 +11,7 @@ const BlogThumbnail = ({ altText, image, size }) => (
     alignSelf="center"
     width={{min: "200px"}}
     margin={size !== "small" ? "xsmall" : {"top": "none", "bottom": "large", "horizontal": "xsmall"}}
+    style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
   >
     <GatsbyImage image={image} alt={altText} />
   </Box>

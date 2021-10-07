@@ -34,6 +34,7 @@ const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
         overflow="auto"
         width="medium"
         height="medium"
+        style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
       >
         {image}
       </Box>

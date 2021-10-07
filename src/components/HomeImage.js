@@ -13,6 +13,7 @@ const HomeImage = ({ fixed, altText, slug }) => (
       overflow="hidden"
       align="center"
       margin="small"
+      style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
     >
       <GatsbyImage image={fixed} alt={altText} />
     </Box>

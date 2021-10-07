@@ -12,9 +12,7 @@ export default class PatternPage extends React.Component {
   render () {
     const data = this.props.data
     const posts = data.allMarkdownRemark.edges
-    // const size = useContext(ResponsiveContext)
     const pageContext = this.props.pageContext
-    console.log(pageContext)
     
     return (
       <Layout>

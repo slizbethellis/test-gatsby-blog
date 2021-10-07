@@ -8,7 +8,7 @@ const HomeGallery = ({ posts }) => {
   const size = useContext(ResponsiveContext)
   const columns = calcColumns(size)
   const homePosts = slicePosts(size, posts)
-  console.log(size)
+
   function slicePosts (size, posts) {
     switch (size) {
       case 'small':

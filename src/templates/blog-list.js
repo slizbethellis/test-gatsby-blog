@@ -44,7 +44,6 @@ export default class BlogPage extends React.Component {
     const data = this.props.data
     const posts = data.posts.edges
     const pageContext = this.props.pageContext
-    console.log(pageContext)
 
     return (
       <Layout>

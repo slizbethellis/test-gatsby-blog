@@ -31,6 +31,10 @@ export const customTheme = deepMerge(grommet, {
       'light-4': '#d7e6e3',
       'neutral-2': '#074646',
       'neutral-3': '#ff7073',
+      text: {
+        dark: '#f8f8f8',
+        light: '#121212',
+      },
     },
     drop: {
       background: { dark: 'dark-1', light: '#ffffff' },

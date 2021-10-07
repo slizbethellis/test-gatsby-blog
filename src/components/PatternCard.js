@@ -13,6 +13,7 @@ const PatternCard = ({ slug, title, image, altText }) => (
         background={{ dark: "dark-1", light: "light-2" }}
         border={{ "color": {dark: "dark-3", light: "dark-4" }}}
         elevation="none"
+        style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
       >
         <CardHeader justify="center">
           <Heading level={2} size="small" color={{ dark: "accent-1", light: "brand" }}>
