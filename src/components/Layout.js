@@ -9,6 +9,11 @@ const TemplateWrapper = ({ children }) => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? 'light' : 'dark';
 
+  // possible FOUC fix
+  if (!componentMounted) {
+    return <div />
+  };
+
   return (
     <Grommet theme={customTheme} themeMode={themeMode} full>
       {/* Wrapper-div might seem useless, but removing it messes up styling of Grommet components. */}
