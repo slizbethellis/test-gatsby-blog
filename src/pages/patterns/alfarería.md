@@ -12,58 +12,48 @@ yarnWeight:
   - light fingering
   - fingering
 yardage:
-  - variantYardage:
-      variant: null
-      yards: 530-550 (820-840)
-      meters: 485-503 (750-768)
+  - variant: null
+    yards: 530-550 (820-840)
+    meters: 485-503 (750-768)
 gauge: 
   - 'shawlette: 25 sts/34 rows = 4 inches/10 cm in stockinette stitch'
   - 'shawl: 22 sts/32 rows = 4 inches/10 cm'
 needles: US 5 (3.75mm) or US 6 (4.00mm)
 sizes: shawlette (shawl)
 finalMeasure:
-  - dimGroup:
-      dimName: Width at top
-      inches: 50 (75)
-      cm: 127 (191)
-  - dimGroup:
-      dimName: Depth
-      inches: 16 (24)
-      cm: 41 (61)
+  - dimName: Width at top
+    inches: 50 (75)
+    cm: 127 (191)
+  - dimName: Depth
+    inches: 16 (24)
+    cm: 41 (61)
 patternSource:
   link: 'http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php'
   price: free
 image: /img/alfareria-shawlette-detail.jpg
 altText: closeup of Alfarería shawlette wrapped around shoulders
 pictures:
-  - patternPhoto:
-      altText: large Alfarería shawl draped over shoulders, with model's back towards camera
-      caption: Alfarería shawl - back view
-      photo: /img/alfareria-shawl-back.jpg
-  - patternPhoto:
-      altText: detail of mosaic stitches on large Alfarería shawl
-      caption: Alfarería shawl - detail view
-      photo: /img/alfareria-shawl-detail.jpg
-  - patternPhoto:
-      altText: large Alfarería shawl suspended between finial and model's hand, to show flat shape
-      caption: Alfarería shawl - wingspan
-      photo: /img/alfareria-shawl-wingspan.jpg
-  - patternPhoto:
-      altText: large Alfarería shawl wrapped around woman's shoulders
-      caption: Alfarería shawl - front view
-      photo: /img/alfareria-shawl-front.jpg
-  - patternPhoto:
-      altText: Alfarería shawlette tied like kerchief around model's neck and shoulders
-      caption: Alfarería shawlette - front view
-      photo: /img/alfareria-shawlette-front.jpg
-  - patternPhoto:
-      altText: closeup of Alfarería shawlette wrapped around shoulders
-      caption: Alfarería shawlette - detail view
-      photo: /img/alfareria-shawlette-detail.jpg
-  - patternPhoto:
-      altText: woman holding Alfarería shawlette between her hands to demonstrate flat shape
-      caption: Alfarería shawlette - wingspan
-      photo: /img/alfareria-shawlette-wingspan.jpg
+  - altText: large Alfarería shawl draped over shoulders, with model's back towards camera
+    caption: Alfarería shawl - back view
+    photo: /img/alfareria-shawl-back.jpg
+  - altText: detail of mosaic stitches on large Alfarería shawl
+    caption: Alfarería shawl - detail view
+    photo: /img/alfareria-shawl-detail.jpg
+  - altText: large Alfarería shawl suspended between finial and model's hand, to show flat shape
+    caption: Alfarería shawl - wingspan
+    photo: /img/alfareria-shawl-wingspan.jpg
+  - altText: large Alfarería shawl wrapped around woman's shoulders
+    caption: Alfarería shawl - front view
+    photo: /img/alfareria-shawl-front.jpg
+  - altText: Alfarería shawlette tied like kerchief around model's neck and shoulders
+    caption: Alfarería shawlette - front view
+    photo: /img/alfareria-shawlette-front.jpg
+  - altText: closeup of Alfarería shawlette wrapped around shoulders
+    caption: Alfarería shawlette - detail view
+    photo: /img/alfareria-shawlette-detail.jpg
+  - altText: woman holding Alfarería shawlette between her hands to demonstrate flat shape
+    caption: Alfarería shawlette - wingspan
+    photo: /img/alfareria-shawlette-wingspan.jpg
 tags:
   - mosaic colorwork
   - Faroese shaping

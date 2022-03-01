@@ -23,7 +23,7 @@ const options = {
 
 const ColumnGallery = (images) => {
   // Extracts image array from object
-  const imageArray = images.photos
+  const imageArray = images.images
   // Creates captions array
   const customCaptions = imageArray.map((photo, index) => ({
     id: (index*2)+1,

@@ -10,33 +10,29 @@ yarn:
 yarnWeight:
   - sport
 yardage:
-  - variantYardage:
-      variant: none
-      yards: ~450
-      meters: ~411
+  - variant: null
+    yards: ~450
+    meters: ~411
 gauge:
   - n/a
 needles: US 2.5 (3.00mm)
 sizes: recipe
 finalMeasure:
-  - dimGroup:
-      dimName: Width
-      inches: n/a
-      cm: n/a
-  - dimGroup:
-      dimName: Length
-      inches: n/a
-      cm: n/a
+  - dimName: Width
+    inches: n/a
+    cm: n/a
+  - dimName: Length
+    inches: n/a
+    cm: n/a
 patternSource:
   link: 'https://www.haloroundmyhead.studio/blog/2009-11-26-the-red-chevron-scarf/'
   price: free
 image: /img/red-chevron-scarf.jpg
 altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
 pictures:
-  - patternPhoto:
-      altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
-      caption: Red Chevron Scarf
-      photo: /img/red-chevron-scarf.jpg
+  - altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
+    caption: Red Chevron Scarf
+    photo: /img/red-chevron-scarf.jpg
 tags:
   - chevron
   - pattern recipe

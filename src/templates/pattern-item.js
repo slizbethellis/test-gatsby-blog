@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import { getSrc } from 'gatsby-plugin-image'
+import { getImage } from 'gatsby-plugin-image'
 
 import {
   Box,
@@ -57,7 +57,7 @@ const PatternItemTemplate = ({
             "bottom": "medium"
           }}
         >
-          <ColumnGallery photos={images} />
+          <ColumnGallery images={images} />
         </Box>
         <Box
           pad={{
@@ -145,7 +145,7 @@ const PatternItemTemplate = ({
                 <TableCell>
                   <Box gap="xxsmall" border={{"side": "between"}}>
                     {details.yardage.map((yard,index)=>(
-                      <Text key={index}>{details.yardage.length > 1 && (`${yard.variantYardage.variant}:`)}{yard.variantYardage.yards} yds / {yard.variantYardage.meters} m</Text>
+                      <Text key={index}>{details.yardage.length > 1 && (`${yard.variant}:`)}{yard.yards} yds / {yard.meters} m</Text>
                     ))}
                   </Box>
                 </TableCell>
@@ -177,7 +177,7 @@ const PatternItemTemplate = ({
                 <TableCell>
                   <Box gap="xxsmall" border={{"side": "between"}}>
                     {details.finalMeasure.map((measure,index)=>(
-                      <Text key={index}>{measure.dimGroup.dimName}: {measure.dimGroup.inches} inches / {measure.dimGroup.cm} cm</Text>
+                      <Text key={index}>{measure.dimName}: {measure.inches} inches / {measure.cm} cm</Text>
                     ))}
                   </Box>
                 </TableCell>
@@ -222,16 +222,22 @@ export default class PatternItem extends React.Component {
     const data = this.props.data
     const pageContext = this.props.pageContext
     const post = data.pattern
-    const photos = post.frontmatter.pictures
+    const pictures = post.frontmatter.pictures
+    const thumbnails = data.thumbnails.frontmatter.pictures
+    const images = []
 
-    const images = photos.map((photo, index) => ({
-      src: getSrc(photo.patternPhoto.photo.childImageSharp.gatsbyImageData),
-      fluid: data.thumbnails.frontmatter.pictures[index].patternPhoto.photo.childImageSharp.gatsbyImageData,
-      width: photo.patternPhoto.photo.childImageSharp.gatsbyImageData.width,
-      height: photo.patternPhoto.photo.childImageSharp.gatsbyImageData.height,
-      caption: photo.patternPhoto.caption,
-      alt: photo.patternPhoto.altText
-    }))
+    pictures.forEach((image, index) => {
+      const imgData = getImage(image.photo)
+      const thumbData = getImage(thumbnails[index].photo)
+      images.push({
+        src: imgData.images.fallback.src,
+        fluid: thumbData,
+        width: imgData.width,
+        height: imgData.height,
+        caption: image.caption,
+        alt: image.altText
+      })
+    })
 
     return (
       <Layout>
@@ -277,48 +283,41 @@ export const pattQuery = graphql`query PattItemByID($id: String!) {
       yarn
       yarnWeight
       yardage {
-        variantYardage {
-          yards
-          meters
-        }
+        yards
+        meters
       }
       gauge
       needles
       sizes
       finalMeasure {
-        dimGroup {
-          dimName
-          inches
-          cm
-        }
+        dimName
+        inches
+        cm
       }
       patternSource {
         link
         price
       }
       pictures {
-        patternPhoto {
-          photo {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
-            }
+        photo {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
           }
-          altText
-          caption
         }
+        altText
+        caption
       }
     }
   }
   thumbnails: markdownRemark(id: {eq: $id}) {
     frontmatter {
       pictures {
-        patternPhoto {
-          photo {
-            childImageSharp {
-              gatsbyImageData(width: 370, layout: CONSTRAINED)
-            }
+        photo {
+          childImageSharp {
+            gatsbyImageData(width: 280, layout: CONSTRAINED)
           }
         }
+        altText
       }
     }
   }

@@ -6,7 +6,6 @@
   "dependencies": {
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^3.0.2",
     "babel-preset-gatsby": "^1.1.0",
-    "dotenv": "^10.0.0",
     "gatsby": "^3.1.2",
     "gatsby-plugin-feed": "^3.1.0",
     "gatsby-plugin-image": "^1.2.0",
@@ -44,8 +43,8 @@
   "scripts": {
     "start": "yarn run develop",
     "clean": "gatsby clean",
-    "build": "yarn run clean && gatsby build",
-    "develop": "yarn run clean && gatsby develop",
+    "build": "yarn gatsby build",
+    "develop": "yarn gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"

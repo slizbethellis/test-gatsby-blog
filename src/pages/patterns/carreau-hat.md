@@ -10,61 +10,50 @@ yarn:
 yarnWeight:
   - super bulky
 yardage:
-  - variantYardage:
-      variant: null
-      yards: 95-100
-      meters: 87-91
+  - variant: null
+    yards: 95-100
+    meters: 87-91
 gauge:
   - 8.5 sts/18 rows = 4 inches/10cm in garter stitch
 needles: US 13 (9.0 mm)
 sizes: one size
 finalMeasure:
-  - dimGroup:
-      dimName: Brim Circumference
-      inches: '20'
-      cm: '51'
-  - dimGroup:
-      dimName: Body Circumference
-      inches: '21'
-      cm: '53'
-  - dimGroup:
-      dimName: Height
-      inches: '10'
-      cm: '25.5'
+  - dimName: Brim Circumference
+    inches: '20'
+    cm: '51'
+  - dimName: Body Circumference
+    inches: '21'
+    cm: '53'
+  - dimName: Height
+    inches: '10'
+    cm: '25.5'
 patternSource:
   link: 'https://drive.google.com/file/d/1bt-UtKyJt2KbDTcRilOI9HIiHaYVrevj/view?usp=sharin'
   price: free
 image: /img/carreau-hat-berroco-back-sq.jpg
 altText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
 pictures:
-  - patternPhoto:
-      altText: woman wearing the matching Carreau hat and cowl set
-      caption: Carreau hat and cowl (Berroco version) - set
-      photo: /img/carreau-set.jpg
-  - patternPhoto:
-      altText: side angle showing the lighter texture of the wool version of Carreau hat
-      caption: Carreau hat (Berroco version) - side
-      photo: /img/carreau-hat-berroco-side.jpg
-  - patternPhoto:
-      altText: detail of wool Carreau hat's crown, with model reaching towards cat standing on fence
-      caption: Carreau hat (Berroco version) - crown detail
-      photo: /img/carreau-hat-berroco-crown.jpg
-  - patternPhoto:
-      altText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
-      caption: Carreau hat (Berroco version) - back
-      photo: /img/carreau-hat-berroco-back.jpg
-  - patternPhoto:
-      altText: detail showing the sharper stitch definition and heavier drape of alpaca Carreau hat
-      caption: Carreau hat (alpaca version) - side
-      photo: /img/carreau-hat-alpaca-side.jpg
-  - patternPhoto:
-      altText: crown of alpaca Carreau hat showing the denser texture
-      caption: Carreau hat (alpaca version) - back
-      photo: /img/carreau-hat-alpaca-back.jpg
-  - patternPhoto:
-      altText: flat lay of both Carreau hats; lighter, loftier wool version on left; thicker alpaca version on right
-      caption: Carreau hats - flat lay
-      photo: /img/carreau-hats-flat.jpg
+  - altText: woman wearing the matching Carreau hat and cowl set
+    caption: Carreau hat and cowl (Berroco version) - set
+    photo: /img/carreau-set.jpg
+  - altText: side angle showing the lighter texture of the wool version of Carreau hat
+    caption: Carreau hat (Berroco version) - side
+    photo: /img/carreau-hat-berroco-side.jpg
+  - altText: detail of wool Carreau hat's crown, with model reaching towards cat standing on fence
+    caption: Carreau hat (Berroco version) - crown detail
+    photo: /img/carreau-hat-berroco-crown.jpg
+  - altText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
+    caption: Carreau hat (Berroco version) - back
+    photo: /img/carreau-hat-berroco-back.jpg
+  - altText: detail showing the sharper stitch definition and heavier drape of alpaca Carreau hat
+    caption: Carreau hat (alpaca version) - side
+    photo: /img/carreau-hat-alpaca-side.jpg
+  - altText: crown of alpaca Carreau hat showing the denser texture
+    caption: Carreau hat (alpaca version) - back
+    photo: /img/carreau-hat-alpaca-back.jpg
+  - altText: flat lay of both Carreau hats; lighter, loftier wool version on left; thicker alpaca version on right
+    caption: Carreau hats - flat lay
+    photo: /img/carreau-hats-flat.jpg
 tags:
   - mosaic colorwork
   - sideways construction

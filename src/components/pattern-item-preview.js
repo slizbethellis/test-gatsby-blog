@@ -60,7 +60,7 @@ export const PatternItemTemplate = ({
                 <th>Yardage</th>
                 <td>
                   {yardage.map((yard,index)=>(
-                    <span key={index}>{yard.variantYardage.variant}: {yard.variantYardage.yards} yds / {yard.variantYardage.meters} m</span>
+                    <span key={index}>{yard.variant}: {yard.yards} yds / {yard.meters} m</span>
                   ))}
                 </td>
               </tr>
@@ -80,7 +80,7 @@ export const PatternItemTemplate = ({
                 <th>Measurements</th>
                 <td>
                   {finalMeasure.map((measure,index)=>(
-                    <span key={index}>{measure.dimGroup.dimName}: {measure.dimGroup.inches} inches / {measure.dimGroup.cm} cm</span>
+                    <span key={index}>{measure.dimName}: {measure.inches} inches / {measure.cm} cm</span>
                   ))}
                 </td>
               </tr>
