@@ -14,10 +14,12 @@ const imageRenderer = ({ index, left, top, photo }) => (
   />
 );
 
+    /* config options for captions to add back in once pro version is available again
+    captionFontFamily: "Nunito, sans-serif",
+    captionFontWeight: "400", */
 const options = {
   caption: {
-    captionFontFamily: "Nunito, sans-serif",
-    captionFontWeight: "400",
+    showCaption: false
   }
 }
 
