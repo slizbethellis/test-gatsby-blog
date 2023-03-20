@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Haloroundmyhead Knits',
     description: `Blog and pattern portfolio for knitting designer Sarah Ellis`,
-    siteUrl: `https://festive-lovelace-f360ad.netlify.com/`
+    siteUrl: `https://festive-lovelace-f360ad.netlify.com`
   },
   plugins: [
     {
@@ -72,7 +72,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-react-helmet',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',

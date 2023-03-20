@@ -27,33 +27,26 @@ finalMeasure:
     cm: 55 (72)
 patternSource:
   link: 'http://knitty.com/ISSUEdf17/PATTrosita/PATTrosita.php'
-  price: free
-image: /img/rosita-shawl-detail-front.jpg
-altText: closeup of larger Rosita shawl to illustrate twisted stitch closed lace texture, also features copper shawl pin with large hand-blown glass beads
+  price: 0.00
+pattImage: /img/rosita-shawl-detail-front.jpg
+pattAltText: closeup of larger Rosita shawl to illustrate twisted stitch closed lace texture, also features copper shawl pin with large hand-blown glass beads
+topImage: /img/rosita-shawlette-front.jpg
 pictures:
   - altText: Rosita shawlette wrapped around shoulders kerchief style
-    caption: Rosita shawlette - front view
     photo: /img/rosita-shawlette-front.jpg
   - altText: closer view of Rosita shawlette wrapped around shoulders to detail the twisted stitch texture
-    caption: Rosita shawlette - detail
     photo: /img/rosita-shawlette-detail.jpg
   - altText: another angle of Rosita shawlette wrapped around shoulders kerchief style, with model sitting on edge of rock wall with feet positioned to show off sneakers
-    caption: Rosita shawlette - front view 2
     photo: /img/rosita-shawlette-front-2.jpg
   - altText: model holding Rosita shawlette suspended between her hands to demonstrate flat shape 
-    caption: Rosita shawlette - wingspan
     photo: /img/rosita-shawlette-wingspan.jpg
   - altText: larger Rosita shawl wrapped around model's shoulders and held in place with beaded shawl pin
-    caption: Rosita shawl - front view
     photo: /img/rosita-shawl-front.jpg
   - altText: closeup of larger Rosita shawl to illustrate twisted stitch closed lace texture, also features copper shawl pin with large hand-blown glass beads
-    caption: Rosita shawl - front detail
     photo: /img/rosita-shawl-detail-front.jpg
   - altText: detail of larger Rosita shawl wrapped around shoulders to show off the wavy stripes, with model's back facing camera
-    caption: Rosita shawl - back detail
     photo: /img/rosita-shawl-detail-back.jpg
   - altText: Rosita shawl pressed against rustic wooden fence to illustrate flat shape
-    caption: Rosita shawl - wingspan
     photo: /img/rosita-shawl-wingspan.jpg
 tags:
   - closed lace
@@ -65,4 +58,4 @@ The idea for this shawl came to me when I was browsing designer knitwear collect
 
 This top-down shawl uses two ends of the same ball of self-striping lace yarn to break up the natural striping sequence of the yarn into a different striping pattern. Or you could try two different colors if your choice of self-striping yarn isn’t as high of contrast as the yarns used here.
 
-There are a total of eight edging charts to allow for making this shawl a custom size, but the Knitty pattern only includes two of the charts (for the sizes photographed), since the charts for this pattern are massive. Click [here](https://drive.google.com/open?id=1HkTYXcBGnGLsdpPVKBtHHDPrIEKgaANd) to download a PDF of all eight edging chart options.
+There are a total of eight edging charts to allow for making this shawl a custom size, but the Knitty pattern only includes two of the charts (for the sizes photographed), since the charts for this pattern are massive. [PDF of all eight edging chart options](https://drive.google.com/open?id=1HkTYXcBGnGLsdpPVKBtHHDPrIEKgaANd)

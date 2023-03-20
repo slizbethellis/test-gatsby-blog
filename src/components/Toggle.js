@@ -10,7 +10,7 @@ const Toggle = ({ theme, toggleTheme }) => {
   return (
     <Box
       direction="row"
-      background={{ dark: "#101F1C", light: "light-3" }}
+      background={{ dark: "#111b1f", light: "light-3" }}
       gap="xsmall"
       justify="center"
     >
@@ -32,8 +32,8 @@ const Toggle = ({ theme, toggleTheme }) => {
         <Button
           a11yTitle="Toggle light/dark mode"
           icon={isDark ?
-            <Sun color={{ dark: "accent-1", light: "brand" }} />
-            : <Moon color={{ dark: "accent-1", light: "brand" }} /> }
+            <Sun color={{ dark: "accent-1", light: "brand" }} size="medium" />
+            : <Moon color={{ dark: "accent-1", light: "brand" }} size="medium" /> }
           hoverIndicator={{dark: "dark-1", light: "light-4"}}
           onClick={toggleTheme}
         />

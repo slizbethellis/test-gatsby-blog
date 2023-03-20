@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import { Box, Heading, Paragraph, ResponsiveContext, Text } from 'grommet'
 
@@ -16,7 +15,6 @@ const BlogPostTemplate = ({
   tags,
   title,
   date,
-  helmet,
   pageContext
 }) => {
   const size = useContext(ResponsiveContext)
@@ -29,12 +27,11 @@ const BlogPostTemplate = ({
       justify="center"
       width="xlarge"
       pad={{
-        "top": "small",
+        "top": "none",
         "bottom": "medium",
         "horizontal": boxPad
       }}
     >
-      {helmet || ''}
       <Heading level={1} textAlign="center">{title}</Heading>
       <Text size="large" textAlign="center">{date}</Text>
       <Box border="bottom">
@@ -75,10 +72,9 @@ BlogPostTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
-  helmet: PropTypes.object
 }
 
-export default class BlogPost extends React.Component {
+class BlogPost extends React.Component {
   render () {
     const data = this.props.data
     const { markdownRemark: post } = data
@@ -89,7 +85,6 @@ export default class BlogPost extends React.Component {
         <BlogPostTemplate
           content={post.htmlAst}
           description={post.frontmatter.description}
-          helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
           tags={post.frontmatter.tags}
           title={post.frontmatter.title}
           date={post.frontmatter.date}
@@ -98,6 +93,15 @@ export default class BlogPost extends React.Component {
       </Layout>
     )
   }
+}
+
+export default BlogPost
+
+export const Head = ({ data }) => {
+  const { markdownRemark: post } = data
+  return (
+    <title>{`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`}</title>
+  )
 }
 
 BlogPost.propTypes = {

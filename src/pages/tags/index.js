@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import { Box, Heading } from 'grommet'
 
@@ -7,10 +6,9 @@ import Layout from '../../components/Layout'
 import TagButtons from '../../components/TagButtons'
 
 const TagsPage = ({
-  data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } }
+  data: { allMarkdownRemark: { group } }
 }) => (
   <Layout>
-    <Helmet title={`Tags | ${title}`} />
     <Box
       as="section"
       alignSelf="center"
@@ -29,6 +27,12 @@ const TagsPage = ({
 )
 
 export default TagsPage
+
+export const Head = ({ data: { site: { siteMetadata: { title } } } }) => {
+  return (
+    <title>{`Tags | ${title}`}</title>
+  )
+}
 
 export const tagPageQuery = graphql`
   query TagsQuery {

@@ -69,15 +69,15 @@ collections:
         widget: "object"
         fields:
           - {label: "Link", name: "link", widget: "string"}
-          - {label: "Price", name: "price", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "AltText", name: "altText", widget: "string"}
+          - {label: "Price", name: "price", widget: "number", pattern: [^\d+(,\d{2})?$, "must be a valid numeric price with two decimal places"]}
+      - {label: "Pattern Image", name: "pattImage", widget: "image"}
+      - {label: "Pattern Alt Text", name: "pattAltText", widget: "string"}
+      - {label: "Top Image", name: "topImage", widget: "image"}
       - label: "Pictures"
         name: "pictures"
         widget: "list"
         fields:
           - {label: "Photo", name: "photo", widget: "image"}
           - {label: "Alt Text", name: "altText", widget: "string"}
-          - {label: "Caption", name: "caption", widget: "string"}
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Body", name: "body", widget: "markdown"}

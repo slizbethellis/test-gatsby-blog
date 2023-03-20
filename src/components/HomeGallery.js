@@ -51,7 +51,7 @@ const HomeGallery = ({ posts }) => {
         .map(({ node: post }) => (
           <li key={post.id}>
             <HomeImage
-              fixed={post.frontmatter.image.childImageSharp.gatsbyImageData}
+              fixed={post.frontmatter.pattImage.childImageSharp.gatsbyImageData}
               altText={`Pattern info for ${post.frontmatter.title}`}
               patternName={post.frontmatter.title}
               slug={post.fields.slug}

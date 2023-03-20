@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
 import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
 
 import Layout from '../components/Layout'
 import PatternCard from '../components/PatternCard'
 import ListPagination from '../components/ListPagination'
 
-export default class PatternPage extends React.Component {
+class PatternPage extends React.Component {
   render () {
     const data = this.props.data
     const posts = data.allMarkdownRemark.edges
@@ -16,7 +15,6 @@ export default class PatternPage extends React.Component {
     
     return (
       <Layout>
-        <Helmet title={`Patterns | ${data.site.siteMetadata.title}`} />
         <Box
           as="section"
           alignSelf="center"
@@ -43,8 +41,8 @@ export default class PatternPage extends React.Component {
                       key={post.id}
                       slug={post.fields.slug}
                       title={post.frontmatter.title}
-                      image={post.frontmatter.image}
-                      altText={post.frontmatter.altText}
+                      image={post.frontmatter.pattImage}
+                      altText={post.frontmatter.pattAltText}
                     />
                   ))}
               </Grid>
@@ -60,6 +58,14 @@ export default class PatternPage extends React.Component {
       </Layout>
     )
   }
+}
+
+export default PatternPage
+
+export const Head = ({ data }) => {
+  return (
+    <title>{`Patterns | ${data.site.siteMetadata.title}`}</title>
+  )
 }
 
 PatternPage.propTypes = {
@@ -94,12 +100,12 @@ export const PageQuery = graphql`query PatternPage ($skip: Int!, $limit: Int!) {
           title
           templateKey
           date(formatString: "MMMM DD, YYYY")
-          image {
+          pattImage {
             childImageSharp {
               gatsbyImageData(width: 400, height: 400, layout: CONSTRAINED)
             }
           }
-          altText
+          pattAltText
         }
       }
     }

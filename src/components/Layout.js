@@ -32,7 +32,7 @@ const TemplateWrapper = ({ children }) => {
                 {children}
               </Main>
             ) : (
-              <Main style={{ minHeight: 'calc(100vh - 9.75rem)'}}>
+              <Main style={{ minHeight: 'calc(100vh - 8.25rem)'}}>
                 {children}
               </Main>
             )

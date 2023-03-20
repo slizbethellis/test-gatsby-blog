@@ -1,35 +1,18 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Button } from 'grommet'
-import { useLightbox } from 'simple-react-lightbox'
 
 // image buttons used to launch lightbox
-const GalleryImage = ({ index, left, top, photo }) => {
-  const { openLightbox } = useLightbox()
-
-  const imgStyle = {
-    position: "absolute",
-    left: left,
-    top: top,
-    height: photo.height,
-    width: photo.width,
-    margin: "2px"
-  };
-  
+const GalleryImage = ({ photo, first, onClick }) => {
   return (
     <Button
       plain
-      id={index+1}
-      onClick={() => openLightbox(index)}
-      style={imgStyle}
-      href={photo.src}
+      margin={!first ? { vertical: '2.5px'} : { bottom: '2.5px' }}
+      onClick={onClick}
     >
       <GatsbyImage
-        image={photo.fluid}
-        src={photo.src}
+        image={photo.thumbFluid}
         alt={photo.alt}
-        caption={photo.caption}
-        srl_gallery_image="true"
       />
     </Button>
   );

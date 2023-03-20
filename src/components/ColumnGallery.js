@@ -1,50 +1,76 @@
-import React from 'react'
-import { SRLWrapper } from 'simple-react-lightbox'
-import Gallery from 'react-photo-gallery'
+import React, { useState } from 'react'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import { Box } from 'grommet'
+import PhotoAlbum from 'react-photo-album'
+import Lightbox from 'yet-another-react-lightbox'
+import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
+import 'yet-another-react-lightbox/styles.css'
 
 import GalleryImage from './GalleryImage'
 
-const imageRenderer = ({ index, left, top, photo }) => (
-  <GalleryImage 
-    index={index}
-    left={left}
-    top={top}
-    key={index+1}
-    photo={photo}
-  />
-);
-
-    /* config options for captions to add back in once pro version is available again
-    captionFontFamily: "Nunito, sans-serif",
-    captionFontWeight: "400", */
-const options = {
-  caption: {
-    showCaption: false
-  }
-}
-
 const ColumnGallery = (images) => {
+  const [index, setIndex] = useState(-1)
+
+  const renderAlbumThumb = ({ photo }) => (
+    <GalleryImage 
+      photo={photo}
+      onClick={() => setIndex(photo.key)}
+    />
+  )
+
+  const renderCustomSlide = (slide) => {
+    return (
+      <Box
+        alignContent="center"
+        direction="row"
+        margin="small"
+        height='100%'
+      >
+        <GatsbyImage 
+          image={slide.fluid}
+          alt={slide.alt}
+          objectFit="contain"
+        />
+      </Box>
+    )
+  }
+
   // Extracts image array from object
   const imageArray = images.images
-  // Creates captions array
-  const customCaptions = imageArray.map((photo, index) => ({
-    id: (index*2)+1,
-    caption: <div className="SRLCustomCaption" style={{ fontFamily: "DM Sans, sans-serif"}}>{photo.caption}</div>
-  }))
+
+  // This variable passes image array minus first image to gallery component
+  const slicedImages = imageArray.slice(1)
 
   return (
     <React.Fragment>
-    <SRLWrapper customCaptions={customCaptions} options={options}>
-      {imageArray.length > 0 &&
-        <Gallery
-          photos={imageArray}
-          direction={'column'}
-          columns={2}
-          renderImage={imageRenderer}
-        />}
-    </SRLWrapper>
+      <GalleryImage
+        key={imageArray[0].key}
+        photo={imageArray[0]}
+        alt={imageArray[0].alt}
+        first
+        onClick={() => setIndex(imageArray[0].key)}
+      />
+      {slicedImages.length > 0 &&
+        <PhotoAlbum
+          layout='masonry'
+          photos={slicedImages}
+          spacing={5}
+          columns={4}
+          renderPhoto={renderAlbumThumb}
+        />
+      } 
+      <Lightbox 
+        open={index >= 0}
+        index={index}
+        close={() => setIndex(-1)}
+        slides={imageArray}
+        plugins={[Fullscreen]}
+        carousel={{ finite: "true" }}
+        render={{
+          slide: renderCustomSlide
+        }}
+      />
     </React.Fragment>
-    
   )
 };
 

@@ -31,30 +31,24 @@ finalMeasure:
     cm: '29'
 patternSource:
   link: 'http://knitty.com/ISSUEw15/PATTelectricity/PATTelectricity.php'
-  price: free
-image: /img/electricity-orange-side.jpg
-altText: side view of orange Electricity hat detailing the drape and subtle stitch definition 
+  price: 0.00
+pattImage: /img/electricity-orange-side.jpg
+pattAltText: side view of orange Electricity hat detailing the drape and subtle stitch definition 
+topImage: /img/electricity-orange-back.jpg
 pictures:
   - altText: orange Electricity viewed from back with pompom slung to back, also showcases the model's mid-back length coppery red hair
-    caption: Electricity hat (orange version) - back view
     photo: /img/electricity-orange-back.jpg
   - altText: orange Electricity hat shown from front, with top of hat twisted to sling pompom to front
-    caption: Electricity hat (orange version) - front view
     photo: /img/electricity-orange-front.jpg
   - altText: side view of orange Electricity hat detailing the drape and subtle stitch definition
-    caption: Electricity hat (orange version) - side view
     photo: /img/electricity-orange-side.jpg
   - altText: rainbow Electricity hat shown from front, with pompom slung to back
-    caption: Electricity hat (rainbow version) - front view
     photo: /img/electricity-rainbow-front.jpg
   - altText: side view of rainbow Electricity hat to show how hat drapes and detail of the marled colors used
-    caption: Electricity hat (rainbow version) - side view
     photo: /img/electricity-rainbow-side.jpg
   - altText: rainbow Electricity hat shown from back, showing how the pompom hangs in back
-    caption: Electricity hat (rainbow version) - back view
     photo: /img/electricity-rainbow-back.jpg
   - altText: flat lay of both Electricity hats on gray wood table; orange hat on left, rainbow hat on right
-    caption: Electricity hats - flat lay
     photo: /img/electricity-hats-flat.jpg
 tags:
   - stranded colorwork

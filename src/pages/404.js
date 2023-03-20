@@ -42,3 +42,9 @@ const NotFoundPage = () => (
 )
 
 export default NotFoundPage
+
+export const Head = () => {
+  return (
+    <title>404 | Haloroundmyhead Knits</title>
+  )
+}

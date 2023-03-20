@@ -29,24 +29,20 @@ finalMeasure:
     cm: 20 (22)
 patternSource:
   link: 'http://knitty.com/ISSUEw17/PATTcarreau/PATTcarreau.php'
-  price: free
-image: /img/carreau-cowl-large-side-sq.jpg
-altText: woman holding top edge of larger Carreau cowl to illustrate the larger circumference and show off the gradient colors of the bulky mosaic pattern
+  price: 0.00
+pattImage: /img/carreau-cowl-large-side-sq.jpg
+pattAltText: woman holding top edge of larger Carreau cowl to illustrate the larger circumference and show off the gradient colors of the bulky mosaic pattern
+topImage: /img/carreau-cowl-small-front.jpg
 pictures:
   - altText: smaller Carreau cowl scrunched up on model's neck, viewed from the front
-    caption: Carreau cowl (small) - front
     photo: /img/carreau-cowl-small-front.jpg
   - altText: side view of smaller Carreau cowl, showing more detail of bulky mosaic texture
-    caption: Carreau cowl (small) - side
     photo: /img/carreau-cowl-small-side.jpg
   - altText: woman holding top edge of larger Carreau cowl to illustrate the larger circumference and show off the gradient colors of the bulky mosaic pattern
-    caption: Carreau cowl (large) - side
     photo: /img/carreau-cowl-large-side.jpg
   - altText: larger Carreau cowl worn around model's neck, draped to the front with a fold
-    caption: Carreau cowl (large) - front
     photo: /img/carreau-cowl-large-front.jpg
   - altText: both sizes of Carreau cowl, lying flat on driftwood
-    caption: Carreau cowls - sitting on driftwood
     photo: /img/carreau-cowls-flat.jpg
 tags:
   - mosaic colorwork

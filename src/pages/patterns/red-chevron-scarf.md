@@ -26,12 +26,12 @@ finalMeasure:
     cm: n/a
 patternSource:
   link: 'https://www.haloroundmyhead.studio/blog/2009-11-26-the-red-chevron-scarf/'
-  price: free
-image: /img/red-chevron-scarf.jpg
-altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
+  price: 0.00
+pattImage: /img/red-chevron-scarf.jpg
+pattAltText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
+topImage: /img/red-chevron-scarf.jpg
 pictures:
   - altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
-    caption: Red Chevron Scarf
     photo: /img/red-chevron-scarf.jpg
 tags:
   - chevron

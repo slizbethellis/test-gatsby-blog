@@ -2,12 +2,11 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from "gatsby-plugin-image";
-import Helmet from 'react-helmet'
 import { Box, Heading, Markdown, ResponsiveContext } from 'grommet'
 
 import Layout from '../components/Layout'
 
-const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
+const AboutPageTemplate = ({ title, image, markdown }) => {
   const size = useContext(ResponsiveContext)
   const boxPad = (size !== 'small' ? "xlarge" : "large")
 
@@ -18,12 +17,11 @@ const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
       justify="center"
       width="xlarge"
       pad={{
-        "top": "small",
+        "top": "none",
         "bottom": "medium",
         "horizontal": boxPad
       }}
     >
-      {helmet || ''}
       <Heading level={1} textAlign="center">{title}</Heading>
       <Box
         as="figure"
@@ -54,7 +52,6 @@ const AboutPageTemplate = ({ title, image, helmet, markdown }) => {
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   markdown: PropTypes.node,
-  helmet: PropTypes.object
 }
 
 const AboutPage = ({ data }) => {
@@ -68,7 +65,6 @@ const AboutPage = ({ data }) => {
         image={<GatsbyImage
           image={data.fluidImages.childImageSharp.gatsbyImageData}
           alt="Sarah Ellis - headshot" />}
-        helmet={<Helmet title={`About | ${data.site.siteMetadata.title}`} />}
       />
     </Layout>
   );
@@ -79,6 +75,12 @@ AboutPage.propTypes = {
 }
 
 export default AboutPage
+
+export const Head = ({ data }) => {
+  return (
+    <title>{`About | ${data.site.siteMetadata.title}`}</title>
+  )
+}
 
 export const aboutPageQuery = graphql`query AboutPage($id: String!) {
   site {

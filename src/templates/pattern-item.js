@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
 
@@ -15,6 +14,8 @@ import {
   TableBody,
   TableCell,
   TableRow,
+  Tab,
+  Tabs,
   Text
 } from 'grommet'
 
@@ -27,12 +28,14 @@ const PatternItemTemplate = ({
   frontmatter,
   images,
   title,
-  helmet,
   pageContext
 }) => {
   const details = frontmatter
   const size = useContext(ResponsiveContext)
   const cellSize = (size === 'small' ? '1/3' : '30%')
+
+  const [index, setIndex] = React.useState(0)
+  const onActive = (nextIndex) => setIndex(nextIndex)
 
   return (
     <Box
@@ -42,20 +45,22 @@ const PatternItemTemplate = ({
       width="xlarge"
       pad={{
         "horizontal": "medium"
-      }}      
+      }} 
+      margin={{ "top": "41.5px" }}     
     >
-      {helmet || ''}
-      <Heading level={1} textAlign="center">{title}</Heading>
+      
       <Grid
         columns={size !== 'small' ? ['42%', 'auto'] : ['auto']}
         rows={size !== 'small' ? ['auto'] : ['auto', 'auto']}
         gap="medium"
       >
         <Box
+          margin={{ "horizontal": "auto"}}
           pad={{
             "top": "none",
-            "bottom": "medium"
+            "bottom": "xsmall"
           }}
+          width={{ "max": "465px"}}
         >
           <ColumnGallery images={images} />
         </Box>
@@ -65,144 +70,167 @@ const PatternItemTemplate = ({
             "bottom": "medium"
           }}
         >
-          <Table>
-            <TableBody>
-              {/* If pattern is no longer available from original source and there is a new source
-                (i.e. a non-null value for currentSrc), it will conditionally render as "Original source" and "Current source", but if currentSrc is null, then originalPub will show as "Published in". */}
-              {details.currentSrc ? (
-                <React.Fragment>
-                  <TableRow>
-                    <TableCell scope="row" size={cellSize}>
-                      <strong>Original source</strong>
-                    </TableCell>
-                    <TableCell>
-                      {details.originalPub}
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell scope="row" size={cellSize}>
-                      <strong>Current source</strong>
-                    </TableCell>
-                    <TableCell>
-                      {details.currentSrc}
-                    </TableCell>
-                  </TableRow>
-                </React.Fragment>  
-              ) : (
-                <TableRow>
-                  <TableCell scope="row" size={cellSize}>
-                    <strong>Published in</strong>
-                  </TableCell>
-                  <TableCell>
-                    {details.originalPub}
-                  </TableCell>
-                </TableRow>
-              )}
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Category</strong>
-                </TableCell>
-                <TableCell>
-                  {details.itemType}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Release Date</strong>
-                </TableCell>
-                <TableCell>
-                  {details.date}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Sizes</strong>
-                </TableCell>
-                <TableCell>
-                  {details.sizes}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Yarn(s)</strong>
-                </TableCell>
-                <TableCell>
-                  {details.yarn.join(', ')}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Yarn Weight</strong>
-                </TableCell>
-                <TableCell>
-                  {details.yarnWeight.join(', ')}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Yardage</strong>
-                </TableCell>
-                <TableCell>
-                  <Box gap="xxsmall" border={{"side": "between"}}>
-                    {details.yardage.map((yard,index)=>(
-                      <Text key={index}>{details.yardage.length > 1 && (`${yard.variant}:`)}{yard.yards} yds / {yard.meters} m</Text>
-                    ))}
-                  </Box>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Needles</strong>
-                </TableCell>
-                <TableCell>
-                  {details.needles}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Gauge</strong>
-                </TableCell>
-                <TableCell>
-                  <Box gap="xxsmall" border={{"side": "between"}}>
-                    {details.gauge.map((gauge,index)=>(
-                      <Text key={index}>{gauge}</Text>
-                    ))}
-                  </Box>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">
-                  <strong>Measurements</strong>
-                </TableCell>
-                <TableCell>
-                  <Box gap="xxsmall" border={{"side": "between"}}>
-                    {details.finalMeasure.map((measure,index)=>(
-                      <Text key={index}>{measure.dimName}: {measure.inches} inches / {measure.cm} cm</Text>
-                    ))}
-                  </Box>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-          <Box pad={{ top: "medium", bottom: "none" }}>
+          <Heading
+            level={1}
+            textAlign="center"
+            margin={{ "top": "none", "bottom": "medium" }}
+          >
+            {title}
+          </Heading>
+          <Text
+            margin={{ "bottom": "small" }}
+            textAlign="center"
+            size="xlarge"
+            weight="bold"
+          >
+            {details.patternSource.price !== 0 ? `$${parseFloat(details.patternSource.price).toFixed(2)} USD` : `free`}
+          </Text>
+          <Box pad={{ top: "small", bottom: "large" }}>
             <Button
               as="a"
               href={details.patternSource.link}
               alignSelf="center"
               margin={size === 'small' ? {top: 'small', bottom: 'xxsmall'} : 'none'}
               primary
-              label={`Pattern (${details.patternSource.price})`}
+              label={`Get Pattern`}
             />
           </Box>
-          <Markdown
-            components={{
-              "p": {
-                "props": {"fill": true}
-              }
-            }}
-          >
-            {content}
-          </Markdown>
+          <Tabs activeIndex={index} onActive={onActive} alignControls="center">
+            <Tab title="Description">
+              <Markdown
+                components={{
+                  "p": {
+                    "props": {"fill": true}
+                  }
+                }}
+              >
+                {content}
+              </Markdown>
+            </Tab>
+            <Tab title="Specs">
+              <Box pad={{ top: "medium"}}>
+                <Table>
+                  <TableBody>
+                    {/* If pattern is no longer available from original source and there is a new source
+                      (i.e. a non-null value for currentSrc), it will conditionally render as "Original source" and "Current source", but if currentSrc is null, then originalPub will show as "Published in". */}
+                    {details.currentSrc ? (
+                      <React.Fragment>
+                        <TableRow>
+                          <TableCell scope="row" size={cellSize}>
+                            <strong>Original source</strong>
+                          </TableCell>
+                          <TableCell>
+                            {details.originalPub}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell scope="row" size={cellSize}>
+                            <strong>Current source</strong>
+                          </TableCell>
+                          <TableCell>
+                            {details.currentSrc}
+                          </TableCell>
+                        </TableRow>
+                      </React.Fragment>  
+                    ) : (
+                      <TableRow>
+                        <TableCell scope="row" size={cellSize}>
+                          <strong>Published in</strong>
+                        </TableCell>
+                        <TableCell>
+                          {details.originalPub}
+                        </TableCell>
+                      </TableRow>
+                    )}
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Category</strong>
+                      </TableCell>
+                      <TableCell>
+                        {details.itemType}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Release Date</strong>
+                      </TableCell>
+                      <TableCell>
+                        {details.date}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Sizes</strong>
+                      </TableCell>
+                      <TableCell>
+                        {details.sizes}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Yarn(s)</strong>
+                      </TableCell>
+                      <TableCell>
+                        {details.yarn.join(', ')}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Yarn Weight</strong>
+                      </TableCell>
+                      <TableCell>
+                        {details.yarnWeight.join(', ')}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Yardage</strong>
+                      </TableCell>
+                      <TableCell>
+                        <Box gap="xxsmall" border={{"side": "between"}}>
+                          {details.yardage.map((yard,index)=>(
+                            <Text key={index}>{details.yardage.length > 1 && (`${yard.variant}:`)}{yard.yards} yds / {yard.meters} m</Text>
+                          ))}
+                        </Box>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Needles</strong>
+                      </TableCell>
+                      <TableCell>
+                        {details.needles}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Gauge</strong>
+                      </TableCell>
+                      <TableCell>
+                        <Box gap="xxsmall" border={{"side": "between"}}>
+                          {details.gauge.map((gauge,index)=>(
+                            <Text key={index}>{gauge}</Text>
+                          ))}
+                        </Box>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>Measurements</strong>
+                      </TableCell>
+                      <TableCell>
+                        <Box gap="xxsmall" border={{"side": "between"}}>
+                          {details.finalMeasure.map((measure,index)=>(
+                            <Text key={index}>{measure.dimName}: {measure.inches} inches / {measure.cm} cm</Text>
+                          ))}
+                        </Box>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </Box>
+            </Tab>
+          </Tabs>
           <PostPagination pageContext={pageContext} />
         </Box>
       </Grid>
@@ -214,27 +242,28 @@ PatternItemTemplate.propTypes = {
   content: PropTypes.node,
   frontmatter: PropTypes.object,
   title: PropTypes.string,
-  helmet: PropTypes.object
 }
 
-export default class PatternItem extends React.Component {
+class PatternItem extends React.Component {
   render () {
     const data = this.props.data
     const pageContext = this.props.pageContext
     const post = data.pattern
     const pictures = post.frontmatter.pictures
     const thumbnails = data.thumbnails.frontmatter.pictures
+    const topImage = post.frontmatter.topImage
     const images = []
 
     pictures.forEach((image, index) => {
       const imgData = getImage(image.photo)
-      const thumbData = getImage(thumbnails[index].photo)
+      const thumbData = index !== 0 ? getImage(thumbnails[index].photo) : getImage(topImage)
       images.push({
         src: imgData.images.fallback.src,
-        fluid: thumbData,
-        width: imgData.width,
-        height: imgData.height,
-        caption: image.caption,
+        fluid: imgData,
+        thumbFluid: thumbData,
+        key: index,
+        width: thumbData.width,
+        height: thumbData.height,
         alt: image.altText
       })
     })
@@ -244,7 +273,6 @@ export default class PatternItem extends React.Component {
         <PatternItemTemplate
           content={post.rawMarkdownBody}
           frontmatter={post.frontmatter}
-          helmet={<Helmet title={`${post.frontmatter.title} | ${data.site.siteMetadata.title}`} />}
           images={images}
           title={post.frontmatter.title}
           pageContext={pageContext}
@@ -252,6 +280,15 @@ export default class PatternItem extends React.Component {
       </Layout>
     )
   }
+}
+
+export default PatternItem
+
+export const Head = ({ data }) => {
+  const post = data.pattern
+  return (
+    <title>{`${post.frontmatter.title} | ${data.site.siteMetadata.title}`}</title>
+  )
 }
 
 PatternItem.propTypes = {
@@ -298,14 +335,18 @@ export const pattQuery = graphql`query PattItemByID($id: String!) {
         link
         price
       }
+      topImage {
+        childImageSharp {
+          gatsbyImageData(width: 465, layout: CONSTRAINED) 
+        }
+      }
       pictures {
         photo {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+            gatsbyImageData(height: 1440, layout: CONSTRAINED, placeholder: BLURRED)
           }
         }
         altText
-        caption
       }
     }
   }
@@ -314,7 +355,7 @@ export const pattQuery = graphql`query PattItemByID($id: String!) {
       pictures {
         photo {
           childImageSharp {
-            gatsbyImageData(width: 280, layout: CONSTRAINED)
+            gatsbyImageData(width: 120, layout: CONSTRAINED)
           }
         }
         altText

@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
 import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
 
-import BlogPreview from '../components/BlogPreview'
+import BlogCard from '../components/BlogCard'
 import Layout from '../components/Layout'
 import ListPagination from '../components/ListPagination'
 import Sidebar from '../components/Sidebar'
@@ -20,7 +19,7 @@ const BlogPosts = ({ posts, pageContext }) => (
   >
     {posts
       .map(({ node: post }) => (
-        <BlogPreview
+        <BlogCard
           slug={post.fields.slug}
           hLevel={2}
           hSize="small"
@@ -39,7 +38,7 @@ const BlogPosts = ({ posts, pageContext }) => (
   </Box>
 )
 
-export default class BlogPage extends React.Component {
+class BlogPage extends React.Component {
   render() {
     const data = this.props.data
     const posts = data.posts.edges
@@ -47,7 +46,6 @@ export default class BlogPage extends React.Component {
 
     return (
       <Layout>
-        <Helmet title={`Blog | ${data.site.siteMetadata.title}`} />
         <Box
           as="section"
           alignSelf="center"
@@ -81,6 +79,14 @@ export default class BlogPage extends React.Component {
   }
 }
 
+export default BlogPage
+
+export const Head = ({ data }) => {
+  return (
+    <title>{`Blog | ${data.site.siteMetadata.title}`}</title>
+  )
+}
+
 BlogPage.propTypes = {
   data: PropTypes.shape({
     posts: PropTypes.shape({
@@ -97,50 +103,51 @@ BlogPage.propTypes = {
   }),
 }
 
-export const pageQuery = graphql`query BlogQuery ($skip: Int!, $limit: Int!) {
-  site {
-    siteMetadata {
-      title
+export const pageQuery = graphql`
+  query BlogQuery ($skip: Int!, $limit: Int!) {
+    site {
+      siteMetadata {
+        title
+      }
     }
-  }
-  siteSearchIndex {
-    index
-  }
-  posts: allMarkdownRemark(
-    sort: {order: DESC, fields: [frontmatter___date]}
-    filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
-    limit: $limit
-    skip: $skip
-  ) {
-    edges {
-      node {
-        excerpt(pruneLength: 400)
-        id
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          templateKey
-          date(formatString: "MMMM DD, YYYY")
-          image {
-            childImageSharp {
-              gatsbyImageData(width: 200, height: 200, layout: FIXED)
-            }
+    siteSearchIndex {
+      index
+    }
+    posts: allMarkdownRemark(
+      sort: {order: DESC, fields: [frontmatter___date]}
+      filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+      limit: $limit
+      skip: $skip
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 400)
+          id
+          fields {
+            slug
           }
-          altText
+          frontmatter {
+            title
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
+            image {
+              childImageSharp {
+                gatsbyImageData(width: 200, height: 200, layout: FIXED)
+              }
+            }
+            altText
+          }
         }
       }
     }
-  }
-  tags: allMarkdownRemark(
-    limit: 20,
-    filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-  ) {
-    group(field: frontmatter___tags) {
-      fieldValue
-      totalCount
+    tags: allMarkdownRemark(
+      limit: 20,
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+    ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
     }
-  }
-}
+    }
 `

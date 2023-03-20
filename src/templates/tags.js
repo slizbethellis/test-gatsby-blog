@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import { Box, Heading, List } from 'grommet'
 
@@ -18,10 +17,8 @@ const TagRoute = ({
     totalCount === 1 ? '' : 's'
   } tagged with “${tag}”`
   
-
   return (
     <Layout>
-      <Helmet title={`${tag} | ${data.site.siteMetadata.title}`} />
       <Box
         as="section"
         alignSelf="center"
@@ -47,6 +44,14 @@ const TagRoute = ({
 }
 
 export default TagRoute
+
+export const Head = ({ data, pageContext }) => {
+  const tag = pageContext.tag
+
+  return (
+    <title>{`${tag} | ${data.site.siteMetadata.title}`}</title>
+  )
+}
 
 export const tagPageQuery = graphql`
   query TagPage($tag: String) {

@@ -20,9 +20,9 @@ const Navbar = ({ theme, toggleTheme, componentMounted }) => {
 
   return (
     <Header
-      background={{ dark: "#101F1C", light: "light-3" }}
+      background={{ dark: "#111b1f", light: "light-3" }}
       pad="medium"
-      height={size !== 'small' ? "4.875rem" : "4.125rem"}
+      height="4.875rem"
       border={{
         "color": { dark: "accent-3", light: "neutral-3" },
         "size": "small",
@@ -44,7 +44,7 @@ const Navbar = ({ theme, toggleTheme, componentMounted }) => {
                 a11yTitle="Navigation Menu"
                 dropProps={{ align: { top: 'bottom', right: 'right' }, target: targetRef.current }}
                 elevation="xxsmall"
-                icon={<MenuIcon color={{ dark: "accent-1", light: "brand" }} />}
+                icon={<MenuIcon color={{ dark: "accent-1", light: "brand" }} size="medium" />}
                 size="medium"
                 items={[
                   {

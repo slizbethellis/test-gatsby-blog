@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Heading } from 'grommet'
 
-import BlogPreview from './BlogPreview'
+import BlogCard from './BlogCard'
 
 // styled box for featured blog post on home page
 const FeatureBox = ({ altText, boxTitle, excerpt, image, slug, postTitle}) => (
@@ -22,7 +22,7 @@ const FeatureBox = ({ altText, boxTitle, excerpt, image, slug, postTitle}) => (
     >
       {boxTitle}
     </Heading>
-    <BlogPreview
+    <BlogCard
       slug={slug}
       hLevel={3}
       postTitle={postTitle}

@@ -24,10 +24,28 @@ const FillParagraph = ({ children }) => (
 )
 
 const Content = ({ contentAst }) => {
+  const patchedAst = patchHTMLAST(contentAst)
   return (
-    renderAst(contentAst)
+    renderAst(patchedAst)
   )  
 }
+
+const patchHTMLAST = (ast) => {
+  // There is a funny bug somewhere in one of the dozens-hundreds of libraries being used to transform markdown which
+  // is causing a problem with `srcset`.  Images are being converted into HTML in the markdown which automatically
+  // references the sources of the generated resized/converted images.  The generated `srcset` prop is being somehow
+  // converted into an array of strings before being passed to `rehype-react` which is then concatenating them and
+  // generating invalid HTML.
+  //
+  // This code handles converting `srcset` arrays into valid strings.
+  if (ast.properties?.srcSet && Array.isArray(ast.properties.srcSet)) {
+    ast.properties.srcSet = ast.properties.srcSet.join(', ')
+  }
+  if (ast.children) {
+    ast.children = ast.children.map(patchHTMLAST)
+  }
+  return ast
+};
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,

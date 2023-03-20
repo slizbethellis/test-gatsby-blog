@@ -6,7 +6,7 @@ import BlogThumbnail from './BlogThumbnail'
 
 /* responsive card-like box with blog post title as link, an excerpt underneath, and a round thumbnail to the
 right or bottom depending on media size; also takes custom heading level to comply with proper heading order */
-const BlogPreview = ({
+const BlogCard = ({
   background,
   round,
   slug,
@@ -51,4 +51,4 @@ const BlogPreview = ({
   )
 }
 
-export default BlogPreview
+export default BlogCard
