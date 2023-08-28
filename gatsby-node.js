@@ -5,28 +5,23 @@ const { createFilePath } = require('gatsby-source-filesystem')
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  return graphql(`
-    {
-      allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC },
-        limit: 1000
-      ) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              tags
-              templateKey
-              title
-            }
-          }
+  return graphql(`{
+  allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 1000) {
+    edges {
+      node {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          tags
+          templateKey
+          title
         }
       }
     }
-  `).then(result => {
+  }
+}`).then(result => {
     if (result.errors) {
       result.errors.forEach(e => console.error(e.toString()))
       return Promise.reject(result.errors)
@@ -116,7 +111,7 @@ exports.createPages = ({ actions, graphql }) => {
         })
       })
     })
-  })
+  });
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

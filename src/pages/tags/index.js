@@ -34,21 +34,19 @@ export const Head = ({ data: { site: { siteMetadata: { title } } } }) => {
   )
 }
 
-export const tagPageQuery = graphql`
-  query TagsQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    },
-    allMarkdownRemark(
-      limit: 1000,
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
+export const tagPageQuery = graphql`query TagsQuery {
+  site {
+    siteMetadata {
+      title
     }
   }
-`
+  allMarkdownRemark(
+    limit: 1000
+    filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+  ) {
+    group(field: {frontmatter: {tags: SELECT}}) {
+      fieldValue
+      totalCount
+    }
+  }
+}`

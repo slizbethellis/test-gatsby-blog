@@ -10,7 +10,6 @@ const ListPagination = ({ pageContext, path }) => {
   const isLast = currentPage === numPages
   const prevPage = currentPage - 1 === 1 ? `${path}` : `${path}/${(currentPage - 1).toString()}`
   const nextPage = `${path}/${(currentPage + 1).toString()}`
-  console.log(pageContext)
 
   return (
     <Box 

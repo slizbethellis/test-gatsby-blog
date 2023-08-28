@@ -46,26 +46,26 @@ module.exports = {
                 })
               })
             },
-            query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-                ) {
-                  edges {
-                    node {
-                      excerpt
-                      html
-                      fields { slug }
-                      frontmatter {
-                        title
-                        date
-                      }
+            query: `{
+              allMarkdownRemark(
+                sort: {frontmatter: {date: DESC}}
+                filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+              ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      date
                     }
                   }
                 }
               }
-            `,
+            }`,
             output: "/rss.xml",
             title: "Haloroundmyhead Knits",
           },
@@ -142,6 +142,27 @@ module.exports = {
           },
         ],
       },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Haloroundmyhead Knits`,
+        short_name: `HaloKnits`,
+        description: `Blog and pattern portfolio for knitting designer Sarah Ellis`,
+        start_url: `/`,
+        background_color: `#111b1f`,
+        theme_color: `#253435`,
+        display: `minimal-ui`,
+        icon: `static/img/yarnballcat-icon.svg`, 
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+         workboxConfig: {
+            globPatterns: ['**/static/img*']
+         }
+      }
     },
     "gatsby-plugin-webpack-bundle-analyser-v2",
     {

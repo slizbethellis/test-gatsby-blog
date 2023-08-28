@@ -103,51 +103,49 @@ BlogPage.propTypes = {
   }),
 }
 
-export const pageQuery = graphql`
-  query BlogQuery ($skip: Int!, $limit: Int!) {
-    site {
-      siteMetadata {
-        title
-      }
+export const pageQuery = graphql`query BlogQuery($skip: Int!, $limit: Int!) {
+  site {
+    siteMetadata {
+      title
     }
-    siteSearchIndex {
-      index
-    }
-    posts: allMarkdownRemark(
-      sort: {order: DESC, fields: [frontmatter___date]}
-      filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
-      limit: $limit
-      skip: $skip
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-            image {
-              childImageSharp {
-                gatsbyImageData(width: 200, height: 200, layout: FIXED)
-              }
+  }
+  siteSearchIndex {
+    index
+  }
+  posts: allMarkdownRemark(
+    sort: {frontmatter: {date: DESC}}
+    filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+    limit: $limit
+    skip: $skip
+  ) {
+    edges {
+      node {
+        excerpt(pruneLength: 400)
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          templateKey
+          date(formatString: "MMMM DD, YYYY")
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 200, height: 200, layout: FIXED)
             }
-            altText
           }
+          altText
         }
       }
     }
-    tags: allMarkdownRemark(
-      limit: 20,
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
+  }
+  tags: allMarkdownRemark(
+    limit: 20
+    filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+  ) {
+    group(field: {frontmatter: {tags: SELECT}}) {
+      fieldValue
+      totalCount
     }
-    }
-`
+  }
+}`

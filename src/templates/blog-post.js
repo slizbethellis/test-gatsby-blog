@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
+import { kebabCase } from 'lodash/kebabCase'
 import { graphql } from 'gatsby'
 import { Box, Heading, Paragraph, ResponsiveContext, Text } from 'grommet'
 

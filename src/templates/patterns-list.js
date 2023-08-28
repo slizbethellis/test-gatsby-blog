@@ -77,14 +77,14 @@ PatternPage.propTypes = {
   }),
 }
 
-export const PageQuery = graphql`query PatternPage ($skip: Int!, $limit: Int!) {
+export const PageQuery = graphql`query PatternPage($skip: Int!, $limit: Int!) {
   site {
     siteMetadata {
       title
     }
   }
   allMarkdownRemark(
-    sort: {order: DESC, fields: [frontmatter___date]}
+    sort: {frontmatter: {date: DESC}}
     filter: {frontmatter: {templateKey: {eq: "pattern-item"}}}
     limit: $limit
     skip: $skip
@@ -110,5 +110,4 @@ export const PageQuery = graphql`query PatternPage ($skip: Int!, $limit: Int!) {
       }
     }
   }
-}
-`
+}`

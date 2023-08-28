@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
+import { kebabCase } from 'lodash/kebabCase'
 import { Link } from 'gatsby'
 import Content from '../components/Content'
 

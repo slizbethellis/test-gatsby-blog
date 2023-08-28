@@ -84,21 +84,6 @@ const Navbar = ({ theme, toggleTheme, componentMounted }) => {
           />
         )}
       </Box>
-      {/* {size => (
-        <Box direction="row" align="center" gap="small">
-          <Anchor
-            href="/"
-            label={
-              size !== "xsmall" &&
-              size !== "small" && <Text size="large">haloroundmyhead knits</Text>
-            }
-            a11yTitle={
-              size === "xsmall" &&
-              size === "small" && "haloroundmyhead knits"
-            }
-          />
-        </Box>
-      )} */}
       <Box direction="row" align="center" gap="medium" pad="none">
         {size !== 'small' && (
           <Nav direction="row">
