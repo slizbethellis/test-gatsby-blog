@@ -4,3 +4,5 @@
 [build.environment]
   NODE_VERSION = "20.0.0"
   YARN_VERSION = "3.5.0"
+[[plugins]]
+  package = "@netlify/plugin-gatsby"

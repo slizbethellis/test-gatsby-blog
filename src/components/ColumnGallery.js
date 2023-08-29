@@ -3,12 +3,16 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { Box } from 'grommet'
 import PhotoAlbum from 'react-photo-album'
 import Lightbox from 'yet-another-react-lightbox'
+import Counter from 'yet-another-react-lightbox/plugins/counter'
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
 import 'yet-another-react-lightbox/styles.css'
+import 'yet-another-react-lightbox/plugins/counter.css'
 
 import GalleryImage from './GalleryImage'
+import './Counter.css'
 
 const ColumnGallery = (images) => {
+  console.log(images)
   const [index, setIndex] = useState(-1)
 
   const renderAlbumThumb = ({ photo }) => (
@@ -18,7 +22,7 @@ const ColumnGallery = (images) => {
     />
   )
 
-  const renderCustomSlide = (slide) => {
+  const renderCustomSlide = ({ slide }) => {
     return (
       <Box
         alignContent="center"
@@ -64,7 +68,9 @@ const ColumnGallery = (images) => {
         index={index}
         close={() => setIndex(-1)}
         slides={imageArray}
-        plugins={[Fullscreen]}
+        counter={{ container: { style: { top: "unset", bottom: 0 } } }}
+        fullscreen={{ auto: false }}
+        plugins={[Counter, Fullscreen]}
         carousel={{ finite: "true" }}
         render={{
           slide: renderCustomSlide
