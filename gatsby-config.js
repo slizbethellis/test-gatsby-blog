@@ -160,11 +160,10 @@ module.exports = {
       resolve: 'gatsby-plugin-offline',
       options: {
          workboxConfig: {
-            globPatterns: ['**/static/img*']
+            globPatterns: ['**/img*']
          }
       }
     },
-    "gatsby-plugin-webpack-bundle-analyser-v2",
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {

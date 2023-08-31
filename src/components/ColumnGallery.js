@@ -9,10 +9,9 @@ import 'yet-another-react-lightbox/styles.css'
 import 'yet-another-react-lightbox/plugins/counter.css'
 
 import GalleryImage from './GalleryImage'
-import './Counter.css'
+// import './Counter.css'
 
 const ColumnGallery = (images) => {
-  console.log(images)
   const [index, setIndex] = useState(-1)
 
   const renderAlbumThumb = ({ photo }) => (
@@ -68,7 +67,7 @@ const ColumnGallery = (images) => {
         index={index}
         close={() => setIndex(-1)}
         slides={imageArray}
-        counter={{ container: { style: { top: "unset", bottom: 0 } } }}
+        counter={{ container: { style: { top: 0, bottom: "unset", fontFamily: "Nunito" }}}}
         fullscreen={{ auto: false }}
         plugins={[Counter, Fullscreen]}
         carousel={{ finite: "true" }}

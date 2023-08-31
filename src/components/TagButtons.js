@@ -1,5 +1,5 @@
 import React from 'react'
-import { kebabCase } from 'lodash/kebabCase'
+import _ from 'lodash'
 
 import RoutedButton from './RoutedButton'
 
@@ -18,7 +18,7 @@ const TagButtons = ({ group, margin, size }) => (
     {group.map((tag, index) => (
       <li key={index}>
         <RoutedButton
-          to={`/tags/${kebabCase(tag.fieldValue)}/`}
+          to={`/tags/${_.kebabCase(tag.fieldValue)}/`}
           margin={margin}
           size={!size ? "medium" : size}
           label={`${tag.fieldValue} (${tag.totalCount})`}

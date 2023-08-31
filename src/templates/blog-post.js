@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash/kebabCase'
+import _ from 'lodash'
 import { graphql } from 'gatsby'
 import { Box, Heading, Paragraph, ResponsiveContext, Text } from 'grommet'
 
@@ -54,7 +54,7 @@ const BlogPostTemplate = ({
             {tags.map((tag, index) => (
               <li key={index}>
                 <RoutedButton
-                  to={`/tags/${kebabCase(tag)}/`}
+                  to={`/tags/${_.kebabCase(tag)}/`}
                   margin="xsmall"
                   label={tag}
                 />
