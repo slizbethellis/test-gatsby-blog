@@ -1,55 +1,73 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import Helmet from 'react-helmet'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import { GatsbyImage } from "gatsby-plugin-image";
+import { Box, Heading, Markdown, ResponsiveContext } from 'grommet'
 
-export const AboutPageTemplate = ({ title, content, contentComponent, image, helmet }) => {
-  const PageContent = contentComponent || Content
+import Layout from '../components/Layout'
+
+const AboutPageTemplate = ({ title, image, markdown }) => {
+  const size = useContext(ResponsiveContext)
+  const boxPad = (size !== 'small' ? "xlarge" : "large")
 
   return (
-    <section className="section">
-      {helmet || ''}
-      <div className="columns is-centered">
-        <div className="column is-10">
-          <h1 className="has-text-weight-bold is-size-2 title-padding">
-            {title}
-          </h1>
-          <div className="columns">
-            <div className="column is-5">
-              {image}
-            </div>
-          </div>
-          <PageContent className="content" content={content} />
-        </div>
-      </div>
-    </section>
+    <Box
+      as="section"
+      alignSelf="center"
+      justify="center"
+      width="xlarge"
+      pad={{
+        "top": "none",
+        "bottom": "medium",
+        "horizontal": boxPad
+      }}
+    >
+      <Heading level={1} textAlign="center">{title}</Heading>
+      <Box
+        as="figure"
+        alignSelf="center"
+        justify="center"
+        margin="none"
+        round="full"
+        overflow="auto"
+        width="medium"
+        height="medium"
+        style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
+      >
+        {image}
+      </Box>
+      <Markdown
+        components={{
+          "p": {
+            "props": {"fill": true}
+          }
+        }}
+      >
+        {markdown}
+      </Markdown>
+    </Box>
   )
 }
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.node,
-  contentComponent: PropTypes.func,
-  helmet: PropTypes.object
+  markdown: PropTypes.node,
 }
 
 const AboutPage = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
-    <Layout location={'/about'}>
+    <Layout>
       <AboutPageTemplate
-        contentComponent={HTMLContent}
         title={post.frontmatter.title}
-        content={post.html}
-        image={<Img fluid={data.fluidImages.childImageSharp.fluid} alt="Sarah Ellis - headshot" />}
-        helmet={<Helmet title={`About | ${data.site.siteMetadata.title}`} />}
+        markdown={post.rawMarkdownBody}
+        image={<GatsbyImage
+          image={data.fluidImages.childImageSharp.gatsbyImageData}
+          alt="Sarah Ellis - headshot" />}
       />
     </Layout>
-  )
+  );
 }
 
 AboutPage.propTypes = {
@@ -58,27 +76,28 @@ AboutPage.propTypes = {
 
 export default AboutPage
 
-export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    },
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
-      }
-    },
-    fluidImages: file(
-      relativePath: { regex: "/headshot.jpg/" }
-    ) {
-      childImageSharp {
-        fluid (maxWidth: 700) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
+export const Head = ({ data }) => {
+  return (
+    <title>{`About | ${data.site.siteMetadata.title}`}</title>
+  )
+}
+
+export const aboutPageQuery = graphql`query AboutPage($id: String!) {
+  site {
+    siteMetadata {
+      title
     }
   }
+  markdownRemark(id: {eq: $id}) {
+    frontmatter {
+      title
+    }
+    rawMarkdownBody
+  }
+  fluidImages: file(relativePath: {regex: "/headshot.jpg/"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 400, layout: FIXED)
+    }
+  }
+}
 `

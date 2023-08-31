@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: src/img
+media_folder: static/img
 public_folder: /img
 
 collections:
@@ -29,6 +29,7 @@ collections:
         name: "about"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
+          - {label: "Publish Date", name: "date", widget: "datetime"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
 
@@ -40,35 +41,43 @@ collections:
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "pattern-item"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Published", name: "published", widget: "date"}
+      - {label: "Published", name: "date", widget: "datetime"}
       - {label: "Original Publication", name: "originalPub", widget: "string"}
+      - {label: "Current Source", name: "currentSrc", widget: "string", required: false}
+      - {label: "Item Type", name: "itemType", widget: "string"}
       - {label: "Yarn(s)", name: "yarn", widget: "list"}
       - {label: "Yarn Weight", name: "yarnWeight", widget: "list"}
-      - {label: "Gauge", name: "gauge", widget: "string"}
+      - label: "Yardage"
+        name: "yardage"
+        widget: "list"
+        fields:
+          - {label: "Variant", name: "variant", widget: "string", required: false}
+          - {label: "Yards", name: "yards", widget: "string"}
+          - {label: "Meters", name: "meters", widget: "string"}
+      - {label: "Gauge", name: "gauge", widget: "list"}
       - {label: "Needles", name: "needles", widget: "string"}
       - {label: "Sizes", name: "sizes", widget: "string"}
+      - label: "Finished Measurements"
+        name: "finalMeasure"
+        widget: "list"
+        fields:
+          - {label: "Dimension Name", name: "dimName", widget: "string"}
+          - {label: "Inches", name: "inches", widget: "string"}
+          - {label: "Centimeters", name: "cm", widget: "string"}
       - label: "Pattern Source"
         name: "patternSource"
         widget: "object"
         fields:
           - {label: "Link", name: "link", widget: "string"}
-          - {label: "Price", name: "price", widget: "string"}
-      - {label: "Ravelry Link", name: "ravelryLink", widget: "string"}
-      - {label: "Item Type", name: "itemType", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "AltText", name: "altText", widget: "string"}
+          - {label: "Price", name: "price", widget: "number", pattern: [^\d+(,\d{2})?$, "must be a valid numeric price with two decimal places"]}
+      - {label: "Pattern Image", name: "pattImage", widget: "image"}
+      - {label: "Pattern Alt Text", name: "pattAltText", widget: "string"}
+      - {label: "Top Image", name: "topImage", widget: "image"}
       - label: "Pictures"
         name: "pictures"
         widget: "list"
         fields:
-          - label: "Pattern Photo"
-            name: "patternPhoto"
-            widget: "object"
-            fields:
-              - {label: "Photo", name: "photo", widget: "image"}
-              - {label: "Alt Text", name: "altText", widget: "string"}
-              - {label: "Caption", name: "caption", widget: "string"}
-              - {label: "Width", name: "width", widget: "number"}
-              - {label: "Height", name: "height", widget: "number"}
+          - {label: "Photo", name: "photo", widget: "image"}
+          - {label: "Alt Text", name: "altText", widget: "string"}
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Body", name: "body", widget: "markdown"}

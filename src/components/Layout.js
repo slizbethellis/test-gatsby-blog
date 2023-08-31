@@ -1,24 +1,47 @@
 import React from 'react'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faComment, faHeart, faLink, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Grommet, Main, ResponsiveContext } from 'grommet'
+import Navbar from './Navbar'
+import SiteFooter from './Footer'
+import { customTheme } from './Theme'
+import { useDarkMode } from './useDarkMode'
 
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import './all.sass'
+const TemplateWrapper = ({ children }) => {
+  const [theme, toggleTheme, componentMounted] = useDarkMode();
+  const themeMode = theme === 'light' ? 'light' : 'dark';
 
-const TemplateWrapper = ({ children, location }) => (
-  <div className={location.pathname === '/' ? 'index-body' : 'regular-body'}>
-    <Navbar color="is-fixed-top" />
-    <div className={location.pathname === '/' ? 'no-wrapper' : 'wrapper'}>
-      <div className="main">{children}</div>
-    </div>
-    {location.pathname !== '/' ? (
-      <Footer className="footer" />
-    ) : null}
-  </div>
-)
+  // possible FOUC fix
+  if (!componentMounted) {
+    return <div />
+  };
+
+  return (
+    <Grommet theme={customTheme} themeMode={themeMode} full>
+      {/* Wrapper-div might seem useless, but removing it messes up styling of Grommet components. */}
+      <div className="wrapper-div">
+        <Navbar theme={theme} toggleTheme={toggleTheme} componentMounted={componentMounted} />
+        <ResponsiveContext.Consumer>
+          {/*
+            Non-small navbar height: 4.875rem
+            Non-small footer height: 4.875rem
+            Small navbar height: 4.125rem
+            Small footer height: 4.125rem
+          */}
+          {responsive =>
+            responsive === 'small' ? (
+              <Main style={{ minHeight: 'calc(100vh - 8.25rem)'}}>
+                {children}
+              </Main>
+            ) : (
+              <Main style={{ minHeight: 'calc(100vh - 8.25rem)'}}>
+                {children}
+              </Main>
+            )
+          }
+        </ResponsiveContext.Consumer>
+        <SiteFooter />
+      </div>
+    </Grommet>
+  )
+}
 
 export default TemplateWrapper
-
-library.add(fab, faComment, faHeart, faLink, faSearch)

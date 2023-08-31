@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Haloroundmyhead Knits',
     description: `Blog and pattern portfolio for knitting designer Sarah Ellis`,
-    siteUrl: `https://festive-lovelace-f360ad.netlify.com/`
+    siteUrl: `https://festive-lovelace-f360ad.netlify.com`
   },
   plugins: [
     {
@@ -11,12 +11,8 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: "Cousine",
-              variants: ["400"],
-            },
-            {
-              family: "Raleway",
-              variants: ["400", "400i", "500", "500i", "600", "600i", "800", "800i"],
+              family: "Nunito",
+              variants: ["400", "400i", "700", "700i"],
             },
           ],
         },
@@ -50,46 +46,39 @@ module.exports = {
                 })
               })
             },
-            query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-                ) {
-                  edges {
-                    node {
-                      excerpt
-                      html
-                      fields { slug }
-                      frontmatter {
-                        title
-                        date
-                      }
+            query: `{
+              allMarkdownRemark(
+                sort: {frontmatter: {date: DESC}}
+                filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+              ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      date
                     }
                   }
                 }
               }
-            `,
+            }`,
             output: "/rss.xml",
             title: "Haloroundmyhead Knits",
           },
         ],
       },
     },
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
     {
-      resolve: `gatsby-plugin-netlify-cms-paths`,
-      options: {
-        cmsConfig: `/static/admin/config.yml`,
-      },
-    },
-    {
+      // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/img`,
-        name: 'images',
-      }
+        path: `${__dirname}/static/img`,
+        name: 'uploads',
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -105,7 +94,8 @@ module.exports = {
         fields: [
           'title',
           'path',
-          'tags'
+          'tags',
+          'itemType'
         ],
         // How to resolve each field's value for a supported node type
         resolvers: {
@@ -113,31 +103,66 @@ module.exports = {
           MarkdownRemark: {
             title: node => node.frontmatter.title,
             path: node => node.fields.slug,
-            tags: node => node.frontmatter.tags
+            tags: node => node.frontmatter.tags,
+            itemType: node => node.frontmatter.itemType
           },
         },
       },
     },
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          'gatsby-plugin-netlify-cms-paths',
+          {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'uploads',
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 930,
+              maxWidth: 1152,
               backgroundColor: 'transparent', // required to display blurred image first
               withWebp: 'true', // to serve images in WebP format where supported
+              wrapperStyle: 'width: 90%; margin: 0 5%;',
             },
-          }
+          },
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+            },
+          },
         ],
       },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Haloroundmyhead Knits`,
+        short_name: `HaloKnits`,
+        description: `Blog and pattern portfolio for knitting designer Sarah Ellis`,
+        start_url: `/`,
+        background_color: `#111b1f`,
+        theme_color: `#253435`,
+        display: `minimal-ui`,
+        icon: `static/img/yarnballcat-icon.svg`, 
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+         workboxConfig: {
+            globPatterns: ['**/img*']
+         }
+      }
     },
     {
       resolve: 'gatsby-plugin-netlify-cms',

@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Content, { HTMLContent } from '../components/Content'
 
 export const PatternItemTemplate = ({
   content,
+  currentSrc,
+  finalMeasure,
   gauge,
   itemType,
   needles,
@@ -12,9 +13,9 @@ export const PatternItemTemplate = ({
   sizes,
   title,
   yarn,
-  yarnWeight
+  yarnWeight,
+  yardage
 }) => {
-  const PostContent = HTMLContent || Content
 
   return (
     <section className="section">
@@ -26,40 +27,66 @@ export const PatternItemTemplate = ({
           <table className="table is-fullwidth">
             <tbody>
               <tr>
-                <th>Published in</th>
+                <th>Original source</th>
                 <td>{originalPub}</td>
               </tr>
+              {currentSrc && (
+                <tr>
+                  <th>Current source</th>
+                  <td>{currentSrc}</td>
+                </tr>
+              )}
               <tr>
                 <th>Category</th>
                 <td>{itemType}</td>
               </tr>
               <tr>
-                <th>Published</th>
+                <th>Release Date</th>
                 <td>{published}</td>
               </tr>
               <tr>
+                <th>Sizes</th>
+                <td>{sizes}</td>
+              </tr>
+              <tr>
                 <th>Yarn(s)</th>
-                <td>{yarn.map((yar, index) =>(<span key={index}>{yar}{index !== (yarn.length - 1) && ', '}</span> ))}</td>
+                <td>{yarn.join(', ')}</td>
               </tr>
               <tr>
                 <th>Yarn Weight</th>
-                <td>{yarnWeight.map((yar, index) =>(<span key={index}>{yar}{index !== (yarnWeight.length - 1) && ', '}</span> ))}</td>
+                <td>{yarnWeight.join(', ')}</td>
               </tr>
               <tr>
-                <th>Gauge</th>
-                <td>{gauge}</td>
+                <th>Yardage</th>
+                <td>
+                  {yardage.map((yard,index)=>(
+                    <span key={index}>{yard.variant}: {yard.yards} yds / {yard.meters} m</span>
+                  ))}
+                </td>
               </tr>
               <tr>
                 <th>Needles</th>
                 <td>{needles}</td>
               </tr>
               <tr>
-                <th>Sizes</th>
-                <td>{sizes}</td>
+                <th>Gauge</th>
+                <td>
+                  {gauge.map((gauge,index)=>(
+                    <span key={index}>{gauge}</span>
+                  ))}
+                </td>
+              </tr>
+              <tr>
+                <th>Measurements</th>
+                <td>
+                  {finalMeasure.map((measure,index)=>(
+                    <span key={index}>{measure.dimName}: {measure.inches} inches / {measure.cm} cm</span>
+                  ))}
+                </td>
               </tr>
             </tbody>
           </table>
-          <PostContent className="content" content={content} />
+          <div className="content">{content}</div>
         </div>
       </div>
     </section>
@@ -68,7 +95,8 @@ export const PatternItemTemplate = ({
 
 PatternItemTemplate.propTypes = {
   content: PropTypes.node,
-  gauge: PropTypes.string,
+  currentSrc: PropTypes.string,
+  gauge: PropTypes.array,
   itemType: PropTypes.string,
   needles: PropTypes.string,
   originalPub: PropTypes.string,
@@ -76,5 +104,6 @@ PatternItemTemplate.propTypes = {
   sizes: PropTypes.string,
   title: PropTypes.string,
   yarn: PropTypes.array,
-  yarnWeight: PropTypes.array
+  yarnWeight: PropTypes.array,
+  yardage: PropTypes.array
 }

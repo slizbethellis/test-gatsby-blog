@@ -1,57 +1,49 @@
 ---
 templateKey: pattern-item
 title: Carreau (cowl)
-published: 2017-12-08T02:10:48.193Z
+date: 2017-12-08T02:10:48.193Z
 originalPub: 'Knitty, Winter 2017'
+currentSrc: null
+itemType: cowl
 yarn:
   - Berroco Noble
   - Rowan Big Wool
   - Freia Handpaints Ombré Super Bulky
 yarnWeight:
   - super bulky
-gauge: >-
-  small cowl: 9 sts/14 rows = 4 inches/10 cm in stockinette stitch; large cowl:
-  8 sts/12 rows = 4 inches/10 cm
+yardage:
+  - variant: null
+    yards: 90-100 (160-170)
+    meters: 82-91 (146-155)
+gauge: 
+  - 'small cowl: 9 sts/14 rows = 4 inches/10 cm in stockinette stitch'
+  - 'large cowl: 8 sts/12 rows = 4 inches/10 cm'
 needles: US 13 (9.0 mm) or US 15 (10.0mm)
 sizes: small (large)
+finalMeasure:
+  - dimName: Circumference
+    inches: 25 (32)
+    cm: 64 (81)
+  - dimName: Length
+    inches: 7.75 (8.5)
+    cm: 20 (22)
 patternSource:
   link: 'http://knitty.com/ISSUEw17/PATTcarreau/PATTcarreau.php'
-  price: free
-ravelryLink: 'https://www.ravelry.com/patterns/library/carreau-cowl'
-itemType: cowl
-image: /img/carreau-cowl-large-side-sq.jpg
-altText: woman holding top edge of larger Carreau cowl to illustrate the larger circumference and show off the gradient colors of the bulky mosaic pattern
+  price: 0.00
+pattImage: /img/carreau-cowl-large-side-sq.jpg
+pattAltText: woman holding top edge of larger Carreau cowl to illustrate the larger circumference and show off the gradient colors of the bulky mosaic pattern
+topImage: /img/carreau-cowl-small-front.jpg
 pictures:
-  - patternPhoto:
-      altText: smaller Carreau cowl scrunched up on model's neck, viewed from the front
-      caption: Carreau cowl (small) - front
-      height: 4
-      photo: /img/carreau-cowl-small-front.jpg
-      width: 3
-  - patternPhoto:
-      altText: side view of smaller Carreau cowl, showing more detail of bulky mosaic texture
-      caption: Carreau cowl (small) - side
-      height: 4
-      photo: /img/carreau-cowl-small-side.jpg
-      width: 3
-  - patternPhoto:
-      altText: woman holding top edge of larger Carreau cowl to illustrate the larger circumference and show off the gradient colors of the bulky mosaic pattern
-      caption: Carreau cowl (large) - side
-      height: 3
-      photo: /img/carreau-cowl-large-side.jpg
-      width: 4
-  - patternPhoto:
-      altText: larger Carreau cowl worn around model's neck, draped to the front with a fold
-      caption: Carreau cowl (large) - front
-      height: 4
-      photo: /img/carreau-cowl-large-front.jpg
-      width: 3
-  - patternPhoto:
-      altText: both sizes of Carreau cowl, lying flat on driftwood
-      caption: Carreau cowls - sitting on driftwood
-      height: 3
-      photo: /img/carreau-cowls-flat.jpg
-      width: 4
+  - altText: smaller Carreau cowl scrunched up on model's neck, viewed from the front
+    photo: /img/carreau-cowl-small-front.jpg
+  - altText: side view of smaller Carreau cowl, showing more detail of bulky mosaic texture
+    photo: /img/carreau-cowl-small-side.jpg
+  - altText: woman holding top edge of larger Carreau cowl to illustrate the larger circumference and show off the gradient colors of the bulky mosaic pattern
+    photo: /img/carreau-cowl-large-side.jpg
+  - altText: larger Carreau cowl worn around model's neck, draped to the front with a fold
+    photo: /img/carreau-cowl-large-front.jpg
+  - altText: both sizes of Carreau cowl, lying flat on driftwood
+    photo: /img/carreau-cowls-flat.jpg
 tags:
   - mosaic colorwork
   - circular knit

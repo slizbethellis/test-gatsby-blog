@@ -1,29 +1,38 @@
 ---
 templateKey: pattern-item
 title: Red Chevron Scarf
-published: 2009-11-26T07:39:09.402Z
-originalPub: Haloroundmyhead Knits blog
+date: 2009-11-26T07:39:09.402Z
+originalPub: Haloroundmyhead Knits website
+currentSrc: null
+itemType: scarf
 yarn:
   - Louet Gems Sport Weight
 yarnWeight:
   - sport
-gauge: n/a
+yardage:
+  - variant: null
+    yards: ~450
+    meters: ~411
+gauge:
+  - n/a
 needles: US 2.5 (3.00mm)
 sizes: recipe
+finalMeasure:
+  - dimName: Width
+    inches: n/a
+    cm: n/a
+  - dimName: Length
+    inches: n/a
+    cm: n/a
 patternSource:
   link: 'https://www.haloroundmyhead.studio/blog/2009-11-26-the-red-chevron-scarf/'
-  price: free
-ravelryLink: 'https://www.ravelry.com/patterns/library/red-chevron-scarf'
-itemType: scarf
-image: /img/red-chevron-scarf.jpg
-altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
+  price: 0.00
+pattImage: /img/red-chevron-scarf.jpg
+pattAltText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
+topImage: /img/red-chevron-scarf.jpg
 pictures:
-  - patternPhoto:
-      altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
-      caption: Red Chevron Scarf
-      height: 3
-      photo: /img/red-chevron-scarf.jpg
-      width: 4
+  - altText: Red Chevron Scarf, sitting folded in half with ends fanned out on white towel on top of red table
+    photo: /img/red-chevron-scarf.jpg
 tags:
   - chevron
   - pattern recipe

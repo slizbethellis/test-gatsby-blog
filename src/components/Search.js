@@ -1,89 +1,96 @@
-import React, { Component } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { navigate } from 'gatsby'
 import { Index } from 'elasticlunr'
-import { Link } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Search as FormSearch } from 'grommet-icons'
+import { Box, Text, TextInput } from 'grommet'
+
+import Link from './Link'
 
 // Search component
-export default class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: ``,
-      results: [],
-    };
+const Search = ({ searchIndex, size }) => {
+  const index = Index.load(searchIndex);
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const boxRef = useRef();
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
+
+  useEffect(() => {
+    forceUpdate();
+  }, [forceUpdate]);
+
+  function searchResults (searchQuery) {
+    const res = index.search(searchQuery, { expand: true }).map(({ ref }) => {
+      return index.documentStore.getDoc(ref);
+    });
+    setResults(res);
   }
 
-  render() {
-    return (
-      <div className="field">
-        <div className={this.state.query !== '' ? 'dropdown dropdown-search is-active' : 'dropdown dropdown-search'}>
-          <div className="dropdown-trigger">
-            <p className="control has-icons-left has-icons-right">
-              <input
-                className="input input-search is-primary is-rounded"
-                type="search"
-                aria-label="Search"
-                placeholder="Search"
-                value={this.state.query}
-                onChange={this.search}
-              />
-              <span className="icon is-small is-right">
-                <FontAwesomeIcon icon="search" />
-              </span>
-            </p>
-          </div>
-          <div className="dropdown-menu" id="dropdown-menu2" role="menu">
-            <div className="dropdown-content">
-              <div className="dropdown-item">
-                <button className="delete is-small is-pulled-right" onClick={this.toggleSearch}></button>
-                 Search results for <strong>'{this.state.query}'</strong>
-              </div>
-              <hr className="dropdown-divider hr-custom" />
-              {this.state.results.length > 0 &&
-                <div>
-                  {this.state.results.map(page => (
-                    <div key={page.id}>
-                      <div className="dropdown-item">
-                        <Link className="search-link" to={page.path}>{page.title}</Link>
-                        {": " + page.tags.join(`, `)}
-                      </div>
-                      <hr className="dropdown-divider hr-custom" />
-                    </div>
-                  ))}
-                </div>
-              }
-              <div className="dropdown-item">
-                <span className="search-footer">Tip: search results might not appear until the first complete word is typed</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+  const onChange = (event) => {
+    const searchQuery = event.target.value;
+    setQuery(searchQuery);
+    searchResults(searchQuery);
   }
 
-  getOrCreateIndex = () =>
-    this.index
-      ? this.index
-      : // Create an elastic lunr index and hydrate with graphql query results
-        Index.load(this.props.searchIndex)
-
-  search = evt => {
-    const query = evt.target.value;
-    this.index = this.getOrCreateIndex();
-    this.setState({
-      query,
-      // Query the index with search string to get an [] of IDs
-      results: this.index
-        .search(query)
-        // Map over each ID and return the full document
-        .map(({ ref }) => this.index.documentStore.getDoc(ref))
-    })
+  const onSelect = event => {
+    navigate(event.suggestion.path)
+    event.preventDefault()
   }
 
-  toggleSearch = () => {
-    this.setState ({
-      query: ''
-    })
+  const renderSuggestions = () => {
+    return results.map(({ path, tags, title, itemType }, index, list) => ({
+      label: (
+        <Box 
+          direction="column"
+          align="start"
+          gap="none"
+          border={index < list.length - 1 ? 'bottom' : undefined}
+          pad="small"
+          width={size !== 'small' ? 'medium' : '100%'}
+          wrap
+        >
+          <Link to={path}>{title}</Link>
+          <Text>{(itemType === undefined ? "Blog Post | " : `Pattern | ${itemType} | `) + tags.join(`, `)}</Text>
+        </Box>
+      ),
+      path: path,
+    }))
   }
+
+  const horizonMargin =  (size !== "small" ? "medium" : "large")
+  const bottomMargin = (size !== "small" ? "medium" : "large")
+  
+  return (
+    <Box
+      alignContent="center"
+      margin={{ "top": "medium" }}
+      border={size !== 'small' ? false : {"side": "bottom", "color": { dark: "light-4", light: "dark-4" }}}
+    >
+      <Box
+        ref={boxRef}
+        direction="row"
+        align="center"
+        round="large"
+        background={{ dark: "dark-2", light: "#ffffff" }}
+        border={{ "color": {dark: "accent-3", light: "neutral-3"} }}
+        pad={{ "horizontal": "small" }}
+        margin={{ "top": "none", "horizontal": horizonMargin, "bottom": bottomMargin }}
+      >
+        <FormSearch color={{ dark: "accent-1", light: "brand" }} />
+        <TextInput
+          a11yTitle="Search"
+          type="search"
+          dropTarget={boxRef.current}
+          plain
+          onChange={onChange}
+          onSuggestionSelect={onSelect}
+          placeholder="Search..."
+          value={query}
+          suggestions={renderSuggestions()}
+        />
+      </Box>
+    </Box>
+  );
 }
+
+export default Search

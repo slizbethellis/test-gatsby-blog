@@ -1,26 +1,21 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import { Button } from 'grommet'
 
-const GalleryImage = ({ index, left, top, photo }) => {
-  const imgStyle = {
-    position: "absolute",
-    left: left,
-    top: top,
-    height: photo.height,
-    width: photo.width,
-    margin: "2px"
-  };
-  
+// image buttons used to launch lightbox
+const GalleryImage = ({ photo, first, onClick }) => {
   return (
-    <button className="button-photo main-photo" data-attribute="SRL" id={index+1}>
-      <Img
-        fluid={photo.fluid}
+    <Button
+      plain
+      margin={!first ? { vertical: '2.5px'} : { bottom: '2.5px' }}
+      onClick={onClick}
+    >
+      <GatsbyImage
+        image={photo.thumbFluid}
         alt={photo.alt}
-        caption={photo.caption}
-        style={imgStyle}
       />
-    </button>
-  )
+    </Button>
+  );
 };
 
 export default GalleryImage

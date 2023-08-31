@@ -1,69 +1,53 @@
 ---
 templateKey: pattern-item
 title: Alfarería
-published: 2018-09-14T04:34:35.231Z
+date: 2018-09-14T04:34:35.231Z
 originalPub: 'Knitty, Deep Fall 2018'
+currentSrc: null
+itemType: shawl/shawlette
 yarn:
-  - Araucania Nuble
+  - Araucanía Ñuble
   - Malabrigo Yarn Mechita
 yarnWeight:
   - light fingering
   - fingering
-gauge: >-
-  shawlette: 25 sts/34 rows = 4 inches/10 cm in stockinette stitch; shawl: 22
-  sts/32 rows = 4 inches/10 cm
+yardage:
+  - variant: null
+    yards: 530-550 (820-840)
+    meters: 485-503 (750-768)
+gauge: 
+  - 'shawlette: 25 sts/34 rows = 4 inches/10 cm in stockinette stitch'
+  - 'shawl: 22 sts/32 rows = 4 inches/10 cm'
 needles: US 5 (3.75mm) or US 6 (4.00mm)
 sizes: shawlette (shawl)
+finalMeasure:
+  - dimName: Width at top
+    inches: 50 (75)
+    cm: 127 (191)
+  - dimName: Depth
+    inches: 16 (24)
+    cm: 41 (61)
 patternSource:
   link: 'http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php'
-  price: free
-ravelryLink: 'https://www.ravelry.com/patterns/library/alfareria'
-itemType: shawl/shawlette
-image: /img/alfareria-shawl-detail.jpg
-altText: detail of mosaic stitches on large Alfarería shawl
+  price: 2.00
+pattImage: /img/alfareria-shawlette-detail.jpg
+pattAltText: closeup of Alfarería shawlette wrapped around shoulders
+topImage: /img/alfareria-shawl-back.jpg
 pictures:
-  - patternPhoto:
-      altText: large Alfarería shawl draped over shoulders, with model's back towards camera
-      caption: Alfarería shawl - back view
-      photo: /img/alfareria-shawl-back.jpg
-      width: 3
-      height: 4
-  - patternPhoto:
-      altText: detail of mosaic stitches on large Alfarería shawl
-      caption: Alfarería shawl - detail view
-      photo: /img/alfareria-shawl-detail.jpg
-      width: 3
-      height: 4
-  - patternPhoto:
-      altText: large Alfarería shawl suspended between finial and model's hand, to show flat shape
-      caption: Alfarería shawl - wingspan
-      photo: /img/alfareria-shawl-wingspan.jpg
-      width: 4
-      height: 3
-  - patternPhoto:
-      altText: large Alfarería shawl wrapped around woman's shoulders
-      caption: Alfarería shawl - front view
-      photo: /img/alfareria-shawl-front.jpg
-      width: 3
-      height: 4
-  - patternPhoto:
-      altText: Alfarería shawlette tied like kerchief around model's neck and shoulders
-      caption: Alfarería shawlette - front view
-      photo: /img/alfareria-shawlette-front.jpg
-      width: 4
-      height: 3
-  - patternPhoto:
-      altText: closeup of Alfarería shawlette wrapped around shoulders
-      caption: Alfarería shawlette - detail view
-      photo: /img/alfareria-shawlette-detail.jpg
-      width: 4
-      height: 3
-  - patternPhoto:
-      altText: woman holding Alfarería shawlette between her hands to demonstrate flat shape
-      caption: Alfarería shawlette - wingspan
-      photo: /img/alfareria-shawlette-wingspan.jpg
-      width: 4
-      height: 3
+  - altText: large Alfarería shawl draped over shoulders, with model's back towards camera
+    photo: /img/alfareria-shawl-back.jpg
+  - altText: detail of mosaic stitches on large Alfarería shawl
+    photo: /img/alfareria-shawl-detail.jpg
+  - altText: large Alfarería shawl suspended between finial and model's hand, to show flat shape
+    photo: /img/alfareria-shawl-wingspan.jpg
+  - altText: large Alfarería shawl wrapped around woman's shoulders
+    photo: /img/alfareria-shawl-front.jpg
+  - altText: Alfarería shawlette tied like kerchief around model's neck and shoulders
+    photo: /img/alfareria-shawlette-front.jpg
+  - altText: closeup of Alfarería shawlette wrapped around shoulders
+    photo: /img/alfareria-shawlette-detail.jpg
+  - altText: woman holding Alfarería shawlette between her hands to demonstrate flat shape
+    photo: /img/alfareria-shawlette-wingspan.jpg
 tags:
   - mosaic colorwork
   - Faroese shaping

@@ -1,42 +1,33 @@
 import React from 'react'
-import { kebabCase } from 'lodash'
-import { Link, StaticQuery, graphql } from 'gatsby'
+// import { graphql, useStaticQuery } from 'gatsby'
+import { Box, Heading } from 'grommet'
 
-const TagBlock = () => (
-  <StaticQuery
-    query={graphql`
-      query TagBlockQuery {
-        allMarkdownRemark(
-          limit: 20,
-          filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-        ) {
-          group(field: frontmatter___tags) {
-            fieldValue
-            totalCount
-          }
-        }
-      }
-    `}
-    render={data => (
-      <div className="columns">
-        <div className="column is-12">
-          <h2 className="has-text-weight-bold has-text-centered is-size-4">Tags</h2>
-          <ul className="taglist-sidebar">
-            {data.allMarkdownRemark.group.map(tag => (
-              <li key={tag.fieldValue}>
-                <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                  {tag.fieldValue} ({tag.totalCount})
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link className="is-small read-more tag-link has-text-centered" to="/tags">
-            all tags →
-          </Link>
-        </div>
-      </div>
-    )}
-  />
-)
+import Link from './Link'
+import TagButtons from './TagButtons'
+
+// group of featured tags for top level blog sidebar
+const TagBlock = ({ size, tags }) => {
+  const data = tags
+
+  return (
+    <Box 
+      alignSelf="center"
+      border={{ 
+        "side": (size !== "small" ? "bottom" : "top"),
+        "color": (size !== "small" ? "border" : { dark: "light-4", light: "dark-4" }) }}
+      pad={size !== "small" ? "none" : "medium"}
+    >
+      <Heading level={2} size="small" textAlign="center">Tags</Heading>
+      <TagButtons
+        group={data.group}
+        margin="xxsmall"
+        size="small"
+      />
+      <Link alignSelf="center" margin={{"bottom": "1.5rem"}} to="/tags">
+        all tags →
+      </Link>
+    </Box>
+  )
+}
 
 export default TagBlock

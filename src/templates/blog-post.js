@@ -1,73 +1,106 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import _ from 'lodash'
+import { graphql } from 'gatsby'
+import { Box, Heading, Paragraph, ResponsiveContext, Text } from 'grommet'
 
-export const BlogPostTemplate = ({
+import Layout from '../components/Layout'
+import RoutedButton from '../components/RoutedButton'
+import Content from '../components/Content'
+import PostPagination from '../components/PostPagination'
+
+const BlogPostTemplate = ({
   content,
-  contentComponent,
   description,
   tags,
   title,
-  helmet,
+  date,
+  pageContext
 }) => {
-  const PostContent = contentComponent || Content
+  const size = useContext(ResponsiveContext)
+  const boxPad = (size !== 'small' ? "xlarge" : "large")
 
   return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    </section>
+    <Box
+      as="section"
+      alignSelf="center"
+      justify="center"
+      width="xlarge"
+      pad={{
+        "top": "none",
+        "bottom": "medium",
+        "horizontal": boxPad
+      }}
+    >
+      <Heading level={1} textAlign="center">{title}</Heading>
+      <Text size="large" textAlign="center">{date}</Text>
+      <Box border="bottom">
+        <Paragraph fill>{description}</Paragraph>
+        <Content contentAst={content} fill/>
+        <PostPagination pageContext={pageContext} />
+      </Box>
+      {tags && tags.length ? (
+        <Box as="section" pad={{ "top": "small"}}>
+          <Heading level={2} size="small">Tags</Heading>
+          <ul
+            className="tag=list"
+            style={{
+              listStyle: "none",
+              display: "flex",
+              flexFlow: "row wrap",
+              paddingLeft: "0"
+            }}
+          >
+            {tags.map((tag, index) => (
+              <li key={index}>
+                <RoutedButton
+                  to={`/tags/${_.kebabCase(tag)}/`}
+                  margin="xsmall"
+                  label={tag}
+                />
+              </li>
+            ))}
+          </ul>
+        </Box>
+      ) : null}
+    </Box>
   )
 }
 
 BlogPostTemplate.propTypes = {
-  content: PropTypes.node.isRequired,
+  content: PropTypes.object.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
-  helmet: PropTypes.object
 }
 
-const BlogPost = ({ data, props }) => {
-  const { markdownRemark: post } = data
+class BlogPost extends React.Component {
+  render () {
+    const data = this.props.data
+    const { markdownRemark: post } = data
+    const pageContext = this.props.pageContext
 
+    return (
+      <Layout>
+        <BlogPostTemplate
+          content={post.htmlAst}
+          description={post.frontmatter.description}
+          tags={post.frontmatter.tags}
+          title={post.frontmatter.title}
+          date={post.frontmatter.date}
+          pageContext={pageContext}
+        />
+      </Layout>
+    )
+  }
+}
+
+export default BlogPost
+
+export const Head = ({ data }) => {
+  const { markdownRemark: post } = data
   return (
-    <Layout location={post.fields.slug}>
-      <BlogPostTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
-        description={post.frontmatter.description}
-        helmet={<Helmet title={`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`} />}
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-      />
-    </Layout>
+    <title>{`${post.frontmatter.title} | Blog | ${data.site.siteMetadata.title}`}</title>
   )
 }
 
@@ -76,8 +109,6 @@ BlogPost.propTypes = {
     markdownRemark: PropTypes.object,
   }),
 }
-
-export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
@@ -91,7 +122,7 @@ export const pageQuery = graphql`
       fields {
         slug
       }
-      html
+      htmlAst
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

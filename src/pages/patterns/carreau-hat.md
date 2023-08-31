@@ -1,65 +1,53 @@
 ---
 templateKey: pattern-item
 title: Carreau (hat)
-published: 2018-03-28T22:34:05.231Z
+date: 2018-03-28T22:34:05.231Z
 originalPub: Sarah Ellis's Ravelry Store
+currentSrc: Haloroundmyhead Knits website
+itemType: hat
 yarn:
   - Berroco Noble
 yarnWeight:
   - super bulky
-gauge: 8.5 sts/18 rows = 4 inches/10cm in garter stitch
+yardage:
+  - variant: null
+    yards: 95-100
+    meters: 87-91
+gauge:
+  - 8.5 sts/18 rows = 4 inches/10cm in garter stitch
 needles: US 13 (9.0 mm)
 sizes: one size
+finalMeasure:
+  - dimName: Brim Circumference
+    inches: '20'
+    cm: '51'
+  - dimName: Body Circumference
+    inches: '21'
+    cm: '53'
+  - dimName: Height
+    inches: '10'
+    cm: '25.5'
 patternSource:
-  link: 'https://www.ravelry.com/dls/sarah-ellis-designs/453395?filename=Carreau__hat__rev_1.1.pdf'
-  price: free
-ravelryLink: 'https://www.ravelry.com/patterns/library/carreau-hat'
-itemType: hat
-image: /img/carreau-hat-berroco-back-sq.jpg
-altText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
+  link: 'https://drive.google.com/file/d/1bt-UtKyJt2KbDTcRilOI9HIiHaYVrevj/view?usp=sharin'
+  price: 0.00
+pattImage: /img/carreau-hat-berroco-back-sq.jpg
+pattAltText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
+topImage: /img/carreau-set.jpg
 pictures:
-  - patternPhoto:
-      altText: woman wearing the matching Carreau hat and cowl set
-      caption: Carreau hat and cowl (Berroco version) - set
-      height: 4
-      photo: /img/carreau-set.jpg
-      width: 3
-  - patternPhoto:
-      altText: side angle showing the lighter texture of the wool version of Carreau hat
-      caption: Carreau hat (Berroco version) - side
-      height: 3
-      photo: /img/carreau-hat-berroco-side.jpg
-      width: 4
-  - patternPhoto:
-      altText: detail of wool Carreau hat's crown, with model reaching towards cat standing on fence
-      caption: Carreau hat (Berroco version) - crown detail
-      height: 7
-      photo: /img/carreau-hat-berroco-crown.jpg
-      width: 8
-  - patternPhoto:
-      altText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
-      caption: Carreau hat (Berroco version) - back
-      height: 3
-      photo: /img/carreau-hat-berroco-back.jpg
-      width: 4
-  - patternPhoto:
-      altText: detail showing the sharper stitch definition and heavier drape of alpaca Carreau hat
-      caption: Carreau hat (alpaca version) - side
-      height: 3
-      photo: /img/carreau-hat-alpaca-side.jpg
-      width: 4
-  - patternPhoto:
-      altText: crown of alpaca Carreau hat showing the denser texture
-      caption: Carreau hat (alpaca version) - back
-      height: 3
-      photo: /img/carreau-hat-alpaca-back.jpg
-      width: 4
-  - patternPhoto:
-      altText: flat lay of both Carreau hats; lighter, loftier wool version on left; thicker alpaca version on right
-      caption: Carreau hats - flat lay
-      height: 3
-      photo: /img/carreau-hats-flat.jpg
-      width: 4
+  - altText: woman wearing the matching Carreau hat and cowl set
+    photo: /img/carreau-set.jpg
+  - altText: side angle showing the lighter texture of the wool version of Carreau hat
+    photo: /img/carreau-hat-berroco-side.jpg
+  - altText: detail of wool Carreau hat's crown, with model reaching towards cat standing on fence
+    photo: /img/carreau-hat-berroco-crown.jpg
+  - altText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
+    photo: /img/carreau-hat-berroco-back.jpg
+  - altText: detail showing the sharper stitch definition and heavier drape of alpaca Carreau hat
+    photo: /img/carreau-hat-alpaca-side.jpg
+  - altText: crown of alpaca Carreau hat showing the denser texture
+    photo: /img/carreau-hat-alpaca-back.jpg
+  - altText: flat lay of both Carreau hats; lighter, loftier wool version on left; thicker alpaca version on right
+    photo: /img/carreau-hats-flat.jpg
 tags:
   - mosaic colorwork
   - sideways construction

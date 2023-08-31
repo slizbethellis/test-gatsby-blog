@@ -1,58 +1,52 @@
 import React from 'react'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import { Box, Heading } from 'grommet'
+
 import Layout from '../../components/Layout'
+import TagButtons from '../../components/TagButtons'
 
 const TagsPage = ({
-  data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } }
+  data: { allMarkdownRemark: { group } }
 }) => (
-  <Layout location="/tags">
-    <section className="section">
-      <Helmet title={`Tags | ${title}`} />
-      <div className="container content">
-        <div className="columns is-multiline is-centered">
-          <div className="column is-10">
-            <h1 className="has-text-weight-bold is-size-2">Tags</h1>
-          </div>
-          <div
-            className="column is-10 is-offset-1"
-            style={{ marginBottom: '6rem' }}
-          >
-            
-            <ul className="taglist">
-              {group.map(tag => (
-                <li key={tag.fieldValue}>
-                  <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+  <Layout>
+    <Box
+      as="section"
+      alignSelf="center"
+      justify="center"
+      width="full"
+    >
+      <Heading level={1} alignSelf="center" textAlign="center">Tags</Heading>
+      <Box alignSelf="center" margin={{"horizontal": "large" }}>
+        <TagButtons
+          group={group}
+          margin="xsmall"
+        />
+      </Box>
+    </Box>
   </Layout>
 )
 
 export default TagsPage
 
-export const tagPageQuery = graphql`
-  query TagsQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    },
-    allMarkdownRemark(
-      limit: 1000,
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
+export const Head = ({ data: { site: { siteMetadata: { title } } } }) => {
+  return (
+    <title>{`Tags | ${title}`}</title>
+  )
+}
+
+export const tagPageQuery = graphql`query TagsQuery {
+  site {
+    siteMetadata {
+      title
     }
   }
-`
+  allMarkdownRemark(
+    limit: 1000
+    filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
+  ) {
+    group(field: {frontmatter: {tags: SELECT}}) {
+      fieldValue
+      totalCount
+    }
+  }
+}`
