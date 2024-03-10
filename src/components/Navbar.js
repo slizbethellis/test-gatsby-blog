@@ -1,109 +1,107 @@
-import React, { useContext, useRef } from 'react'
-import { navigate } from 'gatsby'
-import {
-  Anchor,
-  Box,
-  Header,
-  Menu,
-  Nav,
-  ResponsiveContext,
-  Text
-} from 'grommet'
-import { Menu as MenuIcon } from 'grommet-icons'
+import React, { useState } from 'react'
+import { Dialog } from '@headlessui/react'
+import { Link } from 'gatsby'
 
-import Link from './Link'
+import { Bars, Xmark } from './Icon'
+import { LogoIcon, LogoText } from './Logo'
 import Toggle from './Toggle'
 
-const Navbar = ({ theme, toggleTheme, componentMounted }) => {
-  const size = useContext(ResponsiveContext)
-  const targetRef = useRef()
+const navigation = [
+  { name: 'About', href: '/about'},
+  { name: 'Blog', href: '/blog'},
+  { name: 'Patterns', href: '/patterns'},
+]
 
-  return (
-    <Header
-      background={{ dark: "#111b1f", light: "light-3" }}
-      pad="medium"
-      height="4.875rem"
-      border={{
-        "color": { dark: "accent-3", light: "neutral-3" },
-        "size": "small",
-        "side": "bottom"
-      }}
-      style={{
-        position: 'sticky',
-        zIndex: '10',
-        width: '100%',
-        top: '0'
-      }}
-      ref={targetRef}
-    >
-      <Box direction="row" align="center" gap="small">
-        {size === "small" ? (
-          <React.Fragment>
-            <Nav>
-              <Menu
-                a11yTitle="Navigation Menu"
-                dropProps={{ align: { top: 'bottom', right: 'right' }, target: targetRef.current }}
-                elevation="xxsmall"
-                icon={<MenuIcon color={{ dark: "accent-1", light: "brand" }} size="medium" />}
-                size="medium"
-                items={[
-                  {
-                    label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}}>About</Box>,
-                    onClick: (ev) => {
-                      navigate("/about")
-                      ev.preventDefault()
-                    }
-                  },
-                  {
-                    label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}}>Blog</Box>,
-                    onClick: (ev) => {
-                      navigate("/blog")
-                      ev.preventDefault()
-                    }
-                  },
-                  {
-                    label: <Box width="100%" pad={{left: "xsmall", right: "small", vertical: "xsmall"}} >Patterns</Box>,
-                    onClick: (ev) => {
-                      navigate("/patterns")
-                      ev.preventDefault()
-                    }
-                  },
-                ]}
-              />
-            </Nav>
-            <Anchor
-              href="/"
-              label={<Text size="large">haloroundmyhead knits</Text>}
-              style={{ position: "absolute", left: '25%', right: '25%', textAlign: 'center' }}
-            />
-          </React.Fragment>
-        ) : (
-          <Anchor
-            href="/"
-            label={<Text size="large">haloroundmyhead knits</Text>}
-          />
-        )}
-      </Box>
-      <Box direction="row" align="center" gap="medium" pad="none">
-        {size !== 'small' && (
-          <Nav direction="row">
-            <Link to="/about" hoverIndicator>
-              About
-            </Link>
-            <Link to="/blog" hoverIndicator>
-              Blog
-            </Link>
-            <Link to="/patterns" hoverIndicator>
-              Patterns
-            </Link>
-          </Nav>
-        )}
-        {componentMounted && (
-          <Toggle theme={theme} toggleTheme={toggleTheme} />
-        )}
-      </Box>
-    </Header>
-  )
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
 }
 
-export default Navbar
+export default function Navbar({ theme, toggleTheme, componentMounted }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  return (
+    <header className='sticky top-0 z-40 bg-phthalo-950 border-b border-phthalo-50/10'>
+      <nav className='mx-auto max-w-full px-2 sm:px-6 lg:px-8 relative flex h-16 items-center justify-between'>
+        <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
+          {/* Mobile menu button*/}
+          <button
+            className='relative inline-flex items-center justify-center rounded-md p-2 text-phthalo-300 hover:bg-phthalo-800 hover:text-phthalo-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-phthalo-50'
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <span className='absolute -inset-0.5' />
+            <span className='sr-only'>Open main menu</span>
+            <Bars className='block h-6 w-6' aria-hidden='true' />
+          </button>
+        </div>
+        <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-between'>
+          <div className='flex flex-shrink-0 items-center'>
+            <Link to='/' className='space-x-2.5' aria-label='Haloroundmyhead Knits home page'>
+              <LogoIcon className='inline-block' fill='#26bd9a' height='34px' />
+              <LogoText className='hidden min-[360px]:inline-block mt-1 fill-[#fdac7d]' height='20px' />
+            </Link>
+          </div>
+          <div className='hidden sm:ml-6 sm:block'>
+            <div className='flex space-x-3'>
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className='text-phthalo-100 hover:underline hover:text-fuzz-200 rounded-md px-3 py-2 text-base font-medium'
+                  activeClassName='bg-phthalo-900 text-phthalo-50'
+                >
+                  {item.name}
+                </Link>
+              ))}
+              {componentMounted && (
+                <div className='flex items-center border-l border-phthalo-700 ml-6 pl-6'>
+                  <Toggle theme={theme} toggleTheme={toggleTheme} />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </nav>
+      <Dialog as='div' className='sm:hidden' open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+        <div className="fixed inset-0 z-50" />
+        <Dialog.Panel className='fixed inset-y-0 right-0 z-50 w-full max-h-72 overflow-y-auto shadow-lg rounded-b-lg bg-phthalo-950'>
+          <div className="flex h-16 items-center justify-center border-b border-phthalo-50/10">
+            <div className='absolute left-0 flex self-center items-center'>
+              {/* Mobile menu button*/}
+              <button
+                className='relative inline-flex items-center justify-center rounded-md p-2 text-phthalo-300 hover:bg-phthalo-800 hover:text-phthalo-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-phthalo-50'
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className='absolute -inset-0.5' />
+                <span className='sr-only'>Close main menu</span>
+                <Xmark className='block h-6 w-6' aria-hidden='true' />
+              </button>
+            </div>
+            <div className='flex flex-shrink-0 items-center'>
+              <Link to='/' className='space-x-2.5' aria-label='Haloroundmyhead Knits home page'>
+                <LogoIcon className='inline-block' fill='#26bd9a' height='34px' />
+                <LogoText className='hidden min-[360px]:inline-block mt-1 fill-[#fdac7d]' height='20px' />
+              </Link>
+            </div>
+          </div>
+          <div className="space-y-1 px-2 pb-3 pt-2">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className='text-phthalo-100 hover:underline hover:text-fuzz-200 block rounded-md px-3 py-2 text-base font-medium'
+                activeClassName='bg-phthalo-900 text-phthalo-50'
+                partiallyActive={true}
+              >
+                {item.name}
+              </Link>
+            ))}
+            {componentMounted && (
+              <div className='flex border-t border-phthalo-700 justify-between items-center px-5 pt-5'>
+                <Toggle theme={theme} toggleTheme={toggleTheme} />
+              </div>
+            )}
+          </div>
+        </Dialog.Panel>
+      </Dialog>
+    </header>
+  )
+}

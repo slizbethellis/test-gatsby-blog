@@ -1,13 +1,12 @@
 import React from 'react'
-import { Grommet, Main, ResponsiveContext } from 'grommet'
-import Navbar from './Navbar'
+import { Main, ResponsiveContext } from 'grommet'
+import { Script } from 'gatsby'
 import SiteFooter from './Footer'
-import { customTheme } from './Theme'
 import { useDarkMode } from './useDarkMode'
+import Navbar from './Navbar'
 
 const TemplateWrapper = ({ children }) => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
-  const themeMode = theme === 'light' ? 'light' : 'dark';
 
   // possible FOUC fix
   if (!componentMounted) {
@@ -15,9 +14,18 @@ const TemplateWrapper = ({ children }) => {
   };
 
   return (
-    <Grommet theme={customTheme} themeMode={themeMode} full>
+    <React.Fragment>
+      <Script>
+        {`
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark')
+          } else {
+              document.documentElement.classList.remove('dark')
+          }
+        `}
+      </Script>
       {/* Wrapper-div might seem useless, but removing it messes up styling of Grommet components. */}
-      <div className="wrapper-div">
+      <div className="bg-white dark:bg-black">
         <Navbar theme={theme} toggleTheme={toggleTheme} componentMounted={componentMounted} />
         <ResponsiveContext.Consumer>
           {/*
@@ -40,7 +48,7 @@ const TemplateWrapper = ({ children }) => {
         </ResponsiveContext.Consumer>
         <SiteFooter />
       </div>
-    </Grommet>
+    </React.Fragment>
   )
 }
 
