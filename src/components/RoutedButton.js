@@ -1,18 +1,19 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Button } from "grommet"
-import { navigate } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { navigate } from 'gatsby'
 
 // a custom button component that combines Gatsby's navigate function for routing and Grommet's button styling
-const RoutedButton = ({ to, ...rest }) => (
-  <Button
+const RoutedButton = ({ to, children, ...rest }) => (
+  <a
     href={to}
     onClick={ev => {
       navigate(to)
       ev.preventDefault()
     }}
     {...rest}
-  />
+  >
+    {children}
+  </a>
 )
 
 RoutedButton.propTypes = {

@@ -22,7 +22,7 @@ const BlogPosts = ({ posts, pageContext }) => (
         <BlogCard
           slug={post.fields.slug}
           hLevel={2}
-          hSize="small"
+          styles='text-2xl md:font-3xl'
           postTitle={post.frontmatter.title}
           date={post.frontmatter.date}
           excerpt={post.excerpt}

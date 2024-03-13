@@ -8,7 +8,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Nunito', 'sans-serif'],
+      sans: ['Nunito Variable', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -37,7 +37,17 @@ module.exports = {
           '800': '#9c1c10',
           '900': '#7d1a11',
           '950': '#440a06',
-      },
+        },
+        lila: {
+          '200': '#f4caff',
+          '800': '#870b9d',
+          '900': '#791089',
+          '950': '#4b0057'
+        },
+        zomp: {
+          '500': '#39a78e',
+          '600': '#277A68',
+        }
       }
     },
   },

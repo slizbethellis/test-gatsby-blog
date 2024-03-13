@@ -6,19 +6,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-webfonts`,
-      options: {
-        fonts: {
-          google: [
-            {
-              family: "Nunito",
-              variants: ["400", "400i", "700", "700i"],
-            },
-          ],
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `

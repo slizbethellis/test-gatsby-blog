@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  a {
+    @apply text-lila-800 dark:text-fuzz-300 hover:underline;
+  }
+}

@@ -1,20 +1,11 @@
 import React from 'react'
-import { GatsbyImage } from "gatsby-plugin-image";
-import { Box } from 'grommet'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 // round fixed size image thumbnail
-const BlogThumbnail = ({ altText, image, size }) => (
-  <Box
-    round="xlarge"
-    overflow="hidden"
-    align="center"
-    alignSelf="center"
-    width={{min: "200px"}}
-    margin={size !== "small" ? "xsmall" : {"top": "none", "bottom": "large", "horizontal": "xsmall"}}
-    style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
-  >
+const BlogThumbnail = ({ altText, image }) => (
+  <div className='flex items-center self-center shrink-0 rounded-full overflow-hidden [-webkit-transform:translate3d(0,0,0)] [-webkit-backface-visibility:hidden] w-[200px] m1 sm:m-1.5'>
     <GatsbyImage image={image} alt={altText} />
-  </Box>
+  </div>
 )
 
 export default BlogThumbnail

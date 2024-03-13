@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { Box, Heading } from 'grommet'
 
 import FeatureBox from '../components/FeatureBox'
 import HomeGallery from '../components/HomeGallery'
@@ -13,31 +12,22 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <HomeGallery posts={posts} />
-      <Box
-        as="section"
-        direction="column"
-        align="center"
-        alignSelf="center"
-        justify="center"
-        width="xlarge"
-        pad={{ "top": "xsmall", "bottom": "large", "horizontal": "small" }}
-      >
-        <Heading
-          level={1}
-          alignSelf="center"
-          margin={{ "bottom": "medium" }}
-          size="44px"
-          textAlign="center"
-        >
-          Modern Patterns for Knitters and Crocheters
-        </Heading>
-        <RoutedButton primary to="/patterns" alignSelf="center" label="Browse all patterns"/>
-      </Box>
+      <main className='items-center justify-center max-w-full'>
+        <HomeGallery posts={posts} />
+        <section className='flex flex-col mx-auto items-center justify-center mt-4 sm:mt-11 mb-6 sm:mb-12'>
+          <h1 className='text-center text-[44px] leading-[60px] font-semibold mx-3 mb-3 sm:mb-6'>Modern Patterns for Knitters and Crocheters</h1>
+          <RoutedButton
+            to='/patterns'
+            className='justify-self-center rounded-full text-lg font-semibold bg-lila-900 text-fuzz-50 px-6 py-1 dark:bg-fuzz-300 dark:text-phthalo-950'
+          >
+            Browse all patterns
+          </RoutedButton>
+        </section>
+      </main>
       {/* Blog feature */}
       <FeatureBox
         altText={data.blog.frontmatter.altText}
-        boxTitle="Featured Blog Post"
+        boxTitle='From the Blog'
         excerpt={data.blog.excerpt}
         image={data.blog.frontmatter.image.childImageSharp.gatsbyImageData}
         slug={data.blog.fields.slug}
