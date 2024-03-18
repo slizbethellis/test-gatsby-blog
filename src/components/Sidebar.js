@@ -4,7 +4,7 @@ import { Box } from 'grommet'
 import Search from './Search'
 import TagBlock from './TagBlock'
 
-const Sidebar = ({ searchIndex, size, tags }) => (
+const Sidebar = ({ size, tags }) => (
   <Box
     as="section"
     background={{ dark: "dark-1", light: "light-2" }}
@@ -15,7 +15,7 @@ const Sidebar = ({ searchIndex, size, tags }) => (
     pad={{ "bottom": "medium" }}
     round="medium"
   >
-    <Search searchIndex={searchIndex} size={size} />
+    {/* <Search searchIndex={searchIndex} size={size} /> */}
     {/* <Instagram /> */}
     <TagBlock size={size} tags={tags} />
   </Box>

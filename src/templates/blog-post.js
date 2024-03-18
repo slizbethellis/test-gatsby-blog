@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import { graphql } from 'gatsby'
-import { Box, Heading, Paragraph, ResponsiveContext, Text } from 'grommet'
+import { Box } from 'grommet'
 
 import Layout from '../components/Layout'
+import Heading from '../components/Heading'
 import RoutedButton from '../components/RoutedButton'
 import Content from '../components/Content'
 import PostPagination from '../components/PostPagination'
@@ -17,53 +18,44 @@ const BlogPostTemplate = ({
   date,
   pageContext
 }) => {
-  const size = useContext(ResponsiveContext)
-  const boxPad = (size !== 'small' ? "xlarge" : "large")
-
   return (
-    <Box
-      as="section"
-      alignSelf="center"
-      justify="center"
-      width="xlarge"
-      pad={{
-        "top": "none",
-        "bottom": "medium",
-        "horizontal": boxPad
-      }}
-    >
-      <Heading level={1} textAlign="center">{title}</Heading>
-      <Text size="large" textAlign="center">{date}</Text>
-      <Box border="bottom">
-        <Paragraph fill>{description}</Paragraph>
-        <Content contentAst={content} fill/>
+    <main className='items-center justify-center max-w-full my-7 md:my-10'>
+      <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-[1152px]'>
+        <Heading level={1} className='text-center'>{title}</Heading>
+        <span className='text-center text-xl'>{date}</span>
+        <div className='max-w-none'>
+          <p>{description}</p>
+          <Content contentAst={content} />
+        </div>
+      </article>
+      <div className='max-w-[1152px] px-6 md:px-24'>
         <PostPagination pageContext={pageContext} />
-      </Box>
-      {tags && tags.length ? (
-        <Box as="section" pad={{ "top": "small"}}>
-          <Heading level={2} size="small">Tags</Heading>
-          <ul
-            className="tag=list"
-            style={{
-              listStyle: "none",
-              display: "flex",
-              flexFlow: "row wrap",
-              paddingLeft: "0"
-            }}
-          >
-            {tags.map((tag, index) => (
-              <li key={index}>
-                <RoutedButton
-                  to={`/tags/${_.kebabCase(tag)}/`}
-                  margin="xsmall"
-                  label={tag}
-                />
-              </li>
-            ))}
-          </ul>
-        </Box>
-      ) : null}
-    </Box>
+        {tags && tags.length ? (
+          <Box as="section" pad={{ "top": "small"}}>
+            <Heading level={2} className='text-xl md:text-2xl font-semibold'>Tags</Heading>
+            <ul
+              className="tag=list"
+              style={{
+                listStyle: "none",
+                display: "flex",
+                flexFlow: "row wrap",
+                paddingLeft: "0"
+              }}
+            >
+              {tags.map((tag, index) => (
+                <li key={index}>
+                  <RoutedButton
+                    to={`/tags/${_.kebabCase(tag)}/`}
+                    margin="xsmall"
+                    label={tag}
+                  />
+                </li>
+              ))}
+            </ul>
+          </Box>
+        ) : null}
+      </div>
+    </main>
   )
 }
 

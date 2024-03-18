@@ -1,51 +1,23 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image";
-import { Box, Heading, Markdown, ResponsiveContext } from 'grommet'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
+import Content from '../components/Content'
+import Heading from '../components/Heading'
 import Layout from '../components/Layout'
 
-const AboutPageTemplate = ({ title, image, markdown }) => {
-  const size = useContext(ResponsiveContext)
-  const boxPad = (size !== 'small' ? "xlarge" : "large")
-
+const AboutPageTemplate = ({ title, image, content }) => {
   return (
-    <Box
-      as="section"
-      alignSelf="center"
-      justify="center"
-      width="xlarge"
-      pad={{
-        "top": "none",
-        "bottom": "medium",
-        "horizontal": boxPad
-      }}
-    >
-      <Heading level={1} textAlign="center">{title}</Heading>
-      <Box
-        as="figure"
-        alignSelf="center"
-        justify="center"
-        margin="none"
-        round="full"
-        overflow="auto"
-        width="medium"
-        height="medium"
-        style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
-      >
-        {image}
-      </Box>
-      <Markdown
-        components={{
-          "p": {
-            "props": {"fill": true}
-          }
-        }}
-      >
-        {markdown}
-      </Markdown>
-    </Box>
+    <main className='items-center justify-center max-w-full my-7 md:my-10'>
+      <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-[1152px]'>
+        <Heading level={1} className='text-center'>{title}</Heading>
+        <figure className='flex place-self-center overflow-hidden rounded-full [-webkit-transform:translate3d(0,0,0)] [-webkit-backface-visibility:hidden] w-72 md:w-96 h-72 md:h-96 m-0'>
+          {image}
+        </figure>
+        <Content contentAst={content} />
+      </article>
+    </main>
   )
 }
 
@@ -61,7 +33,7 @@ const AboutPage = ({ data }) => {
     <Layout>
       <AboutPageTemplate
         title={post.frontmatter.title}
-        markdown={post.rawMarkdownBody}
+        content={post.htmlAst}
         image={<GatsbyImage
           image={data.fluidImages.childImageSharp.gatsbyImageData}
           alt="Sarah Ellis - headshot" />}
@@ -92,11 +64,11 @@ export const aboutPageQuery = graphql`query AboutPage($id: String!) {
     frontmatter {
       title
     }
-    rawMarkdownBody
+    htmlAst
   }
   fluidImages: file(relativePath: {regex: "/headshot.jpg/"}) {
     childImageSharp {
-      gatsbyImageData(width: 400, height: 400, layout: FIXED)
+      gatsbyImageData(width: 400, height: 400, layout: CONSTRAINED)
     }
   }
 }

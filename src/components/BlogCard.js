@@ -20,7 +20,6 @@ const BlogCard = ({
   altText,
   image
 }) => {
-  console.log(styles)
   return (
     <article className='flex flex-col md:flex-row items-center justify-center md:space-x-3 md:pr-3'>
       <div className='p-3 md:p-6'>

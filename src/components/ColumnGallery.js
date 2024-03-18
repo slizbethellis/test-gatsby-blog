@@ -67,7 +67,7 @@ const ColumnGallery = (images) => {
         index={index}
         close={() => setIndex(-1)}
         slides={imageArray}
-        counter={{ container: { style: { top: 0, bottom: "unset", fontFamily: "Nunito" }}}}
+        counter={{ container: { style: { top: 0, bottom: "unset", fontFamily: "Nunito Variable" }}}}
         fullscreen={{ auto: false }}
         plugins={[Counter, Fullscreen]}
         carousel={{ finite: "true" }}

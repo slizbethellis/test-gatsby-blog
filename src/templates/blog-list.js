@@ -44,6 +44,8 @@ class BlogPage extends React.Component {
     const posts = data.posts.edges
     const pageContext = this.props.pageContext
 
+    console.log(data.siteSearchIndex.index)
+
     return (
       <Layout>
         <Box
