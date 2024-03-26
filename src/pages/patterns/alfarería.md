@@ -19,6 +19,7 @@ gauge:
   - 'shawlette: 25 sts/34 rows = 4 inches/10 cm in stockinette stitch'
   - 'shawl: 22 sts/32 rows = 4 inches/10 cm'
 needles: US 5 (3.75mm) or US 6 (4.00mm)
+hooks: null
 sizes: shawlette (shawl)
 finalMeasure:
   - dimName: Width at top
@@ -29,7 +30,7 @@ finalMeasure:
     cm: 41 (61)
 patternSource:
   link: 'http://knitty.com/ISSUEdf18/PATTalfareria/PATTalfareria.php'
-  price: 2.00
+  price: 0.00
 pattImage: /img/alfareria-shawlette-detail.jpg
 pattAltText: closeup of Alfarería shawlette wrapped around shoulders
 topImage: /img/alfareria-shawl-back.jpg

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 
-// a custom button component that combines Gatsby's navigate function for routing and Grommet's button styling
+// a custom button component that uses Gatsby's navigate function for routing
 const RoutedButton = ({ to, children, ...rest }) => (
   <a
     href={to}

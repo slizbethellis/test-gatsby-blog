@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { Box } from 'grommet'
 import PhotoAlbum from 'react-photo-album'
 import Lightbox from 'yet-another-react-lightbox'
 import Counter from 'yet-another-react-lightbox/plugins/counter'
@@ -23,18 +22,13 @@ const ColumnGallery = (images) => {
 
   const renderCustomSlide = ({ slide }) => {
     return (
-      <Box
-        alignContent="center"
-        direction="row"
-        margin="small"
-        height='100%'
-      >
+      <div className='flex flex-row content-center m-1.5 md:m-3 max-w-full h-full'>
         <GatsbyImage 
           image={slide.fluid}
           alt={slide.alt}
           objectFit="contain"
         />
-      </Box>
+      </div>
     )
   }
 

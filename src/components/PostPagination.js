@@ -1,52 +1,41 @@
 import React from 'react'
-import { Box, Paragraph } from 'grommet'
+import { Link } from 'gatsby'
 
-import Link from './Link'
+import { Left, Right } from './Icon'
 
 // basic prev page and next page links
 const PostPagination = ({ pageContext }) => {
   const { previous, next } = pageContext
-  const justifyContent = !previous ? "flex-end" : "space-between"
 
   return (
-    <Box 
-      alignSelf="center"
-      width="100%"
-    >
-      <nav aria-label="pagination">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            alignItems: `center`,
-            justifyContent: {justifyContent},
-            listStyle: `none`,
-            padding: 0
-          }}
-        >
+    <div className='self-center w-full mx-3 md:mx-0'>
+      <nav aria-label='pagination'>
+        <div className='flex flex-wrap items-center justify-between mt-4'>
           {previous && (
-            <li key='1' style={{ padding: `0 0 1em` }}>
-              <React.Fragment>
-                <Paragraph size="small" margin={{ "bottom": "none", "left": "1.7em" }}>Previous</Paragraph>
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              </React.Fragment>
-            </li>
+            <div key='1' className='text-left md:max-w-[48%] mr-auto my-4'>
+              <Link to={previous.fields.slug} rel='prev' className='hover:no-underline'>
+                <p className='text-sm text-phthalo-900 dark:text-phthalo-100 ml-6'>Previous</p>
+                <span className='flex flex-row text-semibold text-lg hover:underline'>
+                  <Left className='inline-block h-4 w-4 mr-2 mt-1.5' aria-hidden='true' />
+                  {previous.frontmatter.title}
+                </span>
+              </Link>
+            </div>
           )}
           {next && (
-            <li key='2' style={{ marginLeft: `auto`, padding: `0 0 1em`}}>
-              <React.Fragment>
-                <Paragraph size="small" margin={{ "bottom": "none", "right": "1.7em" }} textAlign="end" fill>Next</Paragraph>
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              </React.Fragment>
-            </li>
+            <div key='2' className='text-right md:max-w-[48%] ml-auto my-4'>
+              <Link to={next.fields.slug} rel='next' className='hover:no-underline'>
+                <p className='text-sm text-phthalo-900 dark:text-phthalo-100 mr-6'>Next</p>
+                <span className='flex flex-row text-semibold text-lg hover:underline'>
+                  {next.frontmatter.title}
+                  <Right className='inline-block h-4 w-4 ml-2 mt-1.5' aria-hidden='true' />
+                </span>
+              </Link>
+            </div>
           )}
-        </ul>
+        </div>
       </nav>
-    </Box>
+    </div>
   )
 }
 

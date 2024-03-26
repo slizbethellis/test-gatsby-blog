@@ -12,7 +12,7 @@ export const useDarkMode = () => {
       window.localStorage.removeItem('theme') :
       window.localStorage.setItem('theme', mode.name)
     setTheme(mode)
-    // This code is redundant with the script in Layout.js, but necessary to update class name on button toggle
+    // This updates class name on button toggle
     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark')
     } else {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import { Box } from 'grommet'
 
 import Layout from '../components/Layout'
@@ -28,7 +28,7 @@ const BlogPostTemplate = ({
           <Content contentAst={content} />
         </div>
       </article>
-      <div className='max-w-[1152px] px-6 md:px-24'>
+      <div className='flex flex-col max-w-[1152px] px-6 md:px-24'>
         <PostPagination pageContext={pageContext} />
         {tags && tags.length ? (
           <Box as="section" pad={{ "top": "small"}}>
@@ -44,7 +44,7 @@ const BlogPostTemplate = ({
             >
               {tags.map((tag, index) => (
                 <li key={index}>
-                  <RoutedButton
+                  <Link
                     to={`/tags/${_.kebabCase(tag)}/`}
                     margin="xsmall"
                     label={tag}

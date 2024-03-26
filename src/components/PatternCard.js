@@ -1,31 +1,26 @@
 import React from 'react'
-import { GatsbyImage } from "gatsby-plugin-image";
-import { Box, Card, CardBody, CardHeader, Heading } from 'grommet'
+import { Link } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
-import Link from './Link'
+import Heading from './Heading'
 
 // simple image and pattern title component without redundant link
-const PatternCard = ({ slug, title, image, altText }) => (
-  <Box as="li">
-    <Link to={slug} a11yTitle={title}>
-      <Card
-        round="medium"
-        background={{ dark: "dark-1", light: "light-2" }}
-        border={{ "color": {dark: "dark-3", light: "dark-4" }}}
-        elevation="none"
-        style={{ WebkitTransform: `translate3d(0, 0, 0)`, WebkitBackfaceVisibility: `hidden` }}
-      >
-        <CardHeader justify="center">
-          <Heading level={2} size="small" color={{ dark: "accent-1", light: "brand" }}>
-            {title}
-          </Heading> 
-        </CardHeader>
-        <CardBody style={{ order: "-1"}}>
-          <GatsbyImage image={image.childImageSharp.gatsbyImageData} alt={altText} />
-        </CardBody>
-      </Card>
-    </Link>
-  </Box>
+const PatternCard = ({ id, slug, title, image, altText }) => (
+  <li key={id} className='flex flex-col group overflow-hidden hover:ring hover:ring-zomp-500 focus:ring-zomp-500 rounded-3xl bg-phthalo-100 dark:bg-phthalo-900 border border-phthalo-950/10 dark:border-phthalo-50/10 max-w-[400px] [-webkit-transform:translate3d(0,0,0)] [-webkit-backface-visibility:hidden]'>
+    <div className='self-center py-5'>
+      <Heading level={2} className='text-2xl font-semibold'>
+        <Link
+          to={slug}
+          className='group-hover:underline z-30 before:absolute before:content-[" "] before:z-20 before:top-0 before:left-0 before:w-full before:h-full'
+        >
+          {title}
+        </Link> 
+      </Heading> 
+    </div>
+    <div className='-order-1 z-10 w-full'>
+      <GatsbyImage image={image.childImageSharp.gatsbyImageData} alt={altText} />
+    </div>
+  </li>
 )
 
 export default PatternCard

@@ -16,6 +16,7 @@ yardage:
 gauge:
   - n/a
 needles: US 2.5 (3.00mm)
+hooks: null
 sizes: recipe
 finalMeasure:
   - dimName: Width

@@ -18,6 +18,7 @@ gauge:
   - 22 sts/32 rows = 4 inches/10 cm in stockinette worked flat
   - 24 sts/28 rounds = 4 inches/10 cm in charted pattern using larger needles
 needles: US 4 (3.5mm) and US 5 (3.75mm)
+hooks: null
 sizes: child (adult S, adult L)
 finalMeasure:
   - dimName: Brim Circumference

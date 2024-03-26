@@ -56,6 +56,7 @@ collections:
           - {label: "Meters", name: "meters", widget: "string"}
       - {label: "Gauge", name: "gauge", widget: "list"}
       - {label: "Needles", name: "needles", widget: "string"}
+      - {label: "Hooks", name: "hooks", widget: "string"}
       - {label: "Sizes", name: "sizes", widget: "string"}
       - label: "Finished Measurements"
         name: "finalMeasure"

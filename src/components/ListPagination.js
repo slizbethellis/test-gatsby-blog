@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box } from 'grommet'
+import { Link } from 'gatsby'
 
-import Link from './Link'
+import { Left, Right } from './Icon'
 
 // prev page and next page links, will be updated to add numeric dropdown
 const ListPagination = ({ pageContext, path }) => {
@@ -12,38 +12,26 @@ const ListPagination = ({ pageContext, path }) => {
   const nextPage = `${path}/${(currentPage + 1).toString()}`
 
   return (
-    <Box 
-      alignSelf="center"
-      width="100%"
-    >
-      <nav aria-label="pagination">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            alignItems: `center`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+    <div className='self-center w-full'>
+      <nav aria-label='pagination'>
+        <div className='flex flex-wrap items-center justify-between mt-4'>
           {!isFirst && (
-            <li key={currentPage - 1}>
-                <Link to={prevPage} rel="prev">
-                  ← Previous Page
-                </Link>
-            </li>
+            <div key={currentPage - 1}>
+              <Link to={prevPage} rel='prev' className='text-lg font-semibold'>
+                <Left className='inline-block h-4 w-4 mr-2 mb-1' aria-hidden='true' />Previous Page
+              </Link>
+            </div>
           )}
           {!isLast && (
-            <li key={currentPage + 1} style={{ marginLeft: `auto`, padding: `0 0 1em`}}>
-                <Link to={nextPage} rel="next">
-                  Next Page →
-                </Link>
-            </li>
+            <div key={currentPage + 1} className='ml-auto'>
+              <Link to={nextPage} rel='next' className='text-lg font-semibold'>
+                Next Page<Right className='inline-block h-4 w-4 ml-2 mb-1' aria-hidden='true' />
+              </Link>
+            </div>
           )}
-        </ul>
+        </div>
       </nav>
-    </Box>
+    </div>
   )
 }
 

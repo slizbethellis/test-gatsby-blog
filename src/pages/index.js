@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import FeatureBox from '../components/FeatureBox'
 import HomeGallery from '../components/HomeGallery'
 import Layout from '../components/Layout'
-import RoutedButton from '../components/RoutedButton'
 
 const IndexPage = ({ data }) => {
   const { edges: posts } = data.patterns
@@ -16,12 +15,12 @@ const IndexPage = ({ data }) => {
         <HomeGallery posts={posts} />
         <section className='flex flex-col mx-auto items-center justify-center mt-4 sm:mt-11 mb-6 sm:mb-12'>
           <h1 className='text-center text-[44px] leading-[60px] font-semibold mx-3 mb-3 sm:mb-6'>Modern Patterns for Knitters and Crocheters</h1>
-          <RoutedButton
+          <Link
             to='/patterns'
-            className='justify-self-center rounded-full text-lg font-semibold bg-lila-900 text-fuzz-50 px-6 py-1 dark:bg-fuzz-300 dark:text-phthalo-950'
+            className='justify-self-center rounded-full text-lg font-bold bg-lila-900 text-fuzz-50 px-6 py-2 dark:bg-fuzz-300 dark:text-phthalo-950'
           >
             Browse all patterns
-          </RoutedButton>
+          </Link>
         </section>
       </main>
       {/* Blog feature */}

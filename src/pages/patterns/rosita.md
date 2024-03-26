@@ -16,7 +16,8 @@ yardage:
     meters: 439-453 (823-841)
 gauge:
   - 24 sts/38 rows= 4 inches/10 cm in stockinette stitch
-needles: US 4 (3.5 mm)
+needles: US 4 (3.5mm)
+hooks: null
 sizes: shawlette (shawl)
 finalMeasure:
   - dimName: Width at top

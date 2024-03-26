@@ -1,24 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
+import { Tab } from '@headlessui/react'
 
-import {
-  Box,
-  Button,
-  Grid,
-  Heading,
-  Markdown,
-  ResponsiveContext,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  Tab,
-  Tabs,
-  Text
-} from 'grommet'
-
+import Content from '../components/Content'
 import Layout from '../components/Layout'
 import ColumnGallery from '../components/ColumnGallery'
 import PostPagination from '../components/PostPagination'
@@ -31,255 +17,189 @@ const PatternItemTemplate = ({
   pageContext
 }) => {
   const details = frontmatter
-  const size = useContext(ResponsiveContext)
-  const cellSize = (size === 'small' ? '1/3' : '30%')
 
-  const [index, setIndex] = React.useState(0)
-  const onActive = (nextIndex) => setIndex(nextIndex)
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
 
   return (
-    <Box
-      as="section"
-      alignSelf="center"
-      justify="center"
-      width="xlarge"
-      pad={{
-        "horizontal": "medium"
-      }} 
-      margin={{ "top": "41.5px" }}     
-    >
-      
-      <Grid
-        columns={size !== 'small' ? ['42%', 'auto'] : ['auto']}
-        rows={size !== 'small' ? ['auto'] : ['auto', 'auto']}
-        gap="medium"
-      >
-        <Box
-          margin={{ "horizontal": "auto"}}
-          pad={{
-            "top": "none",
-            "bottom": "xsmall"
-          }}
-          width={{ "max": "465px"}}
-        >
+    <main className='flex flex-col md:flex-row justify-center max-w-1152px xl:w-[1152px] mx-3 md:mx-6 my-7 md:my-10'>
+      <div className='grid grid-cols-1 md:grid-cols-[42%_57%] gap-6 md:gap-3'>
+        <section className='justify-self-center max-w-[465px]'>
           <ColumnGallery images={images} />
-        </Box>
-        <Box
-          pad={{
-            "top": "none",
-            "bottom": "medium"
-          }}
-        >
-          <Heading
-            level={1}
-            textAlign="center"
-            margin={{ "top": "none", "bottom": "medium" }}
-          >
-            {title}
-          </Heading>
-          <Text
-            margin={{ "bottom": "small" }}
-            textAlign="center"
-            size="xlarge"
-            weight="bold"
-          >
-            {details.patternSource.price !== 0 ? `$${parseFloat(details.patternSource.price).toFixed(2)} USD` : `free`}
-          </Text>
-          <Box pad={{ top: "small", bottom: "large" }}>
-            <Button
-              as="a"
-              href={details.patternSource.link}
-              alignSelf="center"
-              margin={size === 'small' ? {top: 'small', bottom: 'xxsmall'} : 'none'}
-              primary
-              label={`Get Pattern`}
-            />
-          </Box>
-          <Tabs activeIndex={index} onActive={onActive} alignControls="center">
-            <Tab title="Description">
-              <Markdown
-                components={{
-                  "p": {
-                    "props": {"fill": true}
-                  }
-                }}
+        </section>
+        <section className='justify-self-center flex flex-col w-full'>
+          <h1 className='text-center text-4xl md:text-5xl leading-none font-bold mb-3 md:mb-6'>{title}</h1>
+          <div className='flex flex-col items-center mb-6 gap-6'>
+            <span className='text-center text-2xl text-bold'>
+              {details.patternSource.price !== 0 ? `$${parseFloat(details.patternSource.price).toFixed(2)} USD` : `free`}
+            </span>
+            <a href={details.patternSource.link} className='self-center rounded-full text-lg text-center font-bold bg-lila-900 text-fuzz-50 px-6 py-2 dark:bg-fuzz-300 dark:text-phthalo-950'>
+              Get Pattern
+            </a>
+          </div>
+          <Tab.Group>
+            <Tab.List className='flex flex-row justify-center border-b border-phthalo-400 dark:border-phthalo-400/50 text-xl w-full'>
+              <Tab
+                className={({ selected }) =>
+                  classNames(
+                    'px-4 pb-2',
+                    selected ?
+                    'border-b-2 border-lila-800 dark:border-fuzz-300 text-lila-800 dark:text-fuzz-300':
+                    'hover:text-phthalo-800 dark:hover:text-phthalo-200'
+                )}
               >
-                {content}
-              </Markdown>
-            </Tab>
-            <Tab title="Specs">
-              <Box pad={{ top: "medium"}}>
-                <Table>
-                  <TableBody>
-                    {/* If pattern is no longer available from original source and there is a new source
-                      (i.e. a non-null value for currentSrc), it will conditionally render as "Original source" and "Current source", but if currentSrc is null, then originalPub will show as "Published in". */}
-                    {details.currentSrc ? (
-                      <React.Fragment>
-                        <TableRow>
-                          <TableCell scope="row" size={cellSize}>
-                            <strong>Original source</strong>
-                          </TableCell>
-                          <TableCell>
-                            {details.originalPub}
-                          </TableCell>
-                        </TableRow>
-                        <TableRow>
-                          <TableCell scope="row" size={cellSize}>
-                            <strong>Current source</strong>
-                          </TableCell>
-                          <TableCell>
-                            {details.currentSrc}
-                          </TableCell>
-                        </TableRow>
-                      </React.Fragment>  
-                    ) : (
-                      <TableRow>
-                        <TableCell scope="row" size={cellSize}>
-                          <strong>Published in</strong>
-                        </TableCell>
-                        <TableCell>
-                          {details.originalPub}
-                        </TableCell>
-                      </TableRow>
-                    )}
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Category</strong>
-                      </TableCell>
-                      <TableCell>
-                        {details.itemType}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Release Date</strong>
-                      </TableCell>
-                      <TableCell>
-                        {details.date}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Sizes</strong>
-                      </TableCell>
-                      <TableCell>
-                        {details.sizes}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Yarn(s)</strong>
-                      </TableCell>
-                      <TableCell>
-                        {details.yarn.join(', ')}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Yarn Weight</strong>
-                      </TableCell>
-                      <TableCell>
-                        {details.yarnWeight.join(', ')}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Yardage</strong>
-                      </TableCell>
-                      <TableCell>
-                        <Box gap="xxsmall" border={{"side": "between"}}>
-                          {details.yardage.map((yard,index)=>(
-                            <Text key={index}>{details.yardage.length > 1 && (`${yard.variant}:`)}{yard.yards} yds / {yard.meters} m</Text>
-                          ))}
-                        </Box>
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Needles</strong>
-                      </TableCell>
-                      <TableCell>
-                        {details.needles}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Gauge</strong>
-                      </TableCell>
-                      <TableCell>
-                        <Box gap="xxsmall" border={{"side": "between"}}>
-                          {details.gauge.map((gauge,index)=>(
-                            <Text key={index}>{gauge}</Text>
-                          ))}
-                        </Box>
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>Measurements</strong>
-                      </TableCell>
-                      <TableCell>
-                        <Box gap="xxsmall" border={{"side": "between"}}>
-                          {details.finalMeasure.map((measure,index)=>(
-                            <Text key={index}>{measure.dimName}: {measure.inches} inches / {measure.cm} cm</Text>
-                          ))}
-                        </Box>
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </Box>
-            </Tab>
-          </Tabs>
+                Description
+              </Tab>
+              <Tab
+                className={({ selected }) =>
+                  classNames(
+                    'px-4 pb-2',
+                    selected ?
+                    'border-b-2 border-lila-800 dark:border-fuzz-300 text-lila-800 dark:text-fuzz-300':
+                    'hover:text-phthalo-800 dark:hover:text-phthalo-200'
+                )}
+              >
+                Specs
+              </Tab>
+            </Tab.List>
+            <Tab.Panels>
+              {/* Description */}
+              <Tab.Panel className='prose dark:prose-invert prose-lg prose-phthalo max-w-[560px] md:max-w-full'>
+                <Content contentAst={content} />
+              </Tab.Panel>
+              {/* Specs */}
+              <Tab.Panel className='w-full'>
+                <div className='pt-3 md:pt-6 w-full'>
+                  <table className='table-fixed text-lg border-collapse border-b border-phthalo-600 dark:border-phthalo-200/50 w-full'>
+                    <tbody className='gap-y-0.5 divide-y divide-phthalo-600 dark:divide-phthalo-200/50'>
+                      {/* If pattern is no longer available from original source and there is a new source (i.e. a non-null value for currentSrc), it will conditionally render as "Original source" and "Current source", but if currentSrc is null, then originalPub will show as "Published in". */}
+                      {details.currentSrc ? (
+                        <React.Fragment>
+                          <tr>
+                            <th className='text-left px-3 py-1.5 w-[9rem] lg:w-[30%]' scope='row'>Original source</th>
+                            <td className='px-3 py-1.5 w-auto md:w-[70%]'>{details.originalPub}</td>
+                          </tr>
+                          <tr>
+                            <th className='text-left px-3 py-1.5' scope='row'>Current source</th>
+                            <td className='px-3 py-1.5'>{details.currentSrc}</td>
+                          </tr>
+                        </React.Fragment>  
+                      ) : (
+                        <tr>
+                          <th className='text-left px-3 py-1.5w-[9rem] lg:w-[30%]' scope='row'>Published in</th>
+                          <td className='px-3 py-1.5 w-auto md:w-[70%]'>{details.originalPub}</td>
+                        </tr>
+                      )}
+                      <tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Category</th>
+                        <td className='px-3 py-1.5'>{details.itemType}</td>
+                      </tr>
+                      <tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Release Date</th>
+                        <td className='px-3 py-1.5'>{details.date}</td>
+                      </tr>
+                      <tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Sizes</th>
+                        <td className='px-3 py-1.5'>{details.sizes}</td>
+                      </tr>
+                      <tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Yarn(s)</th>
+                        <td className='px-3 py-1.5'>{details.yarn.join(', ')}</td>
+                      </tr>
+                      <tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Yarn Weight</th>
+                        <td className='px-3 py-1.5'>{details.yarnWeight.join(', ')}</td>
+                      </tr>
+                      <tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Yardage</th>
+                        <td className='px-3 py-1.5'>
+                          <ul className='gap-y-0.5 divide-y divide-phthalo-400 dark:divide-phthalo-400/50'>
+                            {details.yardage.map((yard,index)=>(
+                              <li key={index}>{details.yardage.length > 1 && (`${yard.variant}:`)}{yard.yards} yds / {yard.meters} m</li>
+                            ))}
+                          </ul>
+                        </td>
+                      </tr>
+                      {details.needles && (<tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Needles</th>
+                        <td className='px-3 py-1.5'>{details.needles}</td>
+                      </tr>)}
+                      {details.hooks && (<tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Hooks</th>
+                        <td className='px-3 py-1.5'>{details.hooks}</td>
+                      </tr>)}
+                      <tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Gauge</th>
+                        <td className='px-3 py-1.5'>
+                          <ul className='gap-y-1 divide-y divide-phthalo-400 dark:divide-phthalo-400/50'>
+                            {details.gauge.map((gauge,index)=>(
+                              <li key={index}>{gauge}</li>
+                            ))}
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className='text-left px-3 py-1.5' scope='row'>Measurements</th>
+                        <td className='px-3 py-1.5'>
+                          <ul className='gap-y-0.5 divide-y divide-phthalo-400 dark:divide-phthalo-400/50'>
+                            {details.finalMeasure.map((measure,index)=>(
+                              <li key={index}>{measure.dimName}: {measure.inches} inches / {measure.cm} cm</li>
+                            ))}
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </Tab.Panel>
+            </Tab.Panels>
+          </Tab.Group>
           <PostPagination pageContext={pageContext} />
-        </Box>
-      </Grid>
-    </Box>
+        </section>
+      </div>
+    </main>
   )
 }
 
 PatternItemTemplate.propTypes = {
-  content: PropTypes.node,
+  content: PropTypes.object.isRequired,
   frontmatter: PropTypes.object,
   title: PropTypes.string,
 }
 
-class PatternItem extends React.Component {
-  render () {
-    const data = this.props.data
-    const pageContext = this.props.pageContext
-    const post = data.pattern
-    const pictures = post.frontmatter.pictures
-    const thumbnails = data.thumbnails.frontmatter.pictures
-    const topImage = post.frontmatter.topImage
-    const images = []
+const PatternItem = ({ data, pageContext}) => {
+  const post = data.pattern
+  const pictures = post.frontmatter.pictures
+  const thumbnails = data.thumbnails.frontmatter.pictures
+  const topImage = post.frontmatter.topImage
+  const images = []
 
-    pictures.forEach((image, index) => {
-      const imgData = getImage(image.photo)
-      const thumbData = index !== 0 ? getImage(thumbnails[index].photo) : getImage(topImage)
-      images.push({
-        src: imgData.images.fallback.src,
-        fluid: imgData,
-        thumbFluid: thumbData,
-        key: index,
-        width: thumbData.width,
-        height: thumbData.height,
-        alt: image.altText
-      })
+  pictures.forEach((image, index) => {
+    const imgData = getImage(image.photo)
+    const thumbData = index !== 0 ? getImage(thumbnails[index].photo) : getImage(topImage)
+    images.push({
+      src: imgData.images.fallback.src,
+      fluid: imgData,
+      thumbFluid: thumbData,
+      key: index,
+      width: thumbData.width,
+      height: thumbData.height,
+      alt: image.altText
     })
+  })
 
-    return (
-      <Layout>
-        <PatternItemTemplate
-          content={post.rawMarkdownBody}
-          frontmatter={post.frontmatter}
-          images={images}
-          title={post.frontmatter.title}
-          pageContext={pageContext}
-        />
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <PatternItemTemplate
+        content={post.htmlAst}
+        frontmatter={post.frontmatter}
+        images={images}
+        title={post.frontmatter.title}
+        pageContext={pageContext}
+      />
+    </Layout>
+  )
 }
 
 export default PatternItem
@@ -310,7 +230,7 @@ export const pattQuery = graphql`query PattItemByID($id: String!) {
     fields {
       slug
     }
-    rawMarkdownBody
+    htmlAst
     frontmatter {
       date(formatString: "MMMM YYYY")
       title
@@ -325,6 +245,7 @@ export const pattQuery = graphql`query PattItemByID($id: String!) {
       }
       gauge
       needles
+      hooks
       sizes
       finalMeasure {
         dimName

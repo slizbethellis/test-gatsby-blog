@@ -23,7 +23,7 @@ const AboutPageTemplate = ({ title, image, content }) => {
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  markdown: PropTypes.node,
+  content: PropTypes.object.isRequired,
 }
 
 const AboutPage = ({ data }) => {

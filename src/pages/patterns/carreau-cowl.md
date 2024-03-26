@@ -18,7 +18,8 @@ yardage:
 gauge: 
   - 'small cowl: 9 sts/14 rows = 4 inches/10 cm in stockinette stitch'
   - 'large cowl: 8 sts/12 rows = 4 inches/10 cm'
-needles: US 13 (9.0 mm) or US 15 (10.0mm)
+needles: US 13 (9.0mm) or US 15 (10.0mm)
+hooks: US M/N (9.0mm) or US N/P (10.0mm)
 sizes: small (large)
 finalMeasure:
   - dimName: Circumference

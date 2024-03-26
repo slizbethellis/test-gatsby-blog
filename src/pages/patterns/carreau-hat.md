@@ -15,7 +15,8 @@ yardage:
     meters: 87-91
 gauge:
   - 8.5 sts/18 rows = 4 inches/10cm in garter stitch
-needles: US 13 (9.0 mm)
+needles: US 13 (9.0mm)
+hooks: null
 sizes: one size
 finalMeasure:
   - dimName: Brim Circumference
@@ -29,7 +30,7 @@ finalMeasure:
     cm: '25.5'
 patternSource:
   link: 'https://drive.google.com/file/d/1bt-UtKyJt2KbDTcRilOI9HIiHaYVrevj/view?usp=sharin'
-  price: 0.00
+  price: 7.00
 pattImage: /img/carreau-hat-berroco-back-sq.jpg
 pattAltText: three-quarters angle back view showing the hazier stitch definition of Carreau hat in wool
 topImage: /img/carreau-set.jpg
