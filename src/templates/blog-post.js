@@ -2,11 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import { Link, graphql } from 'gatsby'
-import { Box } from 'grommet'
 
 import Layout from '../components/Layout'
-import Heading from '../components/Heading'
-import RoutedButton from '../components/RoutedButton'
 import Content from '../components/Content'
 import PostPagination from '../components/PostPagination'
 
@@ -21,7 +18,7 @@ const BlogPostTemplate = ({
   return (
     <main className='items-center justify-center max-w-full my-7 md:my-10'>
       <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-[1152px]'>
-        <Heading level={1} className='text-center'>{title}</Heading>
+        <h1 className='text-center'>{title}</h1>
         <span className='text-center text-xl'>{date}</span>
         <div className='max-w-none'>
           <p>{description}</p>
@@ -31,28 +28,19 @@ const BlogPostTemplate = ({
       <div className='flex flex-col max-w-[1152px] px-6 md:px-24'>
         <PostPagination pageContext={pageContext} />
         {tags && tags.length ? (
-          <Box as="section" pad={{ "top": "small"}}>
-            <Heading level={2} className='text-xl md:text-2xl font-semibold'>Tags</Heading>
-            <ul
-              className="tag=list"
-              style={{
-                listStyle: "none",
-                display: "flex",
-                flexFlow: "row wrap",
-                paddingLeft: "0"
-              }}
-            >
+          <section className='self-center border-t border-phthalo-600 dark:border-phthalo-200/50 w-full pt-4 md:pt-6'>
+            <h2 className='text-center text-xl md:text-2xl font-semibold pb-4'>Tags</h2>
+            <ul className='flex flex-wrap place-content-center gap-x-2 gap-y-5'>
               {tags.map((tag, index) => (
                 <li key={index}>
                   <Link
                     to={`/tags/${_.kebabCase(tag)}/`}
-                    margin="xsmall"
-                    label={tag}
-                  />
+                    className='border-2 border-lila-800 dark:border-fuzz-300 rounded-full text-phthalo-900 dark:text-phthalo-100 hover:no-underline hover:bg-phthalo-100 hover:dark:bg-phthalo-800 hover:text-black hover:dark:text-white hover:border-lila-900 hover:dark:border-fuzz-200 text-semibold px-4 py-1'
+                  >{tag}</Link>
                 </li>
               ))}
             </ul>
-          </Box>
+          </section>
         ) : null}
       </div>
     </main>

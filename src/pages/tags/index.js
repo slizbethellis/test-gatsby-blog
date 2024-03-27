@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Box, Heading } from 'grommet'
 
 import Layout from '../../components/Layout'
 import TagButtons from '../../components/TagButtons'
@@ -9,20 +8,15 @@ const TagsPage = ({
   data: { allMarkdownRemark: { group } }
 }) => (
   <Layout>
-    <Box
-      as="section"
-      alignSelf="center"
-      justify="center"
-      width="full"
-    >
-      <Heading level={1} alignSelf="center" textAlign="center">Tags</Heading>
-      <Box alignSelf="center" margin={{"horizontal": "large" }}>
+    <main className='flex flex-col max-w-full my-7 md:my-10'>
+      <h1 className='text-center text-5xl leading-none font-bold mb-10'>Tags</h1>
+      <div className='self-center mx-6 md:mx-12 w-full'>
         <TagButtons
           group={group}
-          margin="xsmall"
+          margin='medium'
         />
-      </Box>
-    </Box>
+      </div>
+    </main>
   </Layout>
 )
 

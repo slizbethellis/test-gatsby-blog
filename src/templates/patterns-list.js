@@ -12,7 +12,7 @@ const PatternPage = ({ data, pageContext }) => {
     
   return (
     <Layout>
-      <main className='items-center justify-items-center max-w-full my-7 md:my-10'>
+      <main className='items-center justify-items-center w-full my-7 md:my-10'>
         <h1 className='text-center text-5xl leading-none font-bold mb-10'>Patterns</h1>
         <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-3 mx-3 sm:mx-6'>
           {posts

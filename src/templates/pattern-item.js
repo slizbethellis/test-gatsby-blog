@@ -34,7 +34,7 @@ const PatternItemTemplate = ({
             <span className='text-center text-2xl text-bold'>
               {details.patternSource.price !== 0 ? `$${parseFloat(details.patternSource.price).toFixed(2)} USD` : `free`}
             </span>
-            <a href={details.patternSource.link} className='self-center rounded-full text-lg text-center font-bold bg-lila-900 text-fuzz-50 px-6 py-2 dark:bg-fuzz-300 dark:text-phthalo-950'>
+            <a href={details.patternSource.link} className='self-center rounded-full text-lg text-center font-bold bg-lila-900 text-fuzz-50 px-6 py-2 dark:bg-fuzz-300 dark:text-phthalo-950 hover:no-underline hover:bg-lila-700 dark:hover:bg-fuzz-200'>
               Get Pattern
             </a>
           </div>

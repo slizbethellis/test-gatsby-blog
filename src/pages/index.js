@@ -17,7 +17,7 @@ const IndexPage = ({ data }) => {
           <h1 className='text-center text-[44px] leading-[60px] font-semibold mx-3 mb-3 sm:mb-6'>Modern Patterns for Knitters and Crocheters</h1>
           <Link
             to='/patterns'
-            className='justify-self-center rounded-full text-lg font-bold bg-lila-900 text-fuzz-50 px-6 py-2 dark:bg-fuzz-300 dark:text-phthalo-950'
+            className='rounded-full text-lg font-bold bg-lila-900 text-fuzz-50 px-6 py-2 dark:bg-fuzz-300 dark:text-phthalo-950 hover:no-underline hover:bg-lila-700 dark:hover:bg-fuzz-200'
           >
             Browse all patterns
           </Link>

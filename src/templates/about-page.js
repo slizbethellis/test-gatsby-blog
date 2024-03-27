@@ -4,14 +4,13 @@ import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Content from '../components/Content'
-import Heading from '../components/Heading'
 import Layout from '../components/Layout'
 
 const AboutPageTemplate = ({ title, image, content }) => {
   return (
     <main className='items-center justify-center max-w-full my-7 md:my-10'>
       <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-[1152px]'>
-        <Heading level={1} className='text-center'>{title}</Heading>
+        <h1 className='text-center'>{title}</h1>
         <figure className='flex place-self-center overflow-hidden rounded-full [-webkit-transform:translate3d(0,0,0)] [-webkit-backface-visibility:hidden] w-72 md:w-96 h-72 md:h-96 m-0'>
           {image}
         </figure>

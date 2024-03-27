@@ -1,10 +1,7 @@
 import React from 'react'
-import { graphql } from 'gatsby'
-import { Box, Heading, List } from 'grommet'
+import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import Link from '../components/Link'
-import RoutedButton from '../components/RoutedButton'
 
 const TagRoute = ({
   data,
@@ -19,26 +16,26 @@ const TagRoute = ({
   
   return (
     <Layout>
-      <Box
-        as="section"
-        alignSelf="center"
-        justify="center"
-        width="full"
+      <main className='flex flex-col max-w-full my-7 md:my-10'
       >
-        <Heading level={1} alignSelf="center" textAlign="center">{tagHeader}</Heading>
-        <Box alignSelf="center" alignContent="center" margin={{"horizontal": "large" }}>
-          <List data={posts}>
-            {(datum, index) => (
-              <Link key={index} to={datum.node.fields.slug} pad="xsmall">
-                <Heading level={2} size="small">{datum.node.frontmatter.title}</Heading>
-              </Link>
-            )}
-          </List>
-          <Box align="center">
-            <RoutedButton primary to="/tags/" margin="medium" label="Browse all tags" />
-          </Box>
-        </Box>
-      </Box>
+        <h1 className='text-center text-5xl leading-none font-bold mb-10'>{tagHeader}</h1>
+        <section className='flex flex-col self-center w-full'>
+          <div className='space-y-5 divide-y divide-phthalo-600 dark:divide-phthalo-200/50 border-b border-phthalo-600 dark:border-phthalo-200/50 mx-6 md:mx-12 max-w-full'>
+            {posts.map((datum, index) => (
+              <article key={index} className='[&:first-child]:pt-0 pt-5 [&:last-child]:pb-5'>
+                <h2 className='text-2xl'>
+                  <Link to={datum.node.fields.slug}>
+                    {datum.node.frontmatter.title}
+                  </Link>
+                </h2>
+              </article>
+            ))}
+          </div>
+          <div className='self-center mt-10'>
+            <Link to='/tags' className='rounded-full text-lg font-bold bg-lila-900 text-fuzz-50 px-6 py-2 dark:bg-fuzz-300 dark:text-phthalo-950 hover:no-underline hover:bg-lila-700 dark:hover:bg-fuzz-200'>Browse all tags</Link>
+          </div>
+        </section>
+      </main>
     </Layout>
   )
 }
