@@ -3268,9 +3268,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:^0.5.10":
-  version: 0.5.10
-  resolution: "@tailwindcss/typography@npm:0.5.10"
+"@tailwindcss/typography@npm:^0.5.12":
+  version: 0.5.12
+  resolution: "@tailwindcss/typography@npm:0.5.12"
   dependencies:
     lodash.castarray: ^4.4.0
     lodash.isplainobject: ^4.0.6
@@ -3278,7 +3278,7 @@ __metadata:
     postcss-selector-parser: 6.0.10
   peerDependencies:
     tailwindcss: "*"
-  checksum: 9e7cbef6611e64542c658b651805594febb22d0f17b4bf435a67cc901f4972a9483d49420e070b19e46193b336264a058b771a0a7931ab03610a9aaa06078c0b
+  checksum: b2037e73d83ad5bd8ca00b22314feb6c72706bf1ae5be087c41805923f06e90bc95c7410f071a36f1d72f9cff850a369e16321f12f7d6e85d78f9fedd8e480ac
   languageName: node
   linkType: hard
 
@@ -11127,7 +11127,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jiti@npm:^1.19.1":
+"jiti@npm:^1.21.0":
   version: 1.21.0
   resolution: "jiti@npm:1.21.0"
   bin:
@@ -14976,14 +14976,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.5.12":
-  version: 0.5.12
-  resolution: "prettier-plugin-tailwindcss@npm:0.5.12"
+"prettier-plugin-tailwindcss@npm:^0.5.13":
+  version: 0.5.13
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.13"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
     "@shopify/prettier-plugin-liquid": "*"
     "@trivago/prettier-plugin-sort-imports": "*"
+    "@zackad/prettier-plugin-twig-melody": "*"
     prettier: ^3.0
     prettier-plugin-astro: "*"
     prettier-plugin-css-order: "*"
@@ -15003,6 +15004,8 @@ __metadata:
     "@shopify/prettier-plugin-liquid":
       optional: true
     "@trivago/prettier-plugin-sort-imports":
+      optional: true
+    "@zackad/prettier-plugin-twig-melody":
       optional: true
     prettier-plugin-astro:
       optional: true
@@ -15024,9 +15027,7 @@ __metadata:
       optional: true
     prettier-plugin-svelte:
       optional: true
-    prettier-plugin-twig-melody:
-      optional: true
-  checksum: fb57155b9e55dc40e803973fefdc8314a50d9242d278e26b8afed5816df780362a88693386ad7aa5955c0984c80cc81afa6d6d0ab9b3ccde6b925e8cff6caafb
+  checksum: f79a6353c813f871c7f5c2d7bbbe77d8e1477fc448ec20d337688659c8ffb454dda1d841b92cb809d171d6128e4dd55acfd02a945bca7d0aa3eb02411a5cd439
   languageName: node
   linkType: hard
 
@@ -17935,9 +17936,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "tailwindcss@npm:3.4.1"
+"tailwindcss@npm:^3.4.3":
+  version: 3.4.3
+  resolution: "tailwindcss@npm:3.4.3"
   dependencies:
     "@alloc/quick-lru": ^5.2.0
     arg: ^5.0.2
@@ -17947,7 +17948,7 @@ __metadata:
     fast-glob: ^3.3.0
     glob-parent: ^6.0.2
     is-glob: ^4.0.3
-    jiti: ^1.19.1
+    jiti: ^1.21.0
     lilconfig: ^2.1.0
     micromatch: ^4.0.5
     normalize-path: ^3.0.0
@@ -17964,7 +17965,7 @@ __metadata:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: ef5a587dd32bb4e91e1549ead6162f85f0b78d3e6ffd8b4e8eeb15585b7b886cb3af6ae9df5092ed8ccb7e590608d1b3eec79ca08c862b07cd9ff7e72f73104b
+  checksum: 7d181a6aafb520c5760d23d0a199444a324dfa36538edd31934daa253ed9a7ac4bde18c4205aaa89c1269bc2ff11781efda04d2e27ded535a9a2547667a344b1
   languageName: node
   linkType: hard
 
@@ -18101,7 +18102,7 @@ __metadata:
     "@headlessui/react": ^1.7.18
     "@headlessui/tailwindcss": ^0.2.0
     "@mdx-js/react": ^3.0.1
-    "@tailwindcss/typography": ^0.5.10
+    "@tailwindcss/typography": ^0.5.12
     autoprefixer: ^10.4.19
     babel-preset-gatsby: ^3.13.1
     gatsby: ^5.13.3
@@ -18126,14 +18127,14 @@ __metadata:
     netlify-cms-app: ^2.15.72
     postcss: ^8.4.38
     prettier: ^3.2.5
-    prettier-plugin-tailwindcss: ^0.5.12
+    prettier-plugin-tailwindcss: ^0.5.13
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
     react-photo-album: ^2.3.1
     rehype-react: 7.2.0
     styled-components: 5.3.11
-    tailwindcss: ^3.4.1
+    tailwindcss: ^3.4.3
     uuid: ^9.0.1
     yet-another-react-lightbox: 3.17.1
   languageName: unknown

@@ -1,24 +1,20 @@
 import React from 'react'
-import { Box } from 'grommet'
-// import Instagram from './Instagram'
+
+import Favorites from './Favorites'
 import Search from './Search'
 import TagBlock from './TagBlock'
 
-const Sidebar = ({ size, tags }) => (
-  <Box
-    as="section"
-    background={{ dark: "dark-1", light: "light-2" }}
-    border="between"
-    flex="shrink"
-    gap="small"
-    margin={{ "bottom": "small" }}
-    pad={{ "bottom": "medium" }}
-    round="medium"
+const Sidebar = ({ tags }) => (
+  <div className='flex flex-col justify-items-start bg-lila-100 dark:bg-phthalo-900 divide-y divide-lila-950 dark:divide-phthalo-200/50 rounded-3xl mr-3'
   >
     {/* <Search searchIndex={searchIndex} size={size} /> */}
-    {/* <Instagram /> */}
-    <TagBlock size={size} tags={tags} />
-  </Box>
+    <aside>
+      <TagBlock tags={tags} />
+    </aside>
+    <aside>
+      <Favorites />
+    </aside>
+  </div>
 )
 
 export default Sidebar

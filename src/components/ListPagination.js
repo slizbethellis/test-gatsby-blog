@@ -12,11 +12,11 @@ const ListPagination = ({ pageContext, path }) => {
   const nextPage = `${path}/${(currentPage + 1).toString()}`
 
   return (
-    <div className='self-center w-full'>
+    <div className='max-w-full'>
       <nav aria-label='pagination'>
-        <div className='flex flex-wrap items-center justify-between mt-4'>
+        <div className='flex flex-wrap items-start justify-between mt-4'>
           {!isFirst && (
-            <div key={currentPage - 1}>
+            <div key={currentPage - 1} className='mr-auto'>
               <Link to={prevPage} rel='prev' className='text-lg font-semibold'>
                 <Left className='inline-block h-4 w-4 mr-2 mb-1' aria-hidden='true' />Previous Page
               </Link>

@@ -5,7 +5,7 @@ import HomeImage from './HomeImage'
 // a responsive grid of image buttons for the home page
 const HomeGallery = ({ posts }) => {
   return (
-    <ul className='grid grid-cols-3 md:grid-cols-4 2xl:grid-cols-5 w-full h-[574px]'>
+    <ul className='grid grid-cols-3 md:grid-cols-4 2xl:grid-cols-5 max-w-[1920px] h-[574px]'>
       {/* Breakpoints larger than "small" get 4 pattern photo buttons, smaller breakpoints get only 3. */}
       {posts
         .map(({ node: post }) => (

@@ -71,7 +71,12 @@ export const IndexQuery = graphql`query IndexQuery {
           title
           pattImage {
             childImageSharp {
-              gatsbyImageData(height: 550, layout: FIXED)
+              gatsbyImageData(
+                width:360,
+                height: 550,
+                layout: FIXED,
+                transformOptions: { cropFocus: CENTER}
+              )
             }
           }
         }

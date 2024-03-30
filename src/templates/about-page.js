@@ -8,7 +8,7 @@ import Layout from '../components/Layout'
 
 const AboutPageTemplate = ({ title, image, content }) => {
   return (
-    <main className='items-center justify-center max-w-full my-7 md:my-10'>
+    <main className='self-center max-w-full my-7 md:my-10'>
       <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-[1152px]'>
         <h1 className='text-center'>{title}</h1>
         <figure className='flex place-self-center overflow-hidden rounded-full [-webkit-transform:translate3d(0,0,0)] [-webkit-backface-visibility:hidden] w-72 md:w-96 h-72 md:h-96 m-0'>
@@ -67,7 +67,7 @@ export const aboutPageQuery = graphql`query AboutPage($id: String!) {
   }
   fluidImages: file(relativePath: {regex: "/headshot.jpg/"}) {
     childImageSharp {
-      gatsbyImageData(width: 400, height: 400, layout: CONSTRAINED)
+      gatsbyImageData(width: 390, height: 390, layout: CONSTRAINED)
     }
   }
 }

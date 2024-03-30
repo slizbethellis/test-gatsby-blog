@@ -8,13 +8,12 @@ import ListPagination from '../components/ListPagination'
 
 const PatternPage = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges
-  console.log(pageContext)
     
   return (
     <Layout>
-      <main className='items-center justify-items-center w-full my-7 md:my-10'>
+      <main className='flex flex-col w-full my-7 md:my-10'>
         <h1 className='text-center text-5xl leading-none font-bold mb-10'>Patterns</h1>
-        <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-3 mx-3 sm:mx-6'>
+        <ul className='self-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 mx-3 sm:mx-6'>
           {posts
             .map(({ node: post }) => (
               <PatternCard
@@ -29,7 +28,7 @@ const PatternPage = ({ data, pageContext }) => {
         {/* Pagination component will not render if there's only one page */}
         {pageContext.numPages > 1 && (
           <div className='border-t border-phthalo-200 dark:border-phthalo-700/50 mt-6 mx-6 sm:mx-12'>
-            <ListPagination pageContext={pageContext} path="/patterns" />
+            <ListPagination pageContext={pageContext} path='/patterns' />
           </div>
         )}
       </main>

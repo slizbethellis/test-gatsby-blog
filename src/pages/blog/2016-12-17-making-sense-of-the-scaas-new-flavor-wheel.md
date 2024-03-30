@@ -10,6 +10,7 @@ altText: many baristas involved in various kinds of coffee preparation, with man
 tags:
   - flavor
   - tasting
+favorite: true
 ---
 
 ![flavor wheel](/img/flavor_wheel.jpg)

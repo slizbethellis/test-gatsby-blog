@@ -10,12 +10,12 @@ const TagButtons = ({ group, margin, size }) => {
     return classes.filter(Boolean).join(' ')
   }
 
-  const listClasses = classNames('flex flex-wrap place-content-center',
+  const listClasses = classNames('flex flex-wrap justify-center',
   margin === 'medium' ?
   'gap-x-2.5 gap-y-5' :
-  'gap-x-1 gap-y-3')
+  'gap-x-1.5 gap-y-4 mt-5 mb-4')
 
-  const linkClasses = classNames('border-2 border-lila-800 dark:border-fuzz-300 rounded-full text-phthalo-900 dark:text-phthalo-100 hover:no-underline hover:bg-phthalo-100 hover:dark:bg-phthalo-800 hover:text-black hover:dark:text-white hover:ring-2 hover:ring-lila-800 dark:hover:ring-fuzz-300 text-semibold px-4 py-1',
+  const linkClasses = classNames('border-2 border-lila-900 dark:border-fuzz-300 rounded-full text-phthalo-900 dark:text-phthalo-100 hover:no-underline hover:ring-2 hover:border-lila-700 hover:ring-lila-700 dark:hover:border-fuzz-200 dark:hover:ring-fuzz-200 text-semibold px-4 py-1',
   !size ?
   'text-lg' :
   'text-sm')

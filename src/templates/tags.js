@@ -20,14 +20,16 @@ const TagRoute = ({
       >
         <h1 className='text-center text-5xl leading-none font-bold mb-10'>{tagHeader}</h1>
         <section className='flex flex-col self-center w-full'>
-          <div className='space-y-5 divide-y divide-phthalo-600 dark:divide-phthalo-200/50 border-b border-phthalo-600 dark:border-phthalo-200/50 mx-6 md:mx-12 max-w-full'>
+          <div className='space-y-5 divide-y divide-phthalo-600 dark:divide-phthalo-200/50 border-b border-phthalo-600 dark:border-phthalo-200/50 mx-6 md:mx-12 max-w-prose'>
             {posts.map((datum, index) => (
-              <article key={index} className='[&:first-child]:pt-0 pt-5 [&:last-child]:pb-5'>
+              <article key={index} className='[&:first-child]:pt-0 pt-5'>
                 <h2 className='text-2xl'>
                   <Link to={datum.node.fields.slug}>
                     {datum.node.frontmatter.title}
                   </Link>
                 </h2>
+                <span className='text-sm mt-1.5'>{datum.node.frontmatter.date}</span>
+                <p className='text-lg leading-6 mt-2.5 mb-5'>{datum.node.excerpt}</p>
               </article>
             ))}
           </div>
@@ -64,11 +66,13 @@ export const tagPageQuery = graphql`query TagPage($tag: String) {
     totalCount
     edges {
       node {
+        excerpt(pruneLength: 200)
         fields {
           slug
         }
         frontmatter {
           title
+          date(formatString: "MMMM DD, YYYY")
         }
       }
     }

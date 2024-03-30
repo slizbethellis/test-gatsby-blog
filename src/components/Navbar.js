@@ -43,6 +43,7 @@ export default function Navbar({ theme, toggleTheme, componentMounted }) {
                   to={item.href}
                   className='text-phthalo-900 dark:text-phthalo-100 hover:underline hover:text-lila-800 dark:hover:text-fuzz-200 rounded-md px-3 py-2 text-base font-semibold'
                   activeClassName='bg-phthalo-100 dark:bg-phthalo-900 text-phthalo-950 dark:text-phthalo-50'
+                  partiallyActive={true}
                 >
                   {item.name}
                 </Link>

@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { navigate } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import { Index } from 'elasticlunr'
 import { Search as FormSearch } from 'grommet-icons'
 import { Box, Text, TextInput } from 'grommet'
 
-import Link from './Link'
 
 // Search component
 const Search = ({ searchIndex, size }) => {
