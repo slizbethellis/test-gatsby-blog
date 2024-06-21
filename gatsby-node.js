@@ -64,7 +64,6 @@ exports.createPages = ({ actions, graphql }) => {
     
     // template path for tag pages
     const tagTemplate = path.resolve(`./src/templates/tags.js`)
-    console.log
 
     // Make tag pages
     tags.forEach(tag => {

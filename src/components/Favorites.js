@@ -22,7 +22,7 @@ const Favorites = () => {
     }
   `)
   const favs = posts.allMarkdownRemark.nodes
-  console.log(favs)
+
   return (
     <div className='flex flex-col m-6'>
       <h2 className='text-center text-2xl font-bold'>Favorites</h2>

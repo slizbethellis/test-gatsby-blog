@@ -37,17 +37,15 @@ const BlogPosts = ({ posts, pageContext }) => (
 const BlogPage = ({ data, pageContext }) => {
   const posts = data.posts.edges
 
-  console.log(data.siteSearchIndex.index)
-
   return (
     <Layout>
       <div className='flex flex-col items-center w-full my-7 md:my-10'>
-        <div className='grid grid-flow-row grid-cols-1 md:grid-cols-4 justify-items-center md:gap-3 max-w-screen-2xl'>
-          <main className='md:col-span-3 grid grid-cols-1 md:grid-cols-3'>
+        <div className='grid grid-flow-row grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-items-center md:gap-3 max-w-screen-2xl'>
+          <main className='md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-3'>
             <h1 className='md:col-start-2 text-center text-5xl leading-none font-bold mb-7'>Blog</h1>
             <BlogPosts posts={posts} pageContext={pageContext} />
           </main>
-          <Sidebar searchIndex={data.siteSearchIndex.index} tags={data.tags} />
+          <Sidebar tags={data.tags} />
         </div>
       </div>
     </Layout>
@@ -83,9 +81,6 @@ export const pageQuery = graphql`query BlogQuery($skip: Int!, $limit: Int!) {
     siteMetadata {
       title
     }
-  }
-  siteSearchIndex {
-    index
   }
   posts: allMarkdownRemark(
     sort: {frontmatter: {date: DESC}}

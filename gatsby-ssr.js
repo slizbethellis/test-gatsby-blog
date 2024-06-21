@@ -1,7 +1,8 @@
 import React from 'react'
 
 const HtmlAttributes = {
-  lang: "en"
+  lang: "en",
+  className: "dark:[scrollbar-color:#689999_#0d141a]"
 }
 
 const BodyAttributes = {

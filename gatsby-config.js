@@ -38,17 +38,15 @@ module.exports = {
                 sort: {frontmatter: {date: DESC}}
                 filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
               ) {
-                edges {
-                  node {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
+                nodes {
+                  excerpt
+                  html
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                    date
                   }
                 }
               }
@@ -75,25 +73,85 @@ module.exports = {
       },
     },
     {
-      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      resolve: 'gatsby-plugin-local-search',
       options: {
-        // Fields to index
-        fields: [
-          'title',
-          'path',
-          'tags',
-          'itemType'
-        ],
-        // How to resolve each field's value for a supported node type
-        resolvers: {
-          // For any node of type MarkdownRemark, list how to resolve the fields' values
-          MarkdownRemark: {
-            title: node => node.frontmatter.title,
-            path: node => node.fields.slug,
-            tags: node => node.frontmatter.tags,
-            itemType: node => node.frontmatter.itemType
-          },
+        // A unique name for the search index. This should be descriptive of
+        // what the index contains. This is required.
+        name: 'pages',
+
+        // Set the search engine to create the index. This is required.
+        // The following engines are supported: flexsearch, lunr
+        engine: 'flexsearch',
+
+        // Provide options to the engine. This is optional and only recommended
+        // for advanced users.
+        //
+        // Note: Only the flexsearch engine supports options.
+        engineOptions: {
+          //charset: "latin",
+          //tokenize: "strict",
+          resolution: 3,
+          minlength: 3,
+          //fastupdate: true,
+          optimize: !1, //fastupdate: true,
+          context: {
+            depth: 2, resolution: 1
+            //bidirectional: false
+          }
         },
+
+        // GraphQL query used to fetch all data for the search index. This is
+        // required.
+        query: `
+          {
+            allMarkdownRemark (filter: {frontmatter: {templateKey: {ne: "about-page"}}}) {
+              nodes {
+                id
+                excerpt(format: PLAIN, pruneLength: 400)
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                  tags
+                  templateKey
+                  description
+                  itemType
+                }
+              }
+            }
+          }
+        `,
+
+        // Field used as the reference value for each document.
+        // Default: 'id'.
+        ref: 'id',
+
+        // List of keys to index. The values of the keys are taken from the
+        // normalizer function below.
+        // Default: all fields
+        index: ['title', 'tags', 'excerpt', 'description', 'itemType'],
+
+        // List of keys to store and make available in your UI. The values of
+        // the keys are taken from the normalizer function below.
+        // Default: all fields
+        store: ['id', 'slug', 'title', 'tags', 'templateKey', 'itemType'],
+
+        // Function used to map the result from the GraphQL query. This should
+        // return an array of items to index in the form of flat objects
+        // containing properties to index. The objects must contain the `ref`
+        // field above (default: 'id'). This is required.
+        normalizer: ({ data }) =>
+          data.allMarkdownRemark.nodes.map((node) => ({
+            id: node.id,
+            excerpt: node.excerpt,
+            title: node.frontmatter.title,
+            tags: node.frontmatter.tags,
+            templateKey: node.frontmatter.templateKey,
+            description: node.frontmatter.description,
+            itemType: node.frontmatter.itemType,
+            slug: node.fields.slug,
+          })),
       },
     },
     'gatsby-plugin-image',
