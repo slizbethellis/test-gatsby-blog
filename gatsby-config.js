@@ -38,15 +38,17 @@ module.exports = {
                 sort: {frontmatter: {date: DESC}}
                 filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
               ) {
-                nodes {
-                  excerpt
-                  html
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    title
-                    date
+                edges {
+                  node {
+                    excerpt
+                    html
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      date
+                    }
                   }
                 }
               }
