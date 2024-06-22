@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Dialog } from '@headlessui/react'
+import { Dialog, DialogPanel } from '@headlessui/react'
 import { Link } from 'gatsby'
 
 import { Bars, Xmark } from './Icon'
@@ -63,7 +63,7 @@ export default function Navbar({ theme, toggleTheme, componentMounted }) {
       </nav>
       <Dialog as='div' className='md:hidden' open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className='fixed inset-y-0 right-0 z-50 w-full max-h-72 overflow-y-auto shadow-lg rounded-b-lg bg-phthalo-50 dark:bg-phthalo-950'>
+        <DialogPanel className='fixed inset-y-0 right-0 z-50 w-full max-h-72 overflow-y-auto shadow-lg rounded-b-lg bg-phthalo-50 dark:bg-phthalo-950'>
           <div className="flex h-16 items-center justify-center border-b border-phthalo-950/10 dark:border-phthalo-50/10">
             <div className='absolute left-0 flex self-center items-center'>
               {/* Mobile menu button*/}
@@ -101,7 +101,7 @@ export default function Navbar({ theme, toggleTheme, componentMounted }) {
               </div>
             )}
           </div>
-        </Dialog.Panel>
+        </DialogPanel>
       </Dialog>
     </header>
   )

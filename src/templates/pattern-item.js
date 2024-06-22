@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
-import { Tab } from '@headlessui/react'
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 
 import Content from '../components/Content'
 import Layout from '../components/Layout'
@@ -31,15 +31,15 @@ const PatternItemTemplate = ({
         <section className='justify-self-center flex flex-col w-full'>
           <h1 className='text-center text-4xl md:text-5xl leading-none font-bold mb-3 md:mb-6'>{title}</h1>
           <div className='flex flex-col items-center mb-6 gap-6'>
-            <span className='text-center text-2xl text-bold'>
+            <span className='text-center text-2xl font-semibold'>
               {details.patternSource.price !== 0 ? `$${parseFloat(details.patternSource.price).toFixed(2)} USD` : `free`}
             </span>
             <a href={details.patternSource.link} className='self-center rounded-full text-lg text-center font-bold bg-lila-900 text-fuzz-50 px-6 py-2 dark:bg-fuzz-300 dark:text-phthalo-950 hover:no-underline hover:bg-lila-700 dark:hover:bg-fuzz-200'>
               Get Pattern
             </a>
           </div>
-          <Tab.Group>
-            <Tab.List className='flex flex-row justify-center border-b border-phthalo-400 dark:border-phthalo-400/50 text-xl w-full'>
+          <TabGroup>
+            <TabList className='flex flex-row justify-center border-b border-phthalo-400 dark:border-phthalo-400/50 text-xl w-full'>
               <Tab
                 className={({ selected }) =>
                   classNames(
@@ -62,14 +62,14 @@ const PatternItemTemplate = ({
               >
                 Specs
               </Tab>
-            </Tab.List>
-            <Tab.Panels>
+            </TabList>
+            <TabPanels>
               {/* Description */}
-              <Tab.Panel className='prose dark:prose-invert prose-lg prose-phthalo max-w-[560px] md:max-w-full'>
+              <TabPanel className='prose dark:prose-invert prose-lg prose-phthalo max-w-[560px] md:max-w-full'>
                 <Content contentAst={content} />
-              </Tab.Panel>
+              </TabPanel>
               {/* Specs */}
-              <Tab.Panel className='w-full'>
+              <TabPanel className='w-full'>
                 <div className='pt-3 md:pt-6 w-full'>
                   <table className='table-fixed text-lg border-collapse border-b border-phthalo-600 dark:border-phthalo-200/50 w-full'>
                     <tbody className='gap-y-0.5 divide-y divide-phthalo-600 dark:divide-phthalo-200/50'>
@@ -87,7 +87,7 @@ const PatternItemTemplate = ({
                         </React.Fragment>  
                       ) : (
                         <tr>
-                          <th className='text-left px-3 py-1.5w-[9rem] lg:w-[30%]' scope='row'>Published in</th>
+                          <th className='text-left px-3 py-1.5 w-[9rem] lg:w-[30%]' scope='row'>Published in</th>
                           <td className='px-3 py-1.5 w-auto md:w-[70%]'>{details.originalPub}</td>
                         </tr>
                       )}
@@ -152,9 +152,9 @@ const PatternItemTemplate = ({
                     </tbody>
                   </table>
                 </div>
-              </Tab.Panel>
-            </Tab.Panels>
-          </Tab.Group>
+              </TabPanel>
+            </TabPanels>
+          </TabGroup>
           <PostPagination pageContext={pageContext} />
         </section>
       </div>

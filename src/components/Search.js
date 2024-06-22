@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import { Dialog } from '@headlessui/react'
+import { Dialog, DialogPanel } from '@headlessui/react'
 import { useFlexSearch } from 'react-use-flexsearch'
 
 import { Search as FormSearch } from './Icon'
@@ -33,10 +33,10 @@ const Search = () => {
       </button>
       <Dialog open={isOpen} onClose={() => {setIsOpen(false); setSearchQuery('');}}>
         {/* The backdrop, rendered as a fixed sibling to the panel container */}
-        <div className='fixed inset-0 bg-phthalo-100/90 dark:bg-phthalo-950/85 z-50' aria-hidden='true' />
+        <div className='fixed inset-0 bg-phthalo-100/90 dark:bg-phthalo-950/85 z-[60]' aria-hidden='true' />
         {/* Full-screen container to center the panel */}
-        <div className='fixed inset-0 flex w-screen justify-center z-50 p-4 sm:p-8'>
-          <Dialog.Panel className='mx-auto mb-16 md:my-16 w-full md:w-3/4 lg:w-2/3 max-w-3xl shadow-lg rounded-lg bg-phthalo-50 dark:bg-phthalo-900'>
+        <div className='fixed inset-0 flex w-screen justify-center z-[60] p-4 sm:p-8'>
+          <DialogPanel className='mx-auto mb-16 md:my-16 w-full md:w-3/4 lg:w-2/3 max-w-3xl shadow-lg rounded-lg bg-phthalo-50 dark:bg-phthalo-900'>
             <div className='flex self-center items-center w-full border-b border-phthalo-400 dark:border-phthalo-400/50 px-3'>
               {/* Search input field */}
               <form
@@ -86,7 +86,7 @@ const Search = () => {
               </ul>
             </div>
             <footer className='h-6 border-t border-phthalo-400 dark:border-phthalo-400/50'></footer>
-          </Dialog.Panel>
+          </DialogPanel>
         </div>
       </Dialog>
     </React.Fragment>

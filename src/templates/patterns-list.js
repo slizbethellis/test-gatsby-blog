@@ -13,7 +13,7 @@ const PatternPage = ({ data, pageContext }) => {
     <Layout>
       <main className='flex flex-col w-full my-7 md:my-10'>
         <h1 className='text-center text-5xl leading-none font-bold mb-10'>Patterns</h1>
-        <ul className='self-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 mx-3 sm:mx-6'>
+        <ul className='self-center grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 mx-3 sm:mx-6'>
           {posts
             .map(({ node: post }) => (
               <PatternCard
@@ -22,6 +22,7 @@ const PatternPage = ({ data, pageContext }) => {
                 title={post.frontmatter.title}
                 image={post.frontmatter.pattImage}
                 altText={post.frontmatter.pattAltText}
+                price={post.frontmatter.patternSource.price}
               />
             ))}
         </ul>
@@ -82,6 +83,9 @@ export const PageQuery = graphql`query PatternPage($skip: Int!, $limit: Int!) {
             }
           }
           pattAltText
+          patternSource {
+            price
+          }
         }
       }
     }

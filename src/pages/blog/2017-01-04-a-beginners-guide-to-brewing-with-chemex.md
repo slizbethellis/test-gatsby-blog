@@ -11,7 +11,6 @@ altText: Chemex coffee maker on sparse countertop with gooseneck kettle on gas r
 tags:
   - brewing
   - chemex
-  - flavor
 favorite: false
 ---
 ![chemex](/img/chemex.jpg)
