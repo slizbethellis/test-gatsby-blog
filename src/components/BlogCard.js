@@ -21,8 +21,8 @@ const BlogCard = ({
   image
 }) => {
   return (
-    <article className='flex flex-col md:flex-row items-center justify-center md:space-x-3 pb-2 md:pb-0 md:pr-3'>
-      <div className='p-3 md:p-6'>
+    <article className='flex flex-col lg:flex-row items-center justify-center lg:space-x-3 pb-2 lg:pb-0 md:pr-3'>
+      <div className='p-3 lg:p-6'>
         <Heading
           level={hLevel}
           className={classNames(styles.toString(), 'font-semibold hover:underline my-0')}

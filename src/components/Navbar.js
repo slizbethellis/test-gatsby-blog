@@ -62,9 +62,9 @@ export default function Navbar({ theme, toggleTheme, componentMounted }) {
         </div>
       </nav>
       <Dialog as='div' className='md:hidden' open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-        <div className="fixed inset-0 z-50" />
-        <DialogPanel className='fixed inset-y-0 right-0 z-50 w-full max-h-72 overflow-y-auto shadow-lg rounded-b-lg bg-phthalo-50 dark:bg-phthalo-950'>
-          <div className="flex h-16 items-center justify-center border-b border-phthalo-950/10 dark:border-phthalo-50/10">
+        <div className="fixed inset-0 bg-phthalo-100/90 dark:bg-phthalo-950/85 z-50" />
+        <DialogPanel className='fixed inset-y-0 right-0 z-50 w-full max-h-72 overflow-y-auto shadow-lg shadow-phthalo-200 dark:shadow-phthalo-950 rounded-b-lg bg-phthalo-50 dark:bg-phthalo-900'>
+          <div className="flex h-16 items-center justify-center border-b border-phthalo-950/10 dark:bg-phthalo-950 dark:border-phthalo-50/10">
             <div className='absolute left-0 flex self-center items-center'>
               {/* Mobile menu button*/}
               <button
@@ -82,6 +82,9 @@ export default function Navbar({ theme, toggleTheme, componentMounted }) {
                 <LogoText className='hidden min-[360px]:inline-block mt-1 fill-lila-950 dark:fill-fuzz-300' height='20px' />
               </Link>
             </div>
+            <div className='absolute right-0 flex self-center items-center'>
+              <Search />
+            </div>
           </div>
           <div className="space-y-1 px-2 pb-3 pt-2">
             {navigation.map((item) => (
@@ -89,7 +92,7 @@ export default function Navbar({ theme, toggleTheme, componentMounted }) {
                 key={item.name}
                 to={item.href}
                 className='text-phthalo-900 dark:text-phthalo-100 hover:underline hover:text-lila-800 dark:hover:text-fuzz-200 block rounded-md px-3 py-2 text-base font-semibold'
-                activeClassName='bg-phthalo-100 dark:bg-phthalo-900 text-phthalo-950 dark:text-phthalo-50'
+                activeClassName='bg-phthalo-100 dark:bg-phthalo-800 text-phthalo-950 dark:text-phthalo-50'
                 partiallyActive={true}
               >
                 {item.name}

@@ -8,8 +8,8 @@ import ListPagination from '../components/ListPagination'
 import Sidebar from '../components/Sidebar'
 
 const BlogPosts = ({ posts, pageContext }) => (
-  <section className='md:col-span-3 flex flex-col justify-start max-w-full'>
-    <div className='space-y-1 divide-y divide-phthalo-600 dark:divide-phthalo-200/50 border-b border-phthalo-600 dark:border-phthalo-200/50 mx-3 md:mx-6'>
+  <section className='justify-start max-w-full'>
+    <div className='self-start space-y-1 divide-y divide-phthalo-600 dark:divide-phthalo-200/50 border-b border-phthalo-600 dark:border-phthalo-200/50 mx-3 md:mx-6'>
       {posts
         .map(({ node: post }) => (
           <BlogCard
@@ -39,10 +39,10 @@ const BlogPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <div className='flex flex-col items-center w-full my-7 md:my-10'>
-        <div className='grid grid-flow-row grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-items-center md:gap-3 max-w-screen-2xl'>
-          <main className='md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-3'>
-            <h1 className='md:col-start-2 text-center text-5xl leading-none font-bold mb-7'>Blog</h1>
+      <div className='flex flex-col w-full my-7 md:my-10'>
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 h-full justify-items-center md:gap-3 max-w-screen-2xl'>
+          <main className='md:col-span-2 lg:col-span-3'>
+            <h1 className='text-center text-5xl font-bold mb-7'>Blog</h1>
             <BlogPosts posts={posts} pageContext={pageContext} />
           </main>
           <Sidebar tags={data.tags} />

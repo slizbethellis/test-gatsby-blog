@@ -55,6 +55,7 @@
     "@tailwindcss/typography": "^0.5.13",
     "autoprefixer": "^10.4.19",
     "gatsby-plugin-postcss": "^6.13.1",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.32",
     "postcss": "^8.4.38",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5",
