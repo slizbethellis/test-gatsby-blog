@@ -94,7 +94,7 @@ export const PatternItemTemplate = ({
 }
 
 PatternItemTemplate.propTypes = {
-  content: PropTypes.node,
+  content: PropTypes.object,
   currentSrc: PropTypes.string,
   gauge: PropTypes.array,
   itemType: PropTypes.string,

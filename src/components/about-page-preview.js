@@ -29,7 +29,7 @@ export const AboutPageTemplate = ({ title, content, headshot }) => {
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  content: PropTypes.object,
   contentComponent: PropTypes.func,
   seo: PropTypes.object
 }
