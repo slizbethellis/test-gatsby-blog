@@ -1,9 +1,15 @@
+const adapter = require("gatsby-adapter-netlify").default
+
 module.exports = {
   siteMetadata: {
     title: 'Haloroundmyhead Knits',
     description: `Blog and pattern portfolio for knitting designer Sarah Ellis`,
     siteUrl: `https://festive-lovelace-f360ad.netlify.com`
   },
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+    imageCDN: false,
+  }),
   plugins: [
     {
       resolve: `gatsby-plugin-feed`,
