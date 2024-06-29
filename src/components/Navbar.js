@@ -32,7 +32,7 @@ export default function Navbar({ theme, toggleTheme, componentMounted }) {
         <div className='flex flex-1 items-center justify-center md:items-stretch md:justify-between'>
           <div className='flex flex-shrink-0 items-center'>
             <Link to='/' className='space-x-2.5' aria-label='Haloroundmyhead Knits home page'>
-              <LogoIcon className='inline-block fill-zomp-500' height='34px' />
+              <LogoIcon className='inline-block fill-zomp' height='34px' />
               <LogoText className='hidden min-[360px]:inline-block mt-1 fill-lila-950 dark:fill-fuzz-300' height='20px' />
             </Link>
           </div>
@@ -78,7 +78,7 @@ export default function Navbar({ theme, toggleTheme, componentMounted }) {
             </div>
             <div className='flex flex-shrink-0 items-center'>
               <Link to='/' className='space-x-2.5' aria-label='Haloroundmyhead Knits home page'>
-                <LogoIcon className='inline-block' fill='#26bd9a' height='34px' />
+                <LogoIcon className='inline-block fill-zomp' height='34px' />
                 <LogoText className='hidden min-[360px]:inline-block mt-1 fill-lila-950 dark:fill-fuzz-300' height='20px' />
               </Link>
             </div>

@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Content from '../components/Content'
 
-export const AboutPageTemplate = ({ title, content, headshot }) => {
+export const AboutPageTemplate = ({ title, content }) => {
 
   return (
     <section className="section section--gradient">
@@ -13,12 +12,7 @@ export const AboutPageTemplate = ({ title, content, headshot }) => {
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {title}
               </h2>
-              <div className="columns">
-                <div className="column is-5">
-                  {headshot}
-                </div>
-              </div>
-              <Content contentAst={content} fill/>
+              <div className="content">{content}</div>
             </div>
           </div>
         </div>
@@ -30,6 +24,4 @@ export const AboutPageTemplate = ({ title, content, headshot }) => {
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.object,
-  contentComponent: PropTypes.func,
-  seo: PropTypes.object
 }

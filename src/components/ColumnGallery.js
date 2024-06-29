@@ -8,7 +8,6 @@ import 'yet-another-react-lightbox/styles.css'
 import 'yet-another-react-lightbox/plugins/counter.css'
 
 import GalleryImage from './GalleryImage'
-// import './Counter.css'
 
 const ColumnGallery = (images) => {
   const [index, setIndex] = useState(-1)

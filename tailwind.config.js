@@ -18,7 +18,6 @@ module.exports = {
           200: '#bad5d4',
           300: '#90b8b7',
           400: '#689999',
-          500: '#4e7d7e',
           600: '#3d6264',
           700: '#335152',
           800: '#2c4243',
@@ -30,13 +29,6 @@ module.exports = {
           '100': '#ffe6d5',
           '200': '#ffbe98',
           '300': '#ffa272',
-          '400': '#fd713a',
-          '500': '#fc4c13',
-          '600': '#ed3109',
-          '700': '#c4210a',
-          '800': '#9c1c10',
-          '900': '#7d1a11',
-          '950': '#440a06',
         },
         lila: {
           '100': '#fae5ff',
@@ -46,10 +38,7 @@ module.exports = {
           '900': '#791089',
           '950': '#4b0057'
         },
-        zomp: {
-          '500': '#39a78e',
-          '600': '#277A68',
-        }
+        zomp: '#39a78e',
       },
       typography: ({ theme }) => ({
         DEFAULT: {
@@ -79,8 +68,6 @@ module.exports = {
             '--tw-prose-quote-borders': theme('colors.phthalo[400]'),
             '--tw-prose-captions': theme('colors.phthalo[800]'),
             '--tw-prose-code': theme('colors.phthalo[950]'),
-            '--tw-prose-pre-code': theme('colors.phthalo[50]'),
-            '--tw-prose-pre-bg': theme('colors.phthalo[900]'),
             '--tw-prose-th-borders': theme('colors.phthalo[400]'),
             '--tw-prose-td-borders': theme('colors.phthalo[300]'),
             '--tw-prose-invert-body': theme('colors.phthalo[100]'),
@@ -95,8 +82,6 @@ module.exports = {
             '--tw-prose-invert-quote-borders': theme('colors.phthalo[700]'),
             '--tw-prose-invert-captions': theme('colors.phthalo[300]'),
             '--tw-prose-invert-code': theme('colors.phthalo[50]'),
-            '--tw-prose-invert-pre-code': theme('colors.phthalo[200]'),
-            '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
             '--tw-prose-invert-th-borders': theme('colors.phthalo[600]'),
             '--tw-prose-invert-td-borders': theme('colors.phthalo[700]'),
           }

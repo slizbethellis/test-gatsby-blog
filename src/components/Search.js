@@ -63,7 +63,7 @@ const Search = () => {
               </form>
               {/* Close button*/}
               <button
-                className='relative inline-flex items-center justify-center rounded-md p-1 text-phthalo-900 dark:text-phthalo-100 text-xs bg-phthalo-100 dark:bg-phthalo-800 hover:text-phthalo-800 dark:hover:text-phthalo-200 ring-1 ring-phthalo-800 dark:ring-phthalo-200 focus:outline-none focus:ring-1 focus:ring-inset hover:ring-zomp-500'
+                className='relative inline-flex items-center justify-center rounded-md p-1 text-phthalo-900 dark:text-phthalo-100 text-xs bg-phthalo-100 dark:bg-phthalo-800 hover:text-phthalo-800 dark:hover:text-phthalo-200 ring-1 ring-phthalo-800 dark:ring-phthalo-200 focus:outline-none focus:ring-1 focus:ring-inset hover:ring-zomp'
                 onClick={() => {setIsOpen(false); setSearchQuery('');}}
               >
                 <span className='absolute -inset-0.5' />

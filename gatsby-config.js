@@ -187,6 +187,7 @@ module.exports = {
               destinationDir: 'static',
             },
           },
+          `gatsby-remark-smartypants`,
         ],
       },
     },
@@ -212,7 +213,6 @@ module.exports = {
          }
       }
     },
-    'gatsby-plugin-webpack-bundle-analyser-v2',
     {
       resolve: 'gatsby-plugin-decap-cms',
       options: {

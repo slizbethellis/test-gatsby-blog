@@ -16,11 +16,11 @@ const BlogPostTemplate = ({
   pageContext
 }) => {
   return (
-    <main className='items-center justify-center max-w-full my-7 md:my-10'>
-      <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-[1152px]'>
+    <main className='justify-self-center max-w-full my-7 md:my-10'>
+      <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-full min-[1152px]:max-w-6xl'>
         <h1 className='text-center'>{title}</h1>
         <span className='text-center text-xl'>{date}</span>
-        <div className='max-w-none'>
+        <div className='max-w-full overflow-auto'>
           <p>{description}</p>
           <Content contentAst={content} />
         </div>
@@ -54,25 +54,21 @@ BlogPostTemplate.propTypes = {
   title: PropTypes.string,
 }
 
-class BlogPost extends React.Component {
-  render () {
-    const data = this.props.data
-    const { markdownRemark: post } = data
-    const pageContext = this.props.pageContext
+const BlogPost = ({ data, pageContext}) => {
+  const { markdownRemark: post } = data
 
-    return (
-      <Layout>
-        <BlogPostTemplate
-          content={post.htmlAst}
-          description={post.frontmatter.description}
-          tags={post.frontmatter.tags}
-          title={post.frontmatter.title}
-          date={post.frontmatter.date}
-          pageContext={pageContext}
-        />
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <BlogPostTemplate
+        content={post.htmlAst}
+        description={post.frontmatter.description}
+        tags={post.frontmatter.tags}
+        title={post.frontmatter.title}
+        date={post.frontmatter.date}
+        pageContext={pageContext}
+      />
+    </Layout>
+  )
 }
 
 export default BlogPost

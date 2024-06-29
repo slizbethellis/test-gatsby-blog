@@ -3,7 +3,6 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 import BigButton from '../components/BigButtons'
 import Layout from '../components/Layout'
-// import { LogoIcon } from '../components/Logo'
 
 // Linktree-like page full of big link buttons
 const LinkPage = () => (
@@ -11,6 +10,7 @@ const LinkPage = () => (
     <main className='flex flex-col justify-items-center w-full max-w-xl mx-3 sm:mx-auto my-7'>
       <StaticImage
         src='../../static/img/fruhlingsblumchen-hero.jpg'
+        alt='Woman with brightly colored asymmetrical lace wrap draped across shoulders, peering out of copper scaffolding'
         layout='fullWidth'
         cropFocus='top'
       />

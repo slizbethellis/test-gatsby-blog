@@ -2,14 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { BlogPostTemplate } from '../../components/blog-post-preview'
 
-const BlogPostPreview = ({ entry, widgetFor }) => (
-  <BlogPostTemplate
+const BlogPostPreview = ({ entry, widgetFor }) => {
+  const data = entry.get('data').toJS()
+  const { description, tags, title } = data
+
+  return <BlogPostTemplate
     content={widgetFor('body')}
-    description={entry.getIn(['data', 'description'])}
-    tags={entry.getIn(['data', 'tags'])}
-    title={entry.getIn(['data', 'title'])}
+    description={description}
+    tags={tags}
+    title={title}
   />
-)
+}
 
 BlogPostPreview.propTypes = {
   entry: PropTypes.shape({

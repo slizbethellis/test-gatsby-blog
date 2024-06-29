@@ -5,10 +5,10 @@
   "author": "Sarah Ellis",
   "dependencies": {
     "@fontsource-variable/nunito": "^5.0.19",
-    "@headlessui/react": "^2.0.4",
+    "@headlessui/react": "^2.1.1",
     "@headlessui/tailwindcss": "^0.2.1",
     "babel-preset-gatsby": "^3.13.2",
-    "decap-cms-app": "^3.1.10",
+    "decap-cms-app": "^3.1.11",
     "gatsby": "^5.13.6",
     "gatsby-plugin-decap-cms": "^4.0.4",
     "gatsby-plugin-feed": "^5.13.1",
@@ -21,6 +21,7 @@
     "gatsby-remark-copy-linked-files": "^6.13.1",
     "gatsby-remark-images": "^7.13.1",
     "gatsby-remark-relative-images": "^2.0.5",
+    "gatsby-remark-smartypants": "^6.13.1",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-remark": "^6.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
@@ -33,7 +34,7 @@
     "react-use-flexsearch": "^0.1.1",
     "rehype-react": "7.2.0",
     "uuid": "^10.0.0",
-    "yet-another-react-lightbox": "3.20.0"
+    "yet-another-react-lightbox": "3.20.1"
   },
   "keywords": [
     "gatsby"
@@ -53,7 +54,6 @@
     "@tailwindcss/typography": "^0.5.13",
     "autoprefixer": "^10.4.19",
     "gatsby-plugin-postcss": "^6.13.1",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.32",
     "postcss": "^8.4.38",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5",
