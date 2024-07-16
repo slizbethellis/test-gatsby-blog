@@ -16,7 +16,6 @@
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-manifest": "^5.13.1",
-    "gatsby-plugin-netlify": "^5.1.1",
     "gatsby-plugin-offline": "^6.13.2",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-remark-copy-linked-files": "^6.13.1",
@@ -58,7 +57,7 @@
     "postcss": "^8.4.39",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.5"
+    "tailwindcss": "^3.4.6"
   },
   "resolutions": {
     "react": "^18.2.0",

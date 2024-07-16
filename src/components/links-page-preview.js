@@ -3,8 +3,6 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
 export const LinksPageTemplate = ({ buttons, title }) => {
-  console.log(buttons)
-
   return (
     <section className="section">
       <div className="container content">
@@ -13,7 +11,7 @@ export const LinksPageTemplate = ({ buttons, title }) => {
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
             <div className="buttons">
               {buttons.map((button,index) =>
-               (button.external === true ? <a href={button.link} key={index}>{button.label}</a> : <Link to={button.link} key={index}>{button.label}</Link>)
+               (button.external === true ? <div><a href={button.link} key={index}>{button.label}</a></div> :<div><Link to={button.link} key={index}>{button.label}</Link></div>)
               )}
             </div>
           </div>

@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 const LinkPage = ({ data }) => {
   const page = data.markdownRemark.frontmatter
   const buttons = page.buttons
-  console.log(buttons)
+
   return (
     <Layout>
       <main className='flex flex-col justify-items-center w-full max-w-xl mx-3 sm:mx-auto my-7'>
