@@ -8,7 +8,7 @@ const PostPagination = ({ pageContext }) => {
   const { previous, next } = pageContext
 
   return (
-    <div className='self-center w-full mx-3 md:mx-0'>
+    <div className='self-center w-full mx-3 md:mx-0 print:hidden'>
       <nav aria-label='pagination'>
         <div className='flex flex-wrap items-start justify-between mt-4'>
           {previous && (

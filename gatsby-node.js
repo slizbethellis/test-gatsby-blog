@@ -36,8 +36,9 @@ exports.createPages = ({ actions, graphql }) => {
     // filter by template category so pagination doesn't mix blog posts and pattern pages
     const aboutPage = posts.filter(node => node.frontmatter.templateKey === "about-page")
     const blogPosts = posts.filter(node => node.frontmatter.templateKey === "blog-post")
+    const linksPage = posts.filter(node => node.frontmatter.templateKey === "links")
     const patternItems = posts.filter(node => node.frontmatter.templateKey === "pattern-item")
-    const postsArray = [ aboutPage, blogPosts, patternItems ]
+    const postsArray = [ aboutPage, blogPosts, linksPage, patternItems ]
 
     // turns all queried items into pages
     postsArray.forEach(arr => {

@@ -13,7 +13,7 @@ const Toggle = ({ theme, toggleTheme }) => {
       onChange={toggleTheme}
     >
       <Label className='md:hidden text-lila-900 dark:text-fuzz-200'>Switch theme:</Label>
-      <ListboxButton className='relative flex md:block text-lila-900 dark:text-fuzz-200 text-semibold justify-between bg-phthalo-50 dark:bg-phthalo-700 md:bg-transparent md:dark:bg-transparent rounded-lg ring-1 md:ring-0 ring-phthalo-900/20 w-32 md:w-6 p-1.5 md:p-0'>
+      <ListboxButton className='relative flex md:block text-lila-900 dark:text-fuzz-200 text-semibold justify-between bg-phthalo-50 dark:bg-phthalo-700 md:bg-transparent md:dark:bg-transparent rounded-lg ring-1 md:ring-0 ring-phthalo-900/20 w-32 md:w-6 p-1.5 md:p-0' name='toggle'>
         {icon}
         <span className='md:hidden text-lila-800 dark:text-fuzz-100'>{theme.display}</span>
         <Down className='md:hidden inline-block h-6 w-6' aria-hidden="true" />

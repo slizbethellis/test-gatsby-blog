@@ -17,7 +17,7 @@ const TemplateWrapper = ({ children }) => {
       <Navbar theme={theme} toggleTheme={toggleTheme} componentMounted={componentMounted} />
       {/* Navbar height: 4rem
         Footer height: 4rem */}
-      <div className='flex flex-wrap mx-auto overflow-auto justify-center w-full min-h-[calc(100dvh_-_8rem)] dark:[scrollbar-color:#689999_#0d141a]'>
+      <div className='flex flex-wrap mx-auto overflow-auto justify-center w-full min-h-[calc(100dvh_-_8rem)] dark:[scrollbar-color:#689999_#0d141a] print:text-black'>
         {children}
       </div>
       <Footer />

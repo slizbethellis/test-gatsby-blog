@@ -17,7 +17,7 @@ const BlogPostTemplate = ({
 }) => {
   return (
     <main className='justify-self-center max-w-full my-7 md:my-10'>
-      <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-full min-[1152px]:max-w-6xl'>
+      <article className='flex flex-col prose dark:prose-invert prose-lg prose-phthalo items-center px-6 md:px-24 pb-3 md:pb-6 max-w-full min-[1152px]:max-w-6xl print:prose'>
         <h1 className='text-center'>{title}</h1>
         <span className='text-center text-xl'>{date}</span>
         <div className='max-w-full overflow-auto'>
@@ -25,7 +25,7 @@ const BlogPostTemplate = ({
           <Content contentAst={content} />
         </div>
       </article>
-      <div className='flex flex-col max-w-[1152px] px-6 md:px-24'>
+      <div className='flex flex-col max-w-[1152px] px-6 md:px-24 print:hidden'>
         <PostPagination pageContext={pageContext} />
         {tags && tags.length ? (
           <section className='self-center border-t border-phthalo-600 dark:border-phthalo-200/50 w-full pt-4 md:pt-6'>

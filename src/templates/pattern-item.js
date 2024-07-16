@@ -65,7 +65,7 @@ const PatternItemTemplate = ({
             </TabList>
             <TabPanels>
               {/* Description */}
-              <TabPanel className='prose dark:prose-invert prose-lg prose-phthalo max-w-[560px] md:max-w-full'>
+              <TabPanel className='prose dark:prose-invert prose-lg prose-phthalo max-w-[560px] md:max-w-full print:prose'>
                 <Content contentAst={content} />
               </TabPanel>
               {/* Specs */}

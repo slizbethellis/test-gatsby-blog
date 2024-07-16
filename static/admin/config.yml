@@ -35,6 +35,21 @@ collections:
           - {label: "Publish Date", name: "date", widget: "datetime"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
+      - file: "src/pages/links/index.md"
+        label: "Links"
+        name: "links"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "links"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Hero Image", name: "heroImage", widget: "image"}
+          - {label: "Hero Alt Text", name: "heroAltText", widget: "string"}
+          - label: "Buttons"
+            name: "buttons"
+            widget: "list"
+            fields:
+              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Label", name: "label", widget: "string"}
+              - {label: "External", name: "external", widget: "boolean", default: false}
 
   - name: "patterns"
     label: "Patterns"
