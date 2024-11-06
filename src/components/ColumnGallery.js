@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import PhotoAlbum from 'react-photo-album'
+import { MasonryPhotoAlbum } from 'react-photo-album'
 import Lightbox from 'yet-another-react-lightbox'
 import Counter from 'yet-another-react-lightbox/plugins/counter'
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
+import 'react-photo-album/masonry.css'
 import 'yet-another-react-lightbox/styles.css'
 import 'yet-another-react-lightbox/plugins/counter.css'
 
@@ -11,13 +12,6 @@ import GalleryImage from './GalleryImage'
 
 const ColumnGallery = (images) => {
   const [index, setIndex] = useState(-1)
-
-  const renderAlbumThumb = ({ photo }) => (
-    <GalleryImage 
-      photo={photo}
-      onClick={() => setIndex(photo.key)}
-    />
-  )
 
   const renderCustomSlide = ({ slide }) => {
     return (
@@ -47,12 +41,18 @@ const ColumnGallery = (images) => {
         onClick={() => setIndex(imageArray[0].key)}
       />
       {slicedImages.length > 0 &&
-        <PhotoAlbum
-          layout='masonry'
+        <MasonryPhotoAlbum
           photos={slicedImages}
           spacing={5}
           columns={4}
-          renderPhoto={renderAlbumThumb}
+          render={{ photo: ({ onClick }, { photo }) => (
+            <GalleryImage 
+              photo={photo}
+              onClick={() => setIndex(photo.key)}
+              key={`thumb ${photo.key}`}
+            />
+            ),
+          }}
         />
       } 
       <Lightbox 

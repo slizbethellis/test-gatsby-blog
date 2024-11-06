@@ -6,7 +6,7 @@ const GalleryImage = ({ photo, first, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={!first ? 'my-[2.5px]' : 'mb-[2.5px]'}
+      className={!first ? 'my-0' : 'mb-[5px]'}
     >
       <GatsbyImage
         image={photo.thumbFluid}

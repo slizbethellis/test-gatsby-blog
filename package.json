@@ -30,11 +30,11 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-photo-album": "^2.4.1",
+    "react-photo-album": "^3.0.2",
     "react-use-flexsearch": "^0.1.1",
     "rehype-react": "7.2.0",
-    "uuid": "^10.0.0",
-    "yet-another-react-lightbox": "3.21.1"
+    "uuid": "^11.0.2",
+    "yet-another-react-lightbox": "3.21.6"
   },
   "keywords": [
     "gatsby"
@@ -42,10 +42,11 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "start": "yarn run develop",
+    "preinstall": "npx only-allow pnpm",
+    "start": "pnpm run develop",
     "clean": "gatsby clean",
-    "build": "yarn gatsby build",
-    "develop": "yarn gatsby develop",
+    "build": "pnpm gatsby build",
+    "develop": "pnpm gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -64,5 +65,5 @@
     "@types/react": "^18.0.17",
     "react-dom": "^18.2.0"
   },
-  "packageManager": "yarn@3.8.3"
+  "packageManager": "pnpm@9.9.0"
 }
