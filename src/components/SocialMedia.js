@@ -1,7 +1,7 @@
 import React from 'react'
-import { Facebook, Instagram, Threads } from './Icon'
+import { Bluesky, Facebook, Instagram, Threads } from './Icon'
 
-const iconClass = 'inline-block h-6 w-6 text-lila-900 dark:text-fuzz-300'
+const iconClass = 'inline-block h-4 h-6 w-6 text-lila-900 dark:text-fuzz-300'
 
 const socials = [
   { 
@@ -22,6 +22,12 @@ const socials = [
     link: 'https://www.threads.net/@haloroundmyhead',
     icon: <Threads className={iconClass} aria-hidden='true' />
   },
+  {
+    id: 4,
+    label: 'Follow me on Bluesky',
+    link: 'https://bsky.app/profile/haloroundmyhead.com',
+    icon: <Bluesky className={iconClass} aria-hidden='true' />
+  },
 ]
 
 // a tiny box of social media icon links
@@ -29,7 +35,7 @@ const SocialMedia = () => (
   <div className='flex items-center justify-center space-x-1 border-l border-phthalo-200 ml-6 px-4 dark:border-phthalo-700'>
     <ul className='flex'>
       {socials.map((social) => (
-        <li key={social.id} className='hover:bg-phthalo-100 dark:hover:bg-phthalo-900 rounded-full p-2'>
+        <li key={social.id} className='hover:bg-phthalo-100 dark:hover:bg-phthalo-900 rounded-full max-[370px]:p-1 p-2'>
           <a
             href={social.link}
             aria-label={social.label}

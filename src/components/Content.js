@@ -1,5 +1,7 @@
 import React from 'react'
+import * as prod from 'react/jsx-runtime'
 import rehypeReact from 'rehype-react'
+import { unified } from 'unified'
 import PropTypes from 'prop-types'
 
 import Heading from './Heading'
@@ -20,14 +22,15 @@ const Heading4 = ({ children }) => (
   <Heading level={4}>{children}</Heading>
 )
 
-const FillParagraph = ({ children }) => (
-  <p>{children}</p>
+const FillParagraph = ({ children, ...rest }) => (
+  <p {...rest}>{children}</p>
 )
 
 const Content = ({ contentAst }) => {
   const patchedAst = patchHTMLAST(contentAst)
+  const patchedContent = processor.stringify(patchedAst)
   return (
-    renderAst(patchedAst)
+    patchedContent
   )  
 }
 
@@ -48,16 +51,18 @@ const patchHTMLAST = (ast) => {
   return ast
 };
 
-const renderAst = new rehypeReact({
-  createElement: React.createElement,
+const processor = unified().use(rehypeReact, {
+  Fragment: prod.Fragment,
+  jsx: prod.jsx,
+  jsxs: prod.jsxs,
   components: {
     p: FillParagraph,
     h1: Heading1,
     h2: Heading2,
     h3: Heading3,
     h4: Heading4,
-  }
-}).Compiler
+  },
+})
 
 Content.propTypes = {
   content: PropTypes.node,

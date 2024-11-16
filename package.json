@@ -4,27 +4,27 @@
   "version": "2.0.2",
   "author": "Sarah Ellis",
   "dependencies": {
-    "@fontsource-variable/nunito": "^5.0.19",
-    "@headlessui/react": "^2.1.2",
+    "@fontsource-variable/nunito": "^5.1.0",
+    "@headlessui/react": "^2.2.0",
     "@headlessui/tailwindcss": "^0.2.1",
-    "babel-preset-gatsby": "^3.13.2",
-    "decap-cms-app": "^3.1.11",
-    "gatsby": "^5.13.7",
-    "gatsby-adapter-netlify": "^1.1.7",
+    "babel-preset-gatsby": "^3.14.0",
+    "decap-cms-app": "^3.4.0",
+    "gatsby": "^5.14.0",
+    "gatsby-adapter-netlify": "^1.2.0",
     "gatsby-plugin-decap-cms": "^4.0.4",
-    "gatsby-plugin-feed": "^5.13.1",
-    "gatsby-plugin-image": "^3.13.1",
+    "gatsby-plugin-feed": "^5.14.0",
+    "gatsby-plugin-image": "^3.14.0",
     "gatsby-plugin-local-search": "^2.0.1",
-    "gatsby-plugin-manifest": "^5.13.1",
-    "gatsby-plugin-offline": "^6.13.2",
-    "gatsby-plugin-sharp": "^5.13.1",
-    "gatsby-remark-copy-linked-files": "^6.13.1",
-    "gatsby-remark-images": "^7.13.1",
+    "gatsby-plugin-manifest": "^5.14.0",
+    "gatsby-plugin-offline": "^6.14.0",
+    "gatsby-plugin-sharp": "^5.14.0",
+    "gatsby-remark-copy-linked-files": "^6.14.0",
+    "gatsby-remark-images": "^7.14.0",
     "gatsby-remark-relative-images": "^2.0.5",
-    "gatsby-remark-smartypants": "^6.13.1",
-    "gatsby-source-filesystem": "^5.13.1",
-    "gatsby-transformer-remark": "^6.13.1",
-    "gatsby-transformer-sharp": "^5.13.1",
+    "gatsby-remark-smartypants": "^6.14.0",
+    "gatsby-source-filesystem": "^5.14.0",
+    "gatsby-transformer-remark": "^6.14.0",
+    "gatsby-transformer-sharp": "^5.14.0",
     "lodash": "4.17.21",
     "lodash-webpack-plugin": "^0.11.6",
     "prop-types": "^15.8.1",
@@ -32,8 +32,9 @@
     "react-dom": "^18.3.1",
     "react-photo-album": "^3.0.2",
     "react-use-flexsearch": "^0.1.1",
-    "rehype-react": "7.2.0",
-    "uuid": "^11.0.2",
+    "rehype-react": "8.0.0",
+    "unified": "^11.0.5",
+    "uuid": "^11.0.3",
     "yet-another-react-lightbox": "3.21.6"
   },
   "keywords": [
@@ -52,18 +53,24 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13",
-    "autoprefixer": "^10.4.19",
-    "gatsby-plugin-postcss": "^6.13.1",
-    "postcss": "^8.4.39",
+    "@tailwindcss/typography": "^0.5.15",
+    "autoprefixer": "^10.4.20",
+    "gatsby-plugin-postcss": "^6.14.0",
+    "postcss": "^8.4.49",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.6"
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.15"
   },
   "resolutions": {
     "react": "^18.2.0",
     "@types/react": "^18.0.17",
     "react-dom": "^18.2.0"
   },
-  "packageManager": "pnpm@9.9.0"
+  "packageManager": "pnpm@9.12.3",
+  "pnpm": {
+    "overrides": {
+      "trim@<0.0.3": ">=0.0.3",
+      "cookie@<0.7.0": ">=0.7.0"
+    }
+  }
 }
