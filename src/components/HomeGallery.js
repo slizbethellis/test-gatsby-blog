@@ -9,7 +9,7 @@ const HomeGallery = ({ posts }) => {
       {/* Breakpoints larger than "small" get 4 pattern photo buttons, smaller breakpoints get only 3. */}
       {posts
         .map(({ node: post }) => (
-          <li key={post.id} className='max-md:[&:nth-child(4)]:hidden max-2xl:[&:nth-child(5)]:hidden'>
+          <li key={post.id} className='max-md:nth-4:hidden max-2xl:nth-5:hidden'>
             <HomeImage
               fixed={post.frontmatter.pattImage.childImageSharp.gatsbyImageData}
               altText={`Pattern info for ${post.frontmatter.title}`}

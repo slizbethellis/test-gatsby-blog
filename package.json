@@ -6,7 +6,7 @@
   "dependencies": {
     "@fontsource-variable/nunito": "^5.2.5",
     "@headlessui/react": "^2.2.2",
-    "@headlessui/tailwindcss": "^0.2.1",
+    "@headlessui/tailwindcss": "^0.2.2",
     "babel-preset-gatsby": "^3.14.0",
     "decap-cms-app": "^3.6.2",
     "gatsby": "^5.14.3",
@@ -53,20 +53,20 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
-    "autoprefixer": "^10.4.21",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@tailwindcss/typography": "^0.5.16",
     "gatsby-plugin-postcss": "^6.14.0",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.8",
-    "tailwindcss": "^3.4.15"
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.1.4"
   },
   "resolutions": {
     "react": "^18.2.0",
     "@types/react": "^18.0.17",
     "react-dom": "^18.2.0"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
   "pnpm": {
     "overrides": {
       "trim@<0.0.3": ">=0.0.3",
@@ -77,6 +77,9 @@
       "tar-fs@>=3.0.0 <3.0.7": ">=3.0.8",
       "tar-fs@>=2.0.0 <2.1.2": ">=2.1.2",
       "@babel/runtime@<7.26.10": ">=7.26.10"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "gatsby"
+    ]
   }
 }

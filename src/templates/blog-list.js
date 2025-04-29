@@ -40,7 +40,7 @@ const BlogPage = ({ data, pageContext }) => {
   return (
     <Layout>
       <div className='flex flex-col w-full my-7 md:my-10'>
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 h-full justify-items-center md:gap-3 max-w-screen-2xl'>
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 h-full justify-items-center md:gap-3 max-w-(--breakpoint-2xl)'>
           <main className='md:col-span-2 lg:col-span-3'>
             <h1 className='text-center text-5xl font-bold mb-7'>Blog</h1>
             <BlogPosts posts={posts} pageContext={pageContext} />

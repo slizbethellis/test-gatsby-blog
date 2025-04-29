@@ -1,32 +1,20 @@
 import React from 'react'
-import { Bluesky, Facebook, Instagram, Threads } from './Icon'
+import { Bluesky, Instagram } from './Icon'
 
 const iconClass = 'inline-block h-4 h-6 w-6 text-lila-900 dark:text-fuzz-300'
 
 const socials = [
-  { 
-    id: 1,
-    label: 'Follow me on Instagram',
-    link: 'https://www.instagram.com/haloroundmyhead/',
-    icon: <Instagram className={iconClass} aria-hidden='true' />
-  },
-  { 
-    id: 2,
-    label: 'Follow me on Facebook',
-    link: 'https://www.facebook.com/haloroundmyhead',
-    icon: <Facebook className={iconClass} aria-hidden='true' />
-  },
-  { 
-    id: 3,
-    label: 'Follow me on Threads',
-    link: 'https://www.threads.net/@haloroundmyhead',
-    icon: <Threads className={iconClass} aria-hidden='true' />
-  },
   {
-    id: 4,
+    id: 1,
     label: 'Follow me on Bluesky',
     link: 'https://bsky.app/profile/haloroundmyhead.com',
     icon: <Bluesky className={iconClass} aria-hidden='true' />
+  },
+  { 
+    id: 2,
+    label: 'Follow me on Instagram',
+    link: 'https://www.instagram.com/haloroundmyhead/',
+    icon: <Instagram className={iconClass} aria-hidden='true' />
   },
 ]
 

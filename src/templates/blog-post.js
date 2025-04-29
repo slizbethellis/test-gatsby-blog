@@ -35,7 +35,7 @@ const BlogPostTemplate = ({
                 <li key={index}>
                   <Link
                     to={`/tags/${_.kebabCase(tag)}/`}
-                    className='border-2 border-lila-900 dark:border-fuzz-300 rounded-full text-phthalo-900 dark:text-phthalo-100 hover:no-underline hover:ring-2  hover:ring-lila-700 dark:hover:ring-fuzz-200 hover:border-lila-700 hover:dark:border-fuzz-200 text-semibold px-3 py-1'
+                    className='border-2 border-lila-900 dark:border-fuzz-300 rounded-full text-phthalo-900 dark:text-phthalo-100 hover:no-underline hover:ring-2  hover:ring-lila-700 dark:hover:ring-fuzz-200 hover:border-lila-700 dark:hover:border-fuzz-200 text-semibold px-3 py-1'
                   >{tag}</Link>
                 </li>
               ))}

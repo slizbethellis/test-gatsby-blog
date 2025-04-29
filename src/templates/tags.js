@@ -18,11 +18,11 @@ const TagRoute = ({
     <Layout>
       <main className='flex flex-col max-w-full my-7 md:my-10'
       >
-        <h1 className='text-center text-5xl leading-none font-bold mb-10'>{tagHeader}</h1>
+        <h1 className='text-center text-5xl leading-none font-bold mb-10 mx-3'>{tagHeader}</h1>
         <section className='flex flex-col self-center w-full'>
-          <div className='space-y-5 divide-y divide-phthalo-600 dark:divide-phthalo-200/50 border-b border-phthalo-600 dark:border-phthalo-200/50 mx-6 md:mx-12 max-w-prose'>
+          <div className='self-center space-y-5 divide-y divide-phthalo-600 dark:divide-phthalo-200/50 border-b border-phthalo-600 dark:border-phthalo-200/50 mx-6 md:mx-12 max-w-prose'>
             {posts.map((datum, index) => (
-              <article key={index} className='[&:first-child]:pt-0 pt-5'>
+              <article key={index} className='first:pt-0 pt-5'>
                 <h2 className='text-2xl'>
                   <Link to={datum.node.fields.slug}>
                     {datum.node.frontmatter.title}
